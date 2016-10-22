@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package inmobiliaria.InterfazGrafica;
+package Interfaz;
 
 public class AltaClienteOPropietario extends javax.swing.JPanel {
 

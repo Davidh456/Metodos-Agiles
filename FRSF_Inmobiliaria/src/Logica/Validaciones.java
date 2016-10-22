@@ -1,4 +1,4 @@
-package inmobiliaria.InterfazGrafica;
+package Logica;
 
 import java.awt.Color;
 import java.awt.Font;
