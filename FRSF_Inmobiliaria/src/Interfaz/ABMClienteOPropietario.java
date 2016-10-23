@@ -6,20 +6,26 @@
 package Interfaz;
 
 import Clases.*;
+import Logica.Validaciones;
+import javax.swing.JTextField;
 
 public class ABMClienteOPropietario extends javax.swing.JPanel {
     Cliente cliente;
     Propietario propietario;
+    Validaciones validaciones;
     public ABMClienteOPropietario() {
         initComponents();
         setSize(450, 290);
+        validaciones = new Validaciones();
+        sintaxis();
     }
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente, Propietario propietario){
         initComponents();
         setSize(450, 290);
         this.cliente = cliente;
         this.propietario = propietario;
-        
+        validaciones = new Validaciones();
+        sintaxis();
         String opcion = tabla +" "+ operacion;
         switch (opcion){
             case "cliente alta":
@@ -246,19 +252,15 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void tfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefonoActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_tfTelefonoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_tfNombreActionPerformed
 
 
@@ -294,7 +296,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
     private void AltaCliente() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Cliente"));
-                    
+        camposObligatorios();
     }
 
     private void BajaCliente() {
@@ -322,7 +324,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
     private void AltaPropietario() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Propietario"));
-                
+        camposObligatorios();        
     }
 
     private void BajaPropietario() {
@@ -351,5 +353,19 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         cbDocumento.setEnabled(false);
         cbLocalidad.setEnabled(false);
         cbProvincia.setEnabled(false);
+    }
+    private void sintaxis(){
+        validaciones.CaracteresMaximos(tfNombre, 100, "alfanumerico");
+        validaciones.CaracteresMaximos(tfApellido, 100, "alfanumerico");
+        validaciones.CaracteresMaximos(tfNumeroDocumento,8,"numerico");
+        validaciones.CaracteresMaximos(tfDomicilio, 100, "alfanumerico");
+        validaciones.CaracteresMaximos(tfAlturaCalle, 5, "numerico");
+        validaciones.CaracteresMaximos(tfTelefono, 50, "alfanumerico");
+        validaciones.CaracteresMaximos(tfCorreo, 255, "alfanumerico");   
+
+    }
+    private void camposObligatorios(){
+        validaciones.CampoObligatorio(new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo},
+                                        this);
     }
 }
