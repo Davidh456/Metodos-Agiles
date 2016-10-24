@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Inmobiliaria extends JFrame{
-    //AcÃ¡ vamos a declarar todas las sub-pantallas que vamos a usar
+    //Aquí vamos a declarar todas las sub-pantallas que vamos a usar
     private JPanel contentPane;
     private JPanel fondo;
     	
@@ -34,16 +34,16 @@ public class Inmobiliaria extends JFrame{
         setVisible(true);
         setResizable(false);
         setIconImage(Toolkit.getDefaultToolkit().getImage(Inmobiliaria.class.getResource("/javax/swing/plaf/metal/icons/ocean/menu.gif")));
-        //estas lineas son para crear el Frame Principal donde va a llamar a cada pantalla
+        //Estas lineas son para crear el Frame Principal donde va a llamar a cada pantalla
 
-        //acÃ¡ voy a dar las dimensiones segÃºn la resoluciÃ³n de pantalla
+        //Aquí que dan las dimensiones segun la resolución de pantalla
         Toolkit t = Toolkit.getDefaultToolkit();
         java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setBounds(0, 0, screenSize.width, screenSize.height-48);
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         cerrar();
 
-        //Este contentPane es el JPanel que va a contener a toda la interfaz grafica
+        //Este contentPane es el JPanel que va a contener a toda la interfaz gráfica
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
@@ -53,17 +53,15 @@ public class Inmobiliaria extends JFrame{
         fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), contentPane.getWidth(), contentPane.getHeight()/2);
         fondo.setBackground(new Color(190,190,250));
         
-        // TODO 0
-        //acÃ¡ vayan tirando losmÃ©todos para ir probando las pantallas en la pantalla principal
-        AltaCliente();
-		
+        // TODO 0 Aquí vayan tirando los métodos para ir probando las pantallas en la pantalla principal
+	this.AltaCliente();
 
     }
     public void cerrar(){
         this.addWindowListener(new WindowAdapter(){
                 public void windowClosing(WindowEvent e){
                         int opcion = JOptionPane.showOptionDialog(null, 
-                                        "Â¿Seguro que quiere salir?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
+                                        "¿Seguro que quiere salir?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
                         if (opcion == 0){
 					System.exit(0);
 				}
