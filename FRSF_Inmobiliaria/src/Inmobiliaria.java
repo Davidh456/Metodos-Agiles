@@ -55,6 +55,7 @@ public class Inmobiliaria extends JFrame{
         
         // TODO 0
         //acá vayan tirando losmétodos para ir probando las pantallas en la pantalla principal
+        AltaCliente();
 		
 
     }

@@ -560,59 +560,59 @@ public class AltaInmueble extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AdjFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdjFotosActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_AdjFotosActionPerformed
 
     private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BCancelarActionPerformed
 
     private void ProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProvinciaActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ProvinciaActionPerformed
 
     private void GarageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GarageActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_GarageActionPerformed
 
     private void PatioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatioActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_PatioActionPerformed
 
     private void GnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GnActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_GnActionPerformed
 
     private void AcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_AcActionPerformed
 
     private void TelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TelefonoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_TelefonoActionPerformed
 
     private void LavaderoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LavaderoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_LavaderoActionPerformed
 
     private void PavimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PavimentoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_PavimentoActionPerformed
 
     private void PisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PisoActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_PisoActionPerformed
 
     private void BSelecPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecPropActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_BSelecPropActionPerformed
 
     private void PrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PrecioKeyTyped
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_PrecioKeyTyped
 
     private void PrecioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_PrecioPropertyChange
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_PrecioPropertyChange
 
 
