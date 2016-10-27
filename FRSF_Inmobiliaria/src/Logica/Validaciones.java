@@ -148,13 +148,13 @@ public class Validaciones {
 
 			    //que no sea letra 
 			    if( !(((caracter >= 'A')&&(caracter <= 'z'))||caracter==127||caracter==8||caracter==32)&& tipo.equals("alfabetico")){
-			    	JOptionPane.showMessageDialog(null, "Sï¿½lo se pueden ingresar letras","ï¿½CUIDADO!",JOptionPane.ERROR_MESSAGE);
+			    	JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
 				
-				//que no sea nï¿½mero
+				//que no sea número
 				if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter==32) && tipo.equals("numerico")){
-					JOptionPane.showMessageDialog(null, "Sï¿½lo se pueden ingresar nï¿½meros","ï¿½CUIDADO!",JOptionPane.ERROR_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
 			}
@@ -169,7 +169,7 @@ public class Validaciones {
 	}
 	public boolean CaracteresMinimos(final JTextField tf, final int limite){
 		return (tf.getText().length() >= limite);
-		// el campo TextField no puede ser menor al lï¿½mite inferior
+		// el campo TextField no puede ser menor al límite inferior
 	}
 	public void reiniciarCampos(JTextField[] field, JLabel[] label) {
 		for (int i=0; i<field.length;i++){
