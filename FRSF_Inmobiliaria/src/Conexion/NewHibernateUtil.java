@@ -14,6 +14,8 @@ import org.hibernate.SessionFactory;
  *
  * @author maria
  */
+
+
 public class NewHibernateUtil {
 
     private static final SessionFactory sessionFactory;
@@ -25,7 +27,7 @@ public class NewHibernateUtil {
             sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
         } catch (Throwable ex) {
             // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
+            //System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

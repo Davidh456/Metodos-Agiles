@@ -157,6 +157,11 @@ public class Validaciones {
 					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
+                                // se verifica que si es flotante sea con punto y no admite letras (no verifica la cantidad de puntos)
+                            if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter=='.') && tipo.equals("float")){
+					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números y '.'  (ejemplo: 113.80) ","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+			    	e.consume();
+			    }
 			}
 			public void keyPressed(KeyEvent arg0) {
 			}

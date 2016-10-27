@@ -4,6 +4,7 @@
 import Clases.Cliente;
 import Clases.Propietario;
 import Interfaz.ABMClienteOPropietario;
+import Interfaz.AltaInmueble;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -54,7 +55,7 @@ public class Inmobiliaria extends JFrame{
         fondo.setBackground(new Color(190,190,250));
         
         // TODO 0 Aqu� vayan tirando los m�todos para ir probando las pantallas en la pantalla principal
-        
+        AltaInmueble2();
 
     }
     public void cerrar(){
@@ -137,5 +138,16 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
     }
     
-
+    private void AltaInmueble2() {
+        contentPane.removeAll();
+        AltaInmueble pantallaABM = new AltaInmueble();
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        
+    } 
 }
