@@ -116,13 +116,13 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
         jLabel3.setText("Documento");
 
-        jLabel4.setText("NÂº");
+        jLabel4.setText("Nº");
 
         jLabel5.setText("Provincia");
 
         jLabel6.setText("Localidad");
 
-        jLabel7.setText("TelÃ©fono");
+        jLabel7.setText("Teléfono");
 
         jLabel8.setText("e-mail");
 
@@ -148,7 +148,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
         jLabel9.setText("Domicilio");
 
-        jLabel10.setText("NÂº");
+        jLabel10.setText("Nº");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -305,8 +305,8 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         BloquearCampos();
         tfNombre.setText(cliente.getNombre());
         tfApellido.setText(cliente.getApellido());
-        tfNumeroDocumento.setText(cliente.getNumDocumento().toString());
-        cbDocumento.setSelectedIndex(cliente.getTipoDNI());
+        tfNumeroDocumento.setText(String.valueOf(cliente.getNumeroDoc()));
+        cbDocumento.setSelectedIndex(cliente.getTipoDoc());
         
     }
 
@@ -314,27 +314,26 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificacion Cliente"));
         tfNombre.setText(cliente.getNombre());
         tfApellido.setText(cliente.getApellido());
-        tfNumeroDocumento.setText(cliente.getNumDocumento().toString());
+        tfNumeroDocumento.setText(String.valueOf(cliente.getNumeroDoc()));
         tfDomicilio.setText(cliente.getDomicilio());
-        tfAlturaCalle.setText(cliente.getAlturaCalle().toString());
+        tfAlturaCalle.setText(String.valueOf(cliente.getAlturaDomicilio()));
         tfTelefono.setText(cliente.getTelefono());
         tfCorreo.setText(cliente.getCorreo());
-        cbDocumento.setSelectedIndex(cliente.getTipoDNI());        
+        cbDocumento.setSelectedIndex(cliente.getTipoDoc());        
     }
 
     private void AltaPropietario() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Propietario"));
         camposObligatorios();        
     }
-
     private void BajaPropietario() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Baja Propietario"));
         BloquearCampos();    
         tfNumeroDocumento.setToolTipText("");
         tfNombre.setText(propietario.getNombre());
         tfApellido.setText(propietario.getApellido());
-        tfNumeroDocumento.setText(propietario.getNumDocumento().toString());
-        cbDocumento.setSelectedIndex(propietario.getTipoDNI());
+        tfNumeroDocumento.setText(String.valueOf(propietario.getNumeroDoc()));
+        cbDocumento.setSelectedIndex(propietario.getTipoDoc());
     }
     
     private void ModificacionPropietario() {

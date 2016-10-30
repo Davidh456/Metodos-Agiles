@@ -3,6 +3,8 @@
   <persistence-unit name="Inmueble" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>Clases.Inmueble</class>
+    <class>Clases.Cliente</class>
+    <class>Clases.Propietario</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/inmobiliaria?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
