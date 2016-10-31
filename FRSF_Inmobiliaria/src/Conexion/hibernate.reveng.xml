@@ -41,8 +41,5 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="inmobiliaria"/>
-  <table-filter match-name="cliente"/>
-  <table-filter match-name="localidades"/>
-  <table-filter match-name="propietario"/>
-  <table-filter match-name="provincias"/>
+  <table-filter match-name="inmueble"/>
 </hibernate-reverse-engineering>

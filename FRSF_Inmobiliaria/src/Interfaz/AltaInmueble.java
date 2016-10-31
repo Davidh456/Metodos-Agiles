@@ -27,7 +27,7 @@ public class AltaInmueble extends javax.swing.JPanel {
         initComponents();
         setSize(getPreferredSize());
         sintaxis();
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Cliente"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
     }
 
     public float getSupInmueble() {
@@ -872,8 +872,9 @@ public class AltaInmueble extends javax.swing.JPanel {
 
     private void BAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAceptarActionPerformed
         boolean resultado;
-        ABMInmueble operador = new ABMInmueble();
-        resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getOtraLoc(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+        ABMInmueble operador = new ABMInmueble(); // definir donde y cuando se creara el operador
+        //resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getOtraLoc(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+        resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
         if(resultado){
             JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente cargado","Felicidades",JOptionPane.ERROR_MESSAGE);
         }
@@ -881,6 +882,7 @@ public class AltaInmueble extends javax.swing.JPanel {
         else {
             JOptionPane.showMessageDialog(null, "El inmueble no se ha podido cargar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_BAceptarActionPerformed
 
     private void sintaxis(){
