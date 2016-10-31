@@ -41,7 +41,7 @@ public class Inmueble  implements java.io.Serializable {
      private Integer provinciaIndice;
      private Boolean telefono;
      private Integer tipoInmueble;
-
+     //TODO agregar el estado 
     public Inmueble() {
     }
 
