@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-oct-2016 15:38:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Clases.Propietario" table="propietario" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="idPropietario" type="java.lang.Integer">
+            <column name="idPropietario" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="localidad" class="Clases.Localidad" fetch="select">
+            <column name="idLocalidad" not-null="true" />
+        </many-to-one>
+        <many-to-one name="provincia" class="Clases.Provincia" fetch="select">
+            <column name="idProvincia" not-null="true" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="45" not-null="true" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="45" not-null="true" />
+        </property>
+        <property name="tipoDoc" type="int">
+            <column name="tipoDoc" not-null="true">
+                <comment>0 = DNI 1 = Pasaporte 2 = LC 3 = LE</comment>
+            </column>
+        </property>
+        <property name="numeroDoc" type="int">
+            <column name="numeroDoc" not-null="true" />
+        </property>
+        <property name="domicilio" type="string">
+            <column name="domicilio" length="45" not-null="true" />
+        </property>
+        <property name="alturaDomicilio" type="int">
+            <column name="alturaDomicilio" not-null="true" />
+        </property>
+        <property name="telefono" type="int">
+            <column name="telefono" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

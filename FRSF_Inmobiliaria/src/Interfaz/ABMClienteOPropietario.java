@@ -6,25 +6,41 @@
 package Interfaz;
 
 import Clases.*;
+import Logica.ABMCliente;
+import Logica.LogicaCargaInterfaz;
 import Logica.Validaciones;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Set;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class ABMClienteOPropietario extends javax.swing.JPanel {
     Cliente cliente;
     Propietario propietario;
     Validaciones validaciones;
+    JTextField[] camposObligatorios;
+    JLabel[] lblCamposObligatorios;
     public ABMClienteOPropietario() {
         initComponents();
-        setSize(450, 290);
+        setSize(450, 260);
+        camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
+        lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         validaciones = new Validaciones();
+        cargarCB();
         sintaxis();
     }
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente, Propietario propietario){
         initComponents();
-        setSize(450, 290);
+        setSize(450, 260);
+        camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
+        lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         this.cliente = cliente;
         this.propietario = propietario;
         validaciones = new Validaciones();
+        cargarCB();
         sintaxis();
         String opcion = tabla +" "+ operacion;
         switch (opcion){
@@ -47,8 +63,9 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                 ModificacionPropietario();
                 break;
         }
-        
     }
+          
+
 
     
     @SuppressWarnings("unchecked")
@@ -60,14 +77,14 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         btnCancelar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblApellido = new javax.swing.JLabel();
+        lblDocumento = new javax.swing.JLabel();
+        lblNumDocumento = new javax.swing.JLabel();
+        lblProvincia = new javax.swing.JLabel();
+        lblLocalidad = new javax.swing.JLabel();
+        lblTelefono = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
         tfNombre = new javax.swing.JTextField();
         tfApellido = new javax.swing.JTextField();
         tfNumeroDocumento = new javax.swing.JTextField();
@@ -76,9 +93,9 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         tfCorreo = new javax.swing.JTextField();
         cbProvincia = new javax.swing.JComboBox<>();
         cbLocalidad = new javax.swing.JComboBox<>();
-        jLabel9 = new javax.swing.JLabel();
+        lblDomicilio = new javax.swing.JLabel();
         tfDomicilio = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
+        lblNumDomicilio = new javax.swing.JLabel();
         tfAlturaCalle = new javax.swing.JTextField();
 
         jScrollPane1.setViewportView(jEditorPane1);
@@ -110,21 +127,21 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Nombre");
+        lblNombre.setText("Nombre");
 
-        jLabel2.setText("Apellido");
+        lblApellido.setText("Apellido");
 
-        jLabel3.setText("Documento");
+        lblDocumento.setText("Documento");
 
-        jLabel4.setText("Nº");
+        lblNumDocumento.setText("Nº");
 
-        jLabel5.setText("Provincia");
+        lblProvincia.setText("Provincia");
 
-        jLabel6.setText("Localidad");
+        lblLocalidad.setText("Localidad");
 
-        jLabel7.setText("Teléfono");
+        lblTelefono.setText("Teléfono");
 
-        jLabel8.setText("e-mail");
+        lblCorreo.setText("e-mail");
 
         tfNombre.setToolTipText("");
         tfNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +151,11 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         });
 
         tfNumeroDocumento.setToolTipText("Ej: 12345678");
+        tfNumeroDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfNumeroDocumentoActionPerformed(evt);
+            }
+        });
 
         cbDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "LC", "LE" }));
 
@@ -146,61 +168,62 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
         tfCorreo.setToolTipText("Ej: correo@electronico.com");
 
-        jLabel9.setText("Domicilio");
+        lblDomicilio.setText("Domicilio");
 
-        jLabel10.setText("Nº");
+        lblNumDomicilio.setText("Nº");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblNombre, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDocumento, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblDomicilio, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblProvincia, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblTelefono, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(cbDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel4))
-                                    .addComponent(tfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblNumDocumento))
+                                    .addComponent(cbProvincia, 0, 100, Short.MAX_VALUE)
+                                    .addComponent(tfTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                    .addComponent(tfDomicilio))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(22, 22, 22)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel6)
+                                                .addComponent(lblCorreo)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbLocalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(tfCorreo))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel8)
+                                                .addComponent(lblLocalidad)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(tfNumeroDocumento, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel10)
-                                            .addGap(8, 8, 8)
-                                            .addComponent(tfAlturaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(tfApellido, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                .addComponent(tfNombre, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                                                .addComponent(cbLocalidad, 0, 170, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(lblNumDomicilio)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfAlturaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tfNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfApellido))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAceptar)))
@@ -212,35 +235,33 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblNombre)
+                    .addComponent(lblApellido)
+                    .addComponent(tfApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(tfNumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(lblDocumento)
+                    .addComponent(lblNumDocumento))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(tfAlturaCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
+                    .addComponent(lblNumDomicilio)
                     .addComponent(tfDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(lblDomicilio))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(lblLocalidad)
                     .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(lblProvincia))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(tfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
+                    .addComponent(lblCorreo)
                     .addComponent(tfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(lblTelefono))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnAceptar)
@@ -258,10 +279,15 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }//GEN-LAST:event_tfTelefonoActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void tfNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNombreActionPerformed
     }//GEN-LAST:event_tfNombreActionPerformed
+
+    private void tfNumeroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNumeroDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfNumeroDocumentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -271,18 +297,18 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblCorreo;
+    private javax.swing.JLabel lblDocumento;
+    private javax.swing.JLabel lblDomicilio;
+    private javax.swing.JLabel lblLocalidad;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JLabel lblNumDocumento;
+    private javax.swing.JLabel lblNumDomicilio;
+    private javax.swing.JLabel lblProvincia;
+    private javax.swing.JLabel lblTelefono;
     private javax.swing.JTextField tfAlturaCalle;
     private javax.swing.JTextField tfApellido;
     private javax.swing.JTextField tfCorreo;
@@ -297,6 +323,38 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     private void AltaCliente() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Cliente"));
         camposObligatorios();
+        btnAceptar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(validaciones.CamposVacios(camposObligatorios, null)){
+                    JOptionPane.showMessageDialog(null, "Hay campos obligatorios que deben ser completados","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
+                }
+                else if(!validaciones.ValidarEmail(tfCorreo)){
+                    JOptionPane.showMessageDialog(null, "El correo electrónico está mal ingresado","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+                    tfCorreo.setText("");
+                    validaciones.Pintar(new JTextField[]{tfCorreo},new JLabel[]{lblCorreo});
+                }
+                else if(ABMCliente.usuarioExistente(tfNumeroDocumento.getText(),cbDocumento.getSelectedIndex())){
+                    JOptionPane.showMessageDialog(null, "El cliente ya existe","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+                }
+                else{
+                    ABMCliente.altaCliente(
+                            tfNombre.getText(),
+                            tfApellido.getText(),
+                            cbDocumento.getSelectedIndex(),
+                            Integer.valueOf(tfNumeroDocumento.getText()),
+                            (Provincia) cbProvincia.getSelectedItem(),
+                            (Localidad) cbLocalidad.getSelectedItem(),
+                            tfDomicilio.getText(),
+                            Integer.valueOf(tfAlturaCalle.getText()),
+                            Integer.valueOf(tfTelefono.getText()),
+                            tfCorreo.getText()
+                    );
+                    JOptionPane.showMessageDialog(null, "El cliente fue cargado correctamente","¡ÉXITO!",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
     }
 
     private void BajaCliente() {
@@ -317,7 +375,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         tfNumeroDocumento.setText(String.valueOf(cliente.getNumeroDoc()));
         tfDomicilio.setText(cliente.getDomicilio());
         tfAlturaCalle.setText(String.valueOf(cliente.getAlturaDomicilio()));
-        tfTelefono.setText(cliente.getTelefono());
+        tfTelefono.setText(String.valueOf(cliente.getTelefono()));
         tfCorreo.setText(cliente.getCorreo());
         cbDocumento.setSelectedIndex(cliente.getTipoDoc());        
     }
@@ -354,17 +412,38 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         cbProvincia.setEnabled(false);
     }
     private void sintaxis(){
-        validaciones.CaracteresMaximos(tfNombre, 100, "alfanumerico");
-        validaciones.CaracteresMaximos(tfApellido, 100, "alfanumerico");
+        validaciones.CaracteresMaximos(tfNombre, 100, "alfabetico");
+        validaciones.CaracteresMaximos(tfApellido, 100, "alfabetico");
         validaciones.CaracteresMaximos(tfNumeroDocumento,8,"numerico");
         validaciones.CaracteresMaximos(tfDomicilio, 100, "alfanumerico");
         validaciones.CaracteresMaximos(tfAlturaCalle, 5, "numerico");
-        validaciones.CaracteresMaximos(tfTelefono, 50, "alfanumerico");
+        validaciones.CaracteresMaximos(tfTelefono, 50, "numerico");
         validaciones.CaracteresMaximos(tfCorreo, 255, "alfanumerico");   
 
     }
     private void camposObligatorios(){
-        validaciones.CampoObligatorio(new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo},
+        validaciones.CampoObligatorio(camposObligatorios,
                                         this);
+    }
+
+    private void cargarCB() {
+       LogicaCargaInterfaz carga = new LogicaCargaInterfaz();
+       List<Provincia> provincias = carga.buscarProvincias();
+       for(Provincia p: provincias){
+           cbProvincia.addItem(p.getProvincia());
+       }
+       for(Localidad l: ((Set<Localidad>) provincias.get(0).getLocalidads()) ){
+            cbLocalidad.addItem(l.getLocalidad());
+       }
+       cbProvincia.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               cbLocalidad.removeAllItems();
+               Provincia provincia = provincias.get(cbProvincia.getSelectedIndex());
+               for(Localidad l: ((Set<Localidad>) provincia.getLocalidads()) ){
+                   cbLocalidad.addItem(l.getLocalidad());
+               }
+           }
+       });
     }
 }

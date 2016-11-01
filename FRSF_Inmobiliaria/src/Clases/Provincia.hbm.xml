@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-oct-2016 15:38:38 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Clases.Provincia" table="provincia" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="idprovincia" type="java.lang.Integer">
+            <column name="idprovincia" />
+            <generator class="identity" />
+        </id>
+        <property name="provincia" type="string">
+            <column name="provincia" not-null="true" />
+        </property>
+        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProvincia" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Propietario" />
+        </set>
+        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProvincia" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Cliente" />
+        </set>
+        <set name="localidads" table="localidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="provincia_id" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Localidad" />
+        </set>
+    </class>
+</hibernate-mapping>

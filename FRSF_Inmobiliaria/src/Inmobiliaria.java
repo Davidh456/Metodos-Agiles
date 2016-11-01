@@ -55,7 +55,8 @@ public class Inmobiliaria extends JFrame{
         fondo.setBackground(new Color(190,190,250));
         
         // TODO 0 Aqu� vayan tirando los m�todos para ir probando las pantallas en la pantalla principal
-        AltaInmueble2();
+        AltaCliente();
+        //AltaInmueble2();
 
     }
     public void cerrar(){

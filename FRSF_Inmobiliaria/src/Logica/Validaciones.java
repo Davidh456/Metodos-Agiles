@@ -33,14 +33,17 @@ public class Validaciones {
 			instancia = new Validaciones();
 		}
 		return instancia;
-	}*/
-
-        public void CampoObligatorio(JTextField[] campos, JPanel panel){
-	/* Esta clase es para comprobar los campos obligatorios, hay que mandar el jpanel que contiene los
+        }*/
+	
+        
+        
+        /* Esta clase es para avisar cuales son los campos obligatorios, hay que mandar el jpanel que contiene los
         *  text fields y una lista con los que son obligatorios.
         *  Ej: JTextField[] campos = new JTextField{campo1, campo2, campo3}
         *      Validaciones.CampoObligatorio(campos, this);
         */ 
+        public void CampoObligatorio(JTextField[] campos, JPanel panel){
+
 		final JLabel lblCampoObligatorio = new JLabel("Campo obligatorio");
 		lblCampoObligatorio.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblCampoObligatorio.setFont(new Font("Tahoma", Font.PLAIN, 9));

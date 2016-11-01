@@ -1,5 +1,5 @@
 package Clases;
-// Generated 31/10/2016 01:02:04 by Hibernate Tools 4.3.1
+// Generated 31-oct-2016 15:38:36 by Hibernate Tools 4.3.1
 
 
 
@@ -41,7 +41,7 @@ public class Inmueble  implements java.io.Serializable {
      private Integer provinciaIndice;
      private Boolean telefono;
      private Integer tipoInmueble;
-     //TODO agregar el estado 
+
     public Inmueble() {
     }
 
