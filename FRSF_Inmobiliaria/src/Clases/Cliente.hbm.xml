@@ -6,7 +6,7 @@
     <class name="Clases.Cliente" table="cliente" catalog="inmobiliaria" optimistic-lock="version">
         <id name="idCliente" type="int">
             <column name="idCliente" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="localidad" class="Clases.Localidad" fetch="select">
             <column name="idLocalidad" not-null="true" />

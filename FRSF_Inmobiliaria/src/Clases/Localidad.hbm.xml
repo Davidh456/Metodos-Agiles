@@ -8,13 +8,14 @@
             <column name="id_localidad" />
             <generator class="identity" />
         </id>
-        <many-to-one name="provincia" class="Clases.Provincia" fetch="select">
+<!--        <many-to-one name="provincia" class="Clases.Provincia" fetch="select">
             <column name="provincia_id" not-null="true" />
         </many-to-one>
+-->
         <property name="localidad" type="string">
             <column name="localidad" not-null="true" />
         </property>
-        <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+<!--    <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idLocalidad" not-null="true" />
             </key>
@@ -26,5 +27,6 @@
             </key>
             <one-to-many class="Clases.Propietario" />
         </set>
+-->
     </class>
 </hibernate-mapping>

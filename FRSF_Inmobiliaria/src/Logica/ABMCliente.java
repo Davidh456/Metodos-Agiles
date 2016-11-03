@@ -2,31 +2,30 @@
 package Logica;
 
 import Clases.*;
-import Conexion.NewHibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import Persistencia.PersistenciaCliente;
+import java.util.List;
 
 public class ABMCliente {
 
     public ABMCliente() {
     }
     
-    public static boolean usuarioExistente(String numeroDocumento, int tipoDocumento) {
-        
-        return false;
+    public static boolean clienteExistente(int numeroDocumento, int tipoDocumento) {
+        return (new PersistenciaCliente()).clienteExistente(numeroDocumento,tipoDocumento);
     }
-
     public static void altaCliente(String nombre,String apellido,int tipoDoc, int numeroDoc,Provincia provincia, Localidad localidad, String domicilio, int alturaDomicilio, int telefono, String correo){
         Cliente cliente = new Cliente(localidad, provincia, nombre, apellido, 
                                         tipoDoc, numeroDoc, domicilio, alturaDomicilio, telefono, correo);
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
-        Transaction tx = session.beginTransaction();
-        session.save(cliente);
-        tx.commit();
-        session.close();
+        (new PersistenciaCliente()).altaCliente(cliente);
+    }
+    public static void bajaCliente(Cliente cliente){
+        (new PersistenciaCliente()).borrarCliente(cliente);
+    }
+    public static void modificarCliente(Cliente cliente){
+        (new PersistenciaCliente()).modificarCliente(cliente);
+    }
+    public List<Cliente> listarClientes(){
+        return new PersistenciaCliente().listarClientes();
     }
     
 }

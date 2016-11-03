@@ -209,7 +209,7 @@ public class AltaInmueble extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         Antiguedad = new javax.swing.JTextField();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Cargar Inmueble"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cargar Inmueble"));
 
         jLabel2.setText("Provincia");
 
@@ -223,7 +223,7 @@ public class AltaInmueble extends javax.swing.JPanel {
 
         jLabel14.setText("Tipo de inmueble");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Domicilio"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Domicilio"));
         jPanel1.setToolTipText("");
 
         jLabel6.setText("Calle");
@@ -308,7 +308,7 @@ public class AltaInmueble extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Datos del terreno"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos del terreno"));
 
         jLabel16.setText("Orientacion");
 
@@ -377,7 +377,6 @@ public class AltaInmueble extends javax.swing.JPanel {
                                 .addComponent(jLabel31)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, 0)
                                 .addComponent(jLabel18)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(Frente, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -434,7 +433,7 @@ public class AltaInmueble extends javax.swing.JPanel {
                     .addComponent(Orientacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Otros datos"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Otros datos"));
 
         jLabel21.setText("Dormitorios");
 
@@ -577,7 +576,7 @@ public class AltaInmueble extends javax.swing.JPanel {
                     .addComponent(jLabel28)))
         );
 
-        Observaciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Observaciones"));
+        Observaciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Observaciones"));
 
         BAdjFotos.setText("Adjuntar fotos");
         BAdjFotos.addActionListener(new java.awt.event.ActionListener() {

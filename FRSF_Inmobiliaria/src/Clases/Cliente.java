@@ -24,8 +24,7 @@ public class Cliente  implements java.io.Serializable {
     public Cliente() {
     }
 
-    public Cliente(int idCliente, Localidad localidad, Provincia provincia, String nombre, String apellido, int tipoDoc, int numeroDoc, String domicilio, int alturaDomicilio, int telefono, String correo) {
-       this.idCliente = idCliente;
+    public Cliente(Localidad localidad, Provincia provincia, String nombre, String apellido, int tipoDoc, int numeroDoc, String domicilio, int alturaDomicilio, int telefono, String correo) {
        this.localidad = localidad;
        this.provincia = provincia;
        this.nombre = nombre;
@@ -115,9 +114,6 @@ public class Cliente  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-
-
 
 }
 

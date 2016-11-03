@@ -23,6 +23,9 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     Validaciones validaciones;
     JTextField[] camposObligatorios;
     JLabel[] lblCamposObligatorios;
+    List<Provincia> provincias;
+    Set<Localidad> localidades;
+    
     public ABMClienteOPropietario() {
         initComponents();
         setSize(450, 260);
@@ -34,6 +37,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente, Propietario propietario){
         initComponents();
+        setVisible(true);
         setSize(450, 260);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
@@ -111,7 +115,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Vendedor"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Modificar Vendedor"));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +212,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblLocalidad)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbLocalidad, 0, 170, Short.MAX_VALUE))))
+                                                .addComponent(cbLocalidad, 0, 172, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
                                         .addComponent(lblNumDomicilio)
@@ -273,6 +277,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Inmobiliaria.getInstance().ListarClientes();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void tfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefonoActionPerformed
@@ -335,23 +340,32 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                     tfCorreo.setText("");
                     validaciones.Pintar(new JTextField[]{tfCorreo},new JLabel[]{lblCorreo});
                 }
-                else if(ABMCliente.usuarioExistente(tfNumeroDocumento.getText(),cbDocumento.getSelectedIndex())){
+                else if(ABMCliente.clienteExistente(Integer.valueOf(tfNumeroDocumento.getText()),cbDocumento.getSelectedIndex())){
                     JOptionPane.showMessageDialog(null, "El cliente ya existe","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    ABMCliente.altaCliente(
-                            tfNombre.getText(),
+                    Localidad localidad = null;
+                    int i = 0;
+                    for (Localidad l : localidades){
+                        if (i == cbLocalidad.getSelectedIndex()){
+                            localidad = l;
+                        }
+                        i++;
+                    }
+                    
+                    ABMCliente.altaCliente(tfNombre.getText(),
                             tfApellido.getText(),
                             cbDocumento.getSelectedIndex(),
                             Integer.valueOf(tfNumeroDocumento.getText()),
-                            (Provincia) cbProvincia.getSelectedItem(),
-                            (Localidad) cbLocalidad.getSelectedItem(),
+                            provincias.get(cbProvincia.getSelectedIndex()), 
+                            localidad,
                             tfDomicilio.getText(),
                             Integer.valueOf(tfAlturaCalle.getText()),
                             Integer.valueOf(tfTelefono.getText()),
                             tfCorreo.getText()
                     );
                     JOptionPane.showMessageDialog(null, "El cliente fue cargado correctamente","¡ÉXITO!",JOptionPane.ERROR_MESSAGE);
+                       
                 }
             }
         });
@@ -428,11 +442,12 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
     private void cargarCB() {
        LogicaCargaInterfaz carga = new LogicaCargaInterfaz();
-       List<Provincia> provincias = carga.buscarProvincias();
+       provincias = carga.buscarProvincias();
        for(Provincia p: provincias){
            cbProvincia.addItem(p.getProvincia());
        }
-       for(Localidad l: ((Set<Localidad>) provincias.get(0).getLocalidads()) ){
+       localidades = provincias.get(0).getLocalidads();
+       for(Localidad l: localidades){
             cbLocalidad.addItem(l.getLocalidad());
        }
        cbProvincia.addActionListener(new ActionListener(){
@@ -440,7 +455,8 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
            public void actionPerformed(ActionEvent e) {
                cbLocalidad.removeAllItems();
                Provincia provincia = provincias.get(cbProvincia.getSelectedIndex());
-               for(Localidad l: ((Set<Localidad>) provincia.getLocalidads()) ){
+               localidades = provincia.getLocalidads();
+               for(Localidad l: localidades ){
                    cbLocalidad.addItem(l.getLocalidad());
                }
            }

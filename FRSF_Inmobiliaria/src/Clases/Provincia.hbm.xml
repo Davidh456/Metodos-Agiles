@@ -11,7 +11,7 @@
         <property name="provincia" type="string">
             <column name="provincia" not-null="true" />
         </property>
-        <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
+ <!--   <set name="propietarios" table="propietario" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idProvincia" not-null="true" />
             </key>
@@ -23,6 +23,7 @@
             </key>
             <one-to-many class="Clases.Cliente" />
         </set>
+-->
         <set name="localidads" table="localidad" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="provincia_id" not-null="true" />

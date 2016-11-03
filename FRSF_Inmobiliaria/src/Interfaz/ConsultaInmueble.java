@@ -64,9 +64,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Consulta Inmueble"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Consulta Inmueble"));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Inmueble"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Inmueble"));
 
         jLabel1.setText("Cantidad de Dormitorios");
 
@@ -167,7 +167,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         PrecioDesde.getAccessibleContext().setAccessibleName("");
         PrecioDesde.getAccessibleContext().setAccessibleDescription("sda");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Propietario"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Propietario"));
 
         jLabel8.setText("Tipo Documento");
 
@@ -241,7 +241,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Acciones"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Acciones"));
 
         BotonEliminar.setText("Eliminar");
 
@@ -312,7 +312,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
             },
             new String [] {
-                "", "CÃ³digo", "Tipo", "Provincia", "Localidad", "DirecciÃ³n", "Cant Dorm.", "Garaje", "Patio", "Sup. Edificada", "Precio"
+                "", "Código", "Tipo", "Provincia", "Localidad", "Dirección", "Cant Dorm.", "Garaje", "Patio", "Sup. Edificada", "Precio"
             }
         ) {
             Class[] types = new Class [] {
