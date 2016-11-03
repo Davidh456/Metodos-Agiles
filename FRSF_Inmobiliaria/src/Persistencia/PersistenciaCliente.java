@@ -17,7 +17,7 @@ public class PersistenciaCliente {
     
     public PersistenciaCliente(){
         super();
-        session = Conexion.getInstance().getSession();
+        session = Conexion.getInstance().getSession(); //cargar la sesión para ahorrar código
     }
     public static PersistenciaCliente getInstance(){
         if(instance == null){
