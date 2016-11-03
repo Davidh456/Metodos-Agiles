@@ -83,7 +83,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPropietarioActionPerformed
 
     private void btninmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninmuebleActionPerformed
-        Inmobiliaria.getInstance().AltaInmueble();
+        Inmobiliaria.getInstance().ConsultaInmueble();
+        
     }//GEN-LAST:event_btninmuebleActionPerformed
 
 

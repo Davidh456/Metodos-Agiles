@@ -7,6 +7,10 @@ package Logica;
 
 import Clases.Inmueble;
 import Persistencia.PersistenciaInmueble;
+import java.util.List;
+import javax.swing.JComboBox;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
 
 /**
  *
@@ -31,6 +35,9 @@ public class ABMInmueble {
       resultado=BDInmueble.getRepetido(ProvinciaNombre,LocalidadNombre,Calle,numero,piso,Depto);
       return resultado;
     };
-    
-    
+
+    public List<Inmueble> BuscarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
+        return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
+    }
+        
 }

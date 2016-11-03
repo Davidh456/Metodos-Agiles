@@ -219,4 +219,18 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
+    
+        public void ConsultaInmueble() {
+        contentPane.removeAll();
+        ConsultaInmueble pantallaABM = new ConsultaInmueble();
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+        
+    } 
 }

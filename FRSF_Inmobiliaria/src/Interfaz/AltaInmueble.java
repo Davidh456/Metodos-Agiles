@@ -334,7 +334,7 @@ public class AltaInmueble extends javax.swing.JPanel {
 
         jLabel30.setText("m^2");
 
-        Orientacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Norte", "Sur", "Este", "Oeste", "Noreste", "Noroeste", "Sureste", "Suroeste" }));
+        Orientacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Este", "Norte", "Noreste", "Noroeste", "Oeste", "Sur", "Sureste", "Suroeste" }));
 
         label7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         label7.setForeground(new java.awt.Color(255, 0, 102));
@@ -630,7 +630,7 @@ public class AltaInmueble extends javax.swing.JPanel {
             }
         });
 
-        TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Local-Oficina", "Casa", "Departamento", "Terreno", "Quinta", "Galpón" }));
+        TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Departamento", "Galpón", "Local-Oficina", "Quinta", "Terreno" }));
         TipoInmueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TipoInmuebleActionPerformed(evt);

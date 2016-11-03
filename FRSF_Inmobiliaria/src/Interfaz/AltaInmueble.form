@@ -569,12 +569,12 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="8">
-                <StringItem index="0" value="Norte"/>
-                <StringItem index="1" value="Sur"/>
-                <StringItem index="2" value="Este"/>
-                <StringItem index="3" value="Oeste"/>
-                <StringItem index="4" value="Noreste"/>
-                <StringItem index="5" value="Noroeste"/>
+                <StringItem index="0" value="Este"/>
+                <StringItem index="1" value="Norte"/>
+                <StringItem index="2" value="Noreste"/>
+                <StringItem index="3" value="Noroeste"/>
+                <StringItem index="4" value="Oeste"/>
+                <StringItem index="5" value="Sur"/>
                 <StringItem index="6" value="Sureste"/>
                 <StringItem index="7" value="Suroeste"/>
               </StringArray>
@@ -950,12 +950,12 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="6">
-            <StringItem index="0" value="Local-Oficina"/>
-            <StringItem index="1" value="Casa"/>
-            <StringItem index="2" value="Departamento"/>
-            <StringItem index="3" value="Terreno"/>
+            <StringItem index="0" value="Casa"/>
+            <StringItem index="1" value="Departamento"/>
+            <StringItem index="2" value="Galp&#xf3;n"/>
+            <StringItem index="3" value="Local-Oficina"/>
             <StringItem index="4" value="Quinta"/>
-            <StringItem index="5" value="Galp&#xf3;n"/>
+            <StringItem index="5" value="Terreno"/>
           </StringArray>
         </Property>
       </Properties>
