@@ -116,7 +116,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonSalir = new javax.swing.JButton();
         ScrollResultados = new javax.swing.JScrollPane();
         TablaResultados = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JToggleButton();
+        btnBuscar = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Consulta Inmueble"));
 
@@ -316,11 +316,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonVender.setText("Vender");
 
         BotonDetalles.setText("Detalles");
-        BotonDetalles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonDetallesActionPerformed(evt);
-            }
-        });
 
         BotonReserva.setText("Reservar");
 
@@ -400,9 +395,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         });
         TablaResultados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         TablaResultados.setSurrendersFocusOnKeystroke(true);
-        TablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaResultadosMouseClicked(evt);
+        TablaResultados.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                TablaResultadosPropertyChange(evt);
             }
         });
         ScrollResultados.setViewportView(TablaResultados);
@@ -432,13 +427,13 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(ScrollResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -478,21 +473,31 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_NroDocActionPerformed
 
-    private void BotonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDetallesActionPerformed
+    private void PrecioHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioHastaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BotonDetallesActionPerformed
+    }//GEN-LAST:event_PrecioHastaActionPerformed
+    int entro=0;    
+    private void TablaResultadosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaResultadosPropertyChange
+        int seleccionados=0;
+        for (int i = 0; i < TablaResultados.getRowCount(); i++) {
+					if((boolean)TablaResultados.getValueAt(i, 0)){
+                                            seleccionados++;
+                                        }
+				}
+        if (seleccionados>1)
+                    DeshabilitarBotones();
+                else 
+                    HabilitarBotones();		
+    }//GEN-LAST:event_TablaResultadosPropertyChange
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-
+        DefaultTableModel model = (DefaultTableModel) TablaResultados.getModel();
+        model.setRowCount(0);
         List<Inmueble> resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
-        
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
         //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
-        //TODO poner resultados en tabla
-        for(Inmueble c: resultado){
-                    DefaultTableModel model = (DefaultTableModel) TablaResultados.getModel();
-  
+        for(Inmueble c: resultado){          
                     model.addRow(new Object[]{
                         false, 
                         "codigo", 
@@ -509,15 +514,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void PrecioHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioHastaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PrecioHastaActionPerformed
-
-    private void TablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaResultadosMouseClicked
-        System.out.println(TablaResultados.getSelectedRow()); 
-    }//GEN-LAST:event_TablaResultadosMouseClicked
-    
-
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);
         BotonEliminar.setEnabled(true);
@@ -526,7 +522,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonVender.setEnabled(true);
     }
 
-    private void DesabilitarBotones(){
+    private void DeshabilitarBotones(){
         BotonDetalles.setEnabled(false);
         BotonEliminar.setEnabled(false);
         BotonModificar.setEnabled(false);
@@ -554,7 +550,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     private javax.swing.JTable TablaResultados;
     private javax.swing.JComboBox<String> TipoDoc;
     private javax.swing.JComboBox<String> TipoInmueble;
-    private javax.swing.JToggleButton btnBuscar;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
