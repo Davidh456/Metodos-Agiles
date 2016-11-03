@@ -43,6 +43,10 @@ public class Inmobiliaria extends JFrame{
 			}
 		});
     }
+    Inmobiliaria(){
+        super();
+        instancia = this;
+    }
     public static Inmobiliaria getInstance(){
         if (instancia == null){
                 instancia = new Inmobiliaria();
@@ -56,10 +60,6 @@ public class Inmobiliaria extends JFrame{
         return instanciaOperadorInmueble;
     }
     
-    Inmobiliaria(){
-        super();
-        instancia = this;
-    }
     public void inicializarInmobiliaria(){
         setVisible(true);
         setResizable(false);

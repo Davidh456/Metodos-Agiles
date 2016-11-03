@@ -7,6 +7,7 @@ package Conexion;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class Conexion {
         private static Conexion instancia;
@@ -42,7 +43,8 @@ public class Conexion {
             }
             return session;
         }
-        public void coseSession(){
+        public void closeSession(){
             session.close();
         }
+        
 }

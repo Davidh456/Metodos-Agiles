@@ -25,7 +25,7 @@
             <one-to-many class="Clases.Cliente" />
         </set>
 -->
-        <set name="localidads" table="localidad" inverse="true" lazy="true" fetch="select">
+        <set name="localidads" table="localidad" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="provincia_id" not-null="true" />
             </key>

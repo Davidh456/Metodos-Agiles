@@ -6,6 +6,7 @@ import Logica.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,14 +29,6 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
         tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        btnVolver.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            
-            }
-            
-        });
         
         this.tabla = tabla;
         switch (tabla){
@@ -60,7 +53,6 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar = new javax.swing.JButton();
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        btnVerInmuebles = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar clientes"));
 
@@ -104,13 +96,6 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
 
         btnModificar.setText("Modificar");
 
-        btnVerInmuebles.setText("Ver Inmuebles");
-        btnVerInmuebles.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerInmueblesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,8 +108,6 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAgregar, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
                             .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(125, 125, 125)
-                        .addComponent(btnVerInmuebles, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
@@ -139,8 +122,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAgregar)
-                    .addComponent(btnModificar)
-                    .addComponent(btnVerInmuebles))
+                    .addComponent(btnModificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVolver)
@@ -153,16 +135,11 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         Inmobiliaria.getInstance().MenuPrincipal();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void btnVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInmueblesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnVerInmueblesActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnVerInmuebles;
     private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane spLista;
     private javax.swing.JTable tbLista;
@@ -235,57 +212,63 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     }
 
     private void setearAccionesClientes() {
-        btnVerInmuebles.setVisible(false);
         btnEliminar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un cliente!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
+                    
             }
             
         });
         btnModificar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().ModificacionCliente(listaClientes.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un cliente!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
+                  
             }
             
         });
         btnAgregar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                Inmobiliaria.getInstance().AltaCliente();
             }
             
         });
-        
     }
-
     private void setearAccionesPropietarios() {
-        btnVerInmuebles.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            
-            }
-            
-        });
         btnEliminar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
-            }
-            
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
+                }
         });
         btnModificar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
-            }
-            
-        });
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
+                }
+            });
         btnAgregar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-            
+                Inmobiliaria.getInstance().AltaPropietario();
             }
             
         });
