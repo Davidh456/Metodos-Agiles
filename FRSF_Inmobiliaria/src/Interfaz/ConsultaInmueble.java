@@ -400,6 +400,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         });
         TablaResultados.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         TablaResultados.setSurrendersFocusOnKeystroke(true);
+        TablaResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaResultadosMouseClicked(evt);
+            }
+        });
         ScrollResultados.setViewportView(TablaResultados);
         if (TablaResultados.getColumnModel().getColumnCount() > 0) {
             TablaResultados.getColumnModel().getColumn(0).setPreferredWidth(10);
@@ -507,6 +512,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     private void PrecioHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioHastaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PrecioHastaActionPerformed
+
+    private void TablaResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaResultadosMouseClicked
+        System.out.println(TablaResultados.getSelectedRow()); 
+    }//GEN-LAST:event_TablaResultadosMouseClicked
     
 
     private void HabilitarBotones(){
