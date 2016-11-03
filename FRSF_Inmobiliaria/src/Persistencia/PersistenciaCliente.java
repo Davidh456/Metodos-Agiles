@@ -1,6 +1,7 @@
 package Persistencia;
 
 import Clases.Cliente;
+import Conexion.Conexion;
 import Conexion.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -11,21 +12,25 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 public class PersistenciaCliente {
-
+    private static PersistenciaCliente instance;
+    private Session session;
+    
+    public PersistenciaCliente(){
+        super();
+        session = Conexion.getInstance().getSession(); //cargar la sesión para ahorrar código
+    }
+    public static PersistenciaCliente getInstance(){
+        if(instance == null){
+            instance = new PersistenciaCliente();
+        }
+        return instance;
+    }
     public void altaCliente(Cliente cliente) {
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
         Transaction tx = session.beginTransaction();
         session.save(cliente);
         tx.commit();
-        session.close();
     }
-
     public boolean clienteExistente(int numDoc, int tipoDoc) {
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
         Criteria criteria = session.createCriteria(Cliente.class);
         criteria.add(Restrictions.eq("numeroDoc",numDoc));
         criteria.add(Restrictions.eq("tipoDoc",tipoDoc));
@@ -34,28 +39,16 @@ public class PersistenciaCliente {
         return !criteria.list().isEmpty();
     }
     public void borrarCliente(Cliente cliente){
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
         Transaction tx = session.beginTransaction();
         session.delete(cliente);
         tx.commit();
-        session.close();
     }
     public void modificarCliente(Cliente cliente){
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
         Transaction tx = session.beginTransaction();
         session.update(cliente);
         tx.commit();
-        session.close();
     }
     public List<Cliente> listarClientes(){
-        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
-        Session session;
-        session = sesion.openSession();
-        Criteria criteria = session.createCriteria(Cliente.class);
-        return criteria.list();
+        return session.createCriteria(Cliente.class).list();
     }
 }

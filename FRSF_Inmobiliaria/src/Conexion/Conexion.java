@@ -1,12 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Esta clase nos ahorra una banda de código en las persistencias,
+lo único q hay q hacer es llamar a este singleton para tener la sesión con
+Conexion.getInstance().getSession();
  */
 package Conexion;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class Conexion {
         private static Conexion instancia;
@@ -42,7 +43,8 @@ public class Conexion {
             }
             return session;
         }
-        public void coseSession(){
+        public void closeSession(){
             session.close();
         }
+        
 }
