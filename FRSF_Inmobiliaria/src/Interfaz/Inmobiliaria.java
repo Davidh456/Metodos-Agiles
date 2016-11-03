@@ -6,6 +6,7 @@ package Interfaz;
 import Clases.Cliente;
 import Clases.Propietario;
 import Interfaz.*;
+import Logica.ABMInmueble;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Toolkit;
@@ -23,6 +24,7 @@ public class Inmobiliaria extends JFrame{
     //Esta parte de instancia es para hacer la clase Singleton
     
     private static Inmobiliaria instancia = null;
+    private static ABMInmueble instanciaOperadorInmueble = null;
     
     JPanel AltaClienteOPropietario;
     public static void main(String[] args) {
@@ -44,6 +46,13 @@ public class Inmobiliaria extends JFrame{
         }
         return instancia;
     }
+    public static ABMInmueble getinstanciaOperadorInmueble(){
+        if (instanciaOperadorInmueble == null){
+                instanciaOperadorInmueble = new ABMInmueble();
+        }
+        return instanciaOperadorInmueble;
+    }
+    
     Inmobiliaria(){
         super();
         instancia = this;

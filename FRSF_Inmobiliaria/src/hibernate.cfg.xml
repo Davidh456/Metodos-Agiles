@@ -50,5 +50,6 @@ Contributor(s):
     <mapping resource="Clases/Propietario.hbm.xml"/>
     <mapping resource="Clases/Localidad.hbm.xml"/>
     <mapping resource="Clases/Provincia.hbm.xml"/>
+    <mapping class="" file="" jar="" package="" resource="Clases/Inmueble.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
