@@ -12,24 +12,24 @@ public class Localidad  implements java.io.Serializable {
 
 
      private Integer idLocalidad;
-     private Provincia provincia;
+//     private Provincia provincia;
      private String localidad;
-     private Set clientes = new HashSet(0);
-     private Set propietarios = new HashSet(0);
+//     private Set clientes = new HashSet(0);
+//     private Set propietarios = new HashSet(0);
 
     public Localidad() {
     }
 
 	
-    public Localidad(Provincia provincia, String localidad) {
-        this.provincia = provincia;
+    public Localidad(/*Provincia provincia,*/ String localidad) {
+  //      this.provincia = provincia;
         this.localidad = localidad;
     }
     public Localidad(Provincia provincia, String localidad, Set clientes, Set propietarios) {
-       this.provincia = provincia;
+//       this.provincia = provincia;
        this.localidad = localidad;
-       this.clientes = clientes;
-       this.propietarios = propietarios;
+//       this.clientes = clientes;
+//       this.propietarios = propietarios;
     }
    
     public Integer getIdLocalidad() {
@@ -39,20 +39,20 @@ public class Localidad  implements java.io.Serializable {
     public void setIdLocalidad(Integer idLocalidad) {
         this.idLocalidad = idLocalidad;
     }
-    public Provincia getProvincia() {
+/*    public Provincia getProvincia() {
         return this.provincia;
     }
     
     public void setProvincia(Provincia provincia) {
         this.provincia = provincia;
-    }
+    }*/
     public String getLocalidad() {
         return this.localidad;
     }
     
     public void setLocalidad(String localidad) {
         this.localidad = localidad;
-    }
+    }/*
     public Set getClientes() {
         return this.clientes;
     }
@@ -67,7 +67,7 @@ public class Localidad  implements java.io.Serializable {
     public void setPropietarios(Set propietarios) {
         this.propietarios = propietarios;
     }
-
+*/
 
 
 

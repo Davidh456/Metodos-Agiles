@@ -5,6 +5,7 @@ package Interfaz;
 
 import Clases.Cliente;
 import Clases.Propietario;
+import Conexion.Conexion;
 import Interfaz.*;
 import Logica.ABMInmueble;
 import java.awt.Color;
@@ -32,8 +33,10 @@ public class Inmobiliaria extends JFrame{
 			public void run() {
 				try {
 					instancia = new Inmobiliaria();
-                                        instancia.inicializarInmobiliaria();
+                                        Conexion.getInstance();
+                                        Inmobiliaria.getInstance().inicializarInmobiliaria();
                                         Inmobiliaria.getInstance().MenuPrincipal();
+                                        
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -79,8 +82,6 @@ public class Inmobiliaria extends JFrame{
         fondo = new JPanel();
         fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), contentPane.getWidth(), contentPane.getHeight()/2);
         fondo.setBackground(new Color(190,190,250));
-        
-        // TODO 0 Aqu� vayan tirando los m�todos para ir probando las pantallas en la pantalla principal
         
 
     }

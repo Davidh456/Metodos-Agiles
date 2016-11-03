@@ -13,8 +13,8 @@ public class Provincia  implements java.io.Serializable {
 
      private Integer idprovincia;
      private String provincia;
-     private Set propietarios = new HashSet(0);
-     private Set clientes = new HashSet(0);
+//     private Set propietarios = new HashSet(0);
+//     private Set clientes = new HashSet(0);
      private Set localidads = new HashSet(0);
 
     public Provincia() {
@@ -26,8 +26,8 @@ public class Provincia  implements java.io.Serializable {
     }
     public Provincia(String provincia, Set propietarios, Set clientes, Set localidads) {
        this.provincia = provincia;
-       this.propietarios = propietarios;
-       this.clientes = clientes;
+//       this.propietarios = propietarios;
+//       this.clientes = clientes;
        this.localidads = localidads;
     }
    
@@ -45,7 +45,7 @@ public class Provincia  implements java.io.Serializable {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-    public Set getPropietarios() {
+/*    public Set getPropietarios() {
         return this.propietarios;
     }
     
@@ -58,7 +58,7 @@ public class Provincia  implements java.io.Serializable {
     
     public void setClientes(Set clientes) {
         this.clientes = clientes;
-    }
+    }*/
     public Set getLocalidads() {
         return this.localidads;
     }
