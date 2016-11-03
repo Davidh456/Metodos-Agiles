@@ -1,5 +1,5 @@
 package Clases;
-// Generated 31-oct-2016 15:38:36 by Hibernate Tools 4.3.1
+// Generated 03/11/2016 05:23:01 by Hibernate Tools 4.3.1
 
 
 
@@ -10,6 +10,7 @@ public class Inmueble  implements java.io.Serializable {
 
 
      private Integer id;
+     private Propietario propietario;
      private Float supInmueble;
      private Float supTerreno;
      private Boolean ac;
@@ -36,7 +37,6 @@ public class Inmueble  implements java.io.Serializable {
      private Boolean pavimento;
      private String piso;
      private Float precio;
-     private Integer propietario;
      private String provinciaNombre;
      private Integer provinciaIndice;
      private Boolean telefono;
@@ -45,7 +45,8 @@ public class Inmueble  implements java.io.Serializable {
     public Inmueble() {
     }
 
-    public Inmueble(Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer listaFotos, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, String otraLoc, Boolean patio, Boolean pavimento, String piso, Float precio, Integer propietario, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble) {
+    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer listaFotos, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, String otraLoc, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble) {
+       this.propietario = propietario;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
        this.ac = ac;
@@ -72,7 +73,6 @@ public class Inmueble  implements java.io.Serializable {
        this.pavimento = pavimento;
        this.piso = piso;
        this.precio = precio;
-       this.propietario = propietario;
        this.provinciaNombre = provinciaNombre;
        this.provinciaIndice = provinciaIndice;
        this.telefono = telefono;
@@ -85,6 +85,13 @@ public class Inmueble  implements java.io.Serializable {
     
     public void setId(Integer id) {
         this.id = id;
+    }
+    public Propietario getPropietario() {
+        return this.propietario;
+    }
+    
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
     }
     public Float getSupInmueble() {
         return this.supInmueble;
@@ -267,13 +274,6 @@ public class Inmueble  implements java.io.Serializable {
     
     public void setPrecio(Float precio) {
         this.precio = precio;
-    }
-    public Integer getPropietario() {
-        return this.propietario;
-    }
-    
-    public void setPropietario(Integer propietario) {
-        this.propietario = propietario;
     }
     public String getProvinciaNombre() {
         return this.provinciaNombre;

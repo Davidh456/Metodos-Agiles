@@ -1,5 +1,5 @@
 package Clases;
-// Generated 31-oct-2016 15:38:36 by Hibernate Tools 4.3.1
+// Generated 03/11/2016 05:23:01 by Hibernate Tools 4.3.1
 
 
 
@@ -9,7 +9,7 @@ package Clases;
 public class Cliente  implements java.io.Serializable {
 
 
-     private int idCliente;
+     private Integer idCliente;
      private Localidad localidad;
      private Provincia provincia;
      private String nombre;
@@ -37,11 +37,11 @@ public class Cliente  implements java.io.Serializable {
        this.correo = correo;
     }
    
-    public int getIdCliente() {
+    public Integer getIdCliente() {
         return this.idCliente;
     }
     
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(Integer idCliente) {
         this.idCliente = idCliente;
     }
     public Localidad getLocalidad() {
@@ -114,6 +114,9 @@ public class Cliente  implements java.io.Serializable {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+
+
 
 }
 

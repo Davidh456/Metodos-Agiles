@@ -52,22 +52,25 @@ public class PersistenciaInmueble {
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session = sesion.openSession();
-        Criteria criteria = session.createCriteria(Inmueble.class);
+        Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
         Criteria criteria2 = session.createCriteria(Propietario.class);
         
         criteria.add(Restrictions.eq("barrio",barrioNombre));
         criteria.add(Restrictions.eq("dormitorio",cantDormitorios));
-        criteria.add(Restrictions.eq("localidadNombre",localidadNombre));
+        criteria.add(Restrictions.eq("localidadNombre",localidadNombre));   //andaba
         //criteria.add(Restrictions.eq("precioDesde",precioDesde));
         //criteria.add(Restrictions.eq("precioHasta",precioHasta));
         criteria.add(Restrictions.eq("tipoInmueble",tipoInmueble));
         criteria.add(Restrictions.eq("provinciaIndice",provinciaIndice));
         
-        criteria.add(Restrictions.eqProperty("propietario.nombre",nombre));
-        criteria.add(Restrictions.eq("propietario.nroDoc",nroDoc));
+        criteria.createAlias("inmueble.propietario", "propietario");    //andaba
+        criteria.add(Restrictions.eq("propietario.nombre",nombre));  //andaba
+        criteria.add(Restrictions.eq("propietario.numeroDoc",nroDoc));
         criteria.add(Restrictions.eq("propietario.tipoDoc",tipoDoc));
         criteria.add(Restrictions.eqProperty("propietario.correo",correo));
         criteria.add(Restrictions.eqProperty("propietario.apellido",apellido));
+        
+      
         return criteria.list();
     }
 

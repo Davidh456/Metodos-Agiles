@@ -140,6 +140,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        PrecioDesde.setText("123");
         PrecioDesde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrecioDesdeActionPerformed(evt);
@@ -147,6 +148,13 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         });
 
         jLabel7.setText("Hasta");
+
+        PrecioHasta.setText("12365");
+        PrecioHasta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PrecioHastaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -231,14 +239,20 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         jLabel12.setText("Nombre");
 
+        Apellido.setText("asda");
         Apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApellidoActionPerformed(evt);
             }
         });
 
+        Nombre.setText("asda");
+
+        Correo.setText("asda");
+
         TipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        NroDoc.setText("16516");
         NroDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NroDocActionPerformed(evt);
@@ -465,11 +479,16 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         List<Inmueble> resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
+        
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
         //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
         //TODO poner resultados en tabla
         
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void PrecioHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioHastaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PrecioHastaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
