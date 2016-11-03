@@ -105,6 +105,11 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnModificar.setText("Modificar");
 
         btnVerInmuebles.setText("Ver Inmuebles");
+        btnVerInmuebles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerInmueblesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,6 +152,10 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         Inmobiliaria.getInstance().MenuPrincipal();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnVerInmueblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerInmueblesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVerInmueblesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

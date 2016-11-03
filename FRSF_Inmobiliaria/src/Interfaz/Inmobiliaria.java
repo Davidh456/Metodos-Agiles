@@ -159,7 +159,7 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-    public void AltaInmueble2() {
+    public void AltaInmueble() {
         contentPane.removeAll();
         AltaInmueble pantallaABM = new AltaInmueble();
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 

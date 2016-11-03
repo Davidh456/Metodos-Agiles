@@ -5,8 +5,15 @@
  */
 package Interfaz;
 
+import Clases.Localidad;
+import Clases.Provincia;
 import Logica.Validaciones;
 import Logica.ABMInmueble;
+import Logica.LogicaCargaInterfaz;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.Set;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,11 +27,14 @@ import javax.swing.JTextField;
  * @author maria
  */
 public class AltaInmueble extends javax.swing.JPanel {
+    List<Provincia> provincias;
+    Set<Localidad> localidades;
 
     Validaciones validaciones = new Validaciones();
     // Creates new form AltaInmueble   
     public AltaInmueble() {
         initComponents();
+        cargarCB();
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
@@ -79,10 +89,10 @@ public class AltaInmueble extends javax.swing.JPanel {
         return 1;
     }
     public String getLocalidadNombre() {
-        return ((String) Localidad.getSelectedItem());
+        return ((String) cbLocalidad.getSelectedItem());
     }
     public int getLocalidadIndice() {
-        return  Localidad.getSelectedIndex();
+        return  cbLocalidad.getSelectedIndex();
     }
     public int getNumero() {
         return Integer.parseInt(Numero.getText());
@@ -112,10 +122,10 @@ public class AltaInmueble extends javax.swing.JPanel {
         return 1;
     }
     public String getProvinciaNombre() {
-        return ((String) Provincia.getSelectedItem());
+        return ((String) cbProvincia.getSelectedItem());
     }
     public int getProvinciaIndice() {
-        return  Provincia.getSelectedIndex();
+        return  cbProvincia.getSelectedIndex();
     }
     public boolean getTelefono() {
         return Telefono.isSelected();
@@ -194,8 +204,8 @@ public class AltaInmueble extends javax.swing.JPanel {
         BAceptar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ListaFotos = new javax.swing.JList<>();
-        Provincia = new javax.swing.JComboBox<>();
-        Localidad = new javax.swing.JComboBox<>();
+        cbProvincia = new javax.swing.JComboBox<>();
+        cbLocalidad = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         OtraLoc = new javax.swing.JTextField();
         CP = new javax.swing.JTextField();
@@ -601,9 +611,9 @@ public class AltaInmueble extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(ListaFotos);
 
-        Provincia.addActionListener(new java.awt.event.ActionListener() {
+        cbProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProvinciaActionPerformed(evt);
+                cbProvinciaActionPerformed(evt);
             }
         });
 
@@ -665,7 +675,7 @@ public class AltaInmueble extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel3))
                             .addGroup(layout.createSequentialGroup()
@@ -675,7 +685,7 @@ public class AltaInmueble extends javax.swing.JPanel {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel1)
                                 .addGap(8, 8, 8))
@@ -757,11 +767,11 @@ public class AltaInmueble extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
                         .addComponent(jLabel2))
-                    .addComponent(Provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel3))
-                    .addComponent(Localidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel1))
@@ -814,12 +824,12 @@ public class AltaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BAdjFotosActionPerformed
 
     private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelarActionPerformed
-        
+        Inmobiliaria.getInstance().MenuPrincipal();
     }//GEN-LAST:event_BCancelarActionPerformed
 
-    private void ProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProvinciaActionPerformed
+    private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
         
-    }//GEN-LAST:event_ProvinciaActionPerformed
+    }//GEN-LAST:event_cbProvinciaActionPerformed
 
     private void GarageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GarageActionPerformed
         
@@ -905,6 +915,28 @@ public class AltaInmueble extends javax.swing.JPanel {
     private void camposObligatorios(){
         validaciones.CampoObligatorio(new JTextField[]{CP, Precio,Numero,Barrio,Frente,Fondo,supInmueble}, this);
     }
+     private void cargarCB() {
+       LogicaCargaInterfaz carga = new LogicaCargaInterfaz();
+       provincias = carga.buscarProvincias();
+       for(Provincia p: provincias){
+           cbProvincia.addItem(p.getProvincia());
+       }
+       localidades = provincias.get(0).getLocalidads();
+       for(Localidad l: localidades){
+            cbLocalidad.addItem(l.getLocalidad());
+       }
+       cbProvincia.addActionListener(new ActionListener(){
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               cbLocalidad.removeAllItems();
+               Provincia provincia = provincias.get(cbProvincia.getSelectedIndex());
+               localidades = provincia.getLocalidads();
+               for(Localidad l: localidades ){
+                   cbLocalidad.addItem(l.getLocalidad());
+               }
+           }
+       });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox Ac;
@@ -925,7 +957,6 @@ public class AltaInmueble extends javax.swing.JPanel {
     private javax.swing.JCheckBox Gn;
     private javax.swing.JCheckBox Lavadero;
     private javax.swing.JList<String> ListaFotos;
-    private javax.swing.JComboBox<String> Localidad;
     private javax.swing.JTextField Numero;
     private javax.swing.JTextField Observaciones;
     private javax.swing.JComboBox<String> Orientacion;
@@ -935,9 +966,10 @@ public class AltaInmueble extends javax.swing.JPanel {
     private javax.swing.JTextField Piso;
     private javax.swing.JTextField Precio;
     private javax.swing.JLabel Propietario;
-    private javax.swing.JComboBox<String> Provincia;
     private javax.swing.JCheckBox Telefono;
     private javax.swing.JComboBox<String> TipoInmueble;
+    private javax.swing.JComboBox<String> cbLocalidad;
+    private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

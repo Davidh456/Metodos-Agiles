@@ -162,6 +162,11 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         });
 
         cbDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "LC", "LE" }));
+        cbDocumento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDocumentoActionPerformed(evt);
+            }
+        });
 
         tfTelefono.setToolTipText("");
         tfTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +176,18 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         });
 
         tfCorreo.setToolTipText("Ej: correo@electronico.com");
+
+        cbProvincia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbProvinciaActionPerformed(evt);
+            }
+        });
+
+        cbLocalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLocalidadActionPerformed(evt);
+            }
+        });
 
         lblDomicilio.setText("Domicilio");
 
@@ -293,6 +310,18 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     private void tfNumeroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNumeroDocumentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNumeroDocumentoActionPerformed
+
+    private void cbDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDocumentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbDocumentoActionPerformed
+
+    private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbProvinciaActionPerformed
+
+    private void cbLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocalidadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbLocalidadActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
