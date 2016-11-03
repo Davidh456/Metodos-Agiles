@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Clases.Cliente;
 import Clases.Inmueble;
 import Logica.ABMInmueble;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -382,7 +384,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
                 true, false, false, false, false, false, false, false, false, false, false
@@ -483,14 +485,46 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
         //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
         //TODO poner resultados en tabla
+        for(Inmueble c: resultado){
+                    DefaultTableModel model = (DefaultTableModel) TablaResultados.getModel();
+  
+                    model.addRow(new Object[]{
+                        false, 
+                        "codigo", 
+                        c.getTipoInmueble(),
+                        c.getProvinciaNombre(),
+                        c.getLocalidadNombre(), 
+                        c.getCalle(), 
+                        c.getDormitorio(), 
+                        c.getGarage(), 
+                        c.getPatio(),
+                        c.getSupInmueble(),
+                        c.getPrecio()});
         
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void PrecioHastaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioHastaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PrecioHastaActionPerformed
+    
 
+    private void HabilitarBotones(){
+        BotonDetalles.setEnabled(true);
+        BotonEliminar.setEnabled(true);
+        BotonModificar.setEnabled(true);
+        BotonReserva.setEnabled(true);
+        BotonVender.setEnabled(true);
+    }
 
+    private void DesabilitarBotones(){
+        BotonDetalles.setEnabled(false);
+        BotonEliminar.setEnabled(false);
+        BotonModificar.setEnabled(false);
+        BotonReserva.setEnabled(false);
+        BotonVender.setEnabled(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
     private javax.swing.JComboBox<String> Barrio;

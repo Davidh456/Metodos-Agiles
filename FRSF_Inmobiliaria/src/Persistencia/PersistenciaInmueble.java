@@ -53,8 +53,7 @@ public class PersistenciaInmueble {
         Session session;
         session = sesion.openSession();
         Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
-        Criteria criteria2 = session.createCriteria(Propietario.class);
-        
+        /*
         criteria.add(Restrictions.eq("barrio",barrioNombre));
         criteria.add(Restrictions.eq("dormitorio",cantDormitorios));
         criteria.add(Restrictions.eq("localidadNombre",localidadNombre));   //andaba
@@ -70,7 +69,7 @@ public class PersistenciaInmueble {
         criteria.add(Restrictions.eqProperty("propietario.correo",correo));
         criteria.add(Restrictions.eqProperty("propietario.apellido",apellido));
         
-      
+         */
         return criteria.list();
     }
 
