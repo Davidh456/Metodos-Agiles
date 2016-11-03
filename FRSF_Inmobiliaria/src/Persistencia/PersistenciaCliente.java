@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 public class PersistenciaCliente {
     private static PersistenciaCliente instance;
     private Session session;
+    
     public PersistenciaCliente(){
         super();
         session = Conexion.getInstance().getSession();
@@ -29,15 +30,12 @@ public class PersistenciaCliente {
         session.save(cliente);
         tx.commit();
     }
-
     public boolean clienteExistente(int numDoc, int tipoDoc) {
         Criteria criteria = session.createCriteria(Cliente.class);
         criteria.add(Restrictions.eq("numeroDoc",numDoc));
         criteria.add(Restrictions.eq("tipoDoc",tipoDoc));
         criteria.setProjection(Projections.projectionList()
         .add(Projections.property("idCliente")));
-        //boolean resultado = !criteria.list().isEmpty();
-        //criteria = null;
         return !criteria.list().isEmpty();
     }
     public void borrarCliente(Cliente cliente){
