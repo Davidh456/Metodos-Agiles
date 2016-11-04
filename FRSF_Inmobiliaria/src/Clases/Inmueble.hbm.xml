@@ -8,7 +8,7 @@
             <column name="id" />
             <generator class="identity" />
         </id>
-        <many-to-one name="propietario" class="Clases.Propietario" fetch="select">
+        <many-to-one name="propietario" lazy="false" class="Clases.Propietario" fetch="select">
             <column name="Propietario" />
         </many-to-one>
         <property name="supInmueble" type="java.lang.Float">

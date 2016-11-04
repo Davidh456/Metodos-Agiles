@@ -20,7 +20,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
 
         btnClientes = new javax.swing.JButton();
         btnPropietario = new javax.swing.JButton();
-        btninmueble = new javax.swing.JButton();
+        btnAltaInmueble = new javax.swing.JButton();
+        btnGestionarInmueble = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Menu Principal"));
 
@@ -41,11 +42,19 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
 
-        btninmueble.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btninmueble.setText("Gestionar Inmueble");
-        btninmueble.addActionListener(new java.awt.event.ActionListener() {
+        btnAltaInmueble.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnAltaInmueble.setText("Alta Inmueble");
+        btnAltaInmueble.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btninmuebleActionPerformed(evt);
+                btnAltaInmuebleActionPerformed(evt);
+            }
+        });
+
+        btnGestionarInmueble.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnGestionarInmueble.setText("Gestionar Inmueble");
+        btnGestionarInmueble.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarInmuebleActionPerformed(evt);
             }
         });
 
@@ -58,19 +67,22 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                     .addComponent(btnClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btninmueble, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))
+                    .addComponent(btnAltaInmueble, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnGestionarInmueble, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
                 .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
                 .addComponent(btnPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(btninmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAltaInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGestionarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -82,15 +94,20 @@ public class MenuPrincipal extends javax.swing.JPanel {
         Inmobiliaria.getInstance().ListarPropietarios();
     }//GEN-LAST:event_btnPropietarioActionPerformed
 
-    private void btninmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninmuebleActionPerformed
-        Inmobiliaria.getInstance().ConsultaInmueble();
+    private void btnAltaInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAltaInmuebleActionPerformed
+        Inmobiliaria.getInstance().AltaInmueble();
         
-    }//GEN-LAST:event_btninmuebleActionPerformed
+    }//GEN-LAST:event_btnAltaInmuebleActionPerformed
+
+    private void btnGestionarInmuebleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarInmuebleActionPerformed
+       Inmobiliaria.getInstance().ConsultaInmueble();
+    }//GEN-LAST:event_btnGestionarInmuebleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAltaInmueble;
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnGestionarInmueble;
     private javax.swing.JButton btnPropietario;
-    private javax.swing.JButton btninmueble;
     // End of variables declaration//GEN-END:variables
 }

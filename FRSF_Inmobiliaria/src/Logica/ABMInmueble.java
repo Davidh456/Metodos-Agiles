@@ -22,11 +22,11 @@ public class ABMInmueble {
     
     PersistenciaInmueble BDInmueble = new PersistenciaInmueble();
     
-    public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, String OtraLoc, boolean Patio, boolean Pavimento, String Piso, float Precio, int Propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+    public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, String OtraLoc, boolean Patio, boolean Pavimento, String Piso, float Precio, Propietario propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
     boolean repetido = getRepetido(ProvinciaNombre,LocalidadNombre,Calle,Numero,Piso,Depto);
     if (!repetido){
-        //Inmueble casa = new Inmueble(supInmueble,  supTerreno,  Ac,  Antiguedad,  Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  Lavadero,  ListaFotos,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  OtraLoc,  Patio,  Pavimento,  Piso,  Precio,  Propietario,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
-       //BDInmueble.AltaInmueble(casa);
+        Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  Lavadero,  ListaFotos,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  OtraLoc,  Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
+       BDInmueble.AltaInmueble(casa);
         return true;
     }
     return false;
@@ -42,12 +42,12 @@ public class ABMInmueble {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
     }
 
-    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, int listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion, String otraLoc, boolean patio, boolean pavimento, String piso, float precio, int propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
+    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, int listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion, String otraLoc, boolean patio, boolean pavimento, String piso, float precio, Propietario propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         //TODO chequear que no haya coincidencia de datos
         boolean repetido= false;
-        Propietario propprueba= PersistenciaPropietario.getInstance().listarPropietarios().get(0);
+        //Propietario propprueba= PersistenciaPropietario.getInstance().listarPropietarios().get(0);
         if (!repetido){
-            Inmueble casa = new Inmueble(propprueba, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  listaFotos,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  otraLoc,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
+            Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  listaFotos,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  otraLoc,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
             casa.setId(iDModif);
            
             return BDInmueble.ModificarInmueble(casa);

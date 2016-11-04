@@ -43,6 +43,20 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         }
     }
 
+    ListarClientesOPropietarios(String propietario_para_el_Inmueble, ABMInmuebleInterfaz aThis) {
+       initComponents();
+        setSize(1000,425);
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
+                .createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar "+propietario_para_el_Inmueble));
+        spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
+                .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
+        tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        
+        this.tabla = tabla;
+        setearTablaPropietarios();
+        setearAccionesPropietariosInmueble(aThis);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -282,5 +296,44 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             
         });
     }
+
+    private void setearAccionesPropietariosInmueble(ABMInmuebleInterfaz aThis) {
+         /*
+        btnEliminar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
+                }
+        });
+        */
+         btnEliminar.setVisible(false);
+        /*
+         btnModificar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(tbLista.getSelectedRow()>-1){
+                    Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
+                }
+                else 
+                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
+                }
+            });
+            */
+        btnModificar.setVisible(false);
+        btnAgregar.setText("Seleccionar");
+        btnAgregar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().AltaOModificarInmueble(aThis, listaPropietarios.get(tbLista.getSelectedRow()));
+            }
+            
+        });
+        }
+
+  
 
 }

@@ -203,7 +203,7 @@ public class Inmobiliaria extends JFrame{
         pantallaABM.setVisible(true);
         contentPane.repaint();
         contentPane.revalidate();
-        
+       
     } 
     public void ListarClientes(){
         contentPane.removeAll();
@@ -231,6 +231,7 @@ public class Inmobiliaria extends JFrame{
         contentPane.revalidate();
         
     }
+    
     public void MenuPrincipal(){
         contentPane.removeAll();
         MenuPrincipal menu = new MenuPrincipal();
@@ -282,6 +283,34 @@ public class Inmobiliaria extends JFrame{
         pantallaABM.setVisible(true);
         contentPane.repaint();
         contentPane.revalidate();}
+
+
+
+    void ListarPropietarios(ABMInmuebleInterfaz aThis) {
+       contentPane.removeAll();
+        ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios("Propietario para el Inmueble", aThis);
+        pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
+							pantallaListar.getWidth(), 
+							pantallaListar.getHeight());
+        contentPane.add(pantallaListar);
+        pantallaListar.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM, Propietario propietarioSelec) { 
+    contentPane.removeAll();
+        pantallaABM.setPropietario(propietarioSelec);
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
 
    
 }
