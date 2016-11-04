@@ -4,6 +4,7 @@ package Interfaz;
 
 
 import Clases.Cliente;
+import Clases.Inmueble;
 import Clases.Propietario;
 import Conexion.Conexion;
 import Interfaz.*;
@@ -171,7 +172,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void AltaInmueble() {
         contentPane.removeAll();
-        AltaInmueble pantallaABM = new AltaInmueble();
+        ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz();
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -234,4 +235,17 @@ public class Inmobiliaria extends JFrame{
         contentPane.revalidate();
         
     } 
+
+    void ModificarInmueble(Inmueble inmSeleccionado) {
+         contentPane.removeAll();
+        ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado);
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
 }
