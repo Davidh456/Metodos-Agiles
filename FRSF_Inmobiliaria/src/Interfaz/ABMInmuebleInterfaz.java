@@ -5,6 +5,7 @@
  */
 package Interfaz;
 
+import Clases.Inmueble;
 import Clases.Localidad;
 import Clases.Provincia;
 import Logica.Validaciones;
@@ -26,18 +27,58 @@ import javax.swing.JTextField;
  *
  * @author maria
  */
-public class AltaInmueble extends javax.swing.JPanel {
+public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     List<Provincia> provincias;
     Set<Localidad> localidades;
 
     Validaciones validaciones = new Validaciones();
-    // Creates new form AltaInmueble   
-    public AltaInmueble() {
+    // Creates new form ABMInmuebleInterfaz   
+    public ABMInmuebleInterfaz() {
         initComponents();
         cargarCB();
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
+    }
+    public  ABMInmuebleInterfaz(Inmueble inmSeleccionado) {
+        initComponents();
+        cargarCB();
+        setSize(getPreferredSize());
+        sintaxis();
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));
+        
+        setSupInmueble(inmSeleccionado.getSupInmueble());
+        setSupTerreno(inmSeleccionado.getSupTerreno());
+        setAc(inmSeleccionado.getAc());
+        setAntiguedad(inmSeleccionado.getAntiguedad());
+        setBano(inmSeleccionado.getBano());
+        setBarrio(inmSeleccionado.getBarrio());
+        setCP(inmSeleccionado.getCp());
+        setCalle(inmSeleccionado.getCalle());
+        setDepto(inmSeleccionado.getDepto());
+        setDormitorio(inmSeleccionado.getDormitorio());
+        setFondo(inmSeleccionado.getFondo());
+        setFrente(inmSeleccionado.getFrente());
+        setGarage(inmSeleccionado.getGarage());
+        setGn(inmSeleccionado.getGn());
+        setLavadero(inmSeleccionado.getLavadero());
+        setNumero(inmSeleccionado.getNumero());
+        setObservaciones(inmSeleccionado.getObservaciones());
+        setOrientacion(inmSeleccionado.getOrientacion());
+        setOtraLoc();
+        setPatio(inmSeleccionado.getPatio());
+        setPavimento(inmSeleccionado.getPavimento());
+        setPiso(inmSeleccionado.getPiso());
+        setPrecio(inmSeleccionado.getPrecio());
+        //TODO formar string que recibe:
+        //setPropietario( string )
+        setTelefono(inmSeleccionado.getTelefono());
+        setTipoInmueble(inmSeleccionado.getTipoInmueble());
+        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
+        setCbProvincia(inmSeleccionado.getProvinciaIndice());
+        setSupInmueble(inmSeleccionado.getSupInmueble());
+        setSupTerreno(inmSeleccionado.getSupTerreno());
+        
     }
 
     public float getSupInmueble() {
@@ -883,7 +924,7 @@ public class AltaInmueble extends javax.swing.JPanel {
         boolean resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getOtraLoc(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
-        //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
+        //resultado = operador.ABMInmuebleInterfaz( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
         if(resultado){
             JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente cargado","Felicidades",JOptionPane.ERROR_MESSAGE);
         }
@@ -1017,4 +1058,122 @@ public class AltaInmueble extends javax.swing.JPanel {
     private javax.swing.JTextField supInmueble;
     private javax.swing.JTextField supTerreno;
     // End of variables declaration//GEN-END:variables
+
+    private void setAc(boolean Ac) {
+        this.Ac.setSelected(Ac);
+    }
+
+    private void setAntiguedad(int Antiguedad) {
+        this.Antiguedad.setText(String.valueOf(Antiguedad));
+    }
+
+    private void setBano(int Bano) {
+        this.Bano.setValue(Bano);
+    }
+
+    private void setBarrio(String Barrio) {
+        this.Barrio.setText(Barrio);
+    }
+
+    private void setCP(int CP) {
+        this.CP.setText(String.valueOf(CP));
+    }
+
+    private void setCalle(String Calle) {
+        this.Calle.setText(Calle);
+    }
+
+    private void setDepto(String Depto) {
+        this.Depto.setText(Depto);
+    }
+
+    private void setDormitorio(int Dormitorio) {
+        this.Dormitorio.setValue(Dormitorio);
+    }
+
+    private void setFondo(float Fondo) {
+        this.Fondo.setText(String.valueOf(Fondo));
+    }
+
+    private void setFrente(float Frente) {
+        this.Frente.setText(String.valueOf(Frente));
+    }
+
+    private void setGarage(boolean Garage) {
+        this.Garage.setSelected(Garage);
+    }
+
+    private void setGn(boolean Gn) {
+        this.Gn.setSelected(Gn);
+    }
+
+    private void setLavadero(boolean Lavadero) {
+        this.Lavadero.setSelected(Lavadero);
+    }
+
+//    private void setListaFotos(int ListaFotos) {
+//        this.ListaFotos.setText(String.valueOf(ListaFotos));
+//    }
+
+    private void setNumero(int Numero) {
+        this.Numero.setText(String.valueOf(Numero));
+    }
+
+    private void setObservaciones(String Observaciones) {
+        this.Observaciones.setText(String.valueOf(Observaciones));
+    }
+
+    private void setOrientacion(int Orientacion) {
+        this.Orientacion.setSelectedIndex(Orientacion);
+    }
+
+    private void setOtraLoc() {
+        this.OtraLoc.setText("");
+    }
+
+    private void setPatio(boolean Patio) {
+        this.Patio.setSelected(Patio);
+    }
+
+    private void setPavimento(boolean Pavimento) {
+        this.Pavimento.setSelected(Pavimento);
+    }
+
+    private void setPiso(String Piso) {
+        this.Piso.setText(Piso);
+    }
+
+    private void setPrecio(float Precio) {
+        this.Precio.setText(String.valueOf(Precio));
+    }
+
+    private void setPropietario(String Propietario) {
+        this.Propietario.setText(Propietario);
+    }
+
+    private void setTelefono(boolean Telefono) {
+        this.Telefono.setSelected(Telefono);
+    }
+
+    private void setTipoInmueble(int TipoInmueble) {
+        this.TipoInmueble.setSelectedIndex(TipoInmueble);
+    }
+
+    private void setCbLocalidad(int cbLocalidad) {
+        this.cbLocalidad.setSelectedIndex(cbLocalidad);
+    }
+
+    private void setCbProvincia(int cbProvincia) {
+        this.cbProvincia.setSelectedIndex(cbProvincia);
+    }
+
+    private void setSupInmueble(float supInmueble) {
+        this.supInmueble.setText(String.valueOf(supInmueble));
+    }
+
+    private void setSupTerreno(float supTerreno) {
+        this.supTerreno.setText(String.valueOf(supTerreno));
+    }
+
+    
 }
