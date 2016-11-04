@@ -51,6 +51,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));
         
         setId(inmSeleccionado.getId());
+        
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         setAc(inmSeleccionado.getAc());
@@ -125,7 +126,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbProvincia(inmSeleccionado.getProvinciaIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
-        
+        deshabilitarCampos();
         
     }
 
@@ -883,21 +884,20 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                         .addGap(7, 7, 7)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
                         .addComponent(BAdjFotos)
                         .addGap(7, 7, 7)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
+                        .addGap(3, 3, 3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BAceptar)
                             .addComponent(BCancelar)))
@@ -1029,6 +1029,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private void camposObligatorios(){
         validaciones.CampoObligatorio(new JTextField[]{CP, Precio,Numero,Barrio,Frente,Fondo,supInmueble}, this);
     }
+    
      private void cargarCB() {
        LogicaCargaInterfaz carga = new LogicaCargaInterfaz();
        provincias = carga.buscarProvincias();
@@ -1132,6 +1133,39 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JTextField supTerreno;
     // End of variables declaration//GEN-END:variables
 
+    private void deshabilitarCampos(){
+    Ac.setEnabled(false);
+    Antiguedad.setEnabled(false);
+    BAdjFotos.setVisible(false);
+    BSelecProp.setVisible(false);
+    Bano.setEnabled(false);
+    Barrio.setEnabled(false);
+    CP.setEnabled(false);;
+    Calle.setEnabled(false);
+    Depto.setEnabled(false);
+     Dormitorio.setEnabled(false);
+    Fondo.setEnabled(false);
+    Frente.setEnabled(false);
+     Garage.setEnabled(false);
+     Gn.setEnabled(false);
+     Lavadero.setEnabled(false);
+     ListaFotos.setEnabled(false);
+    Numero.setEnabled(false);
+    Observaciones.setEnabled(false);
+     Orientacion.setEnabled(false);
+    OtraLoc.setEnabled(false);
+     Patio.setEnabled(false);
+     Pavimento.setEnabled(false);
+    Piso.setEnabled(false);
+    Precio.setEnabled(false);
+     Propietario.setEnabled(false);
+     Telefono.setEnabled(false);
+     TipoInmueble.setEnabled(false);
+     cbLocalidad.setEnabled(false);
+     cbProvincia.setEnabled(false);
+    supInmueble.setEnabled(false);
+    supTerreno.setEnabled(false);
+    }
     private void setId(int id)
     {
         this.iDModif = id;

@@ -45,10 +45,11 @@ public class ABMInmueble {
     public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, int listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion, String otraLoc, boolean patio, boolean pavimento, String piso, float precio, int propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         //TODO chequear que no haya coincidencia de datos
         boolean repetido= false;
-        Propietario propprueba= PersistenciaPropietario.getInstance().listarPropietarios().get(1);
+        Propietario propprueba= PersistenciaPropietario.getInstance().listarPropietarios().get(0);
         if (!repetido){
             Inmueble casa = new Inmueble(propprueba, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  listaFotos,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  otraLoc,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
             casa.setId(iDModif);
+           
             return BDInmueble.ModificarInmueble(casa);
         }
     return false;
