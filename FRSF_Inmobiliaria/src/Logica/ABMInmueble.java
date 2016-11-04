@@ -53,5 +53,9 @@ public class ABMInmueble {
         }
     return false;
     }
+
+    public boolean EliminarInmueble(Inmueble eliminarInmueble) {
+ 
+        return BDInmueble.EliminarInmueble(eliminarInmueble); }
         
 }

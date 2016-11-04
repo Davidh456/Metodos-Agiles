@@ -14,9 +14,12 @@ import java.awt.EventQueue;
 import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Inmobiliaria extends JFrame{
     //Aqu� vamos a declarar todas las sub-pantallas que vamos a usar
@@ -30,6 +33,24 @@ public class Inmobiliaria extends JFrame{
     
     JPanel AltaClienteOPropietario;
     public static void main(String[] args) {
+        
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    try {
+                        javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    } catch (ClassNotFoundException ex) {
+                        Logger.getLogger(Inmobiliaria.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InstantiationException ex) {
+                        Logger.getLogger(Inmobiliaria.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (IllegalAccessException ex) {
+                        Logger.getLogger(Inmobiliaria.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Logger.getLogger(Inmobiliaria.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    break;
+                }
+            }
+        
         EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -82,6 +103,7 @@ public class Inmobiliaria extends JFrame{
 
         fondo = new JPanel();
         fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), contentPane.getWidth(), contentPane.getHeight()/2);
+        
         fondo.setBackground(new Color(190,190,250));
         
 
@@ -248,4 +270,18 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
+
+    void EliminarInmueble(Inmueble inmSeleccionado) {
+        contentPane.removeAll();
+        ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado,"BAJA");
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();}
+
+   
 }

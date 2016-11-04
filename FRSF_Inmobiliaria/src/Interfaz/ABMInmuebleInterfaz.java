@@ -33,6 +33,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     Validaciones validaciones = new Validaciones();
     private int iDModif;
+    private Inmueble eliminarInmueble;
     // Creates new form ABMInmuebleInterfaz   
     public ABMInmuebleInterfaz() {
         initComponents();
@@ -83,6 +84,51 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSupTerreno(inmSeleccionado.getSupTerreno());
         
     }
+
+    public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
+        initComponents();     
+        cargarCB();
+        setSize(getPreferredSize());
+        sintaxis();
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Inmueble"));
+        eliminarInmueble=inmSeleccionado;
+        
+        setId(inmSeleccionado.getId());
+        setSupInmueble(inmSeleccionado.getSupInmueble());
+        setSupTerreno(inmSeleccionado.getSupTerreno());
+        setAc(inmSeleccionado.getAc());
+        setAntiguedad(inmSeleccionado.getAntiguedad());
+        setBano(inmSeleccionado.getBano());
+        setBarrio(inmSeleccionado.getBarrio());
+        setCP(inmSeleccionado.getCp());
+        setCalle(inmSeleccionado.getCalle());
+        setDepto(inmSeleccionado.getDepto());
+        setDormitorio(inmSeleccionado.getDormitorio());
+        setFondo(inmSeleccionado.getFondo());
+        setFrente(inmSeleccionado.getFrente());
+        setGarage(inmSeleccionado.getGarage());
+        setGn(inmSeleccionado.getGn());
+        setLavadero(inmSeleccionado.getLavadero());
+        setNumero(inmSeleccionado.getNumero());
+        setObservaciones(inmSeleccionado.getObservaciones());
+        setOrientacion(inmSeleccionado.getOrientacion());
+        setOtraLoc();
+        setPatio(inmSeleccionado.getPatio());
+        setPavimento(inmSeleccionado.getPavimento());
+        setPiso(inmSeleccionado.getPiso());
+        setPrecio(inmSeleccionado.getPrecio());
+        //TODO formar string que recibe:
+        //setPropietario( string )
+        setTelefono(inmSeleccionado.getTelefono());
+        setTipoInmueble(inmSeleccionado.getTipoInmueble());
+        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
+        setCbProvincia(inmSeleccionado.getProvinciaIndice());
+        setSupInmueble(inmSeleccionado.getSupInmueble());
+        setSupTerreno(inmSeleccionado.getSupTerreno());
+        
+        
+    }
+
 
     public float getSupInmueble() {
         return Float.parseFloat(supInmueble.getText());
@@ -926,7 +972,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         boolean resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         if (titulo.equals("Alta Inmueble"))
-        {
+        {System.out.println("entro a altar");
             resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getOtraLoc(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
             //resultado = operador.ABMInmuebleInterfaz( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
             if(resultado){
@@ -938,6 +984,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         }
         }
         if (titulo.equals("Modificar Inmueble")){
+            System.out.println("entro a modificar");
             resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getOtraLoc(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
             if(resultado){
                 JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente modificado","Felicidades",JOptionPane.INFORMATION_MESSAGE);
@@ -947,6 +994,18 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El inmueble no se ha podido modificar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
             }
         }
+        if (titulo.equals("Eliminar Inmueble")){
+            System.out.println("entro a eliminar");
+            resultado=operador.EliminarInmueble(eliminarInmueble);
+                   if(resultado){
+                JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente Eliminado","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+            }
+            // TODO diferenciar los distintos tipos de errores posibles
+            else {
+                JOptionPane.showMessageDialog(null, "El inmueble no se ha podido Eliminar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        //TODO hacer retornos de ventana de modificar (boton aceptar y cancelar)
     }//GEN-LAST:event_BAceptarActionPerformed
 
     private void sintaxis(){

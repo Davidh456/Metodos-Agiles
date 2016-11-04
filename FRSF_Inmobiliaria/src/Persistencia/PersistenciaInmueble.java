@@ -73,12 +73,23 @@ public class PersistenciaInmueble {
         return criteria.list();
     }
 
-    public boolean ModificarInmueble(Inmueble casa) {
+    public boolean ModificarInmueble(Inmueble inmuebleModificado) {
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session=sesion.openSession();
         Transaction tx = session.beginTransaction();
-        session.update(casa);
+        session.update(inmuebleModificado);
+        tx.commit();
+        session.close();
+        return true;
+    }
+
+    public boolean EliminarInmueble(Inmueble eliminarInmueble) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session=sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(eliminarInmueble);
         tx.commit();
         session.close();
         return true;

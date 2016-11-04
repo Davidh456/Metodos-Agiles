@@ -512,7 +512,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
-        // TODO add your handling code here:
+       Inmobiliaria.getInstance().MenuPrincipal();
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void PrecioDesdeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrecioDesdeActionPerformed
@@ -573,7 +573,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_cbLocalidadActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        
+        Inmueble inmSeleccionado;
+        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmobiliaria.getInstance().EliminarInmueble(inmSeleccionado);
        
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
