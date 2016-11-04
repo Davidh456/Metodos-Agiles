@@ -6,7 +6,9 @@
 package Logica;
 
 import Clases.Inmueble;
+import Clases.Propietario;
 import Persistencia.PersistenciaInmueble;
+import Persistencia.PersistenciaPropietario;
 import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JSpinner;
@@ -38,6 +40,18 @@ public class ABMInmueble {
 
     public List<Inmueble> BuscarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
+    }
+
+    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, int listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion, String otraLoc, boolean patio, boolean pavimento, String piso, float precio, int propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
+        //TODO chequear que no haya coincidencia de datos
+        boolean repetido= false;
+        Propietario propprueba= PersistenciaPropietario.getInstance().listarPropietarios().get(1);
+        if (!repetido){
+            Inmueble casa = new Inmueble(propprueba, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  listaFotos,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  otraLoc,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
+            casa.setId(iDModif);
+            return BDInmueble.ModificarInmueble(casa);
+        }
+    return false;
     }
         
 }
