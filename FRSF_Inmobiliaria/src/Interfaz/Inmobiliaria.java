@@ -99,13 +99,14 @@ public class Inmobiliaria extends JFrame{
         contentPane = new JPanel();
         setContentPane(contentPane);
         contentPane.setLayout(null);
+        
         contentPane.setBounds(0, 0, screenSize.width, screenSize.height-48);
 
         fondo = new JPanel();
         fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), contentPane.getWidth(), contentPane.getHeight()/2);
         
         fondo.setBackground(new Color(190,190,250));
-        
+       
 
     }
     public void cerrar(){
@@ -243,6 +244,7 @@ public class Inmobiliaria extends JFrame{
         menu.setVisible(true);
         contentPane.repaint();
         contentPane.revalidate();
+
     }
     
         public void ConsultaInmueble() {
