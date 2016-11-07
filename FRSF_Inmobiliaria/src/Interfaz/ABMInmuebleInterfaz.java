@@ -1260,6 +1260,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }
 
     private void setCbLocalidad(int cbLocalidad) {
+        System.out.println("El indice seteado en el combobox es de:" + cbLocalidad);
         this.cbLocalidad.setSelectedIndex(cbLocalidad);
     }
 
