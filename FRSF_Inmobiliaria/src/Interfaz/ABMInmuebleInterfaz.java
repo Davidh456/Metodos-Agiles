@@ -539,6 +539,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
         jLabel28.setText("Pavimento");
 
+        Dormitorio.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
+        Bano.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         Garage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GarageActionPerformed(evt);
@@ -979,14 +983,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_PropietarioActionPerformed
 
     private void sintaxis(){
-        //TODO sintaxis del precio, frente, fondo y superficie por ser float
         validaciones.CaracteresMaximos(CP,5,"numerico");
-        validaciones.CaracteresMaximos(Calle, 30, "alfanumerico");
+        validaciones.CaracteresMaximos(Calle, 30, "alfaNumerico");
         validaciones.CaracteresMaximos(Numero, 5, "numerico");
-        validaciones.CaracteresMaximos(Piso, 3, "alfanumerico");
-        validaciones.CaracteresMaximos(Depto, 4, "alfanumerico");
-        validaciones.CaracteresMaximos(Barrio, 40, "alfanumerico");
-        validaciones.CaracteresMaximos(Observaciones,200,"alfanumerico");
+        validaciones.CaracteresMaximos(Piso, 3, "alfaNumerico");
+        validaciones.CaracteresMaximos(Depto, 4, "alfaNumerico");
+        validaciones.CaracteresMaximos(Barrio, 40, "alfaNumerico");
+        validaciones.CaracteresMaximos(Observaciones,200,"alfaNumerico");
         validaciones.CaracteresMaximos(Precio, 10, "float");
         validaciones.CaracteresMaximos(Frente, 8, "float");
         validaciones.CaracteresMaximos(Fondo, 8, "float");

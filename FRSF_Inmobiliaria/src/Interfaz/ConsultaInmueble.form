@@ -103,12 +103,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="cbProvincia" min="-2" pref="115" max="-2" attributes="0"/>
+                          <Component id="cbProvincia" min="-2" pref="129" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -118,10 +118,10 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cbLocalidad" min="-2" pref="114" max="-2" attributes="0"/>
+                                  <Component id="cbLocalidad" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="Barrio" min="-2" pref="114" max="-2" attributes="0"/>
@@ -222,16 +222,30 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JComboBox" name="TipoInmueble">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="6">
+                <StringItem index="0" value="Casa"/>
+                <StringItem index="1" value="Departamento"/>
+                <StringItem index="2" value="Galp&#xf3;n"/>
+                <StringItem index="3" value="Local-Oficina"/>
+                <StringItem index="4" value="Quinta"/>
+                <StringItem index="5" value="Terreno"/>
+              </StringArray>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JSpinner" name="CantDormitorios">
+          <Properties>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+              <SpinnerModel initial="0" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="PrecioDesde">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="123"/>
-          </Properties>
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
             <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value="sda"/>
@@ -246,9 +260,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="PrecioHasta">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="12365"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PrecioHastaActionPerformed"/>
           </Events>
@@ -359,32 +370,30 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Apellido">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="asda"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ApellidoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="Nombre">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="asda"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Correo">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="asda"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JComboBox" name="TipoDoc">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="DNI"/>
+                <StringItem index="1" value="Pasaporte"/>
+                <StringItem index="2" value="LC"/>
+                <StringItem index="3" value="LE"/>
+              </StringArray>
+            </Property>
+          </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="NroDoc">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="16516"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NroDocActionPerformed"/>
           </Events>

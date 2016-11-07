@@ -103,12 +103,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     
     private void sintaxis(){
         //TODO debe agregarse la validacion para solo alfabetico de apellido y nombre
-        validaciones.CaracteresMaximos(PrecioDesde, 30, "numerico");
-        validaciones.CaracteresMaximos(PrecioHasta,5,"numerico");
-        validaciones.CaracteresMaximos(Apellido, 30, "alfanumerico");
+        validaciones.CaracteresMaximos(PrecioDesde, 30, "float");
+        validaciones.CaracteresMaximos(PrecioHasta,5,"float");
+        validaciones.CaracteresMaximos(Apellido, 30, "alfabetico");
         validaciones.CaracteresMaximos(Nombre, 5, "numerico");
-        validaciones.CaracteresMaximos(Correo, 3, "alfanumerico");
-        validaciones.CaracteresMaximos(NroDoc, 4, "alfanumerico");
+        validaciones.CaracteresMaximos(NroDoc, 4, "numerico");
     }
 
     public ConsultaInmueble() {
@@ -116,6 +115,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         DeshabilitarBotonesInicio();
         setSize(getPreferredSize());
         cargarCB();
+        sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Consulta Inmueble"));
         
     }
@@ -184,7 +184,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        PrecioDesde.setText("123");
+        TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Departamento", "Galpón", "Local-Oficina", "Quinta", "Terreno" }));
+
+        CantDormitorios.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+
         PrecioDesde.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrecioDesdeActionPerformed(evt);
@@ -193,7 +196,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         jLabel7.setText("Hasta");
 
-        PrecioHasta.setText("12365");
         PrecioHasta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PrecioHastaActionPerformed(evt);
@@ -219,10 +221,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -231,8 +233,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cbLocalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,18 +288,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         jLabel12.setText("Nombre");
 
-        Apellido.setText("asda");
         Apellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ApellidoActionPerformed(evt);
             }
         });
 
-        Nombre.setText("asda");
+        TipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "LC", "LE" }));
 
-        Correo.setText("asda");
-
-        NroDoc.setText("16516");
         NroDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NroDocActionPerformed(evt);
