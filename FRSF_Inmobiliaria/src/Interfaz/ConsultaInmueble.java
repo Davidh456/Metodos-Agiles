@@ -53,9 +53,15 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         return Nombre.getText();
     }
     private int getNroDoc() {
+        if(NroDoc.getText().equals("")){
+            return -1;
+        }
         return Integer.parseInt(NroDoc.getText());
     }
     private float getPrecioDesde() {
+        if(PrecioDesde.getText().equals("")){
+            return -1;
+        }
         return Float.parseFloat(PrecioDesde.getText());
     }
     private float getPrecioHasta() {
@@ -102,12 +108,12 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }
     
     private void sintaxis(){
-        //TODO debe agregarse la validacion para solo alfabetico de apellido y nombre
-        validaciones.CaracteresMaximos(PrecioDesde, 30, "float");
-        validaciones.CaracteresMaximos(PrecioHasta,5,"float");
-        validaciones.CaracteresMaximos(Apellido, 30, "alfabetico");
-        validaciones.CaracteresMaximos(Nombre, 5, "numerico");
-        validaciones.CaracteresMaximos(NroDoc, 4, "numerico");
+        validaciones.CaracteresMaximos(PrecioDesde, 10, "float");
+        validaciones.CaracteresMaximos(PrecioHasta,10,"float");
+        validaciones.CaracteresMaximos(Apellido, 100, "alfabetico");
+        validaciones.CaracteresMaximos(Nombre, 100, "alfabetico");
+        validaciones.CaracteresMaximos(NroDoc, 8, "numerico");
+        validaciones.CaracteresMaximos(Correo, 50, "alfaNumerico");
     }
 
     public ConsultaInmueble() {

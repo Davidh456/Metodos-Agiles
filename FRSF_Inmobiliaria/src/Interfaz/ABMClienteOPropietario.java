@@ -589,7 +589,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         validaciones.CaracteresMaximos(tfDomicilio, 100, "alfanumerico");
         validaciones.CaracteresMaximos(tfAlturaCalle, 5, "numerico");
         validaciones.CaracteresMaximos(tfTelefono, 50, "numerico");
-        validaciones.CaracteresMaximos(tfCorreo, 255, "alfanumerico");   
+        validaciones.CaracteresMaximos(tfCorreo, 50, "alfanumerico");   
 
     }
     private void camposObligatorios(){
