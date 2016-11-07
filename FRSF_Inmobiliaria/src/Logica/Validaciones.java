@@ -186,4 +186,19 @@ public class Validaciones {
 			field[i].setBorder((new JTextField()).getBorder());
 		}
 	}
+        
+        public boolean validarPintadorFlotantes(JTextField[] field, JLabel[] label){
+            boolean a=false;
+            for (int i=0; i<field.length;i++){
+                try{ 
+                    Float.parseFloat(field[i].getText());
+                }catch(NumberFormatException ex){
+				label[i].setForeground(new Color(255,0,10));
+				field[i].setBackground(new Color(250,180,180));
+				field[i].setBorder(new LineBorder(new Color(255,0,20)));
+                                a = true;
+		}
+        }
+            return a;
+        }
 }

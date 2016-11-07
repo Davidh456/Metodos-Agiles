@@ -32,8 +32,8 @@ public class PersistenciaInmueble {
         return true;
     }
     
-    public boolean getRepetido(String ProvinciaNombre, String LocalidadNombre, String Calle, int numero, String piso, String Depto) {
-        boolean resultado;
+    public int getRepetido(String ProvinciaNombre, String LocalidadNombre, String Calle, int numero, String piso, String Depto) {
+        int resultado;
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session = sesion.openSession();
@@ -45,9 +45,14 @@ public class PersistenciaInmueble {
         criteria.add(Restrictions.eq("piso",piso));
         criteria.add(Restrictions.eq("depto",Depto));
         criteria.setProjection(Projections.projectionList().add(Projections.property("id")));
-        resultado=!criteria.list().isEmpty();
-       session.close();
-        return resultado;
+        if (!criteria.list().isEmpty()){
+            resultado=(int) criteria.list().get(0);
+            return resultado;
+        }
+        else{
+            session.close();
+            return -1;
+        }
     }
   
     public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {

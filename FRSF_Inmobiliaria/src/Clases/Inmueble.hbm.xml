@@ -74,9 +74,6 @@
         <property name="orientacion" type="java.lang.Integer">
             <column name="Orientacion" />
         </property>
-        <property name="otraLoc" type="string">
-            <column name="OtraLoc" length="45" />
-        </property>
         <property name="patio" type="java.lang.Boolean">
             <column name="Patio" />
         </property>

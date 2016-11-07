@@ -32,7 +32,6 @@ public class Inmueble  implements java.io.Serializable {
      private Integer numero;
      private String observaciones;
      private Integer orientacion;
-     private String otraLoc;
      private Boolean patio;
      private Boolean pavimento;
      private String piso;
@@ -45,7 +44,7 @@ public class Inmueble  implements java.io.Serializable {
     public Inmueble() {
     }
 
-    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer listaFotos, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, String otraLoc, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble) {
+    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer listaFotos, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble) {
        this.propietario = propietario;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
@@ -68,7 +67,6 @@ public class Inmueble  implements java.io.Serializable {
        this.numero = numero;
        this.observaciones = observaciones;
        this.orientacion = orientacion;
-       this.otraLoc = otraLoc;
        this.patio = patio;
        this.pavimento = pavimento;
        this.piso = piso;
@@ -240,13 +238,7 @@ public class Inmueble  implements java.io.Serializable {
     public void setOrientacion(Integer orientacion) {
         this.orientacion = orientacion;
     }
-    public String getOtraLoc() {
-        return this.otraLoc;
-    }
-    
-    public void setOtraLoc(String otraLoc) {
-        this.otraLoc = otraLoc;
-    }
+
     public Boolean getPatio() {
         return this.patio;
     }

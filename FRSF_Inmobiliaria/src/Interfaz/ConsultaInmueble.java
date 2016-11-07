@@ -113,9 +113,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     public ConsultaInmueble() {
         initComponents();
+        DeshabilitarBotonesInicio();
         setSize(getPreferredSize());
         cargarCB();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Consulta Inmueble"));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -532,16 +534,22 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_PrecioHastaActionPerformed
     int entro=0;    
     private void TablaResultadosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaResultadosPropertyChange
+        
         int seleccionados=0;
         for (int i = 0; i < TablaResultados.getRowCount(); i++) {
 					if((boolean)TablaResultados.getValueAt(i, 0)){
                                             seleccionados++;
                                         }
 				}
-        if (seleccionados>1)
-                    DeshabilitarBotones();
-                else 
-                    HabilitarBotones();		
+        System.out.println(seleccionados);
+        if(seleccionados==1) {
+            HabilitarBotones();	}
+        if(seleccionados==0)
+                {  DeshabilitarBotonesInicio();}
+        if (seleccionados>1){
+            DeshabilitarBotones();}
+        
+            
     }//GEN-LAST:event_TablaResultadosPropertyChange
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -592,6 +600,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonModificar.setEnabled(true);
         BotonReserva.setEnabled(true);
         BotonVender.setEnabled(true);
+        BotonPublicar.setEnabled(true);
     }
     private void DeshabilitarBotones(){
         BotonDetalles.setEnabled(false);
@@ -599,6 +608,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonModificar.setEnabled(false);
         BotonReserva.setEnabled(false);
         BotonVender.setEnabled(false);
+    }
+    private void DeshabilitarBotonesInicio(){
+        BotonDetalles.setEnabled(false);
+        BotonEliminar.setEnabled(false);
+        BotonModificar.setEnabled(false);
+        BotonReserva.setEnabled(false);
+        BotonVender.setEnabled(false);
+        BotonPublicar.setEnabled(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
