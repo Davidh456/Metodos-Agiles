@@ -58,6 +58,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));  
+        System.out.println("El indice seteado en el combobox es de:" + inmSeleccionado.getLocalidadIndice());
         setId(inmSeleccionado.getId());
         setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
         setSupInmueble(inmSeleccionado.getSupInmueble());
@@ -84,11 +85,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setPrecio(inmSeleccionado.getPrecio());
         setTelefono(inmSeleccionado.getTelefono());
         setTipoInmueble(inmSeleccionado.getTipoInmueble());
-        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setCbProvincia(inmSeleccionado.getProvinciaIndice());
+        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
-        
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -125,8 +125,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setPrecio(inmSeleccionado.getPrecio());
         setTelefono(inmSeleccionado.getTelefono());
         setTipoInmueble(inmSeleccionado.getTipoInmueble());
-        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setCbProvincia(inmSeleccionado.getProvinciaIndice());
+        setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         deshabilitarCampos();
@@ -1260,7 +1260,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }
 
     private void setCbLocalidad(int cbLocalidad) {
-        System.out.println("El indice seteado en el combobox es de:" + cbLocalidad);
         this.cbLocalidad.setSelectedIndex(cbLocalidad);
     }
 
