@@ -2,6 +2,7 @@
 package Persistencia;
 
 import Clases.Cliente;
+import Clases.Foto;
 import Clases.Inmueble;
 import Clases.Propietario;
 import Conexion.Conexion;
@@ -121,5 +122,15 @@ public class PersistenciaInmueble {
         session.close();
         return true;
     }
+
+    public void AltaFoto(Foto imagen) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session=sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(imagen);
+        tx.commit();
+       session.close();
+         }
 
 }

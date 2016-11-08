@@ -16,6 +16,7 @@ public class NewHibernateUtil {
     private static SessionFactory sessionFactory;
      
     public static SessionFactory getSessionFactory() {
+        
         if (sessionFactory == null) {
             // loads configuration and mappings
             Configuration configuration = new Configuration().configure();

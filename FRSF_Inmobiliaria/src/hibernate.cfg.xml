@@ -46,11 +46,12 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/inmobiliaria?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">root</property>
-    <mapping resource="Clases/Inmueble.hbm.xml"/>
-    <mapping resource="Clases/Provincia.hbm.xml"/>
-    <mapping resource="Clases/Usuario.hbm.xml"/>
-    <mapping resource="Clases/Localidad.hbm.xml"/>
-    <mapping resource="Clases/Propietario.hbm.xml"/>
     <mapping resource="Clases/Cliente.hbm.xml"/>
+    <mapping resource="Clases/Propietario.hbm.xml"/>
+    <mapping resource="Clases/Foto.hbm.xml"/>
+    <mapping resource="Clases/Usuario.hbm.xml"/>
+    <mapping resource="Clases/Inmueble.hbm.xml"/>
+    <mapping resource="Clases/Localidad.hbm.xml"/>
+    <mapping resource="Clases/Provincia.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

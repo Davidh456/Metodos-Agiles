@@ -14,15 +14,20 @@ import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
 import java.util.Set;
+import java.util.Vector;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -184,8 +189,17 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     public boolean getLavadero() {
         return Lavadero.isSelected();
     }
-    public int getListaFotos() { //falta determinar esto
-        return 1;
+    public Vector<String> getListaFotos() {
+       
+        Vector<String> archivos= new Vector<String>();
+        
+        for(int i=0; i<ListaFotos.getRowCount();i++){
+            //System.out.println((String) ListaFotos.getValueAt(i, 0));
+             //System.out.println(((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());       
+            archivos.add((String) ListaFotos.getValueAt(i, 0));//agrega el nombre de la imagen primero
+            archivos.add( ((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());//agrega luego el nombre de la direccion
+        }
+        return archivos;
     }
     public String getLocalidadNombre() {
         return ((String) cbLocalidad.getSelectedItem());
@@ -297,8 +311,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BAdjFotos = new javax.swing.JButton();
         BCancelar = new javax.swing.JButton();
         BAceptar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ListaFotos = new javax.swing.JList<>();
         cbProvincia = new javax.swing.JComboBox<>();
         cbLocalidad = new javax.swing.JComboBox<>();
         CP = new javax.swing.JTextField();
@@ -312,6 +324,9 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         jLabel34 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         Propietario = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ListaFotos = new javax.swing.JTable();
+        BElimFotos = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cargar Inmueble"));
 
@@ -673,7 +688,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
         Observaciones.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Observaciones"));
 
-        BAdjFotos.setText("Adjuntar fotos");
+        BAdjFotos.setText("Adjuntar Foto");
         BAdjFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAdjFotosActionPerformed(evt);
@@ -693,8 +708,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 BAceptarActionPerformed(evt);
             }
         });
-
-        jScrollPane1.setViewportView(ListaFotos);
 
         cbProvincia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -747,6 +760,41 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             }
         });
 
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        ListaFotos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Archivo", "Directorio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(ListaFotos);
+
+        BElimFotos.setText("Quitar Foto");
+        BElimFotos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BElimFotosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -754,27 +802,47 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BSelecProp, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PropietarioLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Observaciones, javax.swing.GroupLayout.Alignment.LEADING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel5)))
+                            .addComponent(Observaciones, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(BCancelar))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BAdjFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(BAdjFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BElimFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -800,26 +868,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                                         .addComponent(jLabel34)))
                                 .addGap(16, 16, 16))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(BAceptar))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BSelecProp, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel33)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PropietarioLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(BCancelar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BAceptar)
+                        .addContainerGap())
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -863,27 +916,37 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(3, 3, 3)
-                        .addComponent(BAdjFotos)
-                        .addGap(7, 7, 7)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BAdjFotos)
+                            .addComponent(BElimFotos))
+                        .addGap(3, 3, 3)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BAceptar)
-                            .addComponent(BCancelar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel5))))
+                    .addComponent(jLabel5)
+                    .addComponent(BCancelar)
+                    .addComponent(BAceptar)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void BAdjFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdjFotosActionPerformed
-        
+    JFileChooser chooser = new JFileChooser();
+    FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        "JPG & GIF Images", "jpg", "gif");
+    chooser.setFileFilter(filter);
+    int returnVal = chooser.showOpenDialog(this);
+    if(returnVal == JFileChooser.APPROVE_OPTION) {
+        DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
+        model.addRow(new Object[]{
+                        chooser.getSelectedFile().getName(), 
+                        chooser.getSelectedFile(),
+                        });
+        }
+    
     }//GEN-LAST:event_BAdjFotosActionPerformed
 
     private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelarActionPerformed
@@ -995,6 +1058,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_PropietarioActionPerformed
 
+    private void BElimFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElimFotosActionPerformed
+        if(ListaFotos.getSelectedRow()!=-1){
+        DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
+        model.setRowCount(ListaFotos.getSelectedRow());
+    }
+    }//GEN-LAST:event_BElimFotosActionPerformed
+
     private void sintaxis(){
         validaciones.CaracteresMaximos(CP,5,"numerico");
         validaciones.CaracteresMaximos(Calle, 30, "alfaNumerico");
@@ -1063,6 +1133,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JButton BAceptar;
     private javax.swing.JButton BAdjFotos;
     private javax.swing.JButton BCancelar;
+    private javax.swing.JButton BElimFotos;
     private javax.swing.JToggleButton BSelecProp;
     private javax.swing.JSpinner Bano;
     private javax.swing.JTextField Barrio;
@@ -1079,7 +1150,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JCheckBox Garage;
     private javax.swing.JCheckBox Gn;
     private javax.swing.JCheckBox Lavadero;
-    private javax.swing.JList<String> ListaFotos;
+    private javax.swing.JTable ListaFotos;
     private javax.swing.JTextField Numero;
     private javax.swing.JLabel NumeroLbl;
     private javax.swing.JTextField Observaciones;
@@ -1129,7 +1200,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField supInmueble;
     private javax.swing.JLabel supInmuebleLbl;
     private javax.swing.JTextField supTerreno;

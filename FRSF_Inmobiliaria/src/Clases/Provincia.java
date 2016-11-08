@@ -1,5 +1,5 @@
 package Clases;
-// Generated 03/11/2016 05:23:01 by Hibernate Tools 4.3.1
+// Generated 08/11/2016 02:58:05 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
