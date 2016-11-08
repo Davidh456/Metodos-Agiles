@@ -1,5 +1,5 @@
 package Clases;
-// Generated 08/11/2016 03:58:49 by Hibernate Tools 4.3.1
+// Generated 08/11/2016 20:04:38 by Hibernate Tools 4.3.1
 
 
 

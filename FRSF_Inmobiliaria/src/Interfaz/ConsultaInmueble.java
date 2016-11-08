@@ -383,6 +383,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonDetalles.setText("Detalles");
 
         BotonReserva.setText("Reservar");
+        BotonReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonReservaActionPerformed(evt);
+            }
+        });
 
         BotonPublicar.setText("Publicar");
 
@@ -609,6 +614,12 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         Inmobiliaria.getInstance().ModificarInmueble(inmSeleccionado);
         
     }//GEN-LAST:event_BotonModificarActionPerformed
+
+    private void BotonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservaActionPerformed
+        Inmueble inmSeleccionado;
+        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmobiliaria.getInstance().GenerarReserva(inmSeleccionado);
+    }//GEN-LAST:event_BotonReservaActionPerformed
 
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);

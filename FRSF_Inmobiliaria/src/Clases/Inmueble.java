@@ -1,5 +1,5 @@
 package Clases;
-// Generated 08/11/2016 03:58:49 by Hibernate Tools 4.3.1
+// Generated 08/11/2016 20:04:38 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -42,11 +42,12 @@ public class Inmueble  implements java.io.Serializable {
      private Boolean telefono;
      private Integer tipoInmueble;
      private Set fotos = new HashSet(0);
+     private Set reservas = new HashSet(0);
 
     public Inmueble() {
     }
 
-    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble, Set fotos) {
+    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble, Set fotos, Set reservas) {
        this.propietario = propietario;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
@@ -77,8 +78,9 @@ public class Inmueble  implements java.io.Serializable {
        this.telefono = telefono;
        this.tipoInmueble = tipoInmueble;
        this.fotos = fotos;
+       this.reservas = reservas;
     }
-
+   
     public Inmueble(Propietario propietario, float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, float Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
         this.propietario = propietario;
        this.supInmueble = supInmueble;
@@ -327,6 +329,13 @@ public class Inmueble  implements java.io.Serializable {
     
     public void setFotos(Set fotos) {
         this.fotos = fotos;
+    }
+    public Set getReservas() {
+        return this.reservas;
+    }
+    
+    public void setReservas(Set reservas) {
+        this.reservas = reservas;
     }
 
 

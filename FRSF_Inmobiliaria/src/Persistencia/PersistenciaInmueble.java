@@ -5,6 +5,7 @@ import Clases.Cliente;
 import Clases.Foto;
 import Clases.Inmueble;
 import Clases.Propietario;
+import Clases.Reserva;
 import Conexion.Conexion;
 import Conexion.NewHibernateUtil;
 import java.util.List;
@@ -132,5 +133,15 @@ public class PersistenciaInmueble {
         tx.commit();
        session.close();
          }
+    
+    public void guardarReserva(Reserva nuevaReserva){
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session=sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        session.save(nuevaReserva);
+        tx.commit();
+       session.close();
+    }
 
 }
