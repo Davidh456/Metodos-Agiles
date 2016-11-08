@@ -60,7 +60,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));  
         System.out.println("El indice seteado en el combobox es de:" + inmSeleccionado.getLocalidadIndice());
         setId(inmSeleccionado.getId());
-        setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
+        //setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
+        setPropietario(inmSeleccionado.getPropietario());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         setAc(inmSeleccionado.getAc());
@@ -100,7 +101,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         eliminarInmueble=inmSeleccionado;
         
         setId(inmSeleccionado.getId());
-        setPropietario(inmSeleccionado.getPropietario().getNombre()+inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
+        //setPropietario(inmSeleccionado.getPropietario().getNombre()+inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
+        setPropietario(inmSeleccionado.getPropietario());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         setAc(inmSeleccionado.getAc());
@@ -144,6 +146,9 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         return Ac.isSelected();
     }
     public int getAntiguedad() {
+        if(Antiguedad.getText().equals("")){
+            return -1;
+        }
         return Integer.parseInt(Antiguedad.getText());
     }
     public int getBano() {
@@ -882,7 +887,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_BAdjFotosActionPerformed
 
     private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelarActionPerformed
-        Inmobiliaria.getInstance().MenuPrincipal();
+        String titulo = ((javax.swing.border.TitledBorder) getBorder()).getTitle();
+        if (titulo.equals("Alta Inmueble"))
+            Inmobiliaria.getInstance().MenuPrincipal();
+        else
+            Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_BCancelarActionPerformed
 
     private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
@@ -943,12 +952,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         if (titulo.equals("Alta Inmueble")){
             if(camposValidos()){
-            
             resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
             if(resultado){
-            JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente cargado","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+                if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente cargado\n¿Desea continuar cargando inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
+                    Inmobiliaria.getInstance().AltaInmueble();
+                else
+                    Inmobiliaria.getInstance().MenuPrincipal();
         }
-        // TODO diferenciar los distintos tipos de errores posibles
         else {
             JOptionPane.showMessageDialog(null, "El inmueble no se ha podido cargar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
         }}
@@ -957,9 +967,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             if(camposValidos()){
             resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
             if(resultado){
-                JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente modificado","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+                if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                    Inmobiliaria.getInstance().ConsultaInmueble();
+                else
+                    Inmobiliaria.getInstance().MenuPrincipal();
             }
-            // TODO diferenciar los distintos tipos de errores posibles
             else {
                 JOptionPane.showMessageDialog(null, "El inmueble no se ha podido modificar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
             }
@@ -968,14 +980,15 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             System.out.println("entro a eliminar");
             resultado=operador.EliminarInmueble(eliminarInmueble);
                    if(resultado){
-                JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente Eliminado","Felicidades",JOptionPane.INFORMATION_MESSAGE);
-            }
-            // TODO diferenciar los distintos tipos de errores posibles
+                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                            Inmobiliaria.getInstance().ConsultaInmueble();
+                        else
+                            Inmobiliaria.getInstance().MenuPrincipal();
+                   }
             else {
                 JOptionPane.showMessageDialog(null, "El inmueble no se ha podido Eliminar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
             }
         }
-        //TODO hacer retornos de ventana de modificar (boton aceptar y cancelar)
     }//GEN-LAST:event_BAceptarActionPerformed
 
     private void PropietarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PropietarioActionPerformed
@@ -1164,7 +1177,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }
     
     private void setAntiguedad(int Antiguedad) {
-        this.Antiguedad.setText(String.valueOf(Antiguedad));
+        if(Antiguedad==-1)
+            this.Antiguedad.setText("");
+        else
+            this.Antiguedad.setText(String.valueOf(2016 - Antiguedad));
     }
     public void setPropietario(Propietario propietario){
         this.propietarioAux=propietario;
@@ -1245,10 +1261,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     private void setPrecio(float Precio) {
         this.Precio.setText(String.valueOf(Precio));
-    }
-
-    private void setPropietario(String Propietario) {
-        this.Propietario.setText(Propietario);
     }
 
     private void setTelefono(boolean Telefono) {

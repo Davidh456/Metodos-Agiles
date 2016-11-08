@@ -38,7 +38,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         return Apellido.getText();
     }
     private String getBarrioNombre() {
-        return ((String) Barrio.getSelectedItem());
+        return BarrioText.getText();
     }
     private int getCantDormitorios() {
         return ((Integer) CantDormitorios.getValue());
@@ -60,11 +60,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }
     private float getPrecioDesde() {
         if(PrecioDesde.getText().equals("")){
-            return -1;
+            return 0;
         }
         return Float.parseFloat(PrecioDesde.getText());
     }
     private float getPrecioHasta() {
+        if(PrecioDesde.getText().equals("")){
+            return 999999999;
+        }
         return Float.parseFloat(PrecioHasta.getText());
     }
     private int getTipoDoc() {
@@ -108,8 +111,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }
     
     private void sintaxis(){
-        validaciones.CaracteresMaximos(PrecioDesde, 10, "float");
-        validaciones.CaracteresMaximos(PrecioHasta,10,"float");
+        validaciones.CaracteresMaximos(PrecioDesde, 9, "float");
+        validaciones.CaracteresMaximos(PrecioHasta,9,"float");
         validaciones.CaracteresMaximos(Apellido, 100, "alfabetico");
         validaciones.CaracteresMaximos(Nombre, 100, "alfabetico");
         validaciones.CaracteresMaximos(NroDoc, 8, "numerico");
@@ -139,12 +142,13 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         cbLocalidad = new javax.swing.JComboBox<>();
         cbProvincia = new javax.swing.JComboBox<>();
-        Barrio = new javax.swing.JComboBox<>();
         TipoInmueble = new javax.swing.JComboBox<>();
         CantDormitorios = new javax.swing.JSpinner();
         PrecioDesde = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         PrecioHasta = new javax.swing.JTextField();
+        BarrioText = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -190,7 +194,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Casa", "Departamento", "Galpón", "Local-Oficina", "Quinta", "Terreno" }));
+        TipoInmueble.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Casa", "Departamento", "Galpón", "Local-Oficina", "Quinta", "Terreno" }));
 
         CantDormitorios.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
@@ -207,6 +211,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 PrecioHastaActionPerformed(evt);
             }
         });
+
+        jLabel13.setText("(0 para cualquier cantidad)");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -233,24 +239,27 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CantDormitorios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbLocalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Barrio, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))
+                                .addComponent(cbLocalidad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BarrioText, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CantDormitorios, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel13)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(PrecioHasta, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,13 +272,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         .addComponent(jLabel5)
                         .addComponent(jLabel4)
                         .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Barrio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BarrioText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1)
                     .addComponent(TipoInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CantDormitorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CantDormitorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -300,7 +310,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        TipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "LC", "LE" }));
+        TipoDoc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "DNI", "Pasaporte", "LC", "LE" }));
 
         NroDoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -563,6 +573,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
         //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
+        if(!resultado.isEmpty()){
         for(Inmueble c: resultado){          
                     model.addRow(new Object[]{
                         false, 
@@ -576,8 +587,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         c.getPatio(),
                         c.getSupInmueble(),
                         c.getPrecio()});
-        
-        }
+        }}
+        else
+            JOptionPane.showMessageDialog(null,"No se han encontrado inmuebles con las características deseadas","Atención",JOptionPane.INFORMATION_MESSAGE);       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cbLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocalidadActionPerformed
@@ -624,7 +636,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
-    private javax.swing.JComboBox<String> Barrio;
+    private javax.swing.JTextField BarrioText;
     private javax.swing.JButton BotonDetalles;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonModificar;
@@ -649,6 +661,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

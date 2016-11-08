@@ -56,32 +56,47 @@ public class PersistenciaInmueble {
     }
   
     public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
-        
-        List<Inmueble> prueba;
+        List<Inmueble> resultado;
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session = sesion.openSession();
+        //criterios para el inmueble
         Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
-        /*
-        criteria.add(Restrictions.eq("barrio",barrioNombre));
-        criteria.add(Restrictions.eq("dormitorio",cantDormitorios));
-        criteria.add(Restrictions.eq("localidadNombre",localidadNombre));   //andaba
-        //criteria.add(Restrictions.eq("precioDesde",precioDesde));
-        //criteria.add(Restrictions.eq("precioHasta",precioHasta));
-        criteria.add(Restrictions.eq("tipoInmueble",tipoInmueble));
         criteria.add(Restrictions.eq("provinciaIndice",provinciaIndice));
+        criteria.add(Restrictions.eq("localidadNombre",localidadNombre)); 
+        if(!barrioNombre.equals("")){
+             criteria.add(Restrictions.eq("barrio",barrioNombre));
+        }
+        criteria.add(Restrictions.between("precio", precioDesde, precioHasta));
+        if(tipoInmueble!=0){
+           criteria.add(Restrictions.eq("tipoInmueble",tipoInmueble-1)); 
+        }
+        if(!(tipoInmueble==3 || tipoInmueble==6)){
+            if(cantDormitorios!=0){
+               criteria.add(Restrictions.eq("dormitorio",cantDormitorios)); 
+            }
+        }
         
-        criteria.createAlias("inmueble.propietario", "propietario");    //andaba
-        criteria.add(Restrictions.eq("propietario.nombre",nombre));  //andaba
-        criteria.add(Restrictions.eq("propietario.numeroDoc",nroDoc));
-        criteria.add(Restrictions.eq("propietario.tipoDoc",tipoDoc));
-        criteria.add(Restrictions.eqProperty("propietario.correo",correo));
-        criteria.add(Restrictions.eqProperty("propietario.apellido",apellido));
-        
-         */
-        prueba =criteria.list();
+        // criterios para el propietario
+        criteria.createAlias("inmueble.propietario", "propietario"); 
+        if(!nombre.equals("")){
+            criteria.add(Restrictions.eq("propietario.nombre",nombre)); 
+        }
+        if(nroDoc!=-1){
+          criteria.add(Restrictions.eq("propietario.numeroDoc",nroDoc));  
+        }
+        if(tipoDoc!=0){
+            criteria.add(Restrictions.eq("propietario.tipoDoc",tipoDoc-1));  
+        }
+        if(!correo.equals("")){
+          criteria.add(Restrictions.eqProperty("propietario.correo",correo));  
+        }
+        if(!apellido.equals("")){
+            criteria.add(Restrictions.eqProperty("propietario.apellido",apellido));
+        }
+        resultado =criteria.list();
         session.close();
-        return prueba;
+        return resultado;
     }
 
     public boolean ModificarInmueble(Inmueble inmuebleModificado) {

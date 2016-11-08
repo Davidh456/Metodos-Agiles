@@ -24,9 +24,11 @@ public class ABMInmueble {
     
     public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion,  boolean Patio, boolean Pavimento, String Piso, float Precio, Propietario propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
     int repetido = getRepetido(ProvinciaNombre,LocalidadNombre,Calle,Numero,Piso,Depto);
+    if(Antiguedad!=-1)
+        Antiguedad=2016-Antiguedad;
     if (repetido==-1){
         Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  Lavadero,  ListaFotos,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
-       BDInmueble.AltaInmueble(casa);
+        BDInmueble.AltaInmueble(casa);
         return true;
     }
     return false;
@@ -45,6 +47,8 @@ public class ABMInmueble {
     public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, int listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, float precio, Propietario propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         int repetido= getRepetido(provinciaNombre,localidadNombre,calle,numero,piso,depto);
         if (repetido==iDModif || repetido==-1){
+            if(antiguedad!=-1)
+                antiguedad=2016-antiguedad;
             Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  listaFotos,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
             casa.setId(iDModif);  
             return BDInmueble.ModificarInmueble(casa);
