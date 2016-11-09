@@ -141,11 +141,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }
 
 
-    public float getSupInmueble() {
-        return Float.parseFloat(supInmueble.getText());
+    public double getSupInmueble() {
+        return Double.parseDouble(supInmueble.getText());
     }
-    public float getSupTerreno() {
-        return Float.parseFloat(supTerreno.getText());
+    public double getSupTerreno() {
+        return Double.parseDouble(supTerreno.getText());
     }
     public boolean getAc() {
         return Ac.isSelected();
@@ -174,11 +174,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     public int getDormitorio() {
         return ((Integer) Dormitorio.getValue());
     }
-    public float getFondo() {
-        return Float.parseFloat(Fondo.getText());
+    public double getFondo() {
+        return Double.parseDouble(Fondo.getText());
     }
-    public float getFrente() {
-        return Float.parseFloat(Frente.getText());
+    public double getFrente() {
+        return Double.parseDouble(Frente.getText());
     }
     public boolean getGarage() {
         return Garage.isSelected();
@@ -226,8 +226,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     public String getPiso() {
         return Piso.getText();
     }
-    public float getPrecio() {
-        return Float.parseFloat(Precio.getText());
+    public double getPrecio() {
+        return Double.parseDouble(Precio.getText());
     }
     public Cliente getPropietario() {
         return propietarioAux;
@@ -1073,11 +1073,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         validaciones.CaracteresMaximos(Depto, 4, "alfaNumerico");
         validaciones.CaracteresMaximos(Barrio, 40, "alfaNumerico");
         validaciones.CaracteresMaximos(Observaciones,200,"alfaNumerico");
-        validaciones.CaracteresMaximos(Precio, 10, "float");
-        validaciones.CaracteresMaximos(Frente, 8, "float");
-        validaciones.CaracteresMaximos(Fondo, 8, "float");
-        validaciones.CaracteresMaximos(supInmueble, 10, "float");
-        validaciones.CaracteresMaximos(supTerreno, 10, "float");
+        validaciones.CaracteresMaximos(Precio, 10, "double");
+        validaciones.CaracteresMaximos(Frente, 8, "double");
+        validaciones.CaracteresMaximos(Fondo, 8, "double");
+        validaciones.CaracteresMaximos(supInmueble, 10, "double"); 
+        validaciones.CaracteresMaximos(supTerreno, 10, "double");
         validaciones.CaracteresMaximos(Antiguedad, 5, "numerico");
         
     }
@@ -1281,11 +1281,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         this.Dormitorio.setValue(Dormitorio);
     }
 
-    private void setFondo(float Fondo) {
+    private void setFondo(double Fondo) {
         this.Fondo.setText(String.valueOf(Fondo));
     }
 
-    private void setFrente(float Frente) {
+    private void setFrente(double Frente) {
         this.Frente.setText(String.valueOf(Frente));
     }
 
@@ -1330,7 +1330,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         this.Piso.setText(Piso);
     }
 
-    private void setPrecio(float Precio) {
+    private void setPrecio(double Precio) {
         this.Precio.setText(String.valueOf(Precio));
     }
 
@@ -1350,11 +1350,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         this.cbProvincia.setSelectedIndex(cbProvincia);
     }
 
-    private void setSupInmueble(float supInmueble) {
+    private void setSupInmueble(double supInmueble) {
         this.supInmueble.setText(String.valueOf(supInmueble));
     }
 
-    private void setSupTerreno(float supTerreno) {
+    private void setSupTerreno(double supTerreno) {
         this.supTerreno.setText(String.valueOf(supTerreno));
     }
     

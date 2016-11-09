@@ -23,6 +23,7 @@ public class PersistenciaInmueble {
     }
   */
     public boolean AltaInmueble(Inmueble casa){
+        System.out.println("Precio en abminmueble justo antes de dar alta: " + String.valueOf(casa.getPrecio()));
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session=sesion.openSession();
@@ -56,7 +57,7 @@ public class PersistenciaInmueble {
         }
     }
   
-    public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
+    public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, double precioDesde, double precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
         List<Inmueble> resultado;
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
@@ -69,6 +70,7 @@ public class PersistenciaInmueble {
              criteria.add(Restrictions.eq("barrio",barrioNombre));
         }
         criteria.add(Restrictions.between("precio", precioDesde, precioHasta));
+        
         if(tipoInmueble!=0){
            criteria.add(Restrictions.eq("tipoInmueble",tipoInmueble-1)); 
         }

@@ -17,7 +17,7 @@
         <property name="fechaHasta" type="timestamp">
             <column name="fechaHasta" length="19" not-null="true" />
         </property>
-        <property name="importe" type="float">
+        <property name="importe" type="double">
             <column name="importe" precision="12" scale="0" not-null="true" />
         </property>
     </class>

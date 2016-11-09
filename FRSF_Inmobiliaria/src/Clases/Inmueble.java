@@ -13,8 +13,8 @@ public class Inmueble  implements java.io.Serializable {
 
      private Integer id;
      private Cliente cliente;
-     private Float supInmueble;
-     private Float supTerreno;
+     private double supInmueble;
+     private double supTerreno;
      private Boolean ac;
      private Integer antiguedad;
      private Integer bano;
@@ -23,8 +23,8 @@ public class Inmueble  implements java.io.Serializable {
      private String calle;
      private String depto;
      private Integer dormitorio;
-     private Float fondo;
-     private Float frente;
+     private double fondo;
+     private double frente;
      private Boolean garage;
      private Boolean gn;
      private Boolean lavadero;
@@ -36,7 +36,7 @@ public class Inmueble  implements java.io.Serializable {
      private Boolean patio;
      private Boolean pavimento;
      private String piso;
-     private Float precio;
+     private double precio;
      private String provinciaNombre;
      private Integer provinciaIndice;
      private Boolean telefono;
@@ -47,7 +47,7 @@ public class Inmueble  implements java.io.Serializable {
     public Inmueble() {
     }
     
-    public Inmueble(Cliente cliente, float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, float Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+    public Inmueble(Cliente cliente, double supInmueble, double supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, double Fondo, double Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, double Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
        this.cliente = cliente;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
@@ -79,11 +79,11 @@ public class Inmueble  implements java.io.Serializable {
        this.tipoInmueble = TipoInmueble;
     }
     
-    public Inmueble(Cliente cliente, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, 
+    public Inmueble(Cliente cliente, double supInmueble, double supTerreno, Boolean ac, Integer antiguedad, 
                     Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, 
-                    Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, 
+                    double fondo, double frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, 
                     String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, 
-                    Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, 
+                    Boolean pavimento, String piso, double precio, String provinciaNombre, Integer provinciaIndice, 
                     Boolean telefono, Integer tipoInmueble/*, Set fotos*/) {
        this.cliente = cliente;
        this.supInmueble = supInmueble;
@@ -131,18 +131,18 @@ public class Inmueble  implements java.io.Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public Float getSupInmueble() {
+    public double getSupInmueble() {
         return this.supInmueble;
     }
     
-    public void setSupInmueble(Float supInmueble) {
+    public void setSupInmueble(double supInmueble) {
         this.supInmueble = supInmueble;
     }
-    public Float getSupTerreno() {
+    public double getSupTerreno() {
         return this.supTerreno;
     }
     
-    public void setSupTerreno(Float supTerreno) {
+    public void setSupTerreno(double supTerreno) {
         this.supTerreno = supTerreno;
     }
     public Boolean getAc() {
@@ -201,18 +201,18 @@ public class Inmueble  implements java.io.Serializable {
     public void setDormitorio(Integer dormitorio) {
         this.dormitorio = dormitorio;
     }
-    public Float getFondo() {
+    public double getFondo() {
         return this.fondo;
     }
     
-    public void setFondo(Float fondo) {
+    public void setFondo(double fondo) {
         this.fondo = fondo;
     }
-    public Float getFrente() {
+    public double getFrente() {
         return this.frente;
     }
     
-    public void setFrente(Float frente) {
+    public void setFrente(double frente) {
         this.frente = frente;
     }
     public Boolean getGarage() {
@@ -292,11 +292,11 @@ public class Inmueble  implements java.io.Serializable {
     public void setPiso(String piso) {
         this.piso = piso;
     }
-    public Float getPrecio() {
+    public double getPrecio() {
         return this.precio;
     }
     
-    public void setPrecio(Float precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
     public String getProvinciaNombre() {

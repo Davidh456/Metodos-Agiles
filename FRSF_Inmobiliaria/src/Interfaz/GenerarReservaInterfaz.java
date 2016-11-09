@@ -449,7 +449,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
             this.lblPiso.setText(capturado);
     }
 
-    public void setLblPrecio(Float capturado) {
+    public void setLblPrecio(double capturado) {
         this.lblPrecio.setText(String.valueOf(capturado));
     }
 
@@ -491,11 +491,11 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         this.lblNumDoc.setText(String.valueOf(capturado));
     }
    
-    private Float getMontoReserva(){
-        return Float.parseFloat(this.montoReserva.getText());
+    private double getMontoReserva(){
+        return Double.parseDouble(this.montoReserva.getText());
     }
     private void sintaxis(){
-        validaciones.CaracteresMaximos(montoReserva, 9, "float");
+        validaciones.CaracteresMaximos(montoReserva, 9, "double");
     }
     private Date getTiempoValidez(){
         int dias;

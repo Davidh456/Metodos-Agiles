@@ -161,7 +161,7 @@ public class Validaciones {
 			    	e.consume();
 			    }
                                 // se verifica que si es flotante sea con punto y no admite letras (no verifica la cantidad de puntos)
-                            if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter=='.') && tipo.equals("float")){
+                            if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter=='.') && tipo.equals("double")){
 					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números y '.'  (ejemplo: 113.80) ","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
@@ -191,7 +191,7 @@ public class Validaciones {
             boolean a=false;
             for (int i=0; i<field.length;i++){
                 try{ 
-                    Float.parseFloat(field[i].getText());
+                    Double.parseDouble(field[i].getText());
                 }catch(NumberFormatException ex){
 				label[i].setForeground(new Color(255,0,10));
 				field[i].setBackground(new Color(250,180,180));

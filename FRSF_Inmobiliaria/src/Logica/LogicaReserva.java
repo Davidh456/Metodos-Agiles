@@ -35,7 +35,7 @@ import java.util.Set;
 public class LogicaReserva {
     PersistenciaInmueble BDInmueble = new PersistenciaInmueble();
 
-    public void GenerarReserva(Inmueble inmuebleReservado, Cliente clienteReserva, Float montoReserva, Date tiempoValidez) throws IOException, DocumentException {
+    public void GenerarReserva(Inmueble inmuebleReservado, Cliente clienteReserva, double montoReserva, Date tiempoValidez) throws IOException, DocumentException {
        Reserva nuevaReserva= new Reserva(clienteReserva,inmuebleReservado,tiempoValidez,montoReserva);
        GenerarDocumento(nuevaReserva);
        BDInmueble.guardarReserva(nuevaReserva);
@@ -142,7 +142,7 @@ public class LogicaReserva {
         if(inmu.getAntiguedad()==-1)
             datInmCli.put("Antiguedad", "N/A");
         else
-            datInmCli.put("Antiguedad", String.valueOf(inmu.getAntiguedad()));
+            datInmCli.put("Antiguedad", String.valueOf(2016-inmu.getAntiguedad()));
         
         switch (inmu.getTipoInmueble()) {
            case 0:
@@ -189,9 +189,9 @@ public class LogicaReserva {
             datInmCli.put("AC", "No");
         
         if(inmu.getTelefono())
-            datInmCli.put("Telefono", "Si");
+            datInmCli.put("TelefonoInm", "Si");
         else
-            datInmCli.put("Telefono", "No");
+            datInmCli.put("TelefonoInm", "No");
         
         if(inmu.getLavadero())
             datInmCli.put("Lavadero", "Si");

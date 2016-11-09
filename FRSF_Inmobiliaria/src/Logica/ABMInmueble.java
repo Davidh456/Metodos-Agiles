@@ -26,15 +26,17 @@ public class ABMInmueble {
     
     PersistenciaInmueble BDInmueble = new PersistenciaInmueble();
     
-    public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, Vector<String> ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion,  boolean Patio, boolean Pavimento, String Piso, float Precio, Cliente propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+    public boolean AltaInmueble(double supInmueble, double supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, double Fondo, double Frente, boolean Garage, boolean Gn, boolean Lavadero, Vector<String> ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion,  boolean Patio, boolean Pavimento, String Piso, double Precio, Cliente propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
     int repetido = getRepetido(ProvinciaNombre,LocalidadNombre,Calle,Numero,Piso,Depto);
     if(Antiguedad!=-1)
         Antiguedad=2016-Antiguedad;
     if (repetido==-1){
+        System.out.println("Precio en abminmueble: " + Precio);
         Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  
                 Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  
                 Lavadero,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  
                 Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
+        System.out.println("Precio en abminmueble despues de crear objeto: " + casa.getPrecio());
         BDInmueble.AltaInmueble(casa);
         conversionFotos(ListaFotos, casa);
         
@@ -49,11 +51,11 @@ public class ABMInmueble {
       return resultado;
     };
 
-    public List<Inmueble> BuscarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, float precioDesde, float precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
+    public List<Inmueble> BuscarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, double precioDesde, double precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
     }
 
-    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, float precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
+    public boolean ModificarInmueble(int iDModif, double supInmueble, double supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, double fondo, double frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, double precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         int repetido= getRepetido(provinciaNombre,localidadNombre,calle,numero,piso,depto);
         if (repetido==iDModif || repetido==-1){
             if(antiguedad!=-1)

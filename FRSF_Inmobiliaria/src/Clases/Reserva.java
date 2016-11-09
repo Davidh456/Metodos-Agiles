@@ -14,12 +14,12 @@ public class Reserva  implements java.io.Serializable {
      private Cliente cliente;
      private Inmueble inmueble;
      private Date fechaHasta;
-     private float importe;
+     private double importe;
 
     public Reserva() {
     }
 
-    public Reserva(Cliente cliente, Inmueble inmueble, Date fechaHasta, float importe) {
+    public Reserva(Cliente cliente, Inmueble inmueble, Date fechaHasta, double importe) {
        this.cliente = cliente;
        this.inmueble = inmueble;
        this.fechaHasta = fechaHasta;
@@ -54,11 +54,11 @@ public class Reserva  implements java.io.Serializable {
     public void setFechaHasta(Date fechaHasta) {
         this.fechaHasta = fechaHasta;
     }
-    public float getImporte() {
+    public double getImporte() {
         return this.importe;
     }
     
-    public void setImporte(float importe) {
+    public void setImporte(double importe) {
         this.importe = importe;
     }
 

@@ -11,10 +11,10 @@
         <many-to-one name="cliente" class="Clases.Cliente" fetch="select">
             <column name="idPropietario" />
         </many-to-one>
-        <property name="supInmueble" type="java.lang.Float">
+        <property name="supInmueble" type="java.lang.Double">
             <column name="supInmueble" precision="12" scale="0" />
         </property>
-        <property name="supTerreno" type="java.lang.Float">
+        <property name="supTerreno" type="java.lang.Double">
             <column name="supTerreno" precision="12" scale="0" />
         </property>
         <property name="ac" type="java.lang.Boolean">
@@ -41,10 +41,10 @@
         <property name="dormitorio" type="java.lang.Integer">
             <column name="Dormitorio" />
         </property>
-        <property name="fondo" type="java.lang.Float">
+        <property name="fondo" type="java.lang.Double">
             <column name="Fondo" precision="12" scale="0" />
         </property>
-        <property name="frente" type="java.lang.Float">
+        <property name="frente" type="java.lang.Double">
             <column name="Frente" precision="12" scale="0" />
         </property>
         <property name="garage" type="java.lang.Boolean">
@@ -80,7 +80,7 @@
         <property name="piso" type="string">
             <column name="Piso" length="45" />
         </property>
-        <property name="precio" type="java.lang.Float">
+        <property name="precio" type="java.lang.Double">
             <column name="Precio" precision="12" scale="0" />
         </property>
         <property name="provinciaNombre" type="string">

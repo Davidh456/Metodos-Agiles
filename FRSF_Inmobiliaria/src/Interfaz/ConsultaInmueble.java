@@ -59,17 +59,17 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         }
         return Integer.parseInt(NroDoc.getText());
     }
-    private float getPrecioDesde() {
+    private double getPrecioDesde() {
         if(PrecioDesde.getText().equals("")){
             return 0;
         }
-        return Float.parseFloat(PrecioDesde.getText());
+        return Double.parseDouble(PrecioDesde.getText());
     }
-    private float getPrecioHasta() {
+    private double getPrecioHasta() {
         if(PrecioDesde.getText().equals("")){
             return 999999999;
         }
-        return Float.parseFloat(PrecioHasta.getText());
+        return Double.parseDouble(PrecioHasta.getText());
     }
     private int getTipoDoc() {
         return TipoDoc.getSelectedIndex();
@@ -112,8 +112,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }
     
     private void sintaxis(){
-        validaciones.CaracteresMaximos(PrecioDesde, 9, "float");
-        validaciones.CaracteresMaximos(PrecioHasta,9,"float");
+        validaciones.CaracteresMaximos(PrecioDesde, 9, "double");
+        validaciones.CaracteresMaximos(PrecioHasta,9,"double");
         validaciones.CaracteresMaximos(Apellido, 100, "alfabetico");
         validaciones.CaracteresMaximos(Nombre, 100, "alfabetico");
         validaciones.CaracteresMaximos(NroDoc, 8, "numerico");
@@ -578,7 +578,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         resultado=null;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
-        //resultado = operador.AltaInmueble( (float)1.1, (float) 1.11, true, 22, 1, "barrio", 3000, "calle", "1a", 3, (float)125.3, (float)223.3, true, true, true, 1, 1, "localidad2", 325, "observaciones", 1, "otraloca", true, true,"segundo", (float)163.2, 1, "provincianombre", 1, true, 1);
         if(!resultado.isEmpty()){
         for(Inmueble c: resultado){          
                     model.addRow(new Object[]{
