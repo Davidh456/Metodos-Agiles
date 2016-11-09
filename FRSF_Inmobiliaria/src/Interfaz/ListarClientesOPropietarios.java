@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 public class ListarClientesOPropietarios extends javax.swing.JPanel {
     
     List<Cliente> listaClientes;
-    List<Propietario> listaPropietarios;
+    List<Cliente> listaPropietarios;
     String tabla;
     
     public ListarClientesOPropietarios() {
@@ -169,69 +169,64 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setearTablaClientes() {
-        switch(tabla){
-            case "Clientes":
-                listaClientes = new ABMCliente().listarClientes();
-                for(Cliente c: listaClientes){
-                    DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
-                    String tipoDoc = "";
-                    switch (c.getTipoDoc()){
-                        case 0:
-                            tipoDoc = "DNI";
-                            break;
-                        case 1:
-                            tipoDoc = "PS";
-                            break;
-                        case 2:
-                            tipoDoc = "LC";
-                            break;
-                        case 3:
-                            tipoDoc = "LE";
-                            break;
-                    }
-                    model.addRow(new Object[]{
-                        c.getNombre(), 
-                        c.getApellido(), 
-                        tipoDoc +" "+c.getNumeroDoc(), 
-                        c.getProvincia().getProvincia(), 
-                        c.getLocalidad().getLocalidad(), 
-                        c.getDomicilio()+" "+c.getAlturaDomicilio(), 
-                        c.getTelefono(), 
-                        c.getCorreo()});
-                }
-                break;
-            
-        }
+        listaClientes = new ABMCliente().listarClientes();
+         for(Cliente c: listaClientes){
+             DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
+             String tipoDoc = "";
+             switch (c.getTipoDoc()){
+                 case 0:
+                     tipoDoc = "DNI";
+                     break;
+                 case 1:
+                     tipoDoc = "PS";
+                     break;
+                 case 2:
+                     tipoDoc = "LC";
+                     break;
+                 case 3:
+                     tipoDoc = "LE";
+                     break;
+             }
+             model.addRow(new Object[]{
+                 c.getNombre(), 
+                 c.getApellido(), 
+                 tipoDoc +" "+c.getNumeroDoc(), 
+                 c.getProvincia().getProvincia(), 
+                 c.getLocalidad().getLocalidad(), 
+                 c.getDomicilio()+" "+c.getAlturaDomicilio(), 
+                 c.getTelefono(), 
+                 c.getCorreo()});
+         }
     }
     private void setearTablaPropietarios(){
-        listaPropietarios = new ABMPropietario().listarPropietarios();
-                for(Propietario p: listaPropietarios){
-                    DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
-                    String tipoDoc = "";
-                    switch (p.getTipoDoc()){
-                        case 0:
-                            tipoDoc = "DNI";
-                            break;
-                        case 1:
-                            tipoDoc = "PS";
-                            break;
-                        case 2:
-                            tipoDoc = "LC";
-                            break;
-                        case 3:
-                            tipoDoc = "LE";
-                            break;
-                    }
-                    model.addRow(new Object[]{
-                        p.getNombre(), 
-                        p.getApellido(), 
-                        tipoDoc +" "+p.getNumeroDoc(), 
-                        p.getProvincia().getProvincia(), 
-                        p.getLocalidad().getLocalidad(), 
-                        p.getDomicilio()+" "+p.getAlturaDomicilio(), 
-                        p.getTelefono(), 
-                        p.getCorreo()});
-                }
+        listaPropietarios = new ABMCliente().listarPropietarios();
+        for(Cliente p: listaPropietarios){
+            DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
+            String tipoDoc = "";
+            switch (p.getTipoDoc()){
+                case 0:
+                    tipoDoc = "DNI";
+                    break;
+                case 1:
+                    tipoDoc = "PS";
+                    break;
+                case 2:
+                    tipoDoc = "LC";
+                    break;
+                case 3:
+                    tipoDoc = "LE";
+                    break;
+            }
+            model.addRow(new Object[]{
+                p.getNombre(), 
+                p.getApellido(), 
+                tipoDoc +" "+p.getNumeroDoc(), 
+                p.getProvincia().getProvincia(), 
+                p.getLocalidad().getLocalidad(), 
+                p.getDomicilio()+" "+p.getAlturaDomicilio(), 
+                p.getTelefono(), 
+                p.getCorreo()});
+        }
     }
 
     private void setearAccionesClientes() {
@@ -291,7 +286,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnAgregar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                Inmobiliaria.getInstance().AltaPropietario();
+                Inmobiliaria.getInstance().ListarNoPropietarios();
             }
             
         });

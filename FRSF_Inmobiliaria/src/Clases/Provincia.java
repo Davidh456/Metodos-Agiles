@@ -1,5 +1,5 @@
 package Clases;
-// Generated 08/11/2016 02:58:05 by Hibernate Tools 4.3.1
+// Generated 08-nov-2016 20:43:30 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,6 @@ public class Provincia  implements java.io.Serializable {
 
      private Integer idprovincia;
      private String provincia;
-//     private Set propietarios = new HashSet(0);
 //     private Set clientes = new HashSet(0);
      private Set localidads = new HashSet(0);
 
@@ -24,9 +23,8 @@ public class Provincia  implements java.io.Serializable {
     public Provincia(String provincia) {
         this.provincia = provincia;
     }
-    public Provincia(String provincia, Set propietarios, Set clientes, Set localidads) {
+    public Provincia(String provincia/*, Set clientes*/, Set localidads) {
        this.provincia = provincia;
-//       this.propietarios = propietarios;
 //       this.clientes = clientes;
        this.localidads = localidads;
     }
@@ -45,21 +43,14 @@ public class Provincia  implements java.io.Serializable {
     public void setProvincia(String provincia) {
         this.provincia = provincia;
     }
-/*    public Set getPropietarios() {
-        return this.propietarios;
-    }
-    
-    public void setPropietarios(Set propietarios) {
-        this.propietarios = propietarios;
-    }
-    public Set getClientes() {
+ /*   public Set getClientes() {
         return this.clientes;
     }
     
     public void setClientes(Set clientes) {
         this.clientes = clientes;
-    }*/
-    public Set getLocalidads() {
+    }
+ */   public Set getLocalidads() {
         return this.localidads;
     }
     

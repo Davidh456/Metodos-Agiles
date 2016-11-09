@@ -7,7 +7,6 @@ package Interfaz;
 
 import Clases.*;
 import Logica.ABMCliente;
-import Logica.ABMPropietario;
 import Logica.LogicaCargaInterfaz;
 import Logica.Validaciones;
 import java.awt.event.ActionEvent;
@@ -20,7 +19,6 @@ import javax.swing.JTextField;
 
 public class ABMClienteOPropietario extends javax.swing.JPanel {
     Cliente cliente;
-    Propietario propietario;
     Validaciones validaciones;
     JTextField[] camposObligatorios;
     JLabel[] lblCamposObligatorios;
@@ -36,14 +34,13 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         cargarCB();
         sintaxis();
     }
-    public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente, Propietario propietario){
+    public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente){
         initComponents();
         setVisible(true);
         setSize(450, 260);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         this.cliente = cliente;
-        this.propietario = propietario;
         validaciones = new Validaciones();
         cargarCB();
         sintaxis();
@@ -473,34 +470,24 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
     private void AltaPropietario() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Propietario"));
-        camposObligatorios();      
+        camposObligatorios();
+        /*btnCancelar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int opcion = JOptionPane.showOptionDialog(null, 
+                                        "¿Cancelar la operación?", "Cancelar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
+                if (opcion == 0){
+                    Inmobiliaria.getInstance().ListarPropietarios();
+                } 
+            }
+            
+        });*/
         btnAceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(camposValidos()&&!ABMPropietario.propietarioExistente(Integer.valueOf(tfNumeroDocumento.getText()),cbDocumento.getSelectedIndex())){
-                    Localidad localidad = null;
-                    int i = 0;
-                    for (Localidad l : localidades){
-                        if (i == cbLocalidad.getSelectedIndex()){
-                            localidad = l;
-                        }
-                        i++;
-                    }
-                    ABMPropietario.altaPropietario(tfNombre.getText(),
-                            tfApellido.getText(),
-                            cbDocumento.getSelectedIndex(),
-                            Integer.valueOf(tfNumeroDocumento.getText()),
-                            provincias.get(cbProvincia.getSelectedIndex()), 
-                            localidad,
-                            tfDomicilio.getText(),
-                            Integer.valueOf(tfAlturaCalle.getText()),
-                            Integer.valueOf(tfTelefono.getText()),
-                            tfCorreo.getText()
-                    );
+                    ABMCliente.hacerPropietario(cliente);
                     JOptionPane.showMessageDialog(null, "El propietario fue cargado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
                     Inmobiliaria.getInstance().ListarPropietarios();
-                }
-                else JOptionPane.showMessageDialog(null, "El propietario ya existe","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
             }
         });
     }
@@ -508,23 +495,22 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Baja Propietario"));
         BloquearCampos();    
         tfNumeroDocumento.setToolTipText("");
-        tfNombre.setText(propietario.getNombre());
-        tfApellido.setText(propietario.getApellido());
-        tfNumeroDocumento.setText(String.valueOf(propietario.getNumeroDoc()));
-        cbDocumento.setSelectedIndex(propietario.getTipoDoc());
-        cbProvincia.setSelectedItem(propietario.getProvincia().getProvincia());
-        cbLocalidad.setSelectedItem(propietario.getLocalidad().getLocalidad());
+        tfNombre.setText(cliente.getNombre());
+        tfApellido.setText(cliente.getApellido());
+        tfNumeroDocumento.setText(String.valueOf(cliente.getNumeroDoc()));
+        cbDocumento.setSelectedIndex(cliente.getTipoDoc());
+        cbProvincia.setSelectedItem(cliente.getProvincia().getProvincia());
+        cbLocalidad.setSelectedItem(cliente.getLocalidad().getLocalidad());
         btnAceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 int opcion = JOptionPane.showOptionDialog(null, 
-                                        "ï¿Seguro que quiere eliminar al propietario "+propietario.getNombre()+"?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
+                                        "¿Seguro que quiere eliminar al propietario "+cliente.getNombre()+"?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
                 if (opcion == 0){
-                    ABMPropietario.bajaPropietario(propietario);
-                    JOptionPane.showMessageDialog(null, "El propietario "+propietario.getNombre()+" fue modificado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
+                    ABMCliente.noEsMasPropietario(cliente);
+                    JOptionPane.showMessageDialog(null, "El propietario "+cliente.getNombre()+" fue modificado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
                     Inmobiliaria.getInstance().ListarPropietarios();
                 }
-                
             }
         });
     }
@@ -532,12 +518,12 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     private void ModificacionPropietario() {
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificacion Propietario"));
         tfNumeroDocumento.setToolTipText("");
-        tfNombre.setText(propietario.getNombre());
-        tfApellido.setText(propietario.getApellido());
-        tfNumeroDocumento.setText(String.valueOf(propietario.getNumeroDoc()));
-        cbDocumento.setSelectedIndex(propietario.getTipoDoc());
-        cbProvincia.setSelectedItem(propietario.getProvincia().getProvincia());
-        cbLocalidad.setSelectedItem(propietario.getLocalidad().getLocalidad());
+        tfNombre.setText(cliente.getNombre());
+        tfApellido.setText(cliente.getApellido());
+        tfNumeroDocumento.setText(String.valueOf(cliente.getNumeroDoc()));
+        cbDocumento.setSelectedIndex(cliente.getTipoDoc());
+        cbProvincia.setSelectedItem(cliente.getProvincia().getProvincia());
+        cbLocalidad.setSelectedItem(cliente.getLocalidad().getLocalidad());
         btnAceptar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -550,19 +536,19 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                         }
                         i++;
                     }
-                    propietario.setNombre(tfNombre.getText());
-                    propietario.setApellido(tfApellido.getText());
-                    propietario.setTipoDoc(cbDocumento.getSelectedIndex());
-                    propietario.setNumeroDoc(Integer.valueOf(tfNumeroDocumento.getText()));
-                    propietario.setProvincia(provincias.get(cbProvincia.getSelectedIndex()));
-                    propietario.setLocalidad(localidad);
-                    propietario.setDomicilio(tfDomicilio.getText());
-                    propietario.setAlturaDomicilio(Integer.valueOf(tfAlturaCalle.getText()));
-                    propietario.setTelefono(Integer.valueOf(tfTelefono.getText()));
-                    propietario.setCorreo(tfCorreo.getText());
+                    cliente.setNombre(tfNombre.getText());
+                    cliente.setApellido(tfApellido.getText());
+                    cliente.setTipoDoc(cbDocumento.getSelectedIndex());
+                    cliente.setNumeroDoc(Integer.valueOf(tfNumeroDocumento.getText()));
+                    cliente.setProvincia(provincias.get(cbProvincia.getSelectedIndex()));
+                    cliente.setLocalidad(localidad);
+                    cliente.setDomicilio(tfDomicilio.getText());
+                    cliente.setAlturaDomicilio(Integer.valueOf(tfAlturaCalle.getText()));
+                    cliente.setTelefono(Integer.valueOf(tfTelefono.getText()));
+                    cliente.setCorreo(tfCorreo.getText());
                     
-                    ABMPropietario.modificarPropietario(propietario);
-                    JOptionPane.showMessageDialog(null, "El propietario fue modificado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
+                    ABMCliente.modificarCliente(cliente);
+                    JOptionPane.showMessageDialog(null, "El propietario "+cliente.getNombre()+ " fue modificado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
                     Inmobiliaria.getInstance().ListarPropietarios();
                 }
             }

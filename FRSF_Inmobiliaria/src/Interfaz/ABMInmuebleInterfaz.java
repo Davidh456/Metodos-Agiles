@@ -7,7 +7,7 @@ package Interfaz;
 
 import Clases.Inmueble;
 import Clases.Localidad;
-import Clases.Propietario;
+import Clases.Cliente;
 import Clases.Provincia;
 import Logica.Validaciones;
 import Logica.ABMInmueble;
@@ -46,7 +46,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     Validaciones validaciones = new Validaciones();
     private int iDModif;
     private Inmueble eliminarInmueble;
-    private Propietario propietarioAux; //esto se debe perfeccionar
+    private Cliente propietarioAux; //esto se debe perfeccionar
     // Creates new form ABMInmuebleInterfaz   
     public ABMInmuebleInterfaz() {
         initComponents();
@@ -66,7 +66,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         System.out.println("El indice seteado en el combobox es de:" + inmSeleccionado.getLocalidadIndice());
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
-        setPropietario(inmSeleccionado.getPropietario());
+        setPropietario(inmSeleccionado.getCliente());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         setAc(inmSeleccionado.getAc());
@@ -107,7 +107,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
-        setPropietario(inmSeleccionado.getPropietario());
+        setPropietario(inmSeleccionado.getCliente());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         setAc(inmSeleccionado.getAc());
@@ -229,7 +229,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     public float getPrecio() {
         return Float.parseFloat(Precio.getText());
     }
-    public Propietario getPropietario() {
+    public Cliente getPropietario() {
         return propietarioAux;
     }
     public String getProvinciaNombre() {
@@ -1253,7 +1253,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         else
             this.Antiguedad.setText(String.valueOf(2016 - Antiguedad));
     }
-    public void setPropietario(Propietario propietario){
+    public void setPropietario(Cliente propietario){
         this.propietarioAux=propietario;
         this.Propietario.setText((propietario.getNombre() +" "+propietario.getApellido()+" Nº Doc: " +propietario.getNumeroDoc()));
     }

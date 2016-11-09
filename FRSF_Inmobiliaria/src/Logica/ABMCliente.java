@@ -6,8 +6,16 @@ import Persistencia.PersistenciaCliente;
 import java.util.List;
 
 public class ABMCliente {
+    private static ABMCliente instance;
 
     public ABMCliente() {
+        super();
+    }
+    public static ABMCliente getInstance(){
+        if (instance == null){
+            instance = new ABMCliente();
+        }
+        return instance;
     }
     
     public static boolean clienteExistente(int numeroDocumento, int tipoDocumento) {
@@ -27,5 +35,21 @@ public class ABMCliente {
     public List<Cliente> listarClientes(){
         return PersistenciaCliente.getInstance().listarClientes();
     }
+    public List<Cliente> listarPropietarios(){
+        return PersistenciaCliente.getInstance().listarPropietarios();
+    }
+    public List<Cliente> listarNoPropietarios(){
+        return PersistenciaCliente.getInstance().listarNoPropietarios();
+    }
+    public static void hacerPropietario(Cliente cliente) {
+        cliente.setEsPropietario(true);
+        modificarCliente(cliente);
+    }
+     public static void noEsMasPropietario(Cliente cliente) {
+        cliente.setEsPropietario(false);
+        modificarCliente(cliente);
+    }
+
     
+
 }

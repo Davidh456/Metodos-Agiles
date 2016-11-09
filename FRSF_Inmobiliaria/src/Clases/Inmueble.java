@@ -1,5 +1,5 @@
 package Clases;
-// Generated 08/11/2016 03:58:49 by Hibernate Tools 4.3.1
+// Generated 08-nov-2016 20:43:30 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -12,7 +12,7 @@ public class Inmueble  implements java.io.Serializable {
 
 
      private Integer id;
-     private Propietario propietario;
+     private Cliente cliente;
      private Float supInmueble;
      private Float supTerreno;
      private Boolean ac;
@@ -41,46 +41,13 @@ public class Inmueble  implements java.io.Serializable {
      private Integer provinciaIndice;
      private Boolean telefono;
      private Integer tipoInmueble;
-     private Set fotos = new HashSet(0);
+ //    private Set fotos = new HashSet(0);
 
     public Inmueble() {
     }
-
-    public Inmueble(Propietario propietario, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, Boolean telefono, Integer tipoInmueble, Set fotos) {
-       this.propietario = propietario;
-       this.supInmueble = supInmueble;
-       this.supTerreno = supTerreno;
-       this.ac = ac;
-       this.antiguedad = antiguedad;
-       this.bano = bano;
-       this.barrio = barrio;
-       this.cp = cp;
-       this.calle = calle;
-       this.depto = depto;
-       this.dormitorio = dormitorio;
-       this.fondo = fondo;
-       this.frente = frente;
-       this.garage = garage;
-       this.gn = gn;
-       this.lavadero = lavadero;
-       this.localidadIndice = localidadIndice;
-       this.localidadNombre = localidadNombre;
-       this.numero = numero;
-       this.observaciones = observaciones;
-       this.orientacion = orientacion;
-       this.patio = patio;
-       this.pavimento = pavimento;
-       this.piso = piso;
-       this.precio = precio;
-       this.provinciaNombre = provinciaNombre;
-       this.provinciaIndice = provinciaIndice;
-       this.telefono = telefono;
-       this.tipoInmueble = tipoInmueble;
-       this.fotos = fotos;
-    }
-
-    public Inmueble(Propietario propietario, float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, float Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
-        this.propietario = propietario;
+    
+    public Inmueble(Cliente cliente, float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, float Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+       this.cliente = cliente;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
        this.ac = Ac;
@@ -110,6 +77,44 @@ public class Inmueble  implements java.io.Serializable {
        this.telefono = Telefono;
        this.tipoInmueble = TipoInmueble;
     }
+    
+    public Inmueble(Cliente cliente, Float supInmueble, Float supTerreno, Boolean ac, Integer antiguedad, 
+                    Integer bano, String barrio, Integer cp, String calle, String depto, Integer dormitorio, 
+                    Float fondo, Float frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, 
+                    String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, 
+                    Boolean pavimento, String piso, Float precio, String provinciaNombre, Integer provinciaIndice, 
+                    Boolean telefono, Integer tipoInmueble/*, Set fotos*/) {
+       this.cliente = cliente;
+       this.supInmueble = supInmueble;
+       this.supTerreno = supTerreno;
+       this.ac = ac;
+       this.antiguedad = antiguedad;
+       this.bano = bano;
+       this.barrio = barrio;
+       this.cp = cp;
+       this.calle = calle;
+       this.depto = depto;
+       this.dormitorio = dormitorio;
+       this.fondo = fondo;
+       this.frente = frente;
+       this.garage = garage;
+       this.gn = gn;
+       this.lavadero = lavadero;
+       this.localidadIndice = localidadIndice;
+       this.localidadNombre = localidadNombre;
+       this.numero = numero;
+       this.observaciones = observaciones;
+       this.orientacion = orientacion;
+       this.patio = patio;
+       this.pavimento = pavimento;
+       this.piso = piso;
+       this.precio = precio;
+       this.provinciaNombre = provinciaNombre;
+       this.provinciaIndice = provinciaIndice;
+       this.telefono = telefono;
+       this.tipoInmueble = tipoInmueble;
+   //    this.fotos = fotos;
+    }
    
     public Integer getId() {
         return this.id;
@@ -118,12 +123,12 @@ public class Inmueble  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    public Propietario getPropietario() {
-        return this.propietario;
+    public Cliente getCliente() {
+        return this.cliente;
     }
     
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     public Float getSupInmueble() {
         return this.supInmueble;
@@ -321,14 +326,14 @@ public class Inmueble  implements java.io.Serializable {
     public void setTipoInmueble(Integer tipoInmueble) {
         this.tipoInmueble = tipoInmueble;
     }
-    public Set getFotos() {
+ /*   public Set getFotos() {
         return this.fotos;
     }
     
     public void setFotos(Set fotos) {
         this.fotos = fotos;
     }
-
+*/
 
 
 

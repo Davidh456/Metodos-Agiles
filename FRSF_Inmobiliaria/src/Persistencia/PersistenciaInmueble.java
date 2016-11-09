@@ -4,7 +4,6 @@ package Persistencia;
 import Clases.Cliente;
 import Clases.Foto;
 import Clases.Inmueble;
-import Clases.Propietario;
 import Conexion.Conexion;
 import Conexion.NewHibernateUtil;
 import java.util.List;
@@ -79,21 +78,21 @@ public class PersistenciaInmueble {
         }
         
         // criterios para el propietario
-        criteria.createAlias("inmueble.propietario", "propietario"); 
+        criteria.createAlias("inmueble.cliente", "idpropietario"); 
         if(!nombre.equals("")){
-            criteria.add(Restrictions.eq("propietario.nombre",nombre)); 
+            criteria.add(Restrictions.eq("idpropietario.nombre",nombre)); 
         }
         if(nroDoc!=-1){
-          criteria.add(Restrictions.eq("propietario.numeroDoc",nroDoc));  
+          criteria.add(Restrictions.eq("idpropietario.numeroDoc",nroDoc));  
         }
         if(tipoDoc!=0){
-            criteria.add(Restrictions.eq("propietario.tipoDoc",tipoDoc-1));  
+            criteria.add(Restrictions.eq("idpropietario.tipoDoc",tipoDoc-1));  
         }
         if(!correo.equals("")){
-          criteria.add(Restrictions.eqProperty("propietario.correo",correo));  
+          criteria.add(Restrictions.eqProperty("idpropietario.correo",correo));  
         }
         if(!apellido.equals("")){
-            criteria.add(Restrictions.eqProperty("propietario.apellido",apellido));
+            criteria.add(Restrictions.eqProperty("idpropietario.apellido",apellido));
         }
         resultado =criteria.list();
         session.close();
@@ -131,6 +130,6 @@ public class PersistenciaInmueble {
         session.save(imagen);
         tx.commit();
        session.close();
-         }
+    }
 
 }

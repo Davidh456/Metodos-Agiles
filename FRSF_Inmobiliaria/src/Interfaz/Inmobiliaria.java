@@ -5,7 +5,6 @@ package Interfaz;
 
 import Clases.Cliente;
 import Clases.Inmueble;
-import Clases.Propietario;
 import Conexion.Conexion;
 import Interfaz.*;
 import Logica.ABMInmueble;
@@ -121,9 +120,9 @@ public class Inmobiliaria extends JFrame{
 			}
         });
     }
-    public void AltaPropietario() {
+    public void AltaPropietario(Cliente nuevoPropietario) {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "alta", null,null);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "alta", nuevoPropietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -133,9 +132,9 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-    public void ModificacionPropietario(Propietario propietario) {
+    public void ModificacionPropietario(Cliente propietario) {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "modificacion", null,propietario);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "modificacion", propietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -145,9 +144,9 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-    public void BajaPropietario(Propietario propietario) {
+    public void BajaPropietario(Cliente propietario) {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "baja", null,propietario);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "baja", propietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -159,7 +158,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void AltaCliente() {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "alta", null,null);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "alta", null);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -171,7 +170,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void ModificacionCliente(Cliente cliente) {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "modificacion", cliente,null);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "modificacion", cliente);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
                                                         (contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
                                                         pantallaABM.getWidth(), 
@@ -183,7 +182,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void BajaCliente(Cliente cliente) {
         contentPane.removeAll();
-        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "baja", cliente,null);
+        ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "baja", cliente);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -289,7 +288,7 @@ public class Inmobiliaria extends JFrame{
 
 
     void ListarPropietarios(ABMInmuebleInterfaz aThis) {
-       contentPane.removeAll();
+        contentPane.removeAll();
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios("Propietario para el Inmueble", aThis);
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -301,8 +300,8 @@ public class Inmobiliaria extends JFrame{
         contentPane.revalidate();
     }
 
-    void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM, Propietario propietarioSelec) { 
-    contentPane.removeAll();
+    void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM, Cliente propietarioSelec) { 
+        contentPane.removeAll();
         pantallaABM.setPropietario(propietarioSelec);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -313,6 +312,17 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-
+    void ListarNoPropietarios(){
+        contentPane.removeAll();
+        SeleccionarPropietario pantallaListar = new SeleccionarPropietario();
+        pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
+							pantallaListar.getWidth(), 
+							pantallaListar.getHeight());
+        contentPane.add(pantallaListar);
+        pantallaListar.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
    
 }

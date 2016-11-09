@@ -49,6 +49,13 @@ public class PersistenciaCliente {
         tx.commit();
     }
     public List<Cliente> listarClientes(){
-        return session.createCriteria(Cliente.class).list();
+        return session.createCriteria(Cliente.class).add(Restrictions.eq("esPropietario",false)).list();
+    }
+    public List<Cliente> listarPropietarios(){
+        return session.createCriteria(Cliente.class).add(Restrictions.eq("esPropietario", true)).list();
+    }
+
+    public List<Cliente> listarNoPropietarios() {
+        return session.createCriteria(Cliente.class).add(Restrictions.eq("esPropietario", false)).list();
     }
 }

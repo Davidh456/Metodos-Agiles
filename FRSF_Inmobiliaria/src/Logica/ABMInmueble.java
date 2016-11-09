@@ -53,7 +53,7 @@ public class ABMInmueble {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
     }
 
-    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, float precio, Propietario propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
+    public boolean ModificarInmueble(int iDModif, float supInmueble, float supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, float fondo, float frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, float precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         int repetido= getRepetido(provinciaNombre,localidadNombre,calle,numero,piso,depto);
         if (repetido==iDModif || repetido==-1){
             if(antiguedad!=-1)
