@@ -41,7 +41,8 @@ public class Inmueble  implements java.io.Serializable {
      private Integer provinciaIndice;
      private Boolean telefono;
      private Integer tipoInmueble;
- //    private Set fotos = new HashSet(0);
+     private Set fotos = new HashSet(0);
+     private Set reservas = new HashSet(0);
 
     public Inmueble() {
     }

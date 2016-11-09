@@ -112,7 +112,7 @@ public class Inmobiliaria extends JFrame{
         this.addWindowListener(new WindowAdapter(){
                 public void windowClosing(WindowEvent e){
                         int opcion = JOptionPane.showOptionDialog(null, 
-                                        "ï¿½Seguro que quiere salir?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
+                                        "¿Seguro que quiere salir?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
                         if (opcion == 0){
 					System.exit(0);
 				}
@@ -324,5 +324,45 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
+
+    void ListarClientes(GenerarReservaInterfaz aThis) {
+        contentPane.removeAll();
+        ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios(aThis);
+        pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
+							pantallaListar.getWidth(), 
+							pantallaListar.getHeight());
+        contentPane.add(pantallaListar);
+        pantallaListar.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    void GenerarReserva(Inmueble inmSeleccionado) {
+        contentPane.removeAll();
+        GenerarReservaInterfaz pantallaReserva = new GenerarReservaInterfaz(inmSeleccionado);
+        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
+							pantallaReserva.getWidth(), 
+							pantallaReserva.getHeight());
+        contentPane.add(pantallaReserva);
+        pantallaReserva.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    void GenerarReserva(GenerarReservaInterfaz pantallaReserva, Cliente clienteRecuperado) {
+         contentPane.removeAll();
+         pantallaReserva.setCliente(clienteRecuperado);
+        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
+							pantallaReserva.getWidth(), 
+							pantallaReserva.getHeight());
+        contentPane.add(pantallaReserva);
+        pantallaReserva.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
    
 }

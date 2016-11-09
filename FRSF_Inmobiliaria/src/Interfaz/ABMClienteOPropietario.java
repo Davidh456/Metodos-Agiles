@@ -415,7 +415,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int opcion = JOptionPane.showOptionDialog(null, 
-                                        "ï¿Seguro que quiere eliminar al cliente "+cliente.getNombre()+"?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
+                                        "¿Seguro que quiere eliminar al cliente "+cliente.getNombre()+"?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
                 if (opcion == 0){
                     ABMCliente.bajaCliente(cliente);
                     JOptionPane.showMessageDialog(null, "El cliente "+cliente.getNombre()+" fue modificado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
