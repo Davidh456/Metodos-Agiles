@@ -151,7 +151,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblTipoInm" pref="19" max="32767" attributes="0"/>
+                                  <Component id="lblTipoInm" pref="75" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Component id="lblBarrio" min="-2" pref="112" max="-2" attributes="0"/>

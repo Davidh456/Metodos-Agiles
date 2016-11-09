@@ -42,7 +42,7 @@ public class LogicaReserva {
     }
 
     private void GenerarDocumento(Reserva nuevaReserva) throws IOException, DocumentException {
-        String dirPath = "C:\\Users\\maria\\Desktop";
+        String dirPath = "C:\\";
         String fileName = "Base reserva.pdf";
         HashMap fieldsWithValues = new HashMap();
         ByteArrayOutputStream baosPDF = new ByteArrayOutputStream();
@@ -63,14 +63,18 @@ public class LogicaReserva {
                 form.setField(fieldName, fieldValue);
                 form.setFieldProperty(fieldName, "setfflags", PdfFormField.FF_READ_ONLY, null);
                     
-                System.out.println(fieldName + " " + fieldValue);
+                //System.out.println(fieldName + " " + fieldValue);
             }
             stamper.setFormFlattening(true);
             stamper.close();
             reader.close();
             
             //Guardando cambios
-            OutputStream pdf = new FileOutputStream("C:\\Users\\maria\\Desktop\\Documento Reserva.pdf");
+            String nombre;
+            DateFormat fecha = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
+            nombre = fecha.format(nuevaReserva.getFechaHasta());
+            String nombreydir="C:\\Documento Reserva -"+ nombre +"-.pdf";
+            OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
             
@@ -83,20 +87,84 @@ public class LogicaReserva {
         DateFormat fecha = new SimpleDateFormat("dd-MM-yyyy");
         
         //DatosInmueble
-        datInmCli.put("ProvinciaInm", String.valueOf(inmu.getProvinciaNombre()));
-        datInmCli.put("LocalidadInm", String.valueOf(inmu.getLocalidadNombre()));
+        datInmCli.put("ProvinciaInm", inmu.getProvinciaNombre());
+        datInmCli.put("LocalidadInm", inmu.getLocalidadNombre());
         datInmCli.put("CP", String.valueOf(inmu.getCp()));
-        datInmCli.put("Calle", String.valueOf(inmu.getCalle()));
+        datInmCli.put("Calle", inmu.getCalle());
         datInmCli.put("Numero", String.valueOf(inmu.getNumero()));
-        datInmCli.put("Barrio", String.valueOf(inmu.getBarrio()));
-        datInmCli.put("Piso", String.valueOf(inmu.getPiso()));
-        datInmCli.put("Departamento", String.valueOf(inmu.getDepto()));
+        if(inmu.getBarrio().equals(""))
+            datInmCli.put("Barrio", "N/A");
+        else
+            datInmCli.put("Barrio", inmu.getBarrio());
+        if(inmu.getPiso().equals(""))
+            datInmCli.put("Piso", "N/A");
+        else
+            datInmCli.put("Piso", inmu.getPiso());
+        
+        if(inmu.getDepto().equals(""))
+            datInmCli.put("Departamento", "N/A");
+        else
+            datInmCli.put("Departamento", inmu.getDepto());
+        
+        
         datInmCli.put("LongFondo", String.valueOf(inmu.getFondo()));
         datInmCli.put("LongFrente", String.valueOf(inmu.getFrente()));
         datInmCli.put("SupTerreno", String.valueOf(inmu.getSupTerreno()));
         datInmCli.put("SupEdificada", String.valueOf(inmu.getSupInmueble()));
-        datInmCli.put("Orientacion", String.valueOf(inmu.getOrientacion()));
-        datInmCli.put("Antiguedad", String.valueOf(inmu.getAntiguedad()));
+        
+        
+        switch (inmu.getOrientacion()) {
+           case 0:
+                datInmCli.put("Orientacion","Este");
+                break;
+           case 1: 
+                datInmCli.put("Orientacion","Norte" );
+                break;
+           case 2:    
+                datInmCli.put("Orientacion","Noreste" );
+                break;
+           case 3:     
+                datInmCli.put("Orientacion","Noroeste" );
+                break;
+           case 4:     
+                datInmCli.put("Orientacion","Oeste" );
+                break;
+           case 5:     
+                datInmCli.put("Orientacion","Sur" );
+                break;
+           case 6:     
+                datInmCli.put("Orientacion","Sureste" );
+                break;
+           case 7:     
+                datInmCli.put("Orientacion","Suroeste" );
+                break;
+       }
+        if(inmu.getAntiguedad()==-1)
+            datInmCli.put("Antiguedad", "N/A");
+        else
+            datInmCli.put("Antiguedad", String.valueOf(inmu.getAntiguedad()));
+        
+        switch (inmu.getTipoInmueble()) {
+           case 0:
+                datInmCli.put("TipoInm", "Casa");
+                break;
+           case 1: 
+                datInmCli.put("TipoInm", "Departamento");
+                break;
+           case 2:    
+                datInmCli.put("TipoInm", "Galpon");
+                break;
+           case 3:     
+                datInmCli.put("TipoInm", "Local-Oficina");
+                break;
+           case 4:     
+                datInmCli.put("TipoInm", "Quinta");
+                break;
+           case 5:     
+                datInmCli.put("TipoInm", "Terreno");
+                break;
+       }
+        
         datInmCli.put("Dormitorios", String.valueOf(inmu.getDormitorio()));
         datInmCli.put("Banios", String.valueOf(inmu.getBano()));
         
@@ -135,18 +203,33 @@ public class LogicaReserva {
         else
             datInmCli.put("Pavimento", "No");
         
-        datInmCli.put("Observaciones", String.valueOf(inmu.getObservaciones()));
-        datInmCli.put("PracioInmueble", String.valueOf(inmu.getPrecio()));
+        datInmCli.put("Observaciones", inmu.getObservaciones());
+        datInmCli.put("PrecioInmueble", String.valueOf(inmu.getPrecio()));
         
         //DatosCliente
         datInmCli.put("Nombre", clie.getNombre());
         datInmCli.put("Apellido", clie.getApellido());
-        datInmCli.put("TipoDoc", String.valueOf(clie.getTipoDoc()));
+        
+        switch (clie.getTipoDoc()) {
+           case 0:
+                datInmCli.put("TipoDoc","DNI");
+                break;
+           case 1: 
+                datInmCli.put("TipoDoc","Pasaporte" );
+                break;
+           case 2:    
+                datInmCli.put("TipoDoc","LC" );
+                break;
+           case 3:     
+                datInmCli.put("TipoDoc","LE" );
+                break;
+       }
+        
         datInmCli.put("NroDoc", String.valueOf(clie.getNumeroDoc()));
-        datInmCli.put("Domicilio", String.valueOf(clie.getDomicilio()));
+        datInmCli.put("Domicilio", clie.getDomicilio());
         datInmCli.put("NroDomicilio", String.valueOf(clie.getAlturaDomicilio()));
-        datInmCli.put("Provincia", String.valueOf(clie.getProvincia().getProvincia()));
-        datInmCli.put("Localidad", String.valueOf(clie.getLocalidad().getLocalidad()));
+        datInmCli.put("Provincia", clie.getProvincia().getProvincia());
+        datInmCli.put("Localidad", clie.getLocalidad().getLocalidad());
         datInmCli.put("Telefono", String.valueOf(clie.getTelefono()));
         datInmCli.put("Email", String.valueOf(clie.getCorreo()));
         
@@ -155,6 +238,7 @@ public class LogicaReserva {
         datInmCli.put("FechaReserva", fecha.format(reserva.getFechaHasta()));
         return datInmCli;
     }
+
 
     public boolean ExisteReserva(Inmueble inmSeleccionado) {
         Date fechaHoy= new Date();
