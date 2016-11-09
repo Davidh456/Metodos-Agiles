@@ -104,7 +104,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Inmueble"));
         eliminarInmueble=inmSeleccionado;
-        
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
         setPropietario(inmSeleccionado.getCliente());
