@@ -7,9 +7,8 @@ package Logica;
 
 import Clases.Foto;
 import Clases.Inmueble;
-import Clases.Propietario;
+import Clases.Cliente;
 import Persistencia.PersistenciaInmueble;
-import Persistencia.PersistenciaPropietario;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
@@ -27,12 +26,15 @@ public class ABMInmueble {
     
     PersistenciaInmueble BDInmueble = new PersistenciaInmueble();
     
-    public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, Vector<String> ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion,  boolean Patio, boolean Pavimento, String Piso, float Precio, Propietario propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+    public boolean AltaInmueble(float supInmueble, float supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, float Fondo, float Frente, boolean Garage, boolean Gn, boolean Lavadero, Vector<String> ListaFotos, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion,  boolean Patio, boolean Pavimento, String Piso, float Precio, Cliente propietario, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
     int repetido = getRepetido(ProvinciaNombre,LocalidadNombre,Calle,Numero,Piso,Depto);
     if(Antiguedad!=-1)
         Antiguedad=2016-Antiguedad;
     if (repetido==-1){
-        Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  Lavadero,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
+        Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  
+                Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  
+                Lavadero,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  
+                Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
         BDInmueble.AltaInmueble(casa);
         conversionFotos(ListaFotos, casa);
         
