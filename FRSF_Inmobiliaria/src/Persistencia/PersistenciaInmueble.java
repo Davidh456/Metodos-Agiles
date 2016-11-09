@@ -4,7 +4,6 @@ package Persistencia;
 import Clases.Cliente;
 import Clases.Foto;
 import Clases.Inmueble;
-import Clases.Propietario;
 import Clases.Reserva;
 import Conexion.Conexion;
 import Conexion.NewHibernateUtil;
