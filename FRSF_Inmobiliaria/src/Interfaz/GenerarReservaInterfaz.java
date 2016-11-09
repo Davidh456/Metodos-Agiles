@@ -9,9 +9,15 @@ package Interfaz;
 import Clases.Cliente;
 import Clases.Inmueble;
 import Logica.LogicaReserva;
+import Logica.Validaciones;
+import com.itextpdf.text.DocumentException;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
@@ -24,6 +30,12 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     /** Creates new form GenerarReservaInterfaz */
     Inmueble inmuebleReservado;
     Cliente clienteReserva;
+    Validaciones validaciones = new Validaciones();
+    JTextField[] camposObligatorios;
+    JLabel[] lblCamposObligatorios;
+    
+    JTextField[] camposFlotantes;
+    JLabel[] labelFlotantes;
     public GenerarReservaInterfaz() {
         initComponents();
     }
@@ -32,6 +44,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     GenerarReservaInterfaz(Inmueble inmSeleccionado) {
        inmuebleReservado=inmSeleccionado;
        initComponents(); 
+       sintaxis();
+       validarCargaCliente();
        setSize(getPreferredSize());
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());
@@ -85,11 +99,11 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         lblApellido = new javax.swing.JLabel();
         lblNumDoc = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabe29 = new javax.swing.JLabel();
+        lblmontoReserva = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        montoReserv = new javax.swing.JTextField();
+        montoReserva = new javax.swing.JTextField();
         tiempoValidez = new javax.swing.JSpinner();
-        jButton2 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Reserva"));
@@ -218,6 +232,11 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         jLabel27.setText("Nº Documento:");
 
         lblNombre.setText("Ninguno");
+        lblNombre.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblNombrePropertyChange(evt);
+            }
+        });
 
         lblApellido.setText("Ninguno");
 
@@ -258,9 +277,17 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de la Reserva"));
 
-        jLabe29.setText("Monto de Reserva");
+        lblmontoReserva.setText("Monto de Reserva");
 
         jLabel23.setText("Tiempo de Validez (dias)");
+
+        montoReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                montoReservaActionPerformed(evt);
+            }
+        });
+
+        tiempoValidez.setModel(new javax.swing.SpinnerNumberModel(15, 15, 90, 1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -268,9 +295,9 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabe29)
+                .addComponent(lblmontoReserva)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(montoReserv, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(montoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -281,22 +308,28 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jLabe29)
-                    .addComponent(jLabel23)
-                    .addComponent(montoReserv, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(montoReserva)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(lblmontoReserva)
+                        .addComponent(jLabel23)
+                        .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton2.setText("Aceptar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAceptar.setText("Aceptar");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAceptarActionPerformed(evt);
             }
         });
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -314,7 +347,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addGap(62, 62, 62)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
@@ -330,7 +363,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -342,10 +375,34 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         Inmobiliaria.getInstance().ListarClientes(this);
     }//GEN-LAST:event_BSelecPropActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+       
+        if(camposValidos()){
         LogicaReserva operador = new LogicaReserva();
-        operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
-    }//GEN-LAST:event_jButton2ActionPerformed
+            try {
+                operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
+                JOptionPane.showMessageDialog(null, "El Inmueble a sido correctamente reservado","Exito",JOptionPane.INFORMATION_MESSAGE);
+                Inmobiliaria.getInstance().ConsultaInmueble();
+            } catch (IOException ex) {
+                Logger.getLogger(GenerarReservaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(GenerarReservaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+    }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Inmobiliaria.getInstance().ConsultaInmueble();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void montoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoReservaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_montoReservaActionPerformed
+
+    private void lblNombrePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombrePropertyChange
+        validarCargaCliente();
+    }//GEN-LAST:event_lblNombrePropertyChange
 
     public void setLblApellido(String lblApellido) {
         this.lblApellido.setText(lblApellido);
@@ -386,7 +443,6 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
 
     public void setLblPiso(String capturado) {
-        System.out.println(capturado + "esto es el piso q me llega");
         if(capturado.equals("")){
             this.lblPiso.setText("N/A");
          }else
@@ -425,7 +481,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
 
     public void setMontoReserv(JTextField montoReserv) {
-        this.montoReserv = montoReserv;
+        this.montoReserva = montoReserv;
     }
 
     public void setTiempoValidez(JSpinner tiempoValidez) {
@@ -436,7 +492,10 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
    
     private Float getMontoReserva(){
-        return Float.parseFloat(this.montoReserv.getText());
+        return Float.parseFloat(this.montoReserva.getText());
+    }
+    private void sintaxis(){
+        validaciones.CaracteresMaximos(montoReserva, 9, "float");
     }
     private Date getTiempoValidez(){
         int dias;
@@ -447,13 +506,30 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
         return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
     }
+    private boolean camposValidos() {
+        camposFlotantes = new JTextField[]{montoReserva};
+        labelFlotantes = new JLabel[]{lblmontoReserva};
+        camposObligatorios = new JTextField[]{montoReserva};
+        lblCamposObligatorios = new JLabel[]{lblmontoReserva};
+                String mensaje="";
+                if(validaciones.CamposVacios(camposObligatorios, null)){
+                    mensaje = mensaje + "Hay campos obligatorios que deben ser completados";
+                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
+                }
+                if(validaciones.validarPintadorFlotantes(camposFlotantes, labelFlotantes))
+                    mensaje = mensaje + "\n" + "Hay campos numericos invalidos";
+
+                if(!mensaje.equals("")){
+                    JOptionPane.showMessageDialog(null,mensaje,"¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+                    return false;}
+    return true;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BSelecProp;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabe28;
-    private javax.swing.JLabel jLabe29;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -483,7 +559,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTipoInm;
-    private javax.swing.JTextField montoReserv;
+    private javax.swing.JLabel lblmontoReserva;
+    private javax.swing.JTextField montoReserva;
     private javax.swing.JSpinner tiempoValidez;
     // End of variables declaration//GEN-END:variables
 
@@ -493,6 +570,13 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
          setLblApellido(clienteRecuperado.getApellido());
          setNumDoc(clienteRecuperado.getNumeroDoc());
          
+    }
+
+    private void validarCargaCliente() {
+     if(lblNombre.getText().equals("Ninguno")){
+            btnAceptar.setEnabled(false);
+        }else
+            btnAceptar.setEnabled(true);
     }
 
 }

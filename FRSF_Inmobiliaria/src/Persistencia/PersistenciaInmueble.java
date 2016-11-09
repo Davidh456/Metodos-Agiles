@@ -143,4 +143,14 @@ public class PersistenciaInmueble {
        session.close();
     }
 
+    public List<Reserva> existenReservas(Inmueble inmSeleccionado) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Criteria criteria = session.createCriteria(Reserva.class, "reserva");
+        criteria.createAlias("reserva.inmueble", "inmueble");
+        criteria.add(Restrictions.eq("inmueble.id",inmSeleccionado.getId()));
+        return criteria.list();
+    }
+
 }

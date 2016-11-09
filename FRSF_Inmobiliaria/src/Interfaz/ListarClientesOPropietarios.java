@@ -165,7 +165,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        Inmobiliaria.getInstance().MenuPrincipal();
+
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -275,6 +275,13 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             }
             
         });
+        btnVolver.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().MenuPrincipal();
+            }
+            
+        });
     }
     private void setearAccionesPropietarios() {
         btnEliminar.addActionListener(new ActionListener(){
@@ -304,78 +311,47 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             }
             
         });
+        btnVolver.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().MenuPrincipal();
+            }
+            
+        });
     }
 
     private void setearAccionesPropietariosInmueble(ABMInmuebleInterfaz aThis) {
-         /*
-        btnEliminar.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
-                }
-        });
-        */
-         btnEliminar.setVisible(false);
-        /*
-         btnModificar.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
-                }
-            });
-            */
+        btnEliminar.setVisible(false);
         btnModificar.setVisible(false);
         btnAgregar.setText("Seleccionar");
         btnAgregar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 Inmobiliaria.getInstance().AltaOModificarInmueble(aThis, listaPropietarios.get(tbLista.getSelectedRow()));
-            }
-            
+            } 
+        });
+         btnVolver.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().AltaOModificarInmueble(aThis);
+            } 
         });
         }
 private void setearAccionesClientesReserva(GenerarReservaInterfaz aThis) {
-         /*
-        btnEliminar.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
-                }
-        });
-        */
-         btnEliminar.setVisible(false);
-        /*
-         btnModificar.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
-                }
-            });
-            */
+        btnEliminar.setVisible(false);
         btnModificar.setVisible(false);
         btnAgregar.setText("Seleccionar");
         btnAgregar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                 Inmobiliaria.getInstance().GenerarReserva(aThis, listaClientes.get(tbLista.getSelectedRow()));
-            }
-            
+            } 
+        });
+        btnVolver.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().GenerarReserva(aThis);
+            } 
         });
         }
   

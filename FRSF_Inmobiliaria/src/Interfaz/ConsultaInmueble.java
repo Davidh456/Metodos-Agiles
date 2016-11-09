@@ -11,6 +11,7 @@ import Clases.Localidad;
 import Clases.Provincia;
 import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
+import Logica.LogicaReserva;
 import Logica.Validaciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -616,9 +617,18 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservaActionPerformed
+       
+        boolean tieneReserva;
         Inmueble inmSeleccionado;
         inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        LogicaReserva operador = new LogicaReserva();
+        tieneReserva=operador.ExisteReserva(inmSeleccionado);
+        if(!tieneReserva){
         Inmobiliaria.getInstance().GenerarReserva(inmSeleccionado);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El Inmueble ya se encuentra reservado","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonReservaActionPerformed
 
     private void HabilitarBotones(){
