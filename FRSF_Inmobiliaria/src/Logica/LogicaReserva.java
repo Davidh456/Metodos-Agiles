@@ -239,8 +239,7 @@ public class LogicaReserva {
         datInmCli.put("FechaReserva", fecha.format(reserva.getFechaHasta()));
         return datInmCli;
     }
-
-
+    
     public boolean ExisteReserva(Inmueble inmSeleccionado) {
         Date fechaHoy= new Date();
         List<Reserva> reservas;
@@ -251,5 +250,9 @@ public class LogicaReserva {
             }
         }
         return false;
+    }
+    
+    public void EliminarReserva(int id) {
+        BDInmueble.EliminarReservaBD(id);
     }
 }

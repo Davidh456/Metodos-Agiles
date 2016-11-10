@@ -31,12 +31,10 @@ public class ABMInmueble {
     if(Antiguedad!=-1)
         Antiguedad=2016-Antiguedad;
     if (repetido==-1){
-        System.out.println("Precio en abminmueble: " + Precio);
         Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  
                 Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  
                 Lavadero,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  
                 Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble, 0);
-        System.out.println("Precio en abminmueble despues de crear objeto: " + casa.getPrecio());
         BDInmueble.AltaInmueble(casa);
         conversionFotos(ListaFotos, casa);
         

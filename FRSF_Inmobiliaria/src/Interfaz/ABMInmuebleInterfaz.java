@@ -12,6 +12,7 @@ import Clases.Provincia;
 import Logica.Validaciones;
 import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
+import Logica.LogicaReserva;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -67,7 +68,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));  
-        System.out.println("El indice seteado en el combobox es de:" + inmSeleccionado.getLocalidadIndice());
         modificarInmueble=inmSeleccionado;
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
@@ -203,8 +203,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         Vector<String> archivos= new Vector<String>();
         
         for(int i=0; i<ListaFotos.getRowCount();i++){
-            //System.out.println((String) ListaFotos.getValueAt(i, 0));
-             //System.out.println(((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());       
             archivos.add((String) ListaFotos.getValueAt(i, 0));//agrega el nombre de la imagen primero
             archivos.add( ((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());//agrega luego el nombre de la direccion
         }
@@ -1038,6 +1036,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         String titulo = ((javax.swing.border.TitledBorder) getBorder()).getTitle();
         boolean resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
+        LogicaReserva operador2 = new LogicaReserva();
         if (titulo.equals("Alta Inmueble")){
             if(camposValidos()){
             resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
@@ -1056,7 +1055,12 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble(),getEstado());
             if(resultado){
                 if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-                    Inmobiliaria.getInstance().ConsultaInmueble();
+                {
+                    if(getEstado()==0)
+                    {
+                        operador2.EliminarReserva(iDModif);
+                    }
+                    Inmobiliaria.getInstance().ConsultaInmueble();}
                 else
                     Inmobiliaria.getInstance().MenuPrincipal();
             }
@@ -1065,7 +1069,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             }
         }}
         if (titulo.equals("Eliminar Inmueble")){
-            System.out.println("entro a eliminar");
             resultado=operador.EliminarInmueble(eliminarInmueble);
                    if(resultado){
                         if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)

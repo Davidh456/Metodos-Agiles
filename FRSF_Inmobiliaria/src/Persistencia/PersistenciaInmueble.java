@@ -16,14 +16,8 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 public class PersistenciaInmueble {
- /* //TODO problemas con mantener la sesion abierta, no perite eliminar
-    public PersistenciaInmueble(){
-        super();
-        session = Conexion.getInstance().getSession(); //cargar la sesión para ahorrar código
-    }
-  */
+    
     public boolean AltaInmueble(Inmueble casa){
-        System.out.println("Precio en abminmueble justo antes de dar alta: " + String.valueOf(casa.getPrecio()));
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
         session=sesion.openSession();
@@ -107,7 +101,6 @@ public class PersistenciaInmueble {
         Session session;
         session=sesion.openSession();
         Transaction tx = session.beginTransaction();
-         System.out.println(inmuebleModificado.getId());
         session.update(inmuebleModificado);
         tx.commit();
         session.close();
@@ -153,6 +146,19 @@ public class PersistenciaInmueble {
         criteria.createAlias("reserva.inmueble", "inmueble");
         criteria.add(Restrictions.eq("inmueble.id",inmSeleccionado.getId()));
         return criteria.list();
+    }
+    
+    public void EliminarReservaBD(int id) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Reserva.class,"reserva");
+        criteria.createAlias("reserva.inmueble", "inmueble");
+        criteria.add(Restrictions.eq("inmueble.id",id));
+        session.delete(criteria.list().get(0));
+        tx.commit();
+        session.close();
     }
 
 }
