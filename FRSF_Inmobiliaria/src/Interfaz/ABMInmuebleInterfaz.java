@@ -1333,13 +1333,12 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         String resultado = String.format("%.2f", Precio);
         if ((Precio - (int)Precio)<0.00)
             this.Precio.setText(String.valueOf((int) Precio).replace(',', '.'));
-        else
+        else{
             if(Precio<=999999999)
                 this.Precio.setText(resultado.replace(',', '.'));
             else
                 resultado = String.format("%.1f", Precio);
-                this.Precio.setText(resultado.replace(',', '.'));
-        //this.Precio.setText(String.valueOf(Precio));
+                this.Precio.setText(resultado.replace(',', '.'));}
     }
 
     private void setTelefono(boolean Telefono) {

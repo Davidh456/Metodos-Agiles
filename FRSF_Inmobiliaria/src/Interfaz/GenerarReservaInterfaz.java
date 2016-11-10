@@ -453,13 +453,12 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         String resultado = String.format("%.2f", capturado);
         if ((capturado - (int)capturado)<0.00)
             this.lblPrecio.setText(String.valueOf((int) capturado).replace(',', '.'));
-        else
+        else{
             if(capturado<=999999999)
                 this.lblPrecio.setText(resultado.replace(',', '.'));
             else
                 resultado = String.format("%.1f", capturado);
-                this.lblPrecio.setText(resultado.replace(',', '.'));
-        //this.lblPrecio.setText(String.valueOf(capturado));
+                this.lblPrecio.setText(resultado.replace(',', '.'));}
     }
 
     public void setLblProvincia(String capturado) {
