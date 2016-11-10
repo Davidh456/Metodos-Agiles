@@ -12,6 +12,7 @@ import Clases.Provincia;
 import Logica.Validaciones;
 import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -26,6 +27,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,6 +47,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     Validaciones validaciones = new Validaciones();
     private int iDModif;
+    private int qReserva;
+    private Inmueble modificarInmueble;
     private Inmueble eliminarInmueble;
     private Cliente propietarioAux; //esto se debe perfeccionar
     // Creates new form ABMInmuebleInterfaz   
@@ -54,7 +58,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
-        
+        setBtnQReserva(false);
     }
     public  ABMInmuebleInterfaz(Inmueble inmSeleccionado) {
         initComponents();
@@ -64,6 +68,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Modificar Inmueble"));  
         System.out.println("El indice seteado en el combobox es de:" + inmSeleccionado.getLocalidadIndice());
+        modificarInmueble=inmSeleccionado;
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+" "+ inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
         setPropietario(inmSeleccionado.getCliente());
@@ -95,6 +100,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
+        if(inmSeleccionado.getEstado()!= 1)
+            setBtnQReserva(false);
+        else
+            setBtnQReserva(true);
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -135,6 +144,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
+        setBtnQReserva(false);
         deshabilitarCampos();
         
     }
@@ -249,6 +259,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -326,6 +337,9 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaFotos = new javax.swing.JTable();
         BElimFotos = new javax.swing.JButton();
+        btnQReserva = new javax.swing.JButton();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cargar Inmueble"));
 
@@ -794,6 +808,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             }
         });
 
+        btnQReserva.setText("Quitar Reserva");
+        btnQReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQReservaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -822,56 +843,59 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Observaciones, javax.swing.GroupLayout.Alignment.LEADING))))
-                .addGap(18, 18, 18)
+                            .addComponent(Observaciones, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel5)
+                        .addGap(25, 25, 25)
+                        .addComponent(btnQReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(BAdjFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(BElimFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Antiguedad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(CPLbl)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(CP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel35))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel14)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TipoInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(PrecioLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel34)))
-                                .addGap(16, 16, 16))))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(BCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BAceptar)
-                        .addContainerGap())
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BAceptar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(3, 3, 3)
+                                    .addComponent(BAdjFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(BElimFotos, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap())
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Antiguedad, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(55, 55, 55))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(CPLbl)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(CP, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel35))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel14)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(TipoInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(PrecioLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(Precio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jLabel34)))
+                                    .addGap(16, 16, 16)))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -927,8 +951,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(BCancelar)
-                    .addComponent(BAceptar)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnQReserva)
+                        .addComponent(BCancelar)
+                        .addComponent(BAceptar))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1020,14 +1046,14 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                     Inmobiliaria.getInstance().AltaInmueble();
                 else
                     Inmobiliaria.getInstance().MenuPrincipal();
-        }
+                }
         else {
             JOptionPane.showMessageDialog(null, "El inmueble no se ha podido cargar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
         }}
         }
         if (titulo.equals("Modificar Inmueble")){
             if(camposValidos()){
-            resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+            resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble(),getEstado());
             if(resultado){
                 if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                     Inmobiliaria.getInstance().ConsultaInmueble();
@@ -1046,10 +1072,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                             Inmobiliaria.getInstance().ConsultaInmueble();
                         else
                             Inmobiliaria.getInstance().MenuPrincipal();
-                   }
-            else {
-                JOptionPane.showMessageDialog(null, "El inmueble no se ha podido Eliminar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
-            }
+                    }
         }
     }//GEN-LAST:event_BAceptarActionPerformed
 
@@ -1063,6 +1086,16 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         model.setRowCount(ListaFotos.getSelectedRow());
     }
     }//GEN-LAST:event_BElimFotosActionPerformed
+
+    private void btnQReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQReservaActionPerformed
+        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea quitar la reserva del inmueble?", "¡Atencion!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {            this.btnQReserva.setEnabled(false);
+                     this.btnQReserva.setText("Reserva establecida para ser eliminada");
+                     this.btnQReserva.setBackground(new Color(250,180,180));
+                     this.btnQReserva.setBorder(new LineBorder(new Color(255,0,20)));
+                     qReserva=1;
+        }
+    }//GEN-LAST:event_btnQReservaActionPerformed
 
     private void sintaxis(){
         validaciones.CaracteresMaximos(CP,5,"numerico");
@@ -1163,8 +1196,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel PropietarioLbl;
     private javax.swing.JCheckBox Telefono;
     private javax.swing.JComboBox<String> TipoInmueble;
+    private javax.swing.JButton btnQReserva;
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1363,6 +1398,16 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     private void setSupTerreno(double supTerreno) {
         this.supTerreno.setText(String.valueOf(supTerreno));
+    }
+
+    private int getEstado() {
+        if (qReserva==1)
+            return 0;
+        return modificarInmueble.getEstado();
+    }
+
+    private void setBtnQReserva(boolean b) {
+        this.btnQReserva.setVisible(b);
     }
     
 }

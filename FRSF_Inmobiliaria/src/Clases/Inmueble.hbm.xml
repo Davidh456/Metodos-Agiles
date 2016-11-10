@@ -95,6 +95,9 @@
         <property name="tipoInmueble" type="java.lang.Integer">
             <column name="TipoInmueble" />
         </property>
+        <property name="Estado" type="java.lang.Integer">
+            <column name="Estado" />
+        </property>
   <!--      <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="idInmueble" not-null="true" />

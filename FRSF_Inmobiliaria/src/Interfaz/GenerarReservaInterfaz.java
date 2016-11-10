@@ -379,6 +379,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
        
         if(camposValidos()){
         LogicaReserva operador = new LogicaReserva();
+        inmuebleReservado.setEstado(1);
             try {
                 operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
                 JOptionPane.showMessageDialog(null, "El Inmueble a sido correctamente reservado","Exito",JOptionPane.INFORMATION_MESSAGE);

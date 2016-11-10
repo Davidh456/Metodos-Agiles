@@ -43,11 +43,12 @@ public class Inmueble  implements java.io.Serializable {
      private Integer tipoInmueble;
      private Set fotos = new HashSet(0);
      private Set reservas = new HashSet(0);
+     private Integer Estado;
 
     public Inmueble() {
     }
     
-    public Inmueble(Cliente cliente, double supInmueble, double supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, double Fondo, double Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, double Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble) {
+    public Inmueble(Cliente cliente, double supInmueble, double supTerreno, boolean Ac, int Antiguedad, int Bano, String Barrio, int CP, String Calle, String Depto, int Dormitorio, double Fondo, double Frente, boolean Garage, boolean Gn, boolean Lavadero, int LocalidadIndice, String LocalidadNombre, int Numero, String Observaciones, int Orientacion, boolean Patio, boolean Pavimento, String Piso, double Precio, String ProvinciaNombre, int ProvinciaIndice, boolean Telefono, int TipoInmueble, int Estado) {
        this.cliente = cliente;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
@@ -77,6 +78,7 @@ public class Inmueble  implements java.io.Serializable {
        this.provinciaIndice = ProvinciaIndice;
        this.telefono = Telefono;
        this.tipoInmueble = TipoInmueble;
+       this.Estado = Estado;
     }
     
     public Inmueble(Cliente cliente, double supInmueble, double supTerreno, Boolean ac, Integer antiguedad, 
@@ -84,7 +86,7 @@ public class Inmueble  implements java.io.Serializable {
                     double fondo, double frente, Boolean garage, Boolean gn, Boolean lavadero, Integer localidadIndice, 
                     String localidadNombre, Integer numero, String observaciones, Integer orientacion, Boolean patio, 
                     Boolean pavimento, String piso, double precio, String provinciaNombre, Integer provinciaIndice, 
-                    Boolean telefono, Integer tipoInmueble/*, Set fotos*/) {
+                    Boolean telefono, Integer tipoInmueble, Integer Estado/*, Set fotos*/) {
        this.cliente = cliente;
        this.supInmueble = supInmueble;
        this.supTerreno = supTerreno;
@@ -114,6 +116,7 @@ public class Inmueble  implements java.io.Serializable {
        this.provinciaIndice = provinciaIndice;
        this.telefono = telefono;
        this.tipoInmueble = tipoInmueble;
+       this.Estado = Estado;
    //    this.fotos = fotos;
     }
    
@@ -327,6 +330,15 @@ public class Inmueble  implements java.io.Serializable {
     public void setTipoInmueble(Integer tipoInmueble) {
         this.tipoInmueble = tipoInmueble;
     }
+    
+    public Integer getEstado() {
+        return this.Estado;
+    }
+    
+    public void setEstado(Integer Estado) {
+        this.Estado = Estado;
+    }
+    
     public String getIdDescritivo(){
         String IdDescriptivo="";
         IdDescriptivo=IdDescriptivo+ String.valueOf(cp);

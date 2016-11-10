@@ -638,12 +638,12 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     private void BotonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservaActionPerformed
        
-        boolean tieneReserva;
+        //boolean tieneReserva;
         Inmueble inmSeleccionado;
         inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
-        LogicaReserva operador = new LogicaReserva();
-        tieneReserva=operador.ExisteReserva(inmSeleccionado);
-        if(!tieneReserva){
+        //LogicaReserva operador = new LogicaReserva();
+        //tieneReserva=operador.ExisteReserva(inmSeleccionado);
+        if(inmSeleccionado.getEstado()!=1){
         Inmobiliaria.getInstance().GenerarReserva(inmSeleccionado);
         }
         else{
