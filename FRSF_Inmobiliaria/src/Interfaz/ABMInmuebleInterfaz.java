@@ -1072,7 +1072,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         validaciones.CaracteresMaximos(Depto, 4, "alfaNumerico");
         validaciones.CaracteresMaximos(Barrio, 40, "alfaNumerico");
         validaciones.CaracteresMaximos(Observaciones,200,"alfaNumerico");
-        validaciones.CaracteresMaximos(Precio, 10, "double");
+        validaciones.CaracteresMaximos(Precio, 12, "double");
         validaciones.CaracteresMaximos(Frente, 8, "double");
         validaciones.CaracteresMaximos(Fondo, 8, "double");
         validaciones.CaracteresMaximos(supInmueble, 10, "double"); 
@@ -1334,7 +1334,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         if ((Precio - (int)Precio)<0.00)
             this.Precio.setText(String.valueOf((int) Precio).replace(',', '.'));
         else
-            if(Precio<=9999999)
+            if(Precio<=999999999)
                 this.Precio.setText(resultado.replace(',', '.'));
             else
                 resultado = String.format("%.1f", Precio);

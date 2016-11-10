@@ -454,7 +454,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         if ((capturado - (int)capturado)<0.00)
             this.lblPrecio.setText(String.valueOf((int) capturado).replace(',', '.'));
         else
-            if(capturado<=9999999)
+            if(capturado<=999999999)
                 this.lblPrecio.setText(resultado.replace(',', '.'));
             else
                 resultado = String.format("%.1f", capturado);
@@ -504,7 +504,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         return Double.parseDouble(this.montoReserva.getText());
     }
     private void sintaxis(){
-        validaciones.CaracteresMaximos(montoReserva, 9, "double");
+        validaciones.CaracteresMaximos(montoReserva, 12, "double");
     }
     private Date getTiempoValidez(){
         int dias;

@@ -66,8 +66,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         return Double.parseDouble(PrecioDesde.getText());
     }
     private double getPrecioHasta() {
-        if(PrecioDesde.getText().equals("")){
-            return 999999999;
+        double a=999999999999d;
+        if(PrecioHasta.getText().equals("")){
+            return (a);
         }
         return Double.parseDouble(PrecioHasta.getText());
     }
@@ -112,8 +113,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }
     
     private void sintaxis(){
-        validaciones.CaracteresMaximos(PrecioDesde, 9, "double");
-        validaciones.CaracteresMaximos(PrecioHasta,9,"double");
+        validaciones.CaracteresMaximos(PrecioDesde, 12, "double");
+        validaciones.CaracteresMaximos(PrecioHasta,12,"double");
         validaciones.CaracteresMaximos(Apellido, 100, "alfabetico");
         validaciones.CaracteresMaximos(Nombre, 100, "alfabetico");
         validaciones.CaracteresMaximos(NroDoc, 8, "numerico");
