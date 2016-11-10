@@ -573,13 +573,22 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_TablaResultadosPropertyChange
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String Garage, Patio;
         DefaultTableModel model = (DefaultTableModel) TablaResultados.getModel();
         model.setRowCount(0);
         resultado=null;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
         if(!resultado.isEmpty()){
-        for(Inmueble c: resultado){          
+        for(Inmueble c: resultado){   
+            if(c.getGarage())
+                Garage ="Si";
+            else
+                Garage="No";
+            if(c.getPatio())
+                Patio ="Si";
+            else
+                Patio="No";
                     model.addRow(new Object[]{
                         false, 
                         "codigo", 
@@ -587,9 +596,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         c.getProvinciaNombre(),
                         c.getLocalidadNombre(), 
                         c.getCalle(), 
-                        c.getDormitorio(), 
-                        c.getGarage(), 
-                        c.getPatio(),
+                        c.getDormitorio(), Garage, 
+                        Patio,
                         c.getSupInmueble(),
                         c.getPrecio()});
         }}

@@ -204,7 +204,7 @@ public class LogicaReserva {
             datInmCli.put("Pavimento", "No");
         
         datInmCli.put("Observaciones", inmu.getObservaciones());
-        datInmCli.put("PrecioInmueble", String.valueOf(inmu.getPrecio()));
+        datInmCli.put("PrecioInmueble", String.valueOf(String.format("%.2f", inmu.getPrecio()).replace(',', '.')));
         
         //DatosCliente
         datInmCli.put("Nombre", clie.getNombre());
@@ -234,7 +234,7 @@ public class LogicaReserva {
         datInmCli.put("Email", String.valueOf(clie.getCorreo()));
         
         //DatosReserva
-        datInmCli.put("MontoReserva", String.valueOf(reserva.getImporte()));
+        datInmCli.put("MontoReserva", String.valueOf(String.format("%.2f", reserva.getImporte()).replace(',', '.')));
         datInmCli.put("FechaReserva", fecha.format(reserva.getFechaHasta()));
         return datInmCli;
     }
