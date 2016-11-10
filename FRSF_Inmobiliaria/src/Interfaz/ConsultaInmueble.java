@@ -575,6 +575,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         String Garage, Patio;
+        String resultadoPrecio;
         DefaultTableModel model = (DefaultTableModel) TablaResultados.getModel();
         model.setRowCount(0);
         resultado=null;
@@ -590,6 +591,17 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 Patio ="Si";
             else
                 Patio="No";
+            
+            if ((c.getPrecio() - (int)c.getPrecio())<0.00)
+                resultadoPrecio=String.valueOf((int) c.getPrecio()).replace(',', '.');
+            else{
+                if(c.getPrecio()<=999999999){
+                    resultadoPrecio = String.format("%.2f", c.getPrecio());
+                    resultadoPrecio = resultadoPrecio.replace(',', '.');}
+                else{
+                    resultadoPrecio = String.format("%.1f", c.getPrecio());
+                    resultadoPrecio = resultadoPrecio.replace(',', '.');}}
+                             
                     model.addRow(new Object[]{
                         false, 
                         "codigo", 
@@ -600,7 +612,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         c.getDormitorio(), Garage, 
                         Patio,
                         c.getSupInmueble(),
-                        c.getPrecio()});
+                        resultadoPrecio});
         }}
         else
             JOptionPane.showMessageDialog(null,"No se han encontrado inmuebles con las características deseadas","Atención",JOptionPane.INFORMATION_MESSAGE);       
