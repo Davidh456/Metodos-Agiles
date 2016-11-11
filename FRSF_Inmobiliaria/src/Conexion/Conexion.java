@@ -10,41 +10,42 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 public class Conexion {
-        private static Conexion instancia;
-        private SessionFactory sesion;
-        private Session session;
-        
-        public Conexion(){
-            super();
-            this.startSesion();
-            this.startSession();
+    private static Conexion instancia;
+    private SessionFactory sesion;
+    private Session session;
+
+    public Conexion(){
+        super();
+        this.startSesion();
+        this.openSession();
+    }
+    public static Conexion getInstance(){
+        if(instancia == null){
+            instancia = new Conexion();
         }
-        public static Conexion getInstance(){
-            if(instancia == null){
-                instancia = new Conexion();
-            }
-            return instancia;
+        return instancia;
+    }
+    public void startSesion(){
+        sesion = NewHibernateUtil.getSessionFactory();
+    }
+    public SessionFactory getSesion(){
+        if(sesion == null){
+            startSesion();
         }
-        public void startSesion(){
-            sesion = NewHibernateUtil.getSessionFactory();
+        return sesion;
+    }
+    public Session getSession(){
+        if(session == null){
+            openSession();
         }
-        public SessionFactory getSesion(){
-            if(sesion == null){
-                startSesion();
-            }
-            return sesion;
-        }
-        public void startSession(){
-            session = sesion.openSession();
-        }
-        public Session getSession(){
-            if(session == null){
-                startSession();
-            }
-            return session;
-        }
-        public void closeSession(){
-            session.close();
-        }
-        
+        return session;
+    }
+    public void closeSession(){
+        session.close();
+    }
+
+    public void openSession() {
+        session = sesion.openSession();
+    }
+
 }

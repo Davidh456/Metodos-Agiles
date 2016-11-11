@@ -8,6 +8,7 @@ package Logica;
 import Clases.Cliente;
 import Clases.Inmueble;
 import Clases.Reserva;
+import static Conexion.EnvioEmail.EnvioEmail;
 import Persistencia.PersistenciaInmueble;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
@@ -77,7 +78,7 @@ public class LogicaReserva {
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
-            
+            EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
     private HashMap crearHashMapReserva(Reserva reserva, Set keys) {
@@ -238,8 +239,7 @@ public class LogicaReserva {
         datInmCli.put("FechaReserva", fecha.format(reserva.getFechaHasta()));
         return datInmCli;
     }
-
-
+    
     public boolean ExisteReserva(Inmueble inmSeleccionado) {
         Date fechaHoy= new Date();
         List<Reserva> reservas;
@@ -251,4 +251,5 @@ public class LogicaReserva {
         }
         return false;
     }
+    
 }
