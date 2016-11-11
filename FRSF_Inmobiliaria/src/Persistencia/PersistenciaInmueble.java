@@ -16,12 +16,15 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 public class PersistenciaInmueble {
- /* //TODO problemas con mantener la sesion abierta, no perite eliminar
+  //TODO problemas con mantener la sesion abierta, no perite eliminar
+    
+    /*private Session session;
+    
     public PersistenciaInmueble(){
         super();
         session = Conexion.getInstance().getSession(); //cargar la sesión para ahorrar código
-    }
-  */
+    }*/
+  
     public boolean AltaInmueble(Inmueble casa){
         System.out.println("Precio en abminmueble justo antes de dar alta: " + String.valueOf(casa.getPrecio()));
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
@@ -30,7 +33,7 @@ public class PersistenciaInmueble {
         Transaction tx = session.beginTransaction();
         session.save(casa);
         tx.commit();
-       session.close();
+        session.close();
         return true;
     }
     
@@ -56,8 +59,66 @@ public class PersistenciaInmueble {
             return -1;
         }
     }
-  
-    public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, double precioDesde, double precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
+    
+    public List<Inmueble> ListarInmuebles( ){
+        List<Inmueble> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        //criterios para el inmueble
+        Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
+        resultado =criteria.list();
+        session.close();
+        return resultado;
+    }
+    
+    public List<Inmueble>   existeInmueble(Inmueble in)
+    {
+        List<Inmueble> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        //criterios para el inmueble
+        Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
+        criteria.add(Restrictions.eq("id", in.getId()));
+        criteria.add(Restrictions.eq("supInmueble", in.getSupInmueble()));
+        criteria.add(Restrictions.eq("supTerreno", in.getSupTerreno()));
+        criteria.add(Restrictions.eq("ac", in.getAc()));
+        criteria.add(Restrictions.eq("antiguedad", in.getAntiguedad()));
+        criteria.add(Restrictions.eq("bano", in.getBano()));
+        criteria.add(Restrictions.eq("barrio", in.getBarrio()));
+        criteria.add(Restrictions.eq("cp", in.getCp()));
+        criteria.add(Restrictions.eq("calle", in.getCalle()));
+        criteria.add(Restrictions.eq("depto", in.getDepto()));
+        criteria.add(Restrictions.eq("dormitorio", in.getDormitorio()));
+        criteria.add(Restrictions.eq("fondo", in.getFondo()));
+        criteria.add(Restrictions.eq("frente", in.getFrente()));
+        criteria.add(Restrictions.eq("garage", in.getGarage()));
+        criteria.add(Restrictions.eq("gn", in.getGn()));
+        criteria.add(Restrictions.eq("lavadero", in.getLavadero()));
+        criteria.add(Restrictions.eq("localidadIndice", in.getLocalidadIndice()));
+        criteria.add(Restrictions.eq("localidadNombre", in.getLocalidadNombre()));
+        criteria.add(Restrictions.eq("numero", in.getNumero()));
+        criteria.add(Restrictions.eq("observaciones", in.getObservaciones()));
+        criteria.add(Restrictions.eq("orientacion", in.getOrientacion()));
+        criteria.add(Restrictions.eq("patio", in.getPatio()));
+        criteria.add(Restrictions.eq("pavimento", in.getPavimento()));
+        criteria.add(Restrictions.eq("piso", in.getPiso()));
+        criteria.add(Restrictions.eq("precio", in.getPrecio()));
+        criteria.add(Restrictions.eq("provinciaNombre", in.getProvinciaNombre()));
+        criteria.add(Restrictions.eq("provinciaIndice", in.getProvinciaIndice()));
+        criteria.add(Restrictions.eq("telefono", in.getTelefono()));
+        criteria.add(Restrictions.eq("tipoInmueble", in.getTipoInmueble()));
+        criteria.add(Restrictions.eq("cliente", in.getCliente()));
+    
+        session.update(in);
+        resultado =criteria.list();
+        
+        session.close();
+        return resultado;    
+    }
+    
+    public List<Inmueble> ListarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, double precioDesde, double precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice){
         List<Inmueble> resultado;
         SessionFactory sesion = NewHibernateUtil.getSessionFactory();
         Session session;
@@ -132,7 +193,7 @@ public class PersistenciaInmueble {
         Transaction tx = session.beginTransaction();
         session.save(imagen);
         tx.commit();
-       session.close();
+        session.close();
          }
     
     public void guardarReserva(Reserva nuevaReserva){
@@ -142,7 +203,7 @@ public class PersistenciaInmueble {
         Transaction tx = session.beginTransaction();
         session.save(nuevaReserva);
         tx.commit();
-       session.close();
+        session.close();
     }
 
     public List<Reserva> existenReservas(Inmueble inmSeleccionado) {

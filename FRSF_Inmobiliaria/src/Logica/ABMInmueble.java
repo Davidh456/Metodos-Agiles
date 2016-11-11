@@ -54,6 +54,11 @@ public class ABMInmueble {
     public List<Inmueble> BuscarInmuebles(String apellido, String barrioNombre, int cantDormitorios, String correo, String localidadNombre, String nombre, int nroDoc, double precioDesde, double precioHasta, int tipoDoc, int tipoInmueble, int provinciaIndice) {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
     }
+    
+    public List<Inmueble> BuscarInmuebles()
+    {
+        return BDInmueble.ListarInmuebles();
+    }
 
     public boolean ModificarInmueble(int iDModif, double supInmueble, double supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, double fondo, double frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, double precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         int repetido= getRepetido(provinciaNombre,localidadNombre,calle,numero,piso,depto);
@@ -90,6 +95,16 @@ public class ABMInmueble {
                 Foto imagen = new Foto(inmueble, listaFotos.elementAt(i),listaFotos.elementAt(i+1),convertidas);
                 BDInmueble.AltaFoto(imagen);
             }
+    }
+    
+    public boolean existeInmueble(Inmueble in){
+        List<Inmueble> lista = BDInmueble.existeInmueble(in);
+        
+        if(lista.isEmpty()) return false;
+        else if(lista.get(0).equals(in)){
+            return true;
+        }
+        return false;
     }
     
 }
