@@ -90,7 +90,8 @@ public class Inmobiliaria extends JFrame{
         //Aqu� que dan las dimensiones segun la resoluci�n de pantalla
         Toolkit t = Toolkit.getDefaultToolkit();
         java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds(0, 0, screenSize.width, screenSize.height-48);
+        setBounds((screenSize.width/2)-550, ((screenSize.height-48)/2)-300, 1100,600);
+        
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         cerrar();
 
@@ -99,10 +100,11 @@ public class Inmobiliaria extends JFrame{
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        contentPane.setBounds(0, 0, screenSize.width, screenSize.height-48);
+        contentPane.setBounds(0, 0, 1100, 600);
 
         fondo = new JPanel();
-        fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), contentPane.getWidth(), contentPane.getHeight()/2);
+        fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), 
+                contentPane.getWidth(), contentPane.getHeight()/2);
         
         fondo.setBackground(new Color(190,190,250));
        
@@ -235,10 +237,10 @@ public class Inmobiliaria extends JFrame{
     public void MenuPrincipal(){
         contentPane.removeAll();
         MenuPrincipal menu = new MenuPrincipal();
-        menu.setBounds((contentPane.getWidth()/2)-(menu.getWidth()/2), 
-							(contentPane.getHeight()/2)-(menu.getHeight()/2), 
-							menu.getWidth(), 
-							menu.getHeight());
+        menu.setBounds( (contentPane.getWidth()/2)-(menu.getWidth()/2), 
+                        (contentPane.getHeight()/2)-(menu.getHeight()/2), 
+                        menu.getWidth(), 
+                        menu.getHeight());
         contentPane.add(menu);
         menu.setVisible(true);
         contentPane.repaint();

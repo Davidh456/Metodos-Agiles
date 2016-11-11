@@ -337,7 +337,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             } 
         });
         }
-private void setearAccionesClientesReserva(GenerarReservaInterfaz aThis) {
+    private void setearAccionesClientesReserva(GenerarReservaInterfaz aThis) {
         btnEliminar.setVisible(false);
         btnModificar.setVisible(false);
         btnAgregar.setText("Seleccionar");
@@ -353,7 +353,7 @@ private void setearAccionesClientesReserva(GenerarReservaInterfaz aThis) {
                 Inmobiliaria.getInstance().GenerarReserva(aThis);
             } 
         });
-        }
+    }
   
 
 }
