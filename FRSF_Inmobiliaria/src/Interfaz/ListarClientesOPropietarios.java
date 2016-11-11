@@ -213,7 +213,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
          }
     }
     private void setearTablaPropietarios(){
-        listaPropietarios = new ABMCliente().listarPropietarios();
+        listaPropietarios = new ABMCliente().listarNoPropietarios();
         for(Cliente p: listaPropietarios){
             DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
             String tipoDoc = "";
