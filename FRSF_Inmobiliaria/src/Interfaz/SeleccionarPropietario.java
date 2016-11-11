@@ -126,7 +126,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void cargarTabla() {
-        this.listaClientes = ABMCliente.getInstance().listarClientes();
+        this.listaClientes = ABMCliente.getInstance().listarNoPropietarios();
         tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         for(Cliente c: listaClientes){
                     DefaultTableModel model = (DefaultTableModel) tbLista.getModel();

@@ -602,7 +602,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                              
                     model.addRow(new Object[]{
                         false, 
-                        "codigo", 
+                        c.getIdDescritivo(), 
                         c.getTipoInmueble(),
                         c.getProvinciaNombre(),
                         c.getLocalidadNombre(), 
