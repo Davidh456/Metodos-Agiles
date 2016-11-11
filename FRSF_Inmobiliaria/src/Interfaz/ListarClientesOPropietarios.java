@@ -3,6 +3,7 @@ package Interfaz;
 
 import Clases.*;
 import Logica.*;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -19,17 +20,19 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     public ListarClientesOPropietarios() {
         initComponents();
         setSize(1000,425);
+        setBackground(new Color(245,245,245));
     }
     
     public ListarClientesOPropietarios(String tabla){
         initComponents();
         setSize(1000,425);
+        setBackground(new Color(245,245,245));
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar "+tabla));
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
         tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        tbLista.setBackground(new Color(245,245,245));
         this.tabla = tabla;
         switch (tabla){
             case "Clientes":
@@ -51,7 +54,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
         tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        tbLista.setBackground(new Color(245,245,245));
         this.tabla = tabla;
         setearTablaPropietarios();
         setearAccionesPropietariosInmueble(aThis);
@@ -65,7 +68,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
         tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+        tbLista.setBackground(new Color(245,245,245));
         this.tabla = "Clientes";
         setearTablaClientes();
         setearAccionesClientesReserva(aThis);
@@ -82,8 +85,10 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(245, 245, 245));
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar clientes"));
 
+        spLista.setBackground(new java.awt.Color(245, 245, 245));
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Clientes encontrados"));
 
         tbLista.setModel(new javax.swing.table.DefaultTableModel(

@@ -9,6 +9,7 @@ import Clases.*;
 import Logica.ABMCliente;
 import Logica.LogicaCargaInterfaz;
 import Logica.Validaciones;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -27,7 +28,8 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     
     public ABMClienteOPropietario() {
         initComponents();
-        setSize(450, 260);
+        setBackground(new Color(245,245,245));
+        setSize(450, 250);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         validaciones = new Validaciones();
@@ -36,8 +38,9 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente){
         initComponents();
+        setBackground(new Color(245,245,245));
         setVisible(true);
-        setSize(450, 260);
+        setSize(450, 250);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         this.cliente = cliente;

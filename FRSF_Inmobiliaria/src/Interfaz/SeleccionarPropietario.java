@@ -7,6 +7,7 @@ package Interfaz;
 
 import Clases.Cliente;
 import Logica.ABMCliente;
+import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
@@ -22,6 +23,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
             
     public SeleccionarPropietario() {
         initComponents();
+        setBackground(new Color(245,245,245));
         setSize(350,467);
         cargarTabla();
     }
@@ -35,7 +37,10 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnSiguiente = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(245, 245, 245));
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Seleccionar el cliente que quiere hacer propietario"));
+
+        jScrollPane1.setBackground(new java.awt.Color(245, 245, 245));
 
         tbLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

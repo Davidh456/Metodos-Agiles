@@ -16,6 +16,7 @@ import java.awt.event.WindowEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -101,14 +102,8 @@ public class Inmobiliaria extends JFrame{
         contentPane.setLayout(null);
         
         contentPane.setBounds(0, 0, 1100, 600);
-
-        fondo = new JPanel();
-        fondo.setBounds(0, (contentPane.getHeight()/2)-(contentPane.getHeight()/4), 
-                contentPane.getWidth(), contentPane.getHeight()/2);
+        contentPane.setBackground(new Color(245,245,245));
         
-        fondo.setBackground(new Color(190,190,250));
-       
-
     }
     public void cerrar(){
         this.addWindowListener(new WindowAdapter(){

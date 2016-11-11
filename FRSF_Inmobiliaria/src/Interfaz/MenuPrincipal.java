@@ -1,6 +1,8 @@
 
 package Interfaz;
 
+import java.awt.Color;
+
 
 
 public class MenuPrincipal extends javax.swing.JPanel {
@@ -9,7 +11,8 @@ public class MenuPrincipal extends javax.swing.JPanel {
     
     public MenuPrincipal() {
         initComponents();
-        setSize(620,440);
+        setSize(596, 348);
+        setBackground(new Color(245,245,245));
         
     }
 
@@ -33,7 +36,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnClientes.setBorder(null);
         btnClientes.setBorderPainted(false);
         btnClientes.setContentAreaFilled(false);
-        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnClientes.setFocusPainted(false);
         btnClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnClientes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clienteC.png"))); // NOI18N
@@ -53,7 +56,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnPropietario.setBorder(null);
         btnPropietario.setBorderPainted(false);
         btnPropietario.setContentAreaFilled(false);
-        btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPropietario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPropietario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPropietario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/propietarioC.png"))); // NOI18N
         btnPropietario.setRequestFocusEnabled(false);
@@ -73,7 +76,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnAltaInmueble.setBorder(null);
         btnAltaInmueble.setBorderPainted(false);
         btnAltaInmueble.setContentAreaFilled(false);
-        btnAltaInmueble.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAltaInmueble.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnAltaInmueble.setFocusPainted(false);
         btnAltaInmueble.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAltaInmueble.setIconTextGap(3);
@@ -94,7 +97,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnGestionarInmueble.setBorder(null);
         btnGestionarInmueble.setBorderPainted(false);
         btnGestionarInmueble.setContentAreaFilled(false);
-        btnGestionarInmueble.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGestionarInmueble.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnGestionarInmueble.setFocusPainted(false);
         btnGestionarInmueble.setFocusable(false);
         btnGestionarInmueble.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

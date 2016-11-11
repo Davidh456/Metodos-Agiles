@@ -13,6 +13,7 @@ import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
 import Logica.LogicaReserva;
 import Logica.Validaciones;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
@@ -123,6 +124,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     public ConsultaInmueble() {
         initComponents();
+        setBackground(new Color(245,245,245));
         DeshabilitarBotonesInicio();
         setSize(getPreferredSize());
         cargarCB();
@@ -175,6 +177,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Consulta Inmueble"));
 
+        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Inmueble"));
 
         jLabel1.setText("Cantidad de Dormitorios");
@@ -293,6 +296,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         PrecioDesde.getAccessibleContext().setAccessibleName("");
         PrecioDesde.getAccessibleContext().setAccessibleDescription("sda");
 
+        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Propietario"));
 
         jLabel8.setText("Tipo Documento");
@@ -370,6 +374,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Acciones"));
 
         BotonEliminar.setText("Eliminar");
@@ -443,6 +448,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 .addComponent(BotonSalir))
         );
 
+        ScrollResultados.setBackground(new java.awt.Color(245, 245, 245));
         ScrollResultados.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         ScrollResultados.setMinimumSize(new java.awt.Dimension(230, 50));
 

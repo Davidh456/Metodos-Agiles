@@ -11,6 +11,7 @@ import Clases.Inmueble;
 import Logica.LogicaReserva;
 import Logica.Validaciones;
 import com.itextpdf.text.DocumentException;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,6 +47,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
        initComponents(); 
        sintaxis();
        validarCargaCliente();
+       setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());
@@ -115,6 +117,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Inmueble"));
         jPanel1.setToolTipText("");
 
@@ -223,6 +226,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cliente"));
 
         jLabe28.setText("Nombre:");
@@ -275,6 +279,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de la Reserva"));
 
         lblmontoReserva.setText("Monto de Reserva");
