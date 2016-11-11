@@ -127,8 +127,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         setSize(getPreferredSize());
         cargarCB();
         sintaxis();
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Consulta Inmueble"));
-        
+        setBorder(javax.swing.BorderFactory.createTitledBorder("Consulta Inmueble")); 
     }
 
     @SuppressWarnings("unchecked")

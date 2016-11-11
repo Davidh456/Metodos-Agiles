@@ -1019,45 +1019,47 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private void BAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAceptarActionPerformed
         String titulo = ((javax.swing.border.TitledBorder) getBorder()).getTitle();
         boolean resultado;
-        ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
-        LogicaReserva operador2 = new LogicaReserva();
-        if (titulo.equals("Alta Inmueble")){
-            if(camposValidos()){
-            resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
-            if(resultado){
-                if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente cargado\n¿Desea continuar cargando inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) 
-                    Inmobiliaria.getInstance().AltaInmueble();
-                else
-                    Inmobiliaria.getInstance().MenuPrincipal();
-                }
-        else {
-            JOptionPane.showMessageDialog(null, "El inmueble no se ha podido cargar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
-        }}
-        }
-        if (titulo.equals("Modificar Inmueble")){
-            if(camposValidos()){
-            resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
-            if(resultado){
-                if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-                {
-
-                        operador2.EliminarReserva(iDModif);
-                    Inmobiliaria.getInstance().ConsultaInmueble();}
-                else
-                    Inmobiliaria.getInstance().MenuPrincipal();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "El inmueble no se ha podido modificar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
-            }
-        }}
-        if (titulo.equals("Eliminar Inmueble")){
-            resultado=operador.EliminarInmueble(eliminarInmueble);
+        ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble();
+        LogicaReserva operador2 = new LogicaReserva();  
+        switch (titulo) {
+           case "Alta Inmueble":
+               if(camposValidos()){
+                   resultado = operador.AltaInmueble(getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
                    if(resultado){
-                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-                            Inmobiliaria.getInstance().ConsultaInmueble();
-                        else
-                            Inmobiliaria.getInstance().MenuPrincipal();
+                       if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente cargado\n¿Desea continuar cargando inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                           Inmobiliaria.getInstance().AltaInmueble();
+                       else
+                           Inmobiliaria.getInstance().MenuPrincipal();
                     }
+                    else {
+                       JOptionPane.showMessageDialog(null, "El inmueble no se ha podido cargar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
+                }}
+                break;
+           case "Modificar Inmueble": 
+               if(camposValidos()){
+                   resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+                   if(resultado){
+                       if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                       {
+                           operador2.EliminarReserva(iDModif);
+                           Inmobiliaria.getInstance().ConsultaInmueble();}
+                       else
+                           Inmobiliaria.getInstance().MenuPrincipal();
+                   }
+                   else {
+                       JOptionPane.showMessageDialog(null, "El inmueble no se ha podido modificar, verifique que no exista uno con los mismos datos","Error",JOptionPane.ERROR_MESSAGE);
+                   }
+                }
+                break;
+           case "Eliminar Inmueble":    
+                resultado=operador.EliminarInmueble(eliminarInmueble);
+                if(resultado){
+                   if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                       Inmobiliaria.getInstance().ConsultaInmueble();
+                   else
+                       Inmobiliaria.getInstance().MenuPrincipal();
+                }
+                break;
         }
     }//GEN-LAST:event_BAceptarActionPerformed
 
