@@ -62,7 +62,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbLista);
 
-        btnSiguiente.setText("Ver Detalles");
+        btnSiguiente.setText("Siguiente");
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
