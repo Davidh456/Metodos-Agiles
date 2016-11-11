@@ -1020,7 +1020,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         String titulo = ((javax.swing.border.TitledBorder) getBorder()).getTitle();
         boolean resultado;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble();
-        LogicaReserva operador2 = new LogicaReserva();  
         switch (titulo) {
            case "Alta Inmueble":
                if(camposValidos()){
@@ -1042,7 +1041,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                    if(resultado){
                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                        {
-                           operador2.EliminarReserva(iDModif);
+                           
                            Inmobiliaria.getInstance().ConsultaInmueble();}
                        else
                            Inmobiliaria.getInstance().MenuPrincipal();

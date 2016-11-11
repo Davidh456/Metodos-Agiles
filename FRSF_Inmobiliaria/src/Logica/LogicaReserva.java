@@ -40,7 +40,6 @@ public class LogicaReserva {
        Reserva nuevaReserva= new Reserva(clienteReserva,inmuebleReservado,tiempoValidez,montoReserva);
        GenerarDocumento(nuevaReserva);
        BDInmueble.guardarReserva(nuevaReserva);
-       BDInmueble.ModificarInmueble(inmuebleReservado);
     }
 
     private void GenerarDocumento(Reserva nuevaReserva) throws IOException, DocumentException {
@@ -253,7 +252,4 @@ public class LogicaReserva {
         return false;
     }
     
-    public void EliminarReserva(int id) {
-        BDInmueble.EliminarReservaBD(id);
-    }
 }

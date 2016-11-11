@@ -3,6 +3,7 @@ package Clases;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -59,6 +60,27 @@ public class Localidad  implements java.io.Serializable {
         this.clientes = clientes;
     }
 */
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        /*if (getClass() != obj.getClass()) {
+            return false;
+        }*/
+        final Localidad other = (Localidad) obj;
+        if (!Objects.equals(this.localidad, other.getLocalidad())) {
+            return false;
+        }
+        if (!Objects.equals(this.idLocalidad, other.getIdLocalidad())) {
+            return false;
+        }
+        return true;
+    }
 
 
 

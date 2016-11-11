@@ -4,6 +4,7 @@ package Clases;
 
 import java.util.Formatter;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -42,7 +43,7 @@ public class Inmueble  implements java.io.Serializable {
      private Integer provinciaIndice;
      private Boolean telefono;
      private Integer tipoInmueble;
-     private Set fotos = new HashSet(0);
+     //private Set fotos = new HashSet(0); TODO cuando descomente, descomentar en el equals.
      private Set reservas = new HashSet(0);
 
     public Inmueble() {
@@ -125,6 +126,7 @@ public class Inmueble  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+    
     public Cliente getCliente() {
         return this.cliente;
     }
@@ -357,14 +359,127 @@ public class Inmueble  implements java.io.Serializable {
        IdDescriptivo=IdDescriptivo+fmt;
         return IdDescriptivo;    
     }
- /*   public Set getFotos() {
+    
+    /*public Set getFotos() {
         return this.fotos;
     }
     
     public void setFotos(Set fotos) {
         this.fotos = fotos;
+    }*/
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Inmueble other = (Inmueble) obj;
+        if (Double.doubleToLongBits(this.supInmueble) != Double.doubleToLongBits(other.supInmueble)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.supTerreno) != Double.doubleToLongBits(other.supTerreno)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.fondo) != Double.doubleToLongBits(other.fondo)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.frente) != Double.doubleToLongBits(other.frente)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+            return false;
+        }
+        if (!Objects.equals(this.barrio, other.barrio)) {
+            return false;
+        }
+        if (!Objects.equals(this.calle, other.calle)) {
+            return false;
+        }
+        if (!Objects.equals(this.depto, other.depto)) {
+            return false;
+        }
+        if (!Objects.equals(this.localidadNombre, other.localidadNombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.observaciones, other.observaciones)) {
+            return false;
+        }
+        if (!Objects.equals(this.piso, other.piso)) {
+            return false;
+        }
+        if (!Objects.equals(this.provinciaNombre, other.provinciaNombre)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!(this.cliente.equals(other.cliente))) {
+            System.out.println("Fallo en cliente"); return false;
+        }
+        if (!Objects.equals(this.ac, other.ac)) {
+            return false;
+        }
+        if (!Objects.equals(this.antiguedad, other.antiguedad)) {
+            return false;
+        }
+        if (!Objects.equals(this.bano, other.bano)) {
+            return false;
+        }
+        if (!Objects.equals(this.cp, other.cp)) {
+            return false;
+        }
+        if (!Objects.equals(this.dormitorio, other.dormitorio)) {
+            return false;
+        }
+        if (!Objects.equals(this.garage, other.garage)) {
+            return false;
+        }
+        if (!Objects.equals(this.gn, other.gn)) {
+            return false;
+        }
+        if (!Objects.equals(this.lavadero, other.lavadero)) {
+            return false;
+        }
+        if (!Objects.equals(this.localidadIndice, other.localidadIndice)) {
+            return false;
+        }
+        if (!Objects.equals(this.numero, other.numero)) {
+            return false;
+        }
+        if (!Objects.equals(this.orientacion, other.orientacion)) {
+            return false;
+        }
+        if (!Objects.equals(this.patio, other.patio)) {
+            return false;
+        }
+        if (!Objects.equals(this.pavimento, other.pavimento)) {
+            return false;
+        }
+        if (!Objects.equals(this.provinciaIndice, other.provinciaIndice)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefono, other.telefono)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipoInmueble, other.tipoInmueble)) {
+            return false;
+        }
+        /*if (!Objects.equals(this.fotos, other.fotos)) {
+            return false;
+        }*/
+        if (!this.reservas.equals(other.reservas)) {
+            return false;
+        }
+        return true;
     }
-*/
+    
 
 
 

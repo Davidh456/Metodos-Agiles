@@ -3,6 +3,7 @@ package Clases;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -150,6 +151,59 @@ public class Cliente  implements java.io.Serializable {
     }
 */
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            System.out.println("Fallo 1");return false;
+        }
+        /*if(getClass() != obj.getClass()) {
+            System.out.println(getClass());
+            System.out.println(obj.getClass());
+            System.out.println("Fallo 2");return false;
+        }*/
+        final Cliente other = (Cliente) obj;
+        if (this.tipoDoc != other.tipoDoc) {
+            System.out.println("Fallo 3");return false;
+        }
+        if (this.numeroDoc != other.getNumeroDoc() ) {
+            System.out.println("Fallo NumDoc");return false;
+        }
+        if (this.alturaDomicilio != other.getAlturaDomicilio() ) {
+            System.out.println("Fallo AltDom");return false;
+        }
+        if (this.telefono != other.getTelefono() ) {
+            System.out.println("Fallo Tel");return false;
+        }
+        if (!Objects.equals(this.nombre, other.getNombre())) {
+            System.out.println("Fallo Nombre");return false;
+        }
+        if (!Objects.equals(this.apellido, other.getApellido())) {
+            System.out.println("Fallo Apell");return false;
+        }
+        if (!Objects.equals(this.domicilio, other.getDomicilio())) {
+            System.out.println("Fallo Dom");return false;
+        }
+        if (!Objects.equals(this.correo, other.getCorreo())) {
+            System.out.println("Fallo Correo");return false;
+        }
+        if (!Objects.equals(this.idCliente, other.getIdCliente() )) {
+            System.out.println("Fallo ID");return false;
+        }
+        if (!this.localidad.equals(other.getLocalidad())) {
+            System.out.println("Fallo Localidad");return false;
+        }
+        if (!this.provincia.equals(other.getProvincia())) {
+            System.out.println("Fallo Provincia");return false;
+        }
+        if (!Objects.equals(this.esPropietario, other.getEsPropietario())) {
+            System.out.println("Fallo Es Propietario");return false;
+        }
+        return true;
+    }
+    
 
 
 }

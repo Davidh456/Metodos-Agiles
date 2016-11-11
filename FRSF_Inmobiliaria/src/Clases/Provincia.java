@@ -3,6 +3,7 @@ package Clases;
 
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -56,6 +57,27 @@ public class Provincia  implements java.io.Serializable {
     
     public void setLocalidads(Set localidads) {
         this.localidads = localidads;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        /*if (getClass() != obj.getClass()) {
+            return false;
+        }*/
+        final Provincia other = (Provincia) obj;
+        if (!Objects.equals(this.provincia, other.getProvincia())) {
+            System.out.println(1);return false;
+        }
+        if (!Objects.equals(this.idprovincia, other.getIdprovincia() )) {
+            System.out.println(2);return false;
+        }
+        return true;
     }
 
 
