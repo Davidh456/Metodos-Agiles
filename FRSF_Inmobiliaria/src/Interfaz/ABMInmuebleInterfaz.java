@@ -1054,7 +1054,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
            case "Eliminar Inmueble":    
                 resultado=operador.EliminarInmueble(eliminarInmueble);
                 if(resultado){
-                   if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+                   if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente Eliminado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                        Inmobiliaria.getInstance().ConsultaInmueble();
                    else
                        Inmobiliaria.getInstance().MenuPrincipal();
