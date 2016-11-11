@@ -8,6 +8,7 @@ package Logica;
 import Clases.Cliente;
 import Clases.Inmueble;
 import Clases.Reserva;
+import static Conexion.EnvioEmail.EnvioEmail;
 import Persistencia.PersistenciaInmueble;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
@@ -77,8 +78,8 @@ public class LogicaReserva {
             String nombreydir="C:\\Documento Reserva -"+ nombre +"-.pdf";
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
-            pdf.close();
-            
+            pdf.close();   
+            EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
     private HashMap crearHashMapReserva(Reserva reserva, Set keys) {
