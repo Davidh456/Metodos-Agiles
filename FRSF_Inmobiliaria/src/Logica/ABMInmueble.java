@@ -34,7 +34,7 @@ public class ABMInmueble {
         Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  Ac,  Antiguedad,  
                 Bano,  Barrio,  CP,  Calle,  Depto,  Dormitorio,  Fondo,  Frente,  Garage,  Gn,  
                 Lavadero,  LocalidadIndice,  LocalidadNombre,  Numero,  Observaciones,  Orientacion,  
-                Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble, 0);
+                Patio,  Pavimento,  Piso,  Precio,  ProvinciaNombre, ProvinciaIndice, Telefono, TipoInmueble);
         BDInmueble.AltaInmueble(casa);
         conversionFotos(ListaFotos, casa);
         
@@ -53,13 +53,13 @@ public class ABMInmueble {
         return BDInmueble.ListarInmuebles(apellido,barrioNombre,cantDormitorios,correo,localidadNombre,nombre,nroDoc,precioDesde,precioHasta,tipoDoc,tipoInmueble,provinciaIndice);
     }
 
-    public boolean ModificarInmueble(int iDModif, double supInmueble, double supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, double fondo, double frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, double precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble, int Estado) {
+    public boolean ModificarInmueble(int iDModif, double supInmueble, double supTerreno, boolean ac, int antiguedad, int bano, String barrio, int cp, String calle, String depto, int dormitorio, double fondo, double frente, boolean garage, boolean gn, boolean lavadero, Vector<String> listaFotos, int localidadIndice, String localidadNombre, int numero, String observaciones, int orientacion,  boolean patio, boolean pavimento, String piso, double precio, Cliente propietario, String provinciaNombre, int provinciaIndice, boolean telefono, int tipoInmueble) {
         int repetido= getRepetido(provinciaNombre,localidadNombre,calle,numero,piso,depto);
         if (repetido==iDModif || repetido==-1){
             if(antiguedad!=-1)
                 antiguedad=2016-antiguedad;
            
-            Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble, Estado);
+            Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
             casa.setId(iDModif);
             return BDInmueble.ModificarInmueble(casa);
         }

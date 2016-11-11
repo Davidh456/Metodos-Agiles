@@ -48,7 +48,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     Validaciones validaciones = new Validaciones();
     private int iDModif;
-    private int qReserva;
     private Inmueble modificarInmueble;
     private Inmueble eliminarInmueble;
     private Cliente propietarioAux; //esto se debe perfeccionar
@@ -59,7 +58,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
-        setBtnQReserva(false);
     }
     public  ABMInmuebleInterfaz(Inmueble inmSeleccionado) {
         initComponents();
@@ -100,10 +98,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
-        if(inmSeleccionado.getEstado()!= 1)
-            setBtnQReserva(false);
-        else
-            setBtnQReserva(true);
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -144,7 +138,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
-        setBtnQReserva(false);
         deshabilitarCampos();
         
     }
@@ -335,7 +328,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaFotos = new javax.swing.JTable();
         BElimFotos = new javax.swing.JButton();
-        btnQReserva = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -808,13 +800,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             }
         });
 
-        btnQReserva.setText("Quitar Reserva");
-        btnQReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnQReservaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -829,9 +814,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                             .addComponent(Observaciones, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(jLabel5)
-                        .addGap(25, 25, 25)
-                        .addComponent(btnQReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel5)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -952,7 +935,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnQReserva)
                         .addComponent(BCancelar)
                         .addComponent(BAceptar))))
         );
@@ -1054,14 +1036,12 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         }
         if (titulo.equals("Modificar Inmueble")){
             if(camposValidos()){
-            resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble(),getEstado());
+            resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
             if(resultado){
                 if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                 {
-                    if(getEstado()==0)
-                    {
+
                         operador2.EliminarReserva(iDModif);
-                    }
                     Inmobiliaria.getInstance().ConsultaInmueble();}
                 else
                     Inmobiliaria.getInstance().MenuPrincipal();
@@ -1091,16 +1071,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         model.setRowCount(ListaFotos.getSelectedRow());
     }
     }//GEN-LAST:event_BElimFotosActionPerformed
-
-    private void btnQReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQReservaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "¿Esta seguro que desea quitar la reserva del inmueble?", "¡Atencion!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-        {            this.btnQReserva.setEnabled(false);
-                     this.btnQReserva.setText("Reserva establecida para ser eliminada");
-                     this.btnQReserva.setBackground(new Color(250,180,180));
-                     this.btnQReserva.setBorder(new LineBorder(new Color(255,0,20)));
-                     qReserva=1;
-        }
-    }//GEN-LAST:event_btnQReservaActionPerformed
 
     private void sintaxis(){
         validaciones.CaracteresMaximos(CP,5,"numerico");
@@ -1201,7 +1171,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel PropietarioLbl;
     private javax.swing.JCheckBox Telefono;
     private javax.swing.JComboBox<String> TipoInmueble;
-    private javax.swing.JButton btnQReserva;
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JCheckBox jCheckBox1;
@@ -1403,16 +1372,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     private void setSupTerreno(double supTerreno) {
         this.supTerreno.setText(String.valueOf(supTerreno));
-    }
-
-    private int getEstado() {
-        if (qReserva==1)
-            return 0;
-        return modificarInmueble.getEstado();
-    }
-
-    private void setBtnQReserva(boolean b) {
-        this.btnQReserva.setVisible(b);
     }
     
 }

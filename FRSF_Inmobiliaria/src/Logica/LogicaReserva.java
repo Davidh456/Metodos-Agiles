@@ -78,7 +78,7 @@ public class LogicaReserva {
             String nombreydir="C:\\Documento Reserva -"+ nombre +"-.pdf";
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
-            pdf.close();   
+            pdf.close();
             EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
