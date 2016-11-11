@@ -329,6 +329,10 @@ public class Inmueble  implements java.io.Serializable {
     public void setTipoInmueble(Integer tipoInmueble) {
         this.tipoInmueble = tipoInmueble;
     }
+
+    public Set getReservas() {
+        return reservas;
+    }
     
     public String getIdDescritivo(){
         String IdDescriptivo="";

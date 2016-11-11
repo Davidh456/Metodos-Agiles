@@ -251,5 +251,11 @@ public class LogicaReserva {
         }
         return false;
     }
+    public boolean reservasViejas(Inmueble in) {
+        List<Reserva> reservas;
+        reservas=BDInmueble.existenReservas(in);
+        
+        if(reservas.isEmpty()) return false; else return true; 
+    }
     
 }
