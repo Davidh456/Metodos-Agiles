@@ -2,6 +2,7 @@ package Clases;
 // Generated 08-nov-2016 20:43:30 by Hibernate Tools 4.3.1
 
 
+import java.util.Formatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -333,25 +334,28 @@ public class Inmueble  implements java.io.Serializable {
         IdDescriptivo=IdDescriptivo+ String.valueOf(cp);
         switch (tipoInmueble) {
            case 0:
-                IdDescriptivo=IdDescriptivo+"C"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"C";
                 break;
            case 1: 
-                IdDescriptivo=IdDescriptivo+"D"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"D";
                 break;
            case 2:    
-                IdDescriptivo=IdDescriptivo+"G"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"G";
                 break;
            case 3:     
-                IdDescriptivo=IdDescriptivo+"L"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"L";
                 break;
            case 4:     
-                IdDescriptivo=IdDescriptivo+"Q"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"Q";
                 break;
            case 5:     
-                IdDescriptivo=IdDescriptivo+"T"+String.valueOf(id);
+                IdDescriptivo=IdDescriptivo+"T";
                 break;
        }
-        return IdDescriptivo;
+       Formatter fmt = new Formatter();
+       fmt.format("%08d",id);
+       IdDescriptivo=IdDescriptivo+fmt;
+        return IdDescriptivo;    
     }
  /*   public Set getFotos() {
         return this.fotos;
