@@ -205,4 +205,38 @@ public class PersistenciaInmueble {
         criteria.add(Restrictions.eq("inmueble.id",inmSeleccionado.getId()));
         return criteria.list();
     }
+    
+    public List<Foto> existeFotoInmueble(Inmueble in, Foto imagen)
+    {
+        List<Foto> fotoInmueble;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        //criterios para las fotos
+        Criteria criteria = session.createCriteria(Foto.class, "Foto");
+        criteria.add(Restrictions.eq("inmueble", imagen.getInmueble()));
+        criteria.add(Restrictions.eq("nombreFoto", imagen.getNombreFoto()));
+        criteria.add(Restrictions.eq("direccion", imagen.getDireccion()));
+        criteria.add(Restrictions.eq("imagen", imagen.getImagen()));  
+        
+
+        session.update(imagen);
+        fotoInmueble =criteria.list();
+        
+        session.close();
+        return fotoInmueble;    
+    }
+    
+
+    public List<Foto> ListarFotos( ){
+        List<Foto> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        //criterios para el inmueble
+        Criteria criteria = session.createCriteria(Foto.class, "inmueble");
+        resultado =criteria.list();
+        session.close();
+        return resultado;
+    }
 }

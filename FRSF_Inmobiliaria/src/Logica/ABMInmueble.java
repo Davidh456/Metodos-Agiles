@@ -105,5 +105,22 @@ public class ABMInmueble {
         }
         return false;
     }
+    public boolean existeFoto(Inmueble inm, Foto imagen)
+    {
+        if(existeInmueble(inm))
+        {
+            List<Foto> fotos = BDInmueble.existeFotoInmueble(inm, imagen);
+            if(fotos.isEmpty())
+                return false;
+            else if(fotos.get(0).equals(imagen))
+                return true;
+        }
+        return false;
+    }
+
+public List<Foto> BuscaFotos()
+    {
+        return BDInmueble.ListarFotos();
+    }
     
 }
