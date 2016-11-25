@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2016 22:56:10 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Clases.Vendedor" table="vendedor" catalog="inmobiliaria" optimistic-lock="version">
+        <id name="idVendedor" type="java.lang.Integer">
+            <column name="id_vendedor" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="localidad" class="Clases.Localidad" fetch="select">
+            <column name="idLocalidad" />
+        </many-to-one>
+        <many-to-one name="provincia" class="Clases.Provincia" fetch="select">
+            <column name="idProvincia" />
+        </many-to-one>
+        <property name="tipoDoc" type="java.lang.Integer">
+            <column name="tipoDoc" />
+        </property>
+        <property name="numDoc" type="java.lang.Integer">
+            <column name="numDoc" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="30" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="30" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="domicilio" type="string">
+            <column name="domicilio" length="100" />
+        </property>
+        <property name="alturaDomicilio" type="string">
+            <column name="alturaDomicilio" length="5" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="30" />
+        </property>
+        <property name="contrasenia" type="string">
+            <column name="contrasenia" length="20" />
+        </property>
+    </class>
+</hibernate-mapping>

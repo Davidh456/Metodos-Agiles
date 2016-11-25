@@ -9,6 +9,8 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -155,12 +157,19 @@ public class Validaciones {
 			    	e.consume();
 			    }
 				
-				//que no sea número
-				if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter==32) && tipo.equals("numerico")){
+                            //que no sea número
+                            if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter==32) && tipo.equals("numerico")){
 					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
-                                // se verifica que si es flotante sea con punto y no admite letras (no verifica la cantidad de puntos)
+                            
+                            //que no sea alfanumerico   
+                            if( !(((caracter >= 'A')&&(caracter <= 'z'))||caracter==127||caracter==8||caracter==32)&& !(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter==32) && tipo.equals("alfanumerico")){
+                                JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras o números","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+			    	e.consume();
+                            }    
+                            
+                            // se verifica que si es flotante sea con punto y no admite letras (no verifica la cantidad de puntos)
                             if(!(((caracter >= '0')&&(caracter <= '9'))||caracter==127||caracter==8||caracter=='.') && tipo.equals("double")){
 					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números y '.'  (ejemplo: 113.80) ","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
@@ -175,6 +184,19 @@ public class Validaciones {
 	public boolean ContraseniasIguales(JPasswordField contrasenia1, JPasswordField contrasenia2){
 		return (Arrays.equals(contrasenia1.getPassword(),contrasenia2.getPassword()));
 	}
+        
+        public boolean ContraseniaValida(JPasswordField contra){
+        
+        String patron = "^[\\w&&[^_]]+$";  //Patron alfanumerico
+        String cadena = new String(contra.getPassword()); //String de la contraseña
+        
+        Pattern PATRON = Pattern.compile(patron); //Compilar el patron a utilizar para validar
+        Matcher validacion = PATRON.matcher(cadena); //Comprobar la cadena contra el patron definido
+        
+        if((!validacion.matches()) || cadena.length()<8 || cadena.length()>20) return false;
+        else return true;
+        }
+        
 	public boolean CaracteresMinimos(final JTextField tf, final int limite){
 		return (tf.getText().length() >= limite);
 		// el campo TextField no puede ser menor al límite inferior

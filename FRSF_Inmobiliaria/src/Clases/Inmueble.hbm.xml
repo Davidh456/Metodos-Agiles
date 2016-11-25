@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 08-nov-2016 20:43:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24/11/2016 22:56:10 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Clases.Inmueble" table="inmueble" catalog="inmobiliaria" optimistic-lock="version">
+    <class name="Clases.Inmueble" table="inmueble" catalog="inmobiliaria">
         <id name="id" type="java.lang.Integer">
             <column name="id" />
-            <generator class="identity" />
+            <generator class="identity"></generator>
         </id>
         <many-to-one name="cliente" class="Clases.Cliente" fetch="select">
             <column name="idPropietario" />
@@ -95,11 +95,5 @@
         <property name="tipoInmueble" type="java.lang.Integer">
             <column name="TipoInmueble" />
         </property>
-  <!--      <set name="fotos" table="foto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="idInmueble" not-null="true" />
-            </key>
-            <one-to-many class="Clases.Foto" />
-        </set> -->
     </class>
 </hibernate-mapping>

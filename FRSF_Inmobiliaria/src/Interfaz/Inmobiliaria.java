@@ -5,6 +5,7 @@ package Interfaz;
 
 import Clases.Cliente;
 import Clases.Inmueble;
+import Clases.Vendedor;
 import Conexion.Conexion;
 import Interfaz.*;
 import Logica.ABMInmueble;
@@ -383,6 +384,48 @@ public class Inmobiliaria extends JFrame{
         pantallaABM.setVisible(true);
         contentPane.repaint();
         contentPane.revalidate();
+    }
+
+    void consultaVendedor() {
+        contentPane.removeAll();
+        ConsultaVendedor pantallaVendedores = new ConsultaVendedor();
+        pantallaVendedores.setBounds((contentPane.getWidth()/2)-(pantallaVendedores.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaVendedores.getHeight()/2), 
+							pantallaVendedores.getWidth(), 
+							pantallaVendedores.getHeight());
+        contentPane.add(pantallaVendedores);
+        pantallaVendedores.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+    
+    void altaVendedor() {
+        contentPane.removeAll();
+        ABMVendedorInterfaz altaVendedor = new ABMVendedorInterfaz("alta", null);
+        altaVendedor.setBounds((contentPane.getWidth()/2)-(altaVendedor.getWidth()/2), 
+							(contentPane.getHeight()/2)-(altaVendedor.getHeight()/2), 
+							altaVendedor.getWidth(), 
+							altaVendedor.getHeight());
+        contentPane.add(altaVendedor);
+        altaVendedor.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    void modificarVendedor(Vendedor vend) {
+        contentPane.removeAll();
+        ABMVendedorInterfaz modificarVendedor = new ABMVendedorInterfaz("modificacion", vend);
+        modificarVendedor.setBounds((contentPane.getWidth()/2)-(modificarVendedor.getWidth()/2),
+                                                    (contentPane.getHeight()/2)-(modificarVendedor.getHeight()/2),
+                                                    modificarVendedor.getWidth(), modificarVendedor.getHeight());
+        contentPane.add(modificarVendedor);
+        modificarVendedor.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    void bajaVendedor(Vendedor get) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

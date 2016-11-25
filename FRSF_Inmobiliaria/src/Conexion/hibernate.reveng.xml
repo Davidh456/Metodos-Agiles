@@ -47,4 +47,5 @@ Contributor(s):
   <table-filter match-name="inmueble"/>
   <table-filter match-name="provincia"/>
   <table-filter match-name="cliente"/>
+  <table-filter match-name="vendedor"/>
 </hibernate-reverse-engineering>

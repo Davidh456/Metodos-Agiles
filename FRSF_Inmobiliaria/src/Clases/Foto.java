@@ -1,9 +1,5 @@
 package Clases;
-// Generated 08-nov-2016 20:43:30 by Hibernate Tools 4.3.1
-
-import java.util.Arrays;
-import java.util.Objects;
-
+// Generated 24/11/2016 22:56:09 by Hibernate Tools 4.3.1
 
 
 
@@ -63,36 +59,6 @@ public class Foto  implements java.io.Serializable {
     
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Foto other = (Foto) obj;
-        if (!Objects.equals(this.nombreFoto, other.nombreFoto)) {
-            return false;
-        }
-        if (!Objects.equals(this.direccion, other.direccion)) {
-            return false;
-        }
-        if (!Objects.equals(this.idfoto, other.idfoto)) {
-            return false;
-        }
-        if (!Objects.equals(this.inmueble, other.inmueble)) {
-            return false;
-        }
-        if (!Arrays.equals(this.imagen, other.imagen)) {
-            return false;
-        }
-        return true;
     }
 
 
