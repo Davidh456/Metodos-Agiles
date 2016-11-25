@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/11/2016 22:56:10 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08-nov-2016 20:43:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Clases.Foto" table="foto" catalog="inmobiliaria">
+    <class name="Clases.Foto" table="foto" catalog="inmobiliaria" optimistic-lock="version">
         <id name="idfoto" type="java.lang.Integer">
             <column name="idfoto" />
-            <generator class="identity"></generator>
+            <generator class="identity" />
         </id>
         <many-to-one name="inmueble" class="Clases.Inmueble" fetch="select">
             <column name="idInmueble" not-null="true" />

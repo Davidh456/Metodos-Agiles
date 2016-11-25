@@ -1,17 +1,23 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24/11/2016 22:56:10 by Hibernate Tools 4.3.1 -->
+<!-- Generated 08-nov-2016 20:43:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Clases.Provincia" table="provincia" catalog="inmobiliaria">
+    <class name="Clases.Provincia" table="provincia" catalog="inmobiliaria" optimistic-lock="version">
         <id name="idprovincia" type="java.lang.Integer">
             <column name="idprovincia" />
-            <generator class="identity"></generator>
+            <generator class="identity" />
         </id>
         <property name="provincia" type="string">
             <column name="provincia" not-null="true" />
         </property>
-        <set name="localidads" table="localidad" inverse="true" lazy="true" fetch="select">
+ <!--       <set name="clientes" table="cliente" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="idProvincia" not-null="true" />
+            </key>
+            <one-to-many class="Clases.Cliente" />
+        </set>
+  -->      <set name="localidads" table="localidad" order-by="localidad asc" inverse="true" lazy="true" fetch="select" >
             <key>
                 <column name="provincia_id" not-null="true" />
             </key>
