@@ -26,7 +26,7 @@ import javax.swing.JTextField;
  *
  * @author maria
  */
-public class GenerarReservaInterfaz extends javax.swing.JPanel {
+public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
     /** Creates new form GenerarReservaInterfaz */
     Inmueble inmuebleReservado;
@@ -37,12 +37,12 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     
     JTextField[] camposFlotantes;
     JLabel[] labelFlotantes;
-    public GenerarReservaInterfaz() {
+    public GenerarVentaInterfaz() {
         initComponents();
     }
 
     
-    GenerarReservaInterfaz(Inmueble inmSeleccionado) {
+    GenerarVentaInterfaz(Inmueble inmSeleccionado) {
        inmuebleReservado=inmSeleccionado;
        initComponents(); 
        sintaxis();
@@ -71,7 +71,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BSelecCliente = new javax.swing.JToggleButton();
+        BSelecVendedor = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
         label33 = new javax.swing.JLabel();
         label34 = new javax.swing.JLabel();
@@ -96,24 +96,33 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabe28 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
-        lblApellido = new javax.swing.JLabel();
-        lblNumDoc = new javax.swing.JLabel();
+        lblImpTotal = new javax.swing.JLabel();
+        lblImpRestante = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         lblmontoReserva = new javax.swing.JLabel();
+        jLabe29 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        montoReserva = new javax.swing.JTextField();
-        tiempoValidez = new javax.swing.JSpinner();
+        jLabel28 = new javax.swing.JLabel();
+        lblApellidoVenRes = new javax.swing.JLabel();
+        lblNumDocRes = new javax.swing.JLabel();
+        lblNombreRes = new javax.swing.JLabel();
+        lblMontoReserva = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabe30 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        lblNombreVen1 = new javax.swing.JLabel();
+        lblApellidoVen1 = new javax.swing.JLabel();
+        lblNumDocVen1 = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Reserva"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Venta"));
 
-        BSelecCliente.setText("Seleccionar Cliente");
-        BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
+        BSelecVendedor.setText("Seleccionar Vendedor");
+        BSelecVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BSelecClienteActionPerformed(evt);
+                BSelecVendedorActionPerformed(evt);
             }
         });
 
@@ -191,7 +200,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
                             .addComponent(lblBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
@@ -227,24 +236,17 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         );
 
         jPanel2.setBackground(new java.awt.Color(245, 245, 245));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cliente"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de Venta"));
 
-        jLabe28.setText("Nombre:");
+        jLabe28.setText("Importe Total:");
 
-        jLabel22.setText("Apellido:");
+        jLabel22.setText("Importe Restante:");
 
-        jLabel27.setText("Nº Documento:");
-
-        lblNombre.setText("Ninguno");
-        lblNombre.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        lblImpTotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                lblNombrePropertyChange(evt);
+                lblImpTotalPropertyChange(evt);
             }
         });
-
-        lblApellido.setText("Ninguno");
-
-        lblNumDoc.setText("Ninguno");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -254,16 +256,12 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabe28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblImpTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblApellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNumDoc, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addComponent(lblImpRestante, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,10 +270,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabe28)
                     .addComponent(jLabel22)
-                    .addComponent(jLabel27)
-                    .addComponent(lblNombre)
-                    .addComponent(lblApellido)
-                    .addComponent(lblNumDoc))
+                    .addComponent(lblImpTotal)
+                    .addComponent(lblImpRestante))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -284,42 +280,64 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
 
         lblmontoReserva.setText("Monto de Reserva");
 
-        jLabel23.setText("Tiempo de Validez (dias)");
+        jLabe29.setText("Nombre:");
 
-        montoReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                montoReservaActionPerformed(evt);
+        jLabel23.setText("Apellido:");
+
+        jLabel28.setText("Nº Documento:");
+
+        lblApellidoVenRes.setText("Ninguno");
+
+        lblNumDocRes.setText("Ninguno");
+
+        lblNombreRes.setText("Ninguno");
+        lblNombreRes.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblNombreResPropertyChange(evt);
             }
         });
-
-        tiempoValidez.setModel(new javax.swing.SpinnerNumberModel(15, 15, 90, 1));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblmontoReserva)
+                .addGap(25, 25, 25)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabe29)
+                        .addGap(2, 2, 2)
+                        .addComponent(lblNombreRes, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel23))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(lblmontoReserva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblMontoReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(montoReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblApellidoVenRes, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNumDocRes, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(montoReserva)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(lblmontoReserva)
-                        .addComponent(jLabel23)
-                        .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabe29)
+                    .addComponent(jLabel23)
+                    .addComponent(lblNombreRes)
+                    .addComponent(lblApellidoVenRes)
+                    .addComponent(lblNumDocRes)
+                    .addComponent(jLabel28))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblmontoReserva)
+                    .addComponent(lblMontoReserva))
+                .addContainerGap())
         );
 
         btnAceptar.setText("Aceptar");
@@ -336,24 +354,84 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(245, 245, 245));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Vendedor"));
+
+        jLabe30.setText("Nombre:");
+
+        jLabel24.setText("Apellido:");
+
+        jLabel29.setText("Nº Documento:");
+
+        lblNombreVen1.setText("Ninguno");
+        lblNombreVen1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblNombreVen1PropertyChange(evt);
+            }
+        });
+
+        lblApellidoVen1.setText("Ninguno");
+
+        lblNumDocVen1.setText("Ninguno");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabe30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombreVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblApellidoVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNumDocVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabe30)
+                    .addComponent(jLabel24)
+                    .addComponent(jLabel29)
+                    .addComponent(lblNombreVen1)
+                    .addComponent(lblApellidoVen1)
+                    .addComponent(lblNumDocVen1))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BSelecCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BSelecVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,24 +439,28 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BSelecCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BSelecVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+                        .addGap(4, 4, 4)))
                 .addContainerGap())
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("panelInmueble");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BSelecClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecClienteActionPerformed
+    private void BSelecVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecVendedorActionPerformed
         Inmobiliaria.getInstance().ListarClientes(this);
-    }//GEN-LAST:event_BSelecClienteActionPerformed
+    }//GEN-LAST:event_BSelecVendedorActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        
@@ -390,9 +472,9 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente reservado","Éxito",JOptionPane.INFORMATION_MESSAGE);
                 Inmobiliaria.getInstance().ConsultaInmueble();
             } catch (IOException ex) {
-                Logger.getLogger(GenerarReservaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DocumentException ex) {
-                Logger.getLogger(GenerarReservaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         
@@ -402,16 +484,20 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void montoReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_montoReservaActionPerformed
+    private void lblNombreResPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreResPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_montoReservaActionPerformed
+    }//GEN-LAST:event_lblNombreResPropertyChange
 
-    private void lblNombrePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombrePropertyChange
+    private void lblNombreVen1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreVen1PropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblNombreVen1PropertyChange
+
+    private void lblImpTotalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblImpTotalPropertyChange
         validarCargaCliente();
-    }//GEN-LAST:event_lblNombrePropertyChange
+    }//GEN-LAST:event_lblImpTotalPropertyChange
 
     public void setLblApellido(String lblApellido) {
-        this.lblApellido.setText(lblApellido);
+        this.lblImpRestante.setText(lblApellido);
     }
 
     public void setLblBarrio(String lblBarrio) {
@@ -441,7 +527,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
 
     public void setLblNombre(String capturado) {
-        this.lblNombre.setText(capturado);
+        this.lblImpTotal.setText(capturado);
     }
 
     public void setLblNumero(Integer capturado) {
@@ -502,7 +588,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         this.tiempoValidez = tiempoValidez;
     }
     public void setNumDoc(Integer capturado) {
-        this.lblNumDoc.setText(String.valueOf(capturado));
+        this.lblNumDocVen.setText(String.valueOf(capturado));
     }
    
     private double getMontoReserva(){
@@ -540,10 +626,12 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton BSelecCliente;
+    private javax.swing.JToggleButton BSelecVendedor;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabe28;
+    private javax.swing.JLabel jLabe29;
+    private javax.swing.JLabel jLabe30;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -551,31 +639,38 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel label33;
     private javax.swing.JLabel label34;
     private javax.swing.JLabel label35;
-    private javax.swing.JLabel lblApellido;
+    private javax.swing.JLabel lblApellidoVen1;
+    private javax.swing.JLabel lblApellidoVenRes;
     private javax.swing.JLabel lblBarrio;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCalle;
     private javax.swing.JLabel lblDepto;
+    private javax.swing.JLabel lblImpRestante;
+    private javax.swing.JLabel lblImpTotal;
     private javax.swing.JLabel lblLocalidad;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNumDoc;
+    private javax.swing.JLabel lblMontoReserva;
+    private javax.swing.JLabel lblNombreRes;
+    private javax.swing.JLabel lblNombreVen1;
+    private javax.swing.JLabel lblNumDocRes;
+    private javax.swing.JLabel lblNumDocVen1;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblPiso;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblProvincia;
     private javax.swing.JLabel lblTipoInm;
     private javax.swing.JLabel lblmontoReserva;
-    private javax.swing.JTextField montoReserva;
-    private javax.swing.JSpinner tiempoValidez;
     // End of variables declaration//GEN-END:variables
 
     void setCliente(Cliente clienteRecuperado) {
@@ -587,7 +682,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     }
 
     private void validarCargaCliente() {
-     if(lblNombre.getText().equals("Ninguno")){
+     if(lblImpTotal.getText().equals("Ninguno")){
             btnAceptar.setEnabled(false);
         }else
             btnAceptar.setEnabled(true);
