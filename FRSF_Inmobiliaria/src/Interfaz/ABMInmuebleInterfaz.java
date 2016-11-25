@@ -107,7 +107,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         cargarCB();
         setSize(getPreferredSize());
         sintaxis();
-        setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Inmueble"));
+        if(baja.equals("BAJA"))
+            setBorder(javax.swing.BorderFactory.createTitledBorder("Eliminar Inmueble"));
+        else
+            setBorder(javax.swing.BorderFactory.createTitledBorder("Detalles Inmueble"));
         eliminarInmueble=inmSeleccionado;
         setId(inmSeleccionado.getId());
         //setPropietario(inmSeleccionado.getPropietario().getNombre()+inmSeleccionado.getPropietario().getApellido()+ " Nº Doc: " +inmSeleccionado.getPropietario().getNumeroDoc());
@@ -141,9 +144,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
         deshabilitarCampos();
-        
-    }
-
+        if(baja.equals("DETALLES"))
+        {    BCancelar.setText("Cerrar");
+             BAceptar.setVisible(false);
+        }
+   }
 
     public double getSupInmueble() {
         return Double.parseDouble(supInmueble.getText());
@@ -1221,7 +1226,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private void deshabilitarCampos(){
     Ac.setEnabled(false);
     Antiguedad.setEnabled(false);
-    BAdjFotos.setVisible(false);
     BSelecProp.setVisible(false);
     Bano.setEnabled(false);
     Barrio.setEnabled(false);
@@ -1249,6 +1253,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
      cbProvincia.setEnabled(false);
     supInmueble.setEnabled(false);
     supTerreno.setEnabled(false);
+    BAdjFotos.setEnabled(false);
+    BElimFotos.setEnabled(false);
+    
+    BAdjFotos.setVisible(false);
+    BElimFotos.setVisible(false);
     }
     private void setId(int id)
     {
