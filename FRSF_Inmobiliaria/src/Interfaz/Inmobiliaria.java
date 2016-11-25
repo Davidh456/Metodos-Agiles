@@ -428,4 +428,16 @@ public class Inmobiliaria extends JFrame{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    void DetallesInmueble(Inmueble inmSeleccionado) {
+        contentPane.removeAll();
+        ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado,"DETALLES");
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();}
+
 }
