@@ -8,7 +8,9 @@ package Interfaz;
 
 import Clases.Cliente;
 import Clases.Inmueble;
+import Clases.Vendedor;
 import Logica.LogicaReserva;
+import Logica.LogicaVenta;
 import Logica.Validaciones;
 import com.itextpdf.text.DocumentException;
 import java.awt.Color;
@@ -30,6 +32,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
     /** Creates new form GenerarReservaInterfaz */
     Inmueble inmuebleReservado;
+    Vendedor vendedorSeleccionado;
     Cliente clienteReserva;
     Validaciones validaciones = new Validaciones();
     JTextField[] camposObligatorios;
@@ -45,7 +48,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     GenerarVentaInterfazSR(Inmueble inmSeleccionado) {
        inmuebleReservado=inmSeleccionado;
        initComponents(); 
-       sintaxis();
        validarCargaCliente();
        setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
@@ -59,7 +61,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
        setLblProvincia(inmSeleccionado.getProvinciaNombre());
        setLblLocalidad(inmSeleccionado.getLocalidadNombre());
        setLblTipoInmueble(inmSeleccionado.getTipoInmueble());
-       
+       lblImporte.setText(String.valueOf(inmSeleccionado.getPrecio()));
     }
 
     /** This method is called from within the constructor to
@@ -114,7 +116,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         lblApellidoCliente = new javax.swing.JLabel();
         lblNumDocCliente = new javax.swing.JLabel();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Reserva"));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Venta"));
 
         BSelecCliente.setText("Seleccionar Cliente");
         BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -438,24 +440,17 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
     private void BSelecClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecClienteActionPerformed
         Inmobiliaria.getInstance().ListarClientes(this);
+        
     }//GEN-LAST:event_BSelecClienteActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-       
-        if(camposValidos()){
-        LogicaReserva operador = new LogicaReserva();
-            try {
-                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la reserva","Información",JOptionPane.INFORMATION_MESSAGE);
-                operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
-                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente reservado","Éxito",JOptionPane.INFORMATION_MESSAGE);
-                Inmobiliaria.getInstance().ConsultaInmueble();
-            } catch (IOException ex) {
-                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (DocumentException ex) {
-                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+
+        LogicaVenta operador = new LogicaVenta();
         
+                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
+                operador.GenerarVenta(inmuebleReservado,clienteReserva,vendedorSeleccionado);
+                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+                Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -467,7 +462,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     }//GEN-LAST:event_lblNombreVendedorPropertyChange
 
     private void BSelecVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecVendedorActionPerformed
-        // TODO add your handling code here:
+        vendedorSeleccionado = (new ConsultaVendedor()).seleccionarVendedor();
+        setVendedor();
     }//GEN-LAST:event_BSelecVendedorActionPerformed
 
     private void lblNombreClientePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreClientePropertyChange
@@ -475,7 +471,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     }//GEN-LAST:event_lblNombreClientePropertyChange
 
     public void setLblApellido(String lblApellido) {
-        this.lblApellidoVendedor.setText(lblApellido);
+        this.lblApellidoCliente.setText(lblApellido);
     }
 
     public void setLblBarrio(String lblBarrio) {
@@ -505,7 +501,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     }
 
     public void setLblNombre(String capturado) {
-        this.lblNombreVendedor.setText(capturado);
+        this.lblNombreCliente.setText(capturado);
     }
 
     public void setLblNumero(Integer capturado) {
@@ -558,49 +554,9 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
        }
     }
 
-    public void setMontoReserv(JTextField montoReserv) {
-        this.montoReserva = montoReserv;
-    }
 
-    public void setTiempoValidez(JSpinner tiempoValidez) {
-        this.tiempoValidez = tiempoValidez;
-    }
     public void setNumDoc(Integer capturado) {
-        this.lblNumDocVendedor.setText(String.valueOf(capturado));
-    }
-   
-    private double getMontoReserva(){
-        return Double.parseDouble(this.montoReserva.getText());
-    }
-    private void sintaxis(){
-        validaciones.CaracteresMaximos(montoReserva, 12, "double");
-    }
-    private Date getTiempoValidez(){
-        int dias;
-        Date fechaHoy = new Date();
-        dias=(Integer) tiempoValidez.getValue();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
-        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
-        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
-    }
-    private boolean camposValidos() {
-        camposFlotantes = new JTextField[]{montoReserva};
-        labelFlotantes = new JLabel[]{lblmontoReserva};
-        camposObligatorios = new JTextField[]{montoReserva};
-        lblCamposObligatorios = new JLabel[]{lblmontoReserva};
-                String mensaje="";
-                if(validaciones.CamposVacios(camposObligatorios, null)){
-                    mensaje = mensaje + "Hay campos obligatorios que deben ser completados";
-                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
-                }
-                if(validaciones.validarPintadorFlotantes(camposFlotantes, labelFlotantes))
-                    mensaje = mensaje + "\n" + "Hay campos numericos invalidos";
-
-                if(!mensaje.equals("")){
-                    JOptionPane.showMessageDialog(null,mensaje,"¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
-                    return false;}
-    return true;
+        this.lblNumDocCliente.setText(String.valueOf(capturado));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -609,9 +565,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabe28;
-    private javax.swing.JLabel jLabe29;
-    private javax.swing.JLabel jLabe30;
-    private javax.swing.JLabel jLabe31;
     private javax.swing.JLabel jLabe32;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -619,31 +572,19 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel label33;
     private javax.swing.JLabel label34;
     private javax.swing.JLabel label35;
-    private javax.swing.JLabel lblApellido1;
     private javax.swing.JLabel lblApellidoCliente;
-    private javax.swing.JLabel lblApellidoVen1;
-    private javax.swing.JLabel lblApellidoVen2;
     private javax.swing.JLabel lblApellidoVendedor;
     private javax.swing.JLabel lblBarrio;
     private javax.swing.JLabel lblCP;
@@ -651,15 +592,9 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private javax.swing.JLabel lblDepto;
     private javax.swing.JLabel lblImporte;
     private javax.swing.JLabel lblLocalidad;
-    private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblNombreCliente;
-    private javax.swing.JLabel lblNombreVen1;
-    private javax.swing.JLabel lblNombreVen2;
     private javax.swing.JLabel lblNombreVendedor;
-    private javax.swing.JLabel lblNumDoc1;
     private javax.swing.JLabel lblNumDocCliente;
-    private javax.swing.JLabel lblNumDocVen1;
-    private javax.swing.JLabel lblNumDocVen2;
     private javax.swing.JLabel lblNumDocVendedor;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblPiso;
@@ -682,6 +617,12 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
             btnAceptar.setEnabled(false);
         }else
             btnAceptar.setEnabled(true);
+    }
+
+    private void setVendedor() {
+        lblNombreVendedor.setText(vendedorSeleccionado.getNombre());
+        lblApellidoVendedor.setText(vendedorSeleccionado.getApellido());
+        lblNumDocVendedor.setText(String.valueOf(vendedorSeleccionado.getNumDoc()));
     }
 
 }

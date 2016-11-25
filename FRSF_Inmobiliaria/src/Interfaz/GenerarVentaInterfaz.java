@@ -45,7 +45,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     GenerarVentaInterfaz(Inmueble inmSeleccionado) {
        inmuebleReservado=inmSeleccionado;
        initComponents(); 
-       sintaxis();
+//       sintaxis();
        validarCargaCliente();
        setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
@@ -459,25 +459,25 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BSelecVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecVendedorActionPerformed
-        Inmobiliaria.getInstance().ListarClientes(this);
+//        Inmobiliaria.getInstance().ListarClientes(this);
     }//GEN-LAST:event_BSelecVendedorActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        
-        if(camposValidos()){
-        LogicaReserva operador = new LogicaReserva();
-            try {
-                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la reserva","Información",JOptionPane.INFORMATION_MESSAGE);
-                operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
-                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente reservado","Éxito",JOptionPane.INFORMATION_MESSAGE);
-                Inmobiliaria.getInstance().ConsultaInmueble();
-            } catch (IOException ex) {
-                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (DocumentException ex) {
-                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
+//        if(camposValidos()){
+//        LogicaReserva operador = new LogicaReserva();
+//            try {
+//                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la reserva","Información",JOptionPane.INFORMATION_MESSAGE);
+//                operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
+//                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente reservado","Éxito",JOptionPane.INFORMATION_MESSAGE);
+//                Inmobiliaria.getInstance().ConsultaInmueble();
+//            } catch (IOException ex) {
+//                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+//            } catch (DocumentException ex) {
+//                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -580,50 +580,50 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
        }
     }
 
-    public void setMontoReserv(JTextField montoReserv) {
-        this.montoReserva = montoReserv;
-    }
-
-    public void setTiempoValidez(JSpinner tiempoValidez) {
-        this.tiempoValidez = tiempoValidez;
-    }
-    public void setNumDoc(Integer capturado) {
-        this.lblNumDocVen.setText(String.valueOf(capturado));
-    }
-   
-    private double getMontoReserva(){
-        return Double.parseDouble(this.montoReserva.getText());
-    }
-    private void sintaxis(){
-        validaciones.CaracteresMaximos(montoReserva, 12, "double");
-    }
-    private Date getTiempoValidez(){
-        int dias;
-        Date fechaHoy = new Date();
-        dias=(Integer) tiempoValidez.getValue();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
-        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
-        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
-    }
-    private boolean camposValidos() {
-        camposFlotantes = new JTextField[]{montoReserva};
-        labelFlotantes = new JLabel[]{lblmontoReserva};
-        camposObligatorios = new JTextField[]{montoReserva};
-        lblCamposObligatorios = new JLabel[]{lblmontoReserva};
-                String mensaje="";
-                if(validaciones.CamposVacios(camposObligatorios, null)){
-                    mensaje = mensaje + "Hay campos obligatorios que deben ser completados";
-                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
-                }
-                if(validaciones.validarPintadorFlotantes(camposFlotantes, labelFlotantes))
-                    mensaje = mensaje + "\n" + "Hay campos numericos invalidos";
-
-                if(!mensaje.equals("")){
-                    JOptionPane.showMessageDialog(null,mensaje,"¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
-                    return false;}
-    return true;
-    }
+//    public void setMontoReserv(JTextField montoReserv) {
+//        this.montoReserva = montoReserv;
+//    }
+//
+//    public void setTiempoValidez(JSpinner tiempoValidez) {
+//        this.tiempoValidez = tiempoValidez;
+//    }
+//    public void setNumDoc(Integer capturado) {
+//        this.lblNumDocVen.setText(String.valueOf(capturado));
+//    }
+//   
+//    private double getMontoReserva(){
+//        return Double.parseDouble(this.montoReserva.getText());
+//    }
+//    private void sintaxis(){
+//        validaciones.CaracteresMaximos(montoReserva, 12, "double");
+//    }
+//    private Date getTiempoValidez(){
+//        int dias;
+//        Date fechaHoy = new Date();
+//        dias=(Integer) tiempoValidez.getValue();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
+//        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
+//        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
+//    }
+//    private boolean camposValidos() {
+//        camposFlotantes = new JTextField[]{montoReserva};
+//        labelFlotantes = new JLabel[]{lblmontoReserva};
+//        camposObligatorios = new JTextField[]{montoReserva};
+//        lblCamposObligatorios = new JLabel[]{lblmontoReserva};
+//                String mensaje="";
+//                if(validaciones.CamposVacios(camposObligatorios, null)){
+//                    mensaje = mensaje + "Hay campos obligatorios que deben ser completados";
+//                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
+//                }
+//                if(validaciones.validarPintadorFlotantes(camposFlotantes, labelFlotantes))
+//                    mensaje = mensaje + "\n" + "Hay campos numericos invalidos";
+//
+//                if(!mensaje.equals("")){
+//                    JOptionPane.showMessageDialog(null,mensaje,"¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+//                    return false;}
+//    return true;
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BSelecVendedor;
@@ -673,13 +673,13 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel lblmontoReserva;
     // End of variables declaration//GEN-END:variables
 
-    void setCliente(Cliente clienteRecuperado) {
-         clienteReserva=clienteRecuperado;
-         setLblNombre(clienteRecuperado.getNombre());
-         setLblApellido(clienteRecuperado.getApellido());
-         setNumDoc(clienteRecuperado.getNumeroDoc());
-         
-    }
+//    void setCliente(Cliente clienteRecuperado) {
+//         clienteReserva=clienteRecuperado;
+//         setLblNombre(clienteRecuperado.getNombre());
+//         setLblApellido(clienteRecuperado.getApellido());
+//         setNumDoc(clienteRecuperado.getNumeroDoc());
+//         
+//    }
 
     private void validarCargaCliente() {
      if(lblImpTotal.getText().equals("Ninguno")){

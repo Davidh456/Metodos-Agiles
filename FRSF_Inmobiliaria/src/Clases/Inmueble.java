@@ -45,6 +45,8 @@ public class Inmueble  implements java.io.Serializable {
      private Integer tipoInmueble;
      //private Set fotos = new HashSet(0); TODO cuando descomente, descomentar en el equals.
      private Set reservas = new HashSet(0);
+     private String Estado= "Disponible";
+     
 
     public Inmueble() {
     }
@@ -79,6 +81,7 @@ public class Inmueble  implements java.io.Serializable {
        this.provinciaIndice = ProvinciaIndice;
        this.telefono = Telefono;
        this.tipoInmueble = TipoInmueble;
+       
     }
     
     public Inmueble(Cliente cliente, double supInmueble, double supTerreno, Boolean ac, Integer antiguedad, 
@@ -483,10 +486,14 @@ public class Inmueble  implements java.io.Serializable {
         }
         return true;
     }
-    
 
+    public String getEstado() {
+        return Estado;
+    }
 
-
+    public void setEstado(String Estado) {
+        this.Estado = Estado;
+    }
 }
 
 

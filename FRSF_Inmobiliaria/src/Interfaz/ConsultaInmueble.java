@@ -385,6 +385,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         });
 
         BotonVender.setText("Vender");
+        BotonVender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVenderActionPerformed(evt);
+            }
+        });
 
         BotonDetalles.setText("Detalles");
         BotonDetalles.addActionListener(new java.awt.event.ActionListener() {
@@ -462,14 +467,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
             },
             new String [] {
-                "", "Código", "Tipo", "Provincia", "Localidad", "Dirección", "Cant Dorm.", "Garaje", "Patio", "Sup. Edificada", "Precio"
+                "", "Código", "Estado", "Tipo", "Provincia", "Localidad", "Dirección", "Cant Dorm.", "Garaje", "Patio", "Sup. Edificada", "Precio"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Boolean.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Short.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false, false, false, false, false, false
+                true, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -491,15 +496,16 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         if (TablaResultados.getColumnModel().getColumnCount() > 0) {
             TablaResultados.getColumnModel().getColumn(0).setPreferredWidth(10);
             TablaResultados.getColumnModel().getColumn(1).setPreferredWidth(45);
-            TablaResultados.getColumnModel().getColumn(2).setPreferredWidth(30);
-            TablaResultados.getColumnModel().getColumn(3).setPreferredWidth(60);
+            TablaResultados.getColumnModel().getColumn(2).setPreferredWidth(50);
+            TablaResultados.getColumnModel().getColumn(3).setPreferredWidth(30);
             TablaResultados.getColumnModel().getColumn(4).setPreferredWidth(60);
             TablaResultados.getColumnModel().getColumn(5).setPreferredWidth(60);
-            TablaResultados.getColumnModel().getColumn(6).setPreferredWidth(65);
-            TablaResultados.getColumnModel().getColumn(7).setPreferredWidth(45);
-            TablaResultados.getColumnModel().getColumn(8).setPreferredWidth(40);
-            TablaResultados.getColumnModel().getColumn(9).setPreferredWidth(80);
-            TablaResultados.getColumnModel().getColumn(10).setPreferredWidth(40);
+            TablaResultados.getColumnModel().getColumn(6).setPreferredWidth(60);
+            TablaResultados.getColumnModel().getColumn(7).setPreferredWidth(65);
+            TablaResultados.getColumnModel().getColumn(8).setPreferredWidth(45);
+            TablaResultados.getColumnModel().getColumn(9).setPreferredWidth(40);
+            TablaResultados.getColumnModel().getColumn(10).setPreferredWidth(80);
+            TablaResultados.getColumnModel().getColumn(11).setPreferredWidth(40);
         }
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -614,6 +620,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                     model.addRow(new Object[]{
                         false, 
                         c.getIdDescritivo(), 
+                        c.getEstado(),
                         c.getTipoInmueble(),
                         c.getProvinciaNombre(),
                         c.getLocalidadNombre(), 
@@ -661,11 +668,26 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonReservaActionPerformed
 
     private void BotonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDetallesActionPerformed
-        boolean tieneReserva;
+
         Inmueble inmSeleccionado;
         inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
         Inmobiliaria.getInstance().DetallesInmueble(inmSeleccionado);
     }//GEN-LAST:event_BotonDetallesActionPerformed
+
+    private void BotonVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVenderActionPerformed
+        boolean tieneReserva;
+        Inmueble inmSeleccionado;
+        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        LogicaReserva operador = new LogicaReserva();
+        tieneReserva=operador.ExisteReserva(inmSeleccionado);
+        if(!tieneReserva){
+        Inmobiliaria.getInstance().GenerarVentaSRes(inmSeleccionado);
+        }
+        else{
+           // Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
+        }
+        
+    }//GEN-LAST:event_BotonVenderActionPerformed
 
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);

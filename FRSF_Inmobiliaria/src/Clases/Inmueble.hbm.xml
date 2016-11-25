@@ -101,5 +101,8 @@
             </key>
             <one-to-many class="Clases.Foto" />
         </set> -->
+        <property name="Estado" type="string">
+            <column name="Estado" length="10" />
+        </property>
     </class>
 </hibernate-mapping>

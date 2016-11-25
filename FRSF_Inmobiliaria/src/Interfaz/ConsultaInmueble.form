@@ -488,6 +488,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Vender"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonVenderActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BotonDetalles">
           <Properties>
@@ -544,9 +547,10 @@
         <Component class="javax.swing.JTable" name="TablaResultados">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="11" rowCount="0">
+              <Table columnCount="12" rowCount="0">
                 <Column editable="true" title="" type="java.lang.Boolean"/>
                 <Column editable="false" title="C&#xf3;digo" type="java.lang.String"/>
+                <Column editable="false" title="Estado" type="java.lang.String"/>
                 <Column editable="false" title="Tipo" type="java.lang.String"/>
                 <Column editable="false" title="Provincia" type="java.lang.String"/>
                 <Column editable="false" title="Localidad" type="java.lang.String"/>
@@ -567,6 +571,11 @@
                   <Renderer/>
                 </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="45" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
+                <Column maxWidth="-1" minWidth="-1" prefWidth="50" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

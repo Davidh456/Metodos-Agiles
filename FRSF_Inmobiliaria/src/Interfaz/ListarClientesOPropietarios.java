@@ -73,6 +73,20 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         setearTablaClientes();
         setearAccionesClientesReserva(aThis);
     }
+    
+    ListarClientesOPropietarios(GenerarVentaInterfazSR aThis) {
+        initComponents();
+        setSize(1000,425);
+        setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
+                .createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar "));
+        spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
+                .createLineBorder(new java.awt.Color(153, 153, 153)), tabla+" encontrados"));
+        tbLista.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tbLista.setBackground(new Color(245,245,245));
+        this.tabla = "Clientes";
+        setearTablaClientes();
+        setearAccionesClientesVentaSR(aThis);
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -356,6 +370,23 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Inmobiliaria.getInstance().GenerarReserva(aThis);
+            } 
+        });
+    }
+        private void setearAccionesClientesVentaSR(GenerarVentaInterfazSR aThis) {
+        btnEliminar.setVisible(false);
+        btnModificar.setVisible(false);
+        btnAgregar.setText("Seleccionar");
+        btnAgregar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().GenerarVentaSRes(aThis, listaClientes.get(tbLista.getSelectedRow()));
+            } 
+        });
+        btnVolver.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inmobiliaria.getInstance().GenerarVentaSRes(aThis);
             } 
         });
     }
