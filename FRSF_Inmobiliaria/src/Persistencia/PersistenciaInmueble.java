@@ -229,6 +229,20 @@ public class PersistenciaInmueble {
         return true;
     }
     
+    public boolean eliminarReservaPorID(int id) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        Criteria criteria = session.createCriteria(Reserva.class, "reserva");
+        criteria.createAlias("reserva.inmueble", "inmueble");
+        criteria.add(Restrictions.eq("inmueble.id", id));
+        session.delete(criteria.list().get(0));
+        tx.commit();
+        session.close();
+        return true;
+    }
+    
     public List<Foto> existeFotoInmueble(Inmueble in, Foto imagen)
     {
         List<Foto> fotoInmueble;

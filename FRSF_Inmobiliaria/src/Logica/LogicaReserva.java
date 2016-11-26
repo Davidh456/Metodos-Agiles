@@ -67,7 +67,6 @@ public class LogicaReserva {
                 form.setField(fieldName, fieldValue);
                 form.setFieldProperty(fieldName, "setfflags", PdfFormField.FF_READ_ONLY, null);
                     
-                //System.out.println(fieldName + " " + fieldValue);
             }
             stamper.setFormFlattening(true);
             stamper.close();
@@ -244,27 +243,23 @@ public class LogicaReserva {
     }
     
     public boolean ExisteReserva(Inmueble inmSeleccionado) {
-        Date fechaHoy= new Date();
         List<Reserva> reservas;
         reservas=BDInmueble.existenReservas(inmSeleccionado);
-        for(Reserva res: reservas){
-            if(res.getFechaHasta().after(fechaHoy)){
-                return true;
-            }
-        }
-        return false;
+        if(reservas.isEmpty()){
+                return false;}
+        return true;
     }
     
     public Reserva ObtenerReserva(Inmueble inmSeleccionado) {
-        Date fechaHoy= new Date();
-        List<Reserva> reservas;
-        reservas=BDInmueble.existenReservas(inmSeleccionado);
-        for(Reserva res: reservas){
-            if(res.getFechaHasta().after(fechaHoy)){
-                return res;
-            }
-        }
-        return null;
+        List<Reserva> reserva;
+        reserva=BDInmueble.existenReservas(inmSeleccionado);
+        if(reserva.isEmpty()){
+            return null;}
+        return reserva.get(0);
+    }
+    
+    public boolean EliminarReserva(int id) {
+        return BDInmueble.eliminarReservaPorID(id); 
     }
     
     public boolean reservasViejas(Inmueble in) {
@@ -289,7 +284,6 @@ public class LogicaReserva {
         for (Iterator<Reserva> iter = reservas.listIterator(); iter.hasNext(); ) {
             Reserva item=iter.next();
             if (!item.getFechaHasta().after(hoy)){
-                System.out.println("la fecha limite es:"+item.getFechaHasta()+" y la actual es:"+hoy);
                 reservasAEliminar.add(item);}
         }           
         operador.eliminarReservas(reservasAEliminar);

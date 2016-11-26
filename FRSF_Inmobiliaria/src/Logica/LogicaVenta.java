@@ -58,8 +58,7 @@ public class LogicaVenta {
                 String fieldValue = fieldsWithValues.get(fieldName) != null ? (String)(fieldsWithValues.get(fieldName)) : "";
                 form.setField(fieldName, fieldValue);
                 form.setFieldProperty(fieldName, "setfflags", PdfFormField.FF_READ_ONLY, null);
-                    
-                //System.out.println(fieldName + " " + fieldValue);
+                   
             }
             stamper.setFormFlattening(true);
             stamper.close();

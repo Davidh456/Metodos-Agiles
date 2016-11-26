@@ -9,10 +9,12 @@ import Clases.Inmueble;
 import Clases.Localidad;
 import Clases.Cliente;
 import Clases.Provincia;
+import Clases.Reserva;
 import Logica.Validaciones;
 import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
 import Logica.LogicaReserva;
+import Persistencia.PersistenciaInmueble;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -51,6 +53,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private Inmueble modificarInmueble;
     private Inmueble eliminarInmueble;
     private Cliente propietarioAux; //esto se debe perfeccionar
+    private int QuitarReserva=0;
     // Creates new form ABMInmuebleInterfaz   
     public ABMInmuebleInterfaz() {
         initComponents();
@@ -59,8 +62,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setSize(getPreferredSize());
         sintaxis();
         setBorder(javax.swing.BorderFactory.createTitledBorder("Alta Inmueble"));
+        btnQuitarReserva.setEnabled(false);
+        btnQuitarReserva.setVisible(false);
     }
     public  ABMInmuebleInterfaz(Inmueble inmSeleccionado) {
+        QuitarReserva=0;
         initComponents();
         setBackground(new Color(245,245,245));
         cargarCB();
@@ -99,6 +105,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
+        
+        LogicaReserva operador = new LogicaReserva();
+        if(!operador.ExisteReserva(modificarInmueble)){
+            btnQuitarReserva.setEnabled(false);
+            btnQuitarReserva.setVisible(false);}
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -148,6 +159,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         {    BCancelar.setText("Cerrar");
              BAceptar.setVisible(false);
         }
+        btnQuitarReserva.setEnabled(false);
+        btnQuitarReserva.setVisible(false);
    }
 
     public double getSupInmueble() {
@@ -335,6 +348,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaFotos = new javax.swing.JTable();
         BElimFotos = new javax.swing.JButton();
+        btnQuitarReserva = new javax.swing.JButton();
+        lblReservaElim = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
@@ -809,6 +824,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             }
         });
 
+        btnQuitarReserva.setText("Quitar Reserva");
+        btnQuitarReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuitarReservaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -839,32 +861,24 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(377, 377, 377)
-                        .addComponent(BCancelar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BAceptar))
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbProvincia, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(cbLocalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(BSelecProp, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel33)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PropietarioLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap()
+                        .addComponent(BSelecProp, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel33)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PropietarioLbl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Propietario, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(218, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -877,14 +891,25 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(378, 378, 378)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(182, 182, 182)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnQuitarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReservaElim, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(BCancelar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BAceptar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -939,10 +964,17 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                         .addComponent(Observaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(BCancelar)
-                        .addComponent(BAceptar))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BCancelar)
+                            .addComponent(BAceptar)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnQuitarReserva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblReservaElim, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1042,12 +1074,12 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 break;
            case "Modificar Inmueble": 
                if(camposValidos()){
-                   resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+                   resultado=operador.ModificarInmueble(QuitarReserva, iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
                    //iDModif es el id del inmueble a modificar
+                   //System.exit(0);
                    if(resultado){
                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
-                       {
-                           
+                        {
                            Inmobiliaria.getInstance().ConsultaInmueble();}
                        else
                            Inmobiliaria.getInstance().MenuPrincipal();
@@ -1079,6 +1111,19 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         model.setRowCount(ListaFotos.getSelectedRow());
     }
     }//GEN-LAST:event_BElimFotosActionPerformed
+
+    private void btnQuitarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarReservaActionPerformed
+        // TODO add your handling code here:
+        if (JOptionPane.showConfirmDialog(null, "La reserva a nombre de: \n  Apellido: "+propietarioAux.getApellido() + "  Nombre: " + propietarioAux.getNombre() + "\n  NroDoc: " + propietarioAux.getNumeroDoc() + "\nSe establecerá para ser eliminada, ¿desea continuar?", "Atención", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        {
+            QuitarReserva=1;
+            btnQuitarReserva.setEnabled(false);
+            btnQuitarReserva.setVisible(false);
+            lblReservaElim.setText(" La reserva será eliminada");
+            lblReservaElim.setForeground(new Color(255,0,10));
+            lblReservaElim.setBorder(new LineBorder(new Color(255,0,20)));
+        }
+    }//GEN-LAST:event_btnQuitarReservaActionPerformed
 
     private void sintaxis(){
         validaciones.CaracteresMaximos(CP,5,"numerico");
@@ -1179,6 +1224,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel PropietarioLbl;
     private javax.swing.JCheckBox Telefono;
     private javax.swing.JComboBox<String> TipoInmueble;
+    private javax.swing.JButton btnQuitarReserva;
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
     private javax.swing.JCheckBox jCheckBox1;
@@ -1217,6 +1263,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblReservaElim;
     private javax.swing.JTextField supInmueble;
     private javax.swing.JLabel supInmuebleLbl;
     private javax.swing.JTextField supTerreno;

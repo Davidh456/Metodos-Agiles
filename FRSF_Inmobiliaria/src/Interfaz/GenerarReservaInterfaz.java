@@ -523,10 +523,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         dias=(Integer) tiempoValidez.getValue();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
-        System.out.println("dias habiles: "+dias);
-        System.out.println("fecha previa: " + calendar.getTime());
         calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
-        System.out.println("fecha posterior: " + calendar.getTime());
         return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
     }
     private boolean camposValidos() {

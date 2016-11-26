@@ -66,6 +66,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
        setLblTipoInmueble(inmSeleccionado.getTipoInmueble());
        
        LogicaReserva operador = new LogicaReserva();
+       
        reserva=operador.ObtenerReserva(inmuebleVendido);
        setLblApellidoClienteRes(reserva.getCliente().getApellido());
        setLblNombreClienteRes(reserva.getCliente().getNombre());
