@@ -122,9 +122,13 @@ public class ABMInmueble {
         return false;
     }
 
-public List<Foto> BuscaFotos()
+    public List<Foto> BuscaFotos()
     {
         return BDInmueble.ListarFotos();
+    }
+
+    public List<Inmueble>  TieneInmueble(Cliente cliente) {
+        return BDInmueble.TieneInmueble(cliente);
     }
     
 }

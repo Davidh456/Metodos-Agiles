@@ -290,5 +290,9 @@ public class LogicaReserva {
         
         
     }     
+
+    public List<Reserva> TieneReserva(Cliente cliente) {
+        return BDInmueble.TieneReserva(cliente);
+    }
 }
     

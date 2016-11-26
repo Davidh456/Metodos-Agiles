@@ -5,12 +5,17 @@
  */
 package Persistencia;
 
+import Clases.Cliente;
 import Clases.Factura;
 import Clases.Historiaventa;
+import Clases.Reserva;
 import Conexion.NewHibernateUtil;
+import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -36,6 +41,16 @@ public class PersistenciaVenta {
         session.save(historial);
         tx.commit();
         session.close();
+    }
+
+    public List<Factura> TieneFacturas(Cliente cliente) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Criteria criteria = session.createCriteria(Factura.class, "factura");
+        criteria.createAlias("factura.cliente", "cliente");
+        criteria.add(Restrictions.eq("cliente.idCliente",cliente.getIdCliente()));
+        return criteria.list();
     }
     
 }

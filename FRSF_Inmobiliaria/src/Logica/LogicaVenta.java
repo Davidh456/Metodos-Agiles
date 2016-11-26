@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class LogicaVenta {
@@ -237,6 +238,10 @@ public class LogicaVenta {
         PersistenciaInmueble operador = new PersistenciaInmueble();
         inmuebleVendido.setEstado("Vendido");
         operador.ModificarInmueble(inmuebleVendido);
+    }
+
+    public List<Factura>  TieneFacturas(Cliente cliente) {
+        return (new PersistenciaVenta()).TieneFacturas(cliente);
     }
     
 }

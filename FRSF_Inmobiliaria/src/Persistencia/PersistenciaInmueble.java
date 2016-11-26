@@ -277,4 +277,33 @@ public class PersistenciaInmueble {
         return resultado;
     }
 
+    public List<Inmueble> TieneInmueble(Cliente cliente) {
+       List<Inmueble> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        
+        Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
+        criteria.createAlias("inmueble.cliente", "idpropietario"); 
+        criteria.add(Restrictions.eq("idpropietario.nombre",cliente.getNombre()));
+        criteria.add(Restrictions.eq("idpropietario.numeroDoc",cliente.getNumeroDoc()));  
+        criteria.add(Restrictions.eq("idpropietario.tipoDoc",cliente.getTipoDoc()-1));  
+        //criteria.add(Restrictions.eqProperty("cliente.correo",cliente.getCorreo()));  
+        criteria.add(Restrictions.eq("idpropietario.apellido",cliente.getApellido()));
+        resultado =criteria.list();
+        session.close();
+        
+        return resultado; 
+    }
+
+    public List<Reserva> TieneReserva(Cliente cliente) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Criteria criteria = session.createCriteria(Reserva.class, "reserva");
+        criteria.createAlias("reserva.cliente", "cliente");
+        criteria.add(Restrictions.eq("cliente.idCliente",cliente.getIdCliente()));
+        return criteria.list();
+    }
+
 }

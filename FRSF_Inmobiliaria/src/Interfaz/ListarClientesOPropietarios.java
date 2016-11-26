@@ -138,6 +138,11 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnAgregar.setText("Agregar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -190,6 +195,10 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,7 +276,13 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
+                    ////
+                    ABMCliente operador = new ABMCliente();
+                    if(!operador.TieneTransacciones(listaClientes.get(tbLista.getSelectedRow())))
+                       Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
+                    else
+                        JOptionPane.showMessageDialog(null, "No se puede eliminar un cliente que haya realizado una compra, reserva o que sea propietario de un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
+                    ////
                 }
                 else 
                     JOptionPane.showMessageDialog(null, "Se debe seleccinar un cliente!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);

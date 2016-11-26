@@ -648,10 +648,18 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_cbLocalidadActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
+        boolean tieneReserva;
         Inmueble inmSeleccionado;
         inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
-        Inmobiliaria.getInstance().EliminarInmueble(inmSeleccionado);
-       
+        LogicaReserva operador = new LogicaReserva();
+        tieneReserva=operador.ExisteReserva(inmSeleccionado);
+        if(!tieneReserva){
+            inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+            Inmobiliaria.getInstance().EliminarInmueble(inmSeleccionado);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "El Inmueble se encuentra reservado por lo que no se puede eliminar.","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
