@@ -15,6 +15,7 @@ import Logica.ABMInmueble;
 import Logica.LogicaCargaInterfaz;
 import Logica.LogicaReserva;
 import Persistencia.PersistenciaInmueble;
+import com.itextpdf.text.log.SysoCounter;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,6 +23,8 @@ import java.io.File;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -53,7 +56,11 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private Inmueble modificarInmueble;
     private Inmueble eliminarInmueble;
     private Cliente propietarioAux; //esto se debe perfeccionar
-    private int QuitarReserva=0;
+    
+    private int QuitarReserva=-1;   //QuitarReserva determina si en la ventana de modificar se desea quitar la reserva que
+                                    //tiene un inmueble.   En el caso de que un inmueble no tenga reserva, el valor permanece en
+                                    //-1. Si tiene pero no se desea quitar (no se presiona el boton), el valor permanece en 0.
+                                    //Si se presiona el boton, el valor de QuitarReserva pasa a ser 1.
     // Creates new form ABMInmuebleInterfaz   
     public ABMInmuebleInterfaz() {
         initComponents();
@@ -66,7 +73,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         btnQuitarReserva.setVisible(false);
     }
     public  ABMInmuebleInterfaz(Inmueble inmSeleccionado) {
-        QuitarReserva=0;
+        QuitarReserva=-1;
+                          
         initComponents();
         setBackground(new Color(245,245,245));
         cargarCB();
@@ -105,11 +113,13 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
-        
+            
         LogicaReserva operador = new LogicaReserva();
         if(!operador.ExisteReserva(modificarInmueble)){
             btnQuitarReserva.setEnabled(false);
             btnQuitarReserva.setVisible(false);}
+        else
+            QuitarReserva=0;
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -902,10 +912,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(182, 182, 182)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnQuitarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblReservaElim, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnQuitarReserva, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(lblReservaElim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(64, 64, 64)
                 .addComponent(BCancelar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BAceptar)
@@ -973,7 +983,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnQuitarReserva)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblReservaElim, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblReservaElim)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -1074,10 +1084,19 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 break;
            case "Modificar Inmueble": 
                if(camposValidos()){
-                   resultado=operador.ModificarInmueble(QuitarReserva, iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+                   resultado=operador.ModificarInmueble(iDModif, getSupInmueble(), getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(), getFondo(), getFrente(), getGarage(), getGn(), getLavadero(), getListaFotos(), getLocalidadIndice(), getLocalidadNombre(), getNumero(), getObservaciones(), getOrientacion(), getPatio(), getPavimento(), getPiso(), getPrecio(), getPropietario(), getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
                    //iDModif es el id del inmueble a modificar
                    //System.exit(0);
+                   
                    if(resultado){
+                       if(QuitarReserva==1){
+                            LogicaReserva operador2 = new LogicaReserva();
+                            operador2.EliminarReserva(iDModif);}
+                       if(QuitarReserva==0){
+                           Inmueble casa = new Inmueble(getPropietario(), getSupInmueble(),  getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(),  getFondo(), getFrente(), getGarage(), getGn(),  getLavadero(),  getLocalidadIndice(), getLocalidadNombre(), getNumero(),  getObservaciones(),  getOrientacion(),  getPatio(),  getPavimento(),  getPiso(),  getPrecio(),  getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
+                           casa.setId(iDModif);
+                           casa.setEstado("Reservado");
+                           operador.ModificarInmuebleConObjeto(casa);}                       
                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                         {
                            Inmobiliaria.getInstance().ConsultaInmueble();}
@@ -1113,13 +1132,12 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_BElimFotosActionPerformed
 
     private void btnQuitarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarReservaActionPerformed
-        // TODO add your handling code here:
         if (JOptionPane.showConfirmDialog(null, "La reserva a nombre de: \n  Apellido: "+propietarioAux.getApellido() + "  Nombre: " + propietarioAux.getNombre() + "\n  NroDoc: " + propietarioAux.getNumeroDoc() + "\nSe establecerá para ser eliminada, ¿desea continuar?", "Atención", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
             QuitarReserva=1;
             btnQuitarReserva.setEnabled(false);
             btnQuitarReserva.setVisible(false);
-            lblReservaElim.setText(" La reserva será eliminada");
+            lblReservaElim.setText(" La reserva será eliminada al aceptar");
             lblReservaElim.setForeground(new Color(255,0,10));
             lblReservaElim.setBorder(new LineBorder(new Color(255,0,20)));
         }

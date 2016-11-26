@@ -276,4 +276,5 @@ public class PersistenciaInmueble {
         session.close();
         return resultado;
     }
+
 }

@@ -119,11 +119,11 @@
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btnQuitarReserva" min="-2" pref="172" max="-2" attributes="0"/>
-                  <Component id="lblReservaElim" min="-2" pref="180" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="btnQuitarReserva" pref="172" max="32767" attributes="0"/>
+                  <Component id="lblReservaElim" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
               <Component id="BCancelar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
               <Component id="BAceptar" min="-2" max="-2" attributes="0"/>
@@ -209,7 +209,7 @@
                   <Group type="102" attributes="0">
                       <Component id="btnQuitarReserva" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblReservaElim" min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="lblReservaElim" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
