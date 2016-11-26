@@ -31,7 +31,7 @@ import javax.swing.JTextField;
 public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
     /** Creates new form GenerarReservaInterfaz */
-    Inmueble inmuebleReservado;
+    Inmueble inmuebleVendido;
     Vendedor vendedorSeleccionado;
     Cliente clienteReserva;
     Validaciones validaciones = new Validaciones();
@@ -46,7 +46,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
     
     GenerarVentaInterfazSR(Inmueble inmSeleccionado) {
-       inmuebleReservado=inmSeleccionado;
+       inmuebleVendido=inmSeleccionado;
        initComponents(); 
        validarCargaCliente();
        setBackground(new Color(245,245,245));
@@ -444,13 +444,20 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     }//GEN-LAST:event_BSelecClienteActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
         LogicaVenta operador = new LogicaVenta();
         
-                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
-                operador.GenerarVenta(inmuebleReservado,clienteReserva,vendedorSeleccionado);
-                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
-                Inmobiliaria.getInstance().ConsultaInmueble();
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
+        try {
+            operador.GenerarVenta(inmuebleVendido,clienteReserva,vendedorSeleccionado);
+            } catch (IOException ex) {
+                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
+                
+        JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

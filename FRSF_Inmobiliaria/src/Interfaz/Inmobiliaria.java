@@ -373,18 +373,6 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-    void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva, Cliente clienteRecuperado) {
-         contentPane.removeAll();
-         pantallaReserva.setCliente(clienteRecuperado);
-        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
-							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
-							pantallaReserva.getWidth(), 
-							pantallaReserva.getHeight());
-        contentPane.add(pantallaReserva);
-        pantallaReserva.setVisible(true);
-        contentPane.repaint();
-        contentPane.revalidate();
-    }
 
     void GenerarReserva(GenerarReservaInterfaz pantallaReserva) {
          contentPane.removeAll();
@@ -397,18 +385,7 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
-    void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva) {
-         contentPane.removeAll();
-        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
-							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
-							pantallaReserva.getWidth(), 
-							pantallaReserva.getHeight());
-        contentPane.add(pantallaReserva);
-        pantallaReserva.setVisible(true);
-        contentPane.repaint();
-        contentPane.revalidate();
-    }
-
+    
     void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM) {
         contentPane.removeAll();
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
@@ -488,4 +465,42 @@ public class Inmobiliaria extends JFrame{
         contentPane.revalidate();
     }
 
+        void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva, Cliente clienteRecuperado) {
+        contentPane.removeAll();
+        pantallaReserva.setCliente(clienteRecuperado);
+        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
+							pantallaReserva.getWidth(), 
+							pantallaReserva.getHeight());
+        contentPane.add(pantallaReserva);
+        pantallaReserva.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+    
+
+    void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva) {
+        contentPane.removeAll();
+        pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
+							pantallaReserva.getWidth(), 
+							pantallaReserva.getHeight());
+        contentPane.add(pantallaReserva);
+        pantallaReserva.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+    
+    void GenerarVentaCRes(Inmueble inmSeleccionado) {
+        contentPane.removeAll();
+        GenerarVentaInterfaz pantallaABM = new GenerarVentaInterfaz(inmSeleccionado);
+        pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
+							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
+							pantallaABM.getWidth(), 
+							pantallaABM.getHeight());
+        contentPane.add(pantallaABM);
+        pantallaABM.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
 }

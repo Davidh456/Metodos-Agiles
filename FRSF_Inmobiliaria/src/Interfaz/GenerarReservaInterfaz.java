@@ -105,6 +105,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         jLabel23 = new javax.swing.JLabel();
         montoReserva = new javax.swing.JTextField();
         tiempoValidez = new javax.swing.JSpinner();
+        jLabel4 = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -294,6 +295,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
 
         tiempoValidez.setModel(new javax.swing.SpinnerNumberModel(15, 15, 90, 1));
 
+        jLabel4.setText("(El mínimo aceptado es 15 dias)");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -307,6 +310,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addComponent(jLabel23)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -318,7 +323,8 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                         .addComponent(lblmontoReserva)
                         .addComponent(jLabel23)
-                        .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(tiempoValidez, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -517,7 +523,10 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         dias=(Integer) tiempoValidez.getValue();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
-        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
+        System.out.println("dias habiles: "+dias);
+        System.out.println("fecha previa: " + calendar.getTime());
+        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0
+        System.out.println("fecha posterior: " + calendar.getTime());
         return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
     }
     private boolean camposValidos() {
@@ -553,6 +562,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

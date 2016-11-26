@@ -19,8 +19,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -78,7 +81,7 @@ public class LogicaReserva {
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
-            EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
+            //EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
     private HashMap crearHashMapReserva(Reserva reserva, Set keys) {
@@ -251,11 +254,47 @@ public class LogicaReserva {
         }
         return false;
     }
+    
+    public Reserva ObtenerReserva(Inmueble inmSeleccionado) {
+        Date fechaHoy= new Date();
+        List<Reserva> reservas;
+        reservas=BDInmueble.existenReservas(inmSeleccionado);
+        for(Reserva res: reservas){
+            if(res.getFechaHasta().after(fechaHoy)){
+                return res;
+            }
+        }
+        return null;
+    }
+    
     public boolean reservasViejas(Inmueble in) {
         List<Reserva> reservas;
         reservas=BDInmueble.existenReservas(in);
         
         if(reservas.isEmpty()) return false; else return true; 
     }
-    
+
+    public void DescartarReservasViejas() {
+        PersistenciaInmueble operador = new PersistenciaInmueble();
+        List<Reserva> reservas;
+        List<Reserva> reservasAEliminar = new ArrayList<>();
+        reservas=BDInmueble.todasLasReservas();
+        
+        java.util.Date tempDate = new java.util.Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(tempDate);
+        cal.set(Calendar.MILLISECOND, 0);
+        Timestamp hoy = new java.sql.Timestamp(cal.getTimeInMillis());
+        
+        for (Iterator<Reserva> iter = reservas.listIterator(); iter.hasNext(); ) {
+            Reserva item=iter.next();
+            if (!item.getFechaHasta().after(hoy)){
+                System.out.println("la fecha limite es:"+item.getFechaHasta()+" y la actual es:"+hoy);
+                reservasAEliminar.add(item);}
+        }           
+        operador.eliminarReservas(reservasAEliminar);
+        
+        
+    }     
 }
+    

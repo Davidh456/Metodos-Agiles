@@ -16,6 +16,8 @@ import Logica.Validaciones;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.util.Collections.list;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import javax.swing.JComboBox;
@@ -595,7 +597,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         model.setRowCount(0);
         resultado=null;
         ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble(); // definir donde y cuando se creara el operador
+        LogicaReserva operador2 = new LogicaReserva();
+        operador2.DescartarReservasViejas();
         resultado = operador.BuscarInmuebles(getApellido(), getBarrioNombre(), getCantDormitorios(), getCorreo(), getLocalidadNombre(), getNombre(), getNroDoc(), getPrecioDesde(), getPrecioHasta(), getTipoDoc(), getTipoInmueble(), getProvinciaIndice());
+                    
+        for (Iterator<Inmueble> iter = resultado.listIterator(); iter.hasNext(); ) 
+            if (iter.next().getEstado().equals("Vendido"))
+                iter.remove();
+        
         if(!resultado.isEmpty()){
         for(Inmueble c: resultado){   
             if(c.getGarage())
@@ -660,7 +669,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         LogicaReserva operador = new LogicaReserva();
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
-        Inmobiliaria.getInstance().GenerarReserva(inmSeleccionado);
+            Inmobiliaria.getInstance().GenerarReserva(inmSeleccionado);
         }
         else{
             JOptionPane.showMessageDialog(null, "El Inmueble ya se encuentra reservado","Error",JOptionPane.ERROR_MESSAGE);
@@ -681,12 +690,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         LogicaReserva operador = new LogicaReserva();
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
-        Inmobiliaria.getInstance().GenerarVentaSRes(inmSeleccionado);
+            Inmobiliaria.getInstance().GenerarVentaSRes(inmSeleccionado);
         }
         else{
-           // Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
+            Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
         }
-        
     }//GEN-LAST:event_BotonVenderActionPerformed
 
     private void HabilitarBotones(){

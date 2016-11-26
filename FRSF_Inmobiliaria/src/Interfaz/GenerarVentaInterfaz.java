@@ -8,7 +8,10 @@ package Interfaz;
 
 import Clases.Cliente;
 import Clases.Inmueble;
+import Clases.Reserva;
+import Clases.Vendedor;
 import Logica.LogicaReserva;
+import Logica.LogicaVenta;
 import Logica.Validaciones;
 import com.itextpdf.text.DocumentException;
 import java.awt.Color;
@@ -29,8 +32,10 @@ import javax.swing.JTextField;
 public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
     /** Creates new form GenerarReservaInterfaz */
-    Inmueble inmuebleReservado;
+    Inmueble inmuebleVendido;
+    Vendedor vendedorSeleccionado;
     Cliente clienteReserva;
+    Reserva reserva;
     Validaciones validaciones = new Validaciones();
     JTextField[] camposObligatorios;
     JLabel[] lblCamposObligatorios;
@@ -43,12 +48,12 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
     
     GenerarVentaInterfaz(Inmueble inmSeleccionado) {
-       inmuebleReservado=inmSeleccionado;
+       inmuebleVendido=inmSeleccionado;
        initComponents(); 
-//       sintaxis();
        validarCargaCliente();
        setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
+       
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());
        setLblBarrio(inmSeleccionado.getBarrio());
@@ -60,6 +65,17 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
        setLblLocalidad(inmSeleccionado.getLocalidadNombre());
        setLblTipoInmueble(inmSeleccionado.getTipoInmueble());
        
+       LogicaReserva operador = new LogicaReserva();
+       reserva=operador.ObtenerReserva(inmuebleVendido);
+       setLblApellidoClienteRes(reserva.getCliente().getApellido());
+       setLblNombreClienteRes(reserva.getCliente().getNombre());
+       setLblNumDocClienteRes(String.valueOf(reserva.getCliente().getNumeroDoc()));
+       setLblMontoReserva(String.valueOf(reserva.getImporte()));
+       
+       setLblImpTotal(String.valueOf(inmuebleVendido.getPrecio()));
+       setLblImpRestante(String.valueOf(inmuebleVendido.getPrecio()-reserva.getImporte()));
+       
+       clienteReserva=reserva.getCliente();
     }
 
     /** This method is called from within the constructor to
@@ -103,9 +119,9 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         jLabe29 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        lblApellidoVenRes = new javax.swing.JLabel();
-        lblNumDocRes = new javax.swing.JLabel();
-        lblNombreRes = new javax.swing.JLabel();
+        lblApellidoClienteRes = new javax.swing.JLabel();
+        lblNumDocClienteRes = new javax.swing.JLabel();
+        lblNombreClienteRes = new javax.swing.JLabel();
         lblMontoReserva = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -113,9 +129,9 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         jLabe30 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
-        lblNombreVen1 = new javax.swing.JLabel();
-        lblApellidoVen1 = new javax.swing.JLabel();
-        lblNumDocVen1 = new javax.swing.JLabel();
+        lblNombreVendedor = new javax.swing.JLabel();
+        lblApellidoVendedor = new javax.swing.JLabel();
+        lblNumDocVendedor = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Venta"));
 
@@ -286,14 +302,14 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
         jLabel28.setText("Nº Documento:");
 
-        lblApellidoVenRes.setText("Ninguno");
+        lblApellidoClienteRes.setText("Ninguno");
 
-        lblNumDocRes.setText("Ninguno");
+        lblNumDocClienteRes.setText("Ninguno");
 
-        lblNombreRes.setText("Ninguno");
-        lblNombreRes.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        lblNombreClienteRes.setText("Ninguno");
+        lblNombreClienteRes.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                lblNombreResPropertyChange(evt);
+                lblNombreClienteResPropertyChange(evt);
             }
         });
 
@@ -307,7 +323,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabe29)
                         .addGap(2, 2, 2)
-                        .addComponent(lblNombreRes, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblNombreClienteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -315,11 +331,11 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblMontoReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblApellidoVenRes, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblApellidoClienteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel28)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNumDocRes, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNumDocClienteRes, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -329,9 +345,9 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabe29)
                     .addComponent(jLabel23)
-                    .addComponent(lblNombreRes)
-                    .addComponent(lblApellidoVenRes)
-                    .addComponent(lblNumDocRes)
+                    .addComponent(lblNombreClienteRes)
+                    .addComponent(lblApellidoClienteRes)
+                    .addComponent(lblNumDocClienteRes)
                     .addComponent(jLabel28))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -363,16 +379,16 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
         jLabel29.setText("Nº Documento:");
 
-        lblNombreVen1.setText("Ninguno");
-        lblNombreVen1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        lblNombreVendedor.setText("Ninguno");
+        lblNombreVendedor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                lblNombreVen1PropertyChange(evt);
+                lblNombreVendedorPropertyChange(evt);
             }
         });
 
-        lblApellidoVen1.setText("Ninguno");
+        lblApellidoVendedor.setText("Ninguno");
 
-        lblNumDocVen1.setText("Ninguno");
+        lblNumDocVendedor.setText("Ninguno");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -382,15 +398,15 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabe30)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNombreVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblApellidoVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblApellidoVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNumDocVen1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblNumDocVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -401,9 +417,9 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                     .addComponent(jLabe30)
                     .addComponent(jLabel24)
                     .addComponent(jLabel29)
-                    .addComponent(lblNombreVen1)
-                    .addComponent(lblApellidoVen1)
-                    .addComponent(lblNumDocVen1))
+                    .addComponent(lblNombreVendedor)
+                    .addComponent(lblApellidoVendedor)
+                    .addComponent(lblNumDocVendedor))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -459,38 +475,38 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BSelecVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecVendedorActionPerformed
-//        Inmobiliaria.getInstance().ListarClientes(this);
+        vendedorSeleccionado = (new ConsultaVendedor()).seleccionarVendedor();
+        setVendedor();
     }//GEN-LAST:event_BSelecVendedorActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-       
-//        if(camposValidos()){
-//        LogicaReserva operador = new LogicaReserva();
-//            try {
-//                JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la reserva","Información",JOptionPane.INFORMATION_MESSAGE);
-//                operador.GenerarReserva(inmuebleReservado,clienteReserva, getMontoReserva(),getTiempoValidez());
-//                JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente reservado","Éxito",JOptionPane.INFORMATION_MESSAGE);
-//                Inmobiliaria.getInstance().ConsultaInmueble();
-//            } catch (IOException ex) {
-//                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (DocumentException ex) {
-//                Logger.getLogger(GenerarVentaInterfaz.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        
+        LogicaVenta operador = new LogicaVenta();
+        
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
+        try {
+            operador.GenerarVenta(inmuebleVendido,clienteReserva,vendedorSeleccionado);
+            } catch (IOException ex) {
+                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DocumentException ex) {
+                Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
+                
+        JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        Inmobiliaria.getInstance().ConsultaInmueble();   
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void lblNombreResPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreResPropertyChange
+    private void lblNombreClienteResPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreClienteResPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblNombreResPropertyChange
+    }//GEN-LAST:event_lblNombreClienteResPropertyChange
 
-    private void lblNombreVen1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreVen1PropertyChange
+    private void lblNombreVendedorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreVendedorPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_lblNombreVen1PropertyChange
+    }//GEN-LAST:event_lblNombreVendedorPropertyChange
 
     private void lblImpTotalPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblImpTotalPropertyChange
         validarCargaCliente();
@@ -533,6 +549,22 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     public void setLblNumero(Integer capturado) {
         this.lblNumero.setText(String.valueOf(capturado));
     }
+    
+    public void setLblApellidoClienteRes(String lblApellidoClienteRes) {
+        this.lblApellidoClienteRes.setText(lblApellidoClienteRes);
+    }
+
+    public void setLblMontoReserva(String lblMontoReserva) {
+        this.lblMontoReserva.setText(lblMontoReserva);
+    }
+
+    public void setLblNombreClienteRes(String lblNombreClienteRes) {
+        this.lblNombreClienteRes.setText(lblNombreClienteRes);
+    }
+
+    public void setLblNumDocClienteRes(String lblNumDocClienteRes) {
+        this.lblNumDocClienteRes.setText(lblNumDocClienteRes);
+    }
 
     public void setLblPiso(String capturado) {
         if(capturado.equals("")){
@@ -557,6 +589,14 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         this.lblProvincia.setText(capturado);
     }
 
+    public void setLblImpRestante(String lblImpRestante) {
+        this.lblImpRestante.setText(lblImpRestante);
+    }
+
+    public void setLblImpTotal(String lblImpTotal) {
+        this.lblImpTotal.setText(lblImpTotal);
+    }
+    
     public void setLblTipoInmueble(Integer capturado) {
        switch (capturado) {
            case 0:
@@ -579,51 +619,6 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                 break;
        }
     }
-
-//    public void setMontoReserv(JTextField montoReserv) {
-//        this.montoReserva = montoReserv;
-//    }
-//
-//    public void setTiempoValidez(JSpinner tiempoValidez) {
-//        this.tiempoValidez = tiempoValidez;
-//    }
-//    public void setNumDoc(Integer capturado) {
-//        this.lblNumDocVen.setText(String.valueOf(capturado));
-//    }
-//   
-//    private double getMontoReserva(){
-//        return Double.parseDouble(this.montoReserva.getText());
-//    }
-//    private void sintaxis(){
-//        validaciones.CaracteresMaximos(montoReserva, 12, "double");
-//    }
-//    private Date getTiempoValidez(){
-//        int dias;
-//        Date fechaHoy = new Date();
-//        dias=(Integer) tiempoValidez.getValue();
-//        Calendar calendar = Calendar.getInstance();
-//        calendar.setTime(fechaHoy); // Configuramos la fecha que se recibe
-//        calendar.add(Calendar.DAY_OF_YEAR, dias);  // numero de días a añadir, o restar en caso de días<0	
-//        return calendar.getTime(); // Devuelve el objeto Date con los nuevos días añadidos
-//    }
-//    private boolean camposValidos() {
-//        camposFlotantes = new JTextField[]{montoReserva};
-//        labelFlotantes = new JLabel[]{lblmontoReserva};
-//        camposObligatorios = new JTextField[]{montoReserva};
-//        lblCamposObligatorios = new JLabel[]{lblmontoReserva};
-//                String mensaje="";
-//                if(validaciones.CamposVacios(camposObligatorios, null)){
-//                    mensaje = mensaje + "Hay campos obligatorios que deben ser completados";
-//                    validaciones.Pintar(camposObligatorios, lblCamposObligatorios);
-//                }
-//                if(validaciones.validarPintadorFlotantes(camposFlotantes, labelFlotantes))
-//                    mensaje = mensaje + "\n" + "Hay campos numericos invalidos";
-//
-//                if(!mensaje.equals("")){
-//                    JOptionPane.showMessageDialog(null,mensaje,"¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
-//                    return false;}
-//    return true;
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BSelecVendedor;
@@ -651,8 +646,8 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel label33;
     private javax.swing.JLabel label34;
     private javax.swing.JLabel label35;
-    private javax.swing.JLabel lblApellidoVen1;
-    private javax.swing.JLabel lblApellidoVenRes;
+    private javax.swing.JLabel lblApellidoClienteRes;
+    private javax.swing.JLabel lblApellidoVendedor;
     private javax.swing.JLabel lblBarrio;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCalle;
@@ -661,10 +656,10 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel lblImpTotal;
     private javax.swing.JLabel lblLocalidad;
     private javax.swing.JLabel lblMontoReserva;
-    private javax.swing.JLabel lblNombreRes;
-    private javax.swing.JLabel lblNombreVen1;
-    private javax.swing.JLabel lblNumDocRes;
-    private javax.swing.JLabel lblNumDocVen1;
+    private javax.swing.JLabel lblNombreClienteRes;
+    private javax.swing.JLabel lblNombreVendedor;
+    private javax.swing.JLabel lblNumDocClienteRes;
+    private javax.swing.JLabel lblNumDocVendedor;
     private javax.swing.JLabel lblNumero;
     private javax.swing.JLabel lblPiso;
     private javax.swing.JLabel lblPrecio;
@@ -673,19 +668,17 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     private javax.swing.JLabel lblmontoReserva;
     // End of variables declaration//GEN-END:variables
 
-//    void setCliente(Cliente clienteRecuperado) {
-//         clienteReserva=clienteRecuperado;
-//         setLblNombre(clienteRecuperado.getNombre());
-//         setLblApellido(clienteRecuperado.getApellido());
-//         setNumDoc(clienteRecuperado.getNumeroDoc());
-//         
-//    }
-
     private void validarCargaCliente() {
      if(lblImpTotal.getText().equals("Ninguno")){
             btnAceptar.setEnabled(false);
         }else
             btnAceptar.setEnabled(true);
+    }
+
+    private void setVendedor() {
+        lblNombreVendedor.setText(vendedorSeleccionado.getNombre());
+        lblApellidoVendedor.setText(vendedorSeleccionado.getApellido());
+        lblNumDocVendedor.setText(String.valueOf(vendedorSeleccionado.getNumDoc()));
     }
 
 }

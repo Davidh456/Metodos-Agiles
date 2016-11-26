@@ -385,7 +385,7 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabe29" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Component id="lblNombreRes" min="-2" pref="114" max="-2" attributes="0"/>
+                          <Component id="lblNombreClienteRes" min="-2" pref="114" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -396,11 +396,11 @@
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblApellidoVenRes" min="-2" pref="186" max="-2" attributes="0"/>
+                  <Component id="lblApellidoClienteRes" min="-2" pref="186" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblNumDocRes" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="lblNumDocClienteRes" min="-2" pref="116" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -412,9 +412,9 @@
                   <Group type="103" groupAlignment="2" attributes="0">
                       <Component id="jLabe29" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel23" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNombreRes" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblApellidoVenRes" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNumDocRes" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNombreClienteRes" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblApellidoClienteRes" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNumDocClienteRes" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel28" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -448,22 +448,22 @@
             <Property name="text" type="java.lang.String" value="N&#xba; Documento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblApellidoVenRes">
+        <Component class="javax.swing.JLabel" name="lblApellidoClienteRes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNumDocRes">
+        <Component class="javax.swing.JLabel" name="lblNumDocClienteRes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNombreRes">
+        <Component class="javax.swing.JLabel" name="lblNombreClienteRes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>
           <Events>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lblNombreResPropertyChange"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lblNombreClienteResPropertyChange"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblMontoReserva">
@@ -511,15 +511,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabe30" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblNombreVen1" min="-2" pref="114" max="-2" attributes="0"/>
+                  <Component id="lblNombreVendedor" min="-2" pref="114" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblApellidoVen1" min="-2" pref="188" max="-2" attributes="0"/>
+                  <Component id="lblApellidoVendedor" min="-2" pref="188" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="lblNumDocVen1" min="-2" pref="116" max="-2" attributes="0"/>
+                  <Component id="lblNumDocVendedor" min="-2" pref="116" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -532,9 +532,9 @@
                       <Component id="jLabe30" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel24" alignment="2" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel29" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNombreVen1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblApellidoVen1" alignment="2" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblNumDocVen1" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNombreVendedor" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblApellidoVendedor" alignment="2" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblNumDocVendedor" alignment="2" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
               </Group>
@@ -557,20 +557,20 @@
             <Property name="text" type="java.lang.String" value="N&#xba; Documento:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNombreVen1">
+        <Component class="javax.swing.JLabel" name="lblNombreVendedor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>
           <Events>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lblNombreVen1PropertyChange"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="lblNombreVendedorPropertyChange"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblApellidoVen1">
+        <Component class="javax.swing.JLabel" name="lblApellidoVendedor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblNumDocVen1">
+        <Component class="javax.swing.JLabel" name="lblNumDocVendedor">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ninguno"/>
           </Properties>

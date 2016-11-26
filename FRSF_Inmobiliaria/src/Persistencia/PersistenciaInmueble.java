@@ -206,6 +206,29 @@ public class PersistenciaInmueble {
         return criteria.list();
     }
     
+    public List<Reserva> todasLasReservas() {
+        List<Reserva> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Criteria criteria = session.createCriteria(Reserva.class, "reserva");
+        resultado =criteria.list();
+        session.close();
+        return resultado;
+    }
+    
+    public boolean eliminarReservas(List<Reserva> reservasAEliminar) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        for(Reserva res: reservasAEliminar)
+            session.delete(res);
+        tx.commit();
+        session.close();
+        return true;
+    }
+    
     public List<Foto> existeFotoInmueble(Inmueble in, Foto imagen)
     {
         List<Foto> fotoInmueble;
