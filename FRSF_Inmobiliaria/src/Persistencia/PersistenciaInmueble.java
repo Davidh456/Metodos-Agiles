@@ -286,12 +286,6 @@ public class PersistenciaInmueble {
         Criteria criteria = session.createCriteria(Inmueble.class, "inmueble");
         criteria.createAlias("inmueble.cliente", "cliente"); 
         criteria.add(Restrictions.eq("cliente.idCliente",cliente.getIdCliente()));
-        
-//        criteria.add(Restrictions.eq("idpropietario.numeroDoc",cliente.getNumeroDoc()));  
-//        criteria.add(Restrictions.eq("idpropietario.tipoDoc",cliente.getTipoDoc()-1));  
-//        //criteria.add(Restrictions.eqProperty("cliente.correo",cliente.getCorreo()));  
-//        criteria.add(Restrictions.eq("idpropietario.apellido",cliente.getApellido()));
-//        
         resultado =criteria.list();
         session.close();
         return resultado; 

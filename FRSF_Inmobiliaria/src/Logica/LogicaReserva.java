@@ -80,7 +80,7 @@ public class LogicaReserva {
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
-            //EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
+            EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
     private HashMap crearHashMapReserva(Reserva reserva, Set keys) {
