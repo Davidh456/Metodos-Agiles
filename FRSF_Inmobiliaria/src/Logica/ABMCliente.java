@@ -50,12 +50,19 @@ public class ABMCliente {
         modificarCliente(cliente);
     }
 
-    public boolean TieneTransacciones(Cliente cliente) {
+    public boolean TieneTransacciones(Cliente cliente, int opcion) {
         ABMInmueble operador1 = new ABMInmueble();
         LogicaReserva operador2 = new LogicaReserva();
         LogicaVenta operador3 = new LogicaVenta();
-        if(operador1.TieneInmueble(cliente).isEmpty() && operador2.TieneReserva(cliente).isEmpty() && operador3.TieneFacturas(cliente).isEmpty())
-            return false;
+        if (opcion==1) //si es para el caso de clientes
+        {    if(operador1.TieneInmueble(cliente).isEmpty() && operador2.TieneReserva(cliente).isEmpty() && operador3.TieneFacturas(cliente).isEmpty())
+                return false;
+            return true;}
+        if (opcion==2) //si es para el caso de propietarios
+        {
+            if(operador1.TieneInmueble(cliente).isEmpty())
+                return false;
+            return true;}
         return true;
     }
 }
