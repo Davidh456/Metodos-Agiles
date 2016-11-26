@@ -55,6 +55,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     private int iDModif;
     private Inmueble modificarInmueble;
     private Inmueble eliminarInmueble;
+    private Reserva reservaAux;
     private Cliente propietarioAux; //esto se debe perfeccionar
     
     private int QuitarReserva=-1;   //QuitarReserva determina si en la ventana de modificar se desea quitar la reserva que
@@ -120,6 +121,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
             btnQuitarReserva.setVisible(false);}
         else
             QuitarReserva=0;
+        reservaAux= operador.ObtenerReserva(modificarInmueble);
     }
 
     public ABMInmuebleInterfaz(Inmueble inmSeleccionado, String baja) {
@@ -1132,7 +1134,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_BElimFotosActionPerformed
 
     private void btnQuitarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarReservaActionPerformed
-        if (JOptionPane.showConfirmDialog(null, "La reserva a nombre de: \n  Apellido: "+propietarioAux.getApellido() + "  Nombre: " + propietarioAux.getNombre() + "\n  NroDoc: " + propietarioAux.getNumeroDoc() + "\nSe establecerá para ser eliminada, ¿desea continuar?", "Atención", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+        if (JOptionPane.showConfirmDialog(null, "La reserva a nombre de: \n  Apellido: "+reservaAux.getCliente().getApellido() + "  Nombre: " + reservaAux.getCliente().getNombre() + "\n  NroDoc: " + reservaAux.getCliente().getNumeroDoc() + "\nSe establecerá para ser eliminada, ¿desea continuar?", "Atención", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
         {
             QuitarReserva=1;
             btnQuitarReserva.setEnabled(false);

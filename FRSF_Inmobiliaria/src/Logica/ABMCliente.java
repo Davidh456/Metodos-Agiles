@@ -54,9 +54,6 @@ public class ABMCliente {
         ABMInmueble operador1 = new ABMInmueble();
         LogicaReserva operador2 = new LogicaReserva();
         LogicaVenta operador3 = new LogicaVenta();
-        System.out.println(operador1.TieneInmueble(cliente).isEmpty());
-        System.out.println(operador2.TieneReserva(cliente).isEmpty());
-        System.out.println(operador3.TieneFacturas(cliente).isEmpty());
         if(operador1.TieneInmueble(cliente).isEmpty() && operador2.TieneReserva(cliente).isEmpty() && operador3.TieneFacturas(cliente).isEmpty())
             return false;
         return true;
