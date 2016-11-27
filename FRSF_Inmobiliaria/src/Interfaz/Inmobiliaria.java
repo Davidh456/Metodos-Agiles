@@ -25,8 +25,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Inmobiliaria extends JFrame{
     //Aqu� vamos a declarar todas las sub-pantallas que vamos a usar
     private JPanel contentPane;
-    private JPanel fondo;
-    
+    private JLabel fondo;
     //Esta parte de instancia es para hacer la clase Singleton
     
     private static Inmobiliaria instancia = null;
@@ -92,7 +91,7 @@ public class Inmobiliaria extends JFrame{
         //Aqu� que dan las dimensiones segun la resoluci�n de pantalla
         Toolkit t = Toolkit.getDefaultToolkit();
         java.awt.Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width/2)-550, ((screenSize.height-48)/2)-300, 1100,600);
+        setBounds((screenSize.width/2)-550, ((screenSize.height-48)/2)-364, 1100,728);
         
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         cerrar();
@@ -102,8 +101,12 @@ public class Inmobiliaria extends JFrame{
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        contentPane.setBounds(0, 0, 1100, 600);
-        contentPane.setBackground(new Color(245,245,245));
+        contentPane.setBounds(0, 0, 1100, 728);
+        contentPane.setBackground(new Color(240,240,240));
+        fondo = new JLabel();
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo 33.png"))); // NOI18N
+        fondo.setBounds(0,0,1100,700);
+        contentPane.add(fondo);
         
     }
     public void cerrar(){
@@ -120,6 +123,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void AltaPropietario(Cliente nuevoPropietario) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "alta", nuevoPropietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -132,6 +136,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void ModificacionPropietario(Cliente propietario) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "modificacion", propietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -144,6 +149,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void BajaPropietario(Cliente propietario) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("propietario", "baja", propietario);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -156,6 +162,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void AltaCliente() {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "alta", null);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -168,6 +175,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void ModificacionCliente(Cliente cliente) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "modificacion", cliente);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
                                                         (contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -180,6 +188,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void BajaCliente(Cliente cliente) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMClienteOPropietario pantallaABM = new ABMClienteOPropietario("cliente", "baja", cliente);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -192,6 +201,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void AltaInmueble() {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz();
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -205,6 +215,7 @@ public class Inmobiliaria extends JFrame{
     } 
     public void ListarClientes(){
         contentPane.removeAll();
+        contentPane.add(fondo);
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios("Clientes");
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -218,6 +229,7 @@ public class Inmobiliaria extends JFrame{
     }
     public void ListarPropietarios(){
         contentPane.removeAll();
+        contentPane.add(fondo);
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios("Propietarios");
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -232,6 +244,7 @@ public class Inmobiliaria extends JFrame{
     
     public void MenuPrincipal(){
         contentPane.removeAll();
+        contentPane.add(fondo);
         MenuPrincipal menu = new MenuPrincipal();
         menu.setBounds( (contentPane.getWidth()/2)-(menu.getWidth()/2), 
                         (contentPane.getHeight()/2)-(menu.getHeight()/2), 
@@ -246,6 +259,7 @@ public class Inmobiliaria extends JFrame{
     
         public void ConsultaInmueble() {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ConsultaInmueble pantallaABM = new ConsultaInmueble();
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -260,6 +274,7 @@ public class Inmobiliaria extends JFrame{
 
     void ModificarInmueble(Inmueble inmSeleccionado) {
          contentPane.removeAll();
+         contentPane.add(fondo);
         ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -273,6 +288,7 @@ public class Inmobiliaria extends JFrame{
 
     void EliminarInmueble(Inmueble inmSeleccionado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado,"BAJA");
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -287,6 +303,7 @@ public class Inmobiliaria extends JFrame{
 
     void ListarPropietarios(ABMInmuebleInterfaz aThis) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios("Propietario para el Inmueble", aThis);
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -300,6 +317,7 @@ public class Inmobiliaria extends JFrame{
 
     void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM, Cliente propietarioSelec) { 
         contentPane.removeAll();
+        contentPane.add(fondo);
         pantallaABM.setPropietario(propietarioSelec);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -312,6 +330,7 @@ public class Inmobiliaria extends JFrame{
     }
     void ListarNoPropietarios(){
         contentPane.removeAll();
+        contentPane.add(fondo);
         SeleccionarPropietario pantallaListar = new SeleccionarPropietario();
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -325,6 +344,7 @@ public class Inmobiliaria extends JFrame{
 
     void ListarClientes(GenerarReservaInterfaz aThis) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios(aThis);
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -337,6 +357,7 @@ public class Inmobiliaria extends JFrame{
     }
     void ListarClientes(GenerarVentaInterfazSR aThis) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ListarClientesOPropietarios pantallaListar = new ListarClientesOPropietarios(aThis);
         pantallaListar.setBounds((contentPane.getWidth()/2)-(pantallaListar.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaListar.getHeight()/2), 
@@ -350,6 +371,7 @@ public class Inmobiliaria extends JFrame{
 
     void GenerarReserva(Inmueble inmSeleccionado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         GenerarReservaInterfaz pantallaReserva = new GenerarReservaInterfaz(inmSeleccionado);
         pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
@@ -363,6 +385,7 @@ public class Inmobiliaria extends JFrame{
 
     void GenerarReserva(GenerarReservaInterfaz pantallaReserva, Cliente clienteRecuperado) {
          contentPane.removeAll();
+         contentPane.add(fondo);
          pantallaReserva.setCliente(clienteRecuperado);
         pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
@@ -376,6 +399,7 @@ public class Inmobiliaria extends JFrame{
 
     void GenerarReserva(GenerarReservaInterfaz pantallaReserva) {
          contentPane.removeAll();
+         contentPane.add(fondo);
         pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
 							pantallaReserva.getWidth(), 
@@ -388,6 +412,7 @@ public class Inmobiliaria extends JFrame{
     
     void AltaOModificarInmueble(ABMInmuebleInterfaz pantallaABM) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
 							pantallaABM.getWidth(), 
@@ -400,6 +425,7 @@ public class Inmobiliaria extends JFrame{
 
     void consultaVendedor() {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ConsultaVendedor pantallaVendedores = new ConsultaVendedor();
         pantallaVendedores.setBounds((contentPane.getWidth()/2)-(pantallaVendedores.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaVendedores.getHeight()/2), 
@@ -413,6 +439,7 @@ public class Inmobiliaria extends JFrame{
     
     void altaVendedor() {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMVendedorInterfaz altaVendedor = new ABMVendedorInterfaz("alta", null);
         altaVendedor.setBounds((contentPane.getWidth()/2)-(altaVendedor.getWidth()/2), 
 							(contentPane.getHeight()/2)-(altaVendedor.getHeight()/2), 
@@ -426,6 +453,7 @@ public class Inmobiliaria extends JFrame{
 
     void modificarVendedor(Vendedor vend) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMVendedorInterfaz modificarVendedor = new ABMVendedorInterfaz("modificacion", vend);
         modificarVendedor.setBounds((contentPane.getWidth()/2)-(modificarVendedor.getWidth()/2),
                                                     (contentPane.getHeight()/2)-(modificarVendedor.getHeight()/2),
@@ -442,6 +470,7 @@ public class Inmobiliaria extends JFrame{
 
     void DetallesInmueble(Inmueble inmSeleccionado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         ABMInmuebleInterfaz pantallaABM = new ABMInmuebleInterfaz(inmSeleccionado,"DETALLES");
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -454,6 +483,7 @@ public class Inmobiliaria extends JFrame{
 
     void GenerarVentaSRes(Inmueble inmSeleccionado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         GenerarVentaInterfazSR pantallaABM = new GenerarVentaInterfazSR(inmSeleccionado);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
@@ -467,6 +497,7 @@ public class Inmobiliaria extends JFrame{
 
         void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva, Cliente clienteRecuperado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         pantallaReserva.setCliente(clienteRecuperado);
         pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
@@ -481,6 +512,7 @@ public class Inmobiliaria extends JFrame{
 
     void GenerarVentaSRes(GenerarVentaInterfazSR pantallaReserva) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         pantallaReserva.setBounds((contentPane.getWidth()/2)-(pantallaReserva.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaReserva.getHeight()/2), 
 							pantallaReserva.getWidth(), 
@@ -493,6 +525,7 @@ public class Inmobiliaria extends JFrame{
     
     void GenerarVentaCRes(Inmueble inmSeleccionado) {
         contentPane.removeAll();
+        contentPane.add(fondo);
         GenerarVentaInterfaz pantallaABM = new GenerarVentaInterfaz(inmSeleccionado);
         pantallaABM.setBounds((contentPane.getWidth()/2)-(pantallaABM.getWidth()/2), 
 							(contentPane.getHeight()/2)-(pantallaABM.getHeight()/2), 
