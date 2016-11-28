@@ -417,7 +417,12 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Generar Catalogo");
+        jButton1.setText("Generar Catálogo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -701,6 +706,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
         }
     }//GEN-LAST:event_BotonVenderActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);
