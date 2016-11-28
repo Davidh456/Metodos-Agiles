@@ -150,7 +150,6 @@ public class Validaciones {
 					e.consume();
 				}
 				char caracter = e.getKeyChar();
-
 			    //que no sea letra 
 			    if( !(((caracter >= 'A')&&(caracter <= 'z'))||caracter==127||caracter==8||caracter==32)&& tipo.equals("alfabetico")){
 			    	JOptionPane.showMessageDialog(null, "Solo se pueden ingresar letras","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
@@ -174,6 +173,7 @@ public class Validaciones {
 					JOptionPane.showMessageDialog(null, "Solo se pueden ingresar números y '.'  (ejemplo: 113.80) ","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
 			    	e.consume();
 			    }
+                            //que no sea alfanumerico                               
 			}
 			public void keyPressed(KeyEvent arg0) {
 			}

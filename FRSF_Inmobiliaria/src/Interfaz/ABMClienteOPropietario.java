@@ -133,14 +133,26 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Modificar Vendedor"));
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
-        btnAceptar.setText("Aceptar");
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/next.png"))); // NOI18N
+        btnAceptar.setText("Siguiente");
+        btnAceptar.setToolTipText("");
+        btnAceptar.setBorder(null);
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnAceptar.setIconTextGap(0);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -210,7 +222,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         lblNumDomicilio.setText("Nº");
 
         lblCampos.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        lblCampos.setForeground(new java.awt.Color(255, 51, 51));
+        lblCampos.setForeground(new java.awt.Color(242, 49, 48));
         lblCampos.setText("Todos los campos son obligatorios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -249,7 +261,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(lblLocalidad)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cbLocalidad, 0, 172, Short.MAX_VALUE))))
+                                                .addComponent(cbLocalidad, 0, 192, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(20, 20, 20)
                                         .addComponent(lblNumDomicilio)
@@ -264,13 +276,12 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                                 .addComponent(lblApellido)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tfApellido))))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAceptar))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblCampos)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnAceptar, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblCampos, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -312,7 +323,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnAceptar)
                     .addComponent(btnCancelar))
-                .addGap(2, 2, 2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         tfNombre.getAccessibleContext().setAccessibleName("");
@@ -573,7 +584,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         validaciones.CaracteresMaximos(tfDomicilio, 100, "alfanumerico");
         validaciones.CaracteresMaximos(tfAlturaCalle, 5, "numerico");
         validaciones.CaracteresMaximos(tfTelefono, 50, "numerico");
-        validaciones.CaracteresMaximos(tfCorreo, 50, "alfanumerico");   
+        validaciones.CaracteresMaximos(tfCorreo, 50, "correo");   
 
     }
     private void cargarCB() {

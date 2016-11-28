@@ -25,7 +25,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnPropietario = new javax.swing.JButton();
         btnAltaInmueble = new javax.swing.JButton();
         btnGestionarInmueble = new javax.swing.JButton();
-        fondo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,9 +113,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
         });
         add(btnGestionarInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 150, 120));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo 33.png"))); // NOI18N
-        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -50, 710, 400));
-
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,7 +148,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnGestionarInmueble;
     private javax.swing.JButton btnPropietario;
-    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
