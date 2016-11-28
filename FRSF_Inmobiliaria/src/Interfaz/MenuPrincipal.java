@@ -12,7 +12,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
     public MenuPrincipal() {
         initComponents();
         setSize(596, 348);
-        setBackground(new Color(245,245,245));
         
     }
 

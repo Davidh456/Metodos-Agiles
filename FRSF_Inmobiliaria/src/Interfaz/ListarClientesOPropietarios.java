@@ -20,13 +20,11 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     public ListarClientesOPropietarios() {
         initComponents();
         setSize(1000,425);
-        setBackground(new Color(245,245,245));
     }
     
     public ListarClientesOPropietarios(String tabla){
         initComponents();
         setSize(1000,425);
-        setBackground(new Color(245,245,245));
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar "+tabla));
         spLista.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory

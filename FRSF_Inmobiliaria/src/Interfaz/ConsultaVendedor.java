@@ -28,7 +28,6 @@ public class ConsultaVendedor extends javax.swing.JPanel {
      */
     public ConsultaVendedor() {
         initComponents();
-        setBackground(new Color(245,245,245));
         setSize(630, 400);
         setVisible(true);
         btnModificar.setEnabled(false);

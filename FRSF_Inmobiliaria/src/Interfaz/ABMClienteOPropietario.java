@@ -28,7 +28,6 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     
     public ABMClienteOPropietario() {
         initComponents();
-        setBackground(new Color(245,245,245));
         setSize(450, 250);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
@@ -38,7 +37,6 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     }
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente){
         initComponents();
-        setBackground(new Color(245,245,245));
         setVisible(true);
         setSize(450, 250);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};

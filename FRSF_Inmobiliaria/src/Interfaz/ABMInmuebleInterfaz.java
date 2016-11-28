@@ -65,7 +65,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     // Creates new form ABMInmuebleInterfaz   
     public ABMInmuebleInterfaz() {
         initComponents();
-        setBackground(new Color(245,245,245));
         cargarCB();
         setSize(getPreferredSize());
         sintaxis();
@@ -77,7 +76,6 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         QuitarReserva=-1;
                           
         initComponents();
-        setBackground(new Color(245,245,245));
         cargarCB();
         setSize(getPreferredSize());
         sintaxis();

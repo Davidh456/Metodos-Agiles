@@ -23,7 +23,6 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
             
     public SeleccionarPropietario() {
         initComponents();
-        setBackground(new Color(245,245,245));
         setSize(350,467);
         cargarTabla();
     }
@@ -37,10 +36,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnSiguiente = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(245, 245, 245));
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Seleccionar el cliente que quiere hacer propietario"));
-
-        jScrollPane1.setBackground(new java.awt.Color(245, 245, 245));
 
         tbLista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,13 +104,13 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSiguiente)
                     .addComponent(btnCancelar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
     }// </editor-fold>//GEN-END:initComponents
 

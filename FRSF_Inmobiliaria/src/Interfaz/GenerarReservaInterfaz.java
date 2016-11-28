@@ -47,7 +47,6 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
        initComponents(); 
        sintaxis();
        validarCargaCliente();
-       setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());

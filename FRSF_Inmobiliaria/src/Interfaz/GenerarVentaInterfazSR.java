@@ -49,7 +49,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
        inmuebleVendido=inmSeleccionado;
        initComponents(); 
        validarCargaCliente();
-       setBackground(new Color(245,245,245));
        setSize(getPreferredSize());
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());
