@@ -118,14 +118,16 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Venta"));
 
+        BSelecCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small.png"))); // NOI18N
         BSelecCliente.setText("Seleccionar Cliente");
+        BSelecCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BSelecCliente.setContentAreaFilled(false);
         BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSelecClienteActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Inmueble"));
         jPanel1.setToolTipText("");
 
@@ -234,7 +236,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Vendedor"));
 
         jLabe28.setText("Nombre:");
@@ -287,7 +288,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de la Venta"));
 
         lblmontoReserva.setText("Importe");
@@ -313,28 +313,45 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept big2.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptar.setIconTextGap(0);
+        btnAceptar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 big.png"))); // NOI18N
         jButton3.setText("Cancelar");
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
+        BSelecVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small.png"))); // NOI18N
         BSelecVendedor.setText("Seleccionar Vendedor");
+        BSelecVendedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BSelecVendedor.setContentAreaFilled(false);
         BSelecVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSelecVendedorActionPerformed(evt);
             }
         });
 
-        jPanel7.setBackground(new java.awt.Color(245, 245, 245));
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cliente"));
 
         jLabe32.setText("Nombre:");
@@ -404,7 +421,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
+                .addGap(62, 62, 62))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(BSelecVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -431,7 +448,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 

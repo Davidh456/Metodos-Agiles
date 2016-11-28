@@ -67,14 +67,24 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tbLista);
 
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/next.png"))); // NOI18N
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.setBorder(null);
+        btnSiguiente.setBorderPainted(false);
+        btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnSiguiente.setIconTextGap(0);
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
             }
         });
 
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.setContentAreaFilled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);

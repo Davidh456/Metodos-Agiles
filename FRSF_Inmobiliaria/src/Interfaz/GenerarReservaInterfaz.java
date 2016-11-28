@@ -111,14 +111,16 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
 
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Generar Reserva"));
 
+        BSelecCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small.png"))); // NOI18N
         BSelecCliente.setText("Seleccionar Cliente");
+        BSelecCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BSelecCliente.setContentAreaFilled(false);
         BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSelecClienteActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(245, 245, 245));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Inmueble"));
         jPanel1.setToolTipText("");
 
@@ -227,7 +229,6 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(245, 245, 245));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Cliente"));
 
         jLabe28.setText("Nombre:");
@@ -280,7 +281,6 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel3.setBackground(new java.awt.Color(245, 245, 245));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de la Reserva"));
 
         lblmontoReserva.setText("Monto de Reserva");
@@ -328,14 +328,25 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
+        btnAceptar.setBorder(null);
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
         jButton3.setText("Cancelar");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
