@@ -213,14 +213,21 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
 
         lblFormatoContrasenia.setText("La contraseña debe contener de 8-20 caracteres alfanuméricos");
 
+        aceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2.png"))); // NOI18N
         aceptar.setText("Aceptar");
+        aceptar.setBorderPainted(false);
+        aceptar.setContentAreaFilled(false);
+        aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
             }
         });
 
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
         cancelar.setText("Cancelar");
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
@@ -320,13 +327,9 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
                                     .addComponent(contrasenia2, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(contenedorLayout.createSequentialGroup()
                                     .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(contenedorLayout.createSequentialGroup()
-                                            .addComponent(lblFormatoContrasenia)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
-                                            .addGap(262, 262, 262)
-                                            .addComponent(cancelar)))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(lblFormatoContrasenia)
+                                        .addComponent(cancelar))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(aceptar))))
                         .addGap(10, 10, 10))))
         );
