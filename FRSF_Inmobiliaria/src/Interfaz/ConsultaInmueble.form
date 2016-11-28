@@ -39,7 +39,7 @@
                   <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="ScrollResultados" pref="460" max="32767" attributes="0"/>
+                      <Component id="ScrollResultados" pref="453" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -310,7 +310,7 @@
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Correo" min="-2" pref="115" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
@@ -428,10 +428,10 @@
                       <Component id="BotonModificar" alignment="0" max="32767" attributes="0"/>
                       <Component id="BotonPublicar" alignment="0" max="32767" attributes="0"/>
                       <Component id="BotonSalir" max="32767" attributes="0"/>
-                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                       <Component id="BotonVender" alignment="0" max="32767" attributes="0"/>
                       <Component id="BotonReserva" max="32767" attributes="0"/>
                       <Component id="BotonDetalles" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jButton1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -515,7 +515,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Armar Catalogo"/>
+            <Property name="text" type="java.lang.String" value="Generar Catalogo"/>
           </Properties>
         </Component>
       </SubComponents>
