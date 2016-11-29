@@ -70,6 +70,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnSiguiente.setContentAreaFilled(false);
         btnSiguiente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnSiguiente.setIconTextGap(0);
+        btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/next selected.png"))); // NOI18N
         btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSiguienteActionPerformed(evt);
@@ -81,6 +82,8 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setIconTextGap(0);
+        btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -96,9 +99,9 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSiguiente)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

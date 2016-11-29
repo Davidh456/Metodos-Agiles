@@ -85,7 +85,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgregar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add selected.png"))); // NOI18N
         btnAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,7 +98,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnModificar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify selected.png"))); // NOI18N
         btnModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete selected.png"))); // NOI18N
         btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
         btnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnSalir.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back big selected.png"))); // NOI18N
         btnSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

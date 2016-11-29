@@ -134,7 +134,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnVolver.setContentAreaFilled(false);
         btnVolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVolver.setIconTextGap(0);
-        btnVolver.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnVolver.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back big selected.png"))); // NOI18N
         btnVolver.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,7 +150,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.setIconTextGap(0);
-        btnEliminar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete selected.png"))); // NOI18N
         btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +166,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnAgregar.setContentAreaFilled(false);
         btnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregar.setIconTextGap(0);
-        btnAgregar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add selected.png"))); // NOI18N
         btnAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,7 +182,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnModificar.setContentAreaFilled(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnModificar.setIconTextGap(0);
-        btnModificar.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        btnModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify selected.png"))); // NOI18N
         btnModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

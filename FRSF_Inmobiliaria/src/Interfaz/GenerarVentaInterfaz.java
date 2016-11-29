@@ -139,6 +139,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         BSelecVendedor.setText("Seleccionar Vendedor");
         BSelecVendedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BSelecVendedor.setContentAreaFilled(false);
+        BSelecVendedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         BSelecVendedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSelecVendedorActionPerformed(evt);
@@ -361,6 +362,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2 selected.png"))); // NOI18N
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -371,6 +373,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         jButton3.setText("Cancelar");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -449,7 +452,6 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)

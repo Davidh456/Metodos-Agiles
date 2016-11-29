@@ -728,6 +728,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BAdjFotos.setText("Adjuntar Foto");
         BAdjFotos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BAdjFotos.setContentAreaFilled(false);
+        BAdjFotos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add picture small selected.png"))); // NOI18N
         BAdjFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAdjFotosActionPerformed(evt);
@@ -738,6 +739,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BCancelar.setText("Cancelar");
         BCancelar.setBorderPainted(false);
         BCancelar.setContentAreaFilled(false);
+        BCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         BCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BCancelarActionPerformed(evt);
@@ -749,6 +751,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BAceptar.setBorderPainted(false);
         BAceptar.setContentAreaFilled(false);
         BAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2 selected.png"))); // NOI18N
         BAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BAceptarActionPerformed(evt);
@@ -783,6 +786,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BSelecProp.setText("Seleccionar");
         BSelecProp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BSelecProp.setContentAreaFilled(false);
+        BSelecProp.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         BSelecProp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BSelecPropActionPerformed(evt);
@@ -841,6 +845,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         BElimFotos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BElimFotos.setContentAreaFilled(false);
         BElimFotos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        BElimFotos.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/remove picture small selected.png"))); // NOI18N
         BElimFotos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BElimFotosActionPerformed(evt);
@@ -851,6 +856,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         btnQuitarReserva.setText("Quitar Reserva");
         btnQuitarReserva.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnQuitarReserva.setContentAreaFilled(false);
+        btnQuitarReserva.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 small selected.png"))); // NOI18N
         btnQuitarReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitarReservaActionPerformed(evt);
