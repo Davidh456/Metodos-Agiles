@@ -10,16 +10,22 @@ import Clases.Inmueble;
 import Clases.Localidad;
 import Clases.Provincia;
 import Logica.ABMInmueble;
+import Logica.Catalogo;
 import Logica.LogicaCargaInterfaz;
 import Logica.LogicaReserva;
 import Logica.Validaciones;
+import com.itextpdf.text.DocumentException;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -38,6 +44,8 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     Set<Localidad> localidades;
     Validaciones validaciones = new Validaciones();
     List<Inmueble> resultado;
+    DefaultTableModel tabla;
+    
     private String getApellido() {
         return Apellido.getText();
     }
@@ -172,7 +180,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonPublicar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        BotonCatalogo = new javax.swing.JButton();
         ScrollResultados = new javax.swing.JScrollPane();
         TablaResultados = new javax.swing.JTable();
         btnBuscar = new javax.swing.JButton();
@@ -417,10 +425,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Generar Catálogo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotonCatalogo.setText("Generar Catálogo");
+        BotonCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotonCatalogoActionPerformed(evt);
             }
         });
 
@@ -438,7 +446,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                     .addComponent(BotonVender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotonCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -450,7 +458,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 .addGap(2, 2, 2)
                 .addComponent(BotonVender)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(BotonCatalogo)
                 .addGap(1, 1, 1)
                 .addComponent(BotonPublicar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -640,7 +648,9 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         Patio,
                         c.getSupInmueble(),
                         resultadoPrecio});
-        }}
+        }
+        tabla=model;
+        }
         else
             JOptionPane.showMessageDialog(null,"No se han encontrado inmuebles con las características deseadas","Atención",JOptionPane.INFORMATION_MESSAGE);       
     }//GEN-LAST:event_btnBuscarActionPerformed
@@ -707,9 +717,21 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonVenderActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BotonCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCatalogoActionPerformed
+        List<Inmueble> inmueblesSeleccionados = new ArrayList<Inmueble>();
+        //for(int i: TablaResultados.getSelectedRows())
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmueblesSeleccionados.add(resultado.get(i));
+        try {
+            (new Catalogo()).armarCatalogo(inmueblesSeleccionados);
+        } catch (IOException ex) {
+            Logger.getLogger(ConsultaInmueble.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (DocumentException ex) {
+            Logger.getLogger(ConsultaInmueble.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_BotonCatalogoActionPerformed
 
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);
@@ -738,6 +760,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Apellido;
     private javax.swing.JTextField BarrioText;
+    private javax.swing.JButton BotonCatalogo;
     private javax.swing.JButton BotonDetalles;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonModificar;
@@ -758,7 +781,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JComboBox<String> cbLocalidad;
     private javax.swing.JComboBox<String> cbProvincia;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

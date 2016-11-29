@@ -122,6 +122,15 @@ public class ABMInmueble {
         return false;
     }
 
+    public Foto obtenerPrimeraFoto(Inmueble inm)
+    {
+        List<Foto> fotos = BDInmueble.fotosInmueble(inm);
+        if(fotos.isEmpty())
+            return null;
+        else 
+            return fotos.get(0);
+    }
+    
     public List<Foto> BuscaFotos()
     {
         return BDInmueble.ListarFotos();

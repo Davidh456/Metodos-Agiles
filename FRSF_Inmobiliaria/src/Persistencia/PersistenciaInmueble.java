@@ -301,4 +301,17 @@ public class PersistenciaInmueble {
         return criteria.list();
     }
 
+    public List<Foto> fotosInmueble(Inmueble inm) {
+        List<Foto> fotosInmueble;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        Criteria criteria = session.createCriteria(Foto.class, "Foto");
+        criteria.add(Restrictions.eq("inmueble", inm)); 
+        fotosInmueble =criteria.list();
+        
+        session.close();
+        return fotosInmueble;    
+    }
+
 }

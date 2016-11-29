@@ -494,6 +494,7 @@ public class Inmueble  implements java.io.Serializable {
     public void setEstado(String Estado) {
         this.Estado = Estado;
     }
+
 }
 
 
