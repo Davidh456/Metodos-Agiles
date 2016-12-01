@@ -1172,8 +1172,8 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                 }
             }
             DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
-            model.setRowCount(ListaFotos.getSelectedRow());
-            
+            //model.setRowCount(ListaFotos.getSelectedRow());
+            model.removeRow(ListaFotos.getSelectedRow());
         }
             
     
