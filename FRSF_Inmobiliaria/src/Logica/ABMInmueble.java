@@ -66,6 +66,7 @@ public class ABMInmueble {
                 antiguedad=2016-antiguedad;
             Inmueble casa = new Inmueble(propietario, supInmueble,  supTerreno,  ac,  antiguedad,  bano,  barrio,  cp,  calle,  depto,  dormitorio,  fondo,  frente,  garage,  gn,  lavadero,  localidadIndice,  localidadNombre,  numero,  observaciones,  orientacion,  patio,  pavimento,  piso,  precio,  provinciaNombre, provinciaIndice, telefono, tipoInmueble);
             casa.setId(iDModif);
+            conversionFotos(listaFotos, casa);
             return BDInmueble.ModificarInmueble(casa);
         }
     return false;
@@ -83,8 +84,9 @@ public class ABMInmueble {
     private void conversionFotos(Vector<String> listaFotos, Inmueble inmueble) {
         int i;
         byte[] convertidas;
-            for(i=0;i<listaFotos.size()/2;i++)
+            for(i=0;i<listaFotos.size();i++)
             {
+                if(listaFotos.elementAt(i+1)!=""){
                 File file = new File(listaFotos.elementAt(i+1));
                 convertidas = new byte[(int) file.length()];
                 try {
@@ -97,6 +99,8 @@ public class ABMInmueble {
                         }
                 Foto imagen = new Foto(inmueble, listaFotos.elementAt(i),listaFotos.elementAt(i+1),convertidas);
                 BDInmueble.AltaFoto(imagen);
+                }
+                i++;
             }
     }
     
@@ -138,6 +142,18 @@ public class ABMInmueble {
 
     public List<Inmueble>  TieneInmueble(Cliente cliente) {
         return BDInmueble.TieneInmueble(cliente);
+    }
+
+    public List<Foto> listarFotos(Inmueble inm) {
+        return BDInmueble.fotosInmueble(inm);
+    }
+
+    public void EliminarFotos(List<Foto> ListaFotosEliminar) {
+        if(!ListaFotosEliminar.isEmpty()){
+            for(Foto f: ListaFotosEliminar){
+                BDInmueble.eliminarFotoInmueble(f);
+            }
+        }
     }
     
 }

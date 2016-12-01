@@ -8,6 +8,7 @@ package Interfaz;
 import Clases.Inmueble;
 import Clases.Localidad;
 import Clases.Cliente;
+import Clases.Foto;
 import Clases.Provincia;
 import Clases.Reserva;
 import Logica.Validaciones;
@@ -20,6 +21,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.Vector;
@@ -50,7 +52,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     
     JTextField[] camposFlotantes;
     JLabel[] labelFlotantes;
-
+    
+    List<Foto> ListaFotosCargadas;
+    List<Foto> ListaFotosEliminar=new ArrayList<Foto>();
+    
     Validaciones validaciones = new Validaciones();
     private int iDModif;
     private Inmueble modificarInmueble;
@@ -112,6 +117,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         setCbLocalidad(inmSeleccionado.getLocalidadIndice());
         setSupInmueble(inmSeleccionado.getSupInmueble());
         setSupTerreno(inmSeleccionado.getSupTerreno());
+        setListaFotos(inmSeleccionado);
             
         LogicaReserva operador = new LogicaReserva();
         if(!operador.ExisteReserva(modificarInmueble)){
@@ -226,8 +232,10 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
         Vector<String> archivos= new Vector<String>();
         
         for(int i=0; i<ListaFotos.getRowCount();i++){
-            archivos.add((String) ListaFotos.getValueAt(i, 0));//agrega el nombre de la imagen primero
-            archivos.add( ((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());//agrega luego el nombre de la direccion
+            if(ListaFotos.getValueAt(i, 1)!=""){
+                archivos.add((String) ListaFotos.getValueAt(i, 0));//agrega el nombre de la imagen primero
+                archivos.add( ((File) ListaFotos.getValueAt(i, 1)).getAbsolutePath());//agrega luego el nombre de la direccion
+            }
         }
         return archivos;
     }
@@ -1115,6 +1123,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                    //System.exit(0);
                    
                    if(resultado){
+                       operador.EliminarFotos(ListaFotosEliminar);
                        if(QuitarReserva==1){
                             LogicaReserva operador2 = new LogicaReserva();
                             operador2.EliminarReserva(iDModif);}
@@ -1122,7 +1131,9 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                            Inmueble casa = new Inmueble(getPropietario(), getSupInmueble(),  getSupTerreno(), getAc(), getAntiguedad(), getBano(), getBarrio(), getCP(), getCalle(), getDepto(), getDormitorio(),  getFondo(), getFrente(), getGarage(), getGn(),  getLavadero(),  getLocalidadIndice(), getLocalidadNombre(), getNumero(),  getObservaciones(),  getOrientacion(),  getPatio(),  getPavimento(),  getPiso(),  getPrecio(),  getProvinciaNombre(), getProvinciaIndice(), getTelefono(), getTipoInmueble());
                            casa.setId(iDModif);
                            casa.setEstado("Reservado");
-                           operador.ModificarInmuebleConObjeto(casa);}                       
+                           operador.ModificarInmuebleConObjeto(casa);
+                           
+                       }                       
                        if (JOptionPane.showConfirmDialog(null, "El inmueble ha sido correctamente modificado\n¿Desea volver a la consulta de inmuebles?", "Felicidades", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
                         {
                            Inmobiliaria.getInstance().ConsultaInmueble();}
@@ -1151,10 +1162,21 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_PropietarioActionPerformed
 
     private void BElimFotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BElimFotosActionPerformed
+
         if(ListaFotos.getSelectedRow()!=-1){
-        DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
-        model.setRowCount(ListaFotos.getSelectedRow());
-    }
+            if(ListaFotos.getValueAt(ListaFotos.getSelectedRow(), 1)==""){//pregunra si el directorio de la fila seleccionada es vacia
+                for(Foto f: ListaFotosCargadas){//para cada foto pregunta cual es su nombre para luego cargar a eliminarlas
+                    if(f.getNombreFoto()==ListaFotos.getValueAt(ListaFotos.getSelectedRow(), 0)){
+                        ListaFotosEliminar.add(f); 
+                    }         
+                }
+            }
+            DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
+            model.setRowCount(ListaFotos.getSelectedRow());
+            
+        }
+            
+    
     }//GEN-LAST:event_BElimFotosActionPerformed
 
     private void btnQuitarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitarReservaActionPerformed
@@ -1475,6 +1497,18 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
 
     private void setSupTerreno(double supTerreno) {
         this.supTerreno.setText(String.valueOf(supTerreno));
+    }
+
+    private void setListaFotos(Inmueble inm) {
+        ABMInmueble operador = Inmobiliaria.getinstanciaOperadorInmueble();
+        ListaFotosCargadas=operador.listarFotos(inm);
+        DefaultTableModel model = (DefaultTableModel) ListaFotos.getModel();
+        for(Foto f: ListaFotosCargadas){
+        model.addRow(new Object[]{
+                        f.getNombreFoto(), 
+                        "",
+                        });
+        }
     }
     
 }

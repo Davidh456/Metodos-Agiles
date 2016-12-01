@@ -314,4 +314,14 @@ public class PersistenciaInmueble {
         return fotosInmueble;    
     }
 
+    public void eliminarFotoInmueble(Foto f) {
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session=sesion.openSession();
+        Transaction tx = session.beginTransaction();
+        session.delete(f);
+        tx.commit();
+        session.close();
+    }
+
 }
