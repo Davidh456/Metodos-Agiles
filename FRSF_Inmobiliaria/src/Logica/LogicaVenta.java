@@ -243,5 +243,10 @@ public class LogicaVenta {
     public List<Factura>  TieneFacturas(Cliente cliente) {
         return (new PersistenciaVenta()).TieneFacturas(cliente);
     }
+
+    public List<Historiaventa>  TieneVenta(Vendedor vendedor) {
+        PersistenciaVenta operador = new PersistenciaVenta();
+        return operador.TieneHistVenta(vendedor);
+    }
     
 }

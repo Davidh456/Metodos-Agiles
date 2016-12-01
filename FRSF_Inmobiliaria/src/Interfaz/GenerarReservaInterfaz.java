@@ -194,7 +194,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
+                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
                             .addComponent(lblBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
@@ -283,7 +283,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de la Reserva"));
 
-        lblmontoReserva.setText("Monto de Reserva");
+        lblmontoReserva.setText("Monto de Reserva (USD)");
 
         jLabel23.setText("Tiempo de Validez (dias)");
 

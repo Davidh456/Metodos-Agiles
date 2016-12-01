@@ -256,9 +256,9 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Datos de Venta"));
 
-        jLabe28.setText("Importe Total:");
+        jLabe28.setText("Importe Total (USD):");
 
-        jLabel22.setText("Importe Restante:");
+        jLabel22.setText("Importe Restante (USD):");
 
         lblImpTotal.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -496,7 +496,6 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
             } catch (DocumentException ex) {
                 Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
             }
-        operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
                 
         JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
         Inmobiliaria.getInstance().ConsultaInmueble();   

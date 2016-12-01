@@ -50,7 +50,7 @@ public class ABMCliente {
         modificarCliente(cliente);
     }
 
-    public boolean TieneTransacciones(Cliente cliente, int opcion) {
+    public boolean TieneTransacciones(Cliente cliente, Vendedor vendedor, int opcion) {
         ABMInmueble operador1 = new ABMInmueble();
         LogicaReserva operador2 = new LogicaReserva();
         LogicaVenta operador3 = new LogicaVenta();
@@ -61,6 +61,11 @@ public class ABMCliente {
         if (opcion==2) //si es para el caso de propietarios
         {
             if(operador1.TieneInmueble(cliente).isEmpty())
+                return false;
+            return true;}
+        if (opcion==3) //si es para el caso de vendedores
+        {
+            if(operador3.TieneVenta(vendedor).isEmpty())
                 return false;
             return true;}
         return true;

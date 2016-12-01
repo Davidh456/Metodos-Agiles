@@ -58,7 +58,6 @@ public class Inmobiliaria extends JFrame{
                                         Conexion.getInstance();
                                         Inmobiliaria.getInstance().inicializarInmobiliaria();
                                         Inmobiliaria.getInstance().MenuPrincipal();
-                                        
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

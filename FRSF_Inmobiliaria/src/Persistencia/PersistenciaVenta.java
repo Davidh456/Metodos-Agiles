@@ -9,6 +9,7 @@ import Clases.Cliente;
 import Clases.Factura;
 import Clases.Historiaventa;
 import Clases.Reserva;
+import Clases.Vendedor;
 import Conexion.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -51,6 +52,20 @@ public class PersistenciaVenta {
         criteria.createAlias("factura.cliente", "cliente");
         criteria.add(Restrictions.eq("cliente.idCliente",cliente.getIdCliente()));
         return criteria.list();
+    }
+
+    public List<Historiaventa> TieneHistVenta(Vendedor vendedor) {
+        List<Historiaventa> resultado;
+        SessionFactory sesion = NewHibernateUtil.getSessionFactory();
+        Session session;
+        session = sesion.openSession();
+        
+        Criteria criteria = session.createCriteria(Historiaventa.class, "historiaventa");
+        criteria.createAlias("historiaventa.vendedor", "vendedor");
+        criteria.add(Restrictions.eq("vendedor",vendedor));
+        resultado =criteria.list();
+        session.close();
+        return resultado;
     }
     
 }

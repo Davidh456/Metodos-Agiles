@@ -309,7 +309,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
                 if(tbLista.getSelectedRow()>-1){
                     ////
                     ABMCliente operador = new ABMCliente();
-                    if(!operador.TieneTransacciones(listaClientes.get(tbLista.getSelectedRow()),1))
+                    if(!operador.TieneTransacciones(listaClientes.get(tbLista.getSelectedRow()),null ,1))
                        Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
                     else
                         JOptionPane.showMessageDialog(null, "No se puede eliminar un cliente que haya realizado una compra, reserva o que sea propietario de un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
@@ -354,7 +354,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e) {
                 if(tbLista.getSelectedRow()>-1){
                     ABMCliente operador = new ABMCliente();
-                    if(!operador.TieneTransacciones(listaPropietarios.get(tbLista.getSelectedRow()),2))
+                    if(!operador.TieneTransacciones(listaPropietarios.get(tbLista.getSelectedRow()), null,2))
                        Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
                     else
                         JOptionPane.showMessageDialog(null, "No se puede eliminar un propietario al cual le pertenezca un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);

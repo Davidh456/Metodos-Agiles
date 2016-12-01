@@ -6,6 +6,7 @@
 package Interfaz;
 
 import Clases.Vendedor;
+import Logica.ABMCliente;
 import Logica.ABMVendedor;
 import imagenes.IconoEliminar;
 import imagenes.IconoVendedor;
@@ -182,20 +183,23 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         //Tomar el vendedor seleccionado de la tabla
         Vendedor seleccionado = vendedores.get(tabla.getSelectedRow());
         //Preguntar si quiere eliminar el vendedor seleccionado
-        IconoEliminar myIcon = new IconoEliminar();
-        int resp = JOptionPane.showConfirmDialog(null, 
-                "¿Desea eliminar el vendedor seleccionado? Si acepta, no podrá deshacer esta acción.", 
-                "Eliminar Vendedor - ¡Atención!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, myIcon);
+        ABMCliente operador = new ABMCliente();
+        if(!operador.TieneTransacciones(null, seleccionado,3)){
+            IconoEliminar myIcon = new IconoEliminar();
+            int resp = JOptionPane.showConfirmDialog(null, 
+                    "¿Desea eliminar el vendedor seleccionado? Si acepta, no podrá deshacer esta acción.", 
+                    "Eliminar Vendedor - ¡Atención!", JOptionPane.OK_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, myIcon);
         
-        if(resp == 0){
-            ABMVendedor.getInstance().bajaVendedor(seleccionado);//Si aceptó eliminar, lo elimina
-            JOptionPane.showMessageDialog(null, "El vendedor se ha eliminado con éxito.",
-                    "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);
-            Inmobiliaria.getInstance().consultaVendedor();
-        }else{
-            JOptionPane.showMessageDialog(null, "El vendedor no ha sido eliminado.", 
-                    "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);
-        }
+            if(resp == 0){
+                ABMVendedor.getInstance().bajaVendedor(seleccionado);//Si aceptó eliminar, lo elimina
+                JOptionPane.showMessageDialog(null, "El vendedor se ha eliminado con éxito.",
+                        "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);
+                Inmobiliaria.getInstance().consultaVendedor();
+            }else{
+                JOptionPane.showMessageDialog(null, "El vendedor no ha sido eliminado.", 
+                        "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);}}
+        else
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el vendedor porque que el mismo ya ha realizado ventas.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 

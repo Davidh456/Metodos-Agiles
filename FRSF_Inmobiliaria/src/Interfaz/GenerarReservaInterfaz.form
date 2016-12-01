@@ -163,7 +163,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblTipoInm" pref="75" max="32767" attributes="0"/>
+                                  <Component id="lblTipoInm" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Component id="lblBarrio" min="-2" pref="112" max="-2" attributes="0"/>
@@ -424,7 +424,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblmontoReserva">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Monto de Reserva"/>
+            <Property name="text" type="java.lang.String" value="Monto de Reserva (USD)"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel23">
