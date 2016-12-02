@@ -8,7 +8,7 @@ package Logica;
 import Clases.Cliente;
 import Clases.Inmueble;
 import Clases.Reserva;
-import static Conexion.EnvioEmail.EnvioEmail;
+import Conexion.EnvioEmail;
 import Persistencia.PersistenciaInmueble;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.pdf.AcroFields;
@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import Conexion.Hilo;
 
 
 
@@ -80,7 +81,11 @@ public class LogicaReserva {
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
-            EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
+            
+            Hilo h1 = new Hilo("email", nombreydir, nuevaReserva.getCliente().getCorreo());
+            h1.start();
+            
+            //EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
     private HashMap crearHashMapReserva(Reserva reserva, Set keys) {

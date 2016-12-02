@@ -7,7 +7,6 @@ import Clases.Historiaventa;
 import Clases.Inmueble;
 import Clases.Reserva;
 import Clases.Vendedor;
-import static Conexion.EnvioEmail.EnvioEmail;
 import Persistencia.PersistenciaInmueble;
 import Persistencia.PersistenciaVenta;
 import com.itextpdf.text.DocumentException;

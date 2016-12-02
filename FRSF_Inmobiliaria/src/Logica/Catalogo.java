@@ -4,7 +4,6 @@ import Clases.Cliente;
 import Clases.Foto;
 import Clases.Inmueble;
 import Clases.Reserva;
-import static Conexion.EnvioEmail.EnvioEmail;
 import Persistencia.PersistenciaInmueble;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;

@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
 public class EnvioEmail {
-   public static void EnvioEmail(String archivo, String destino) {
+   public void EnvioEmail(String archivo, String destino) {
       String origen = "inmobiliariafrsf@gmail.com";
 
       final String username = "inmobiliariafrsf@gmail.com";
@@ -49,9 +49,9 @@ public class EnvioEmail {
 
          BodyPart messageBodyPart = new MimeBodyPart();
 
-         messageBodyPart.setText("Este correo confirma la reserva realizada por usted en la Inmobiliaria FRSF.\n"
-                 + "Se adjunta a este correo el informe de la reserva realizada.\n"
-                 + "Este correo se generó automáticamente. Por favor no responda el mismo.\n"
+         messageBodyPart.setText("Este correo confirma la reserva realizada por usted en la Inmobiliaria FRSF."
+                 + " Se adjunta al mismo el informe de la reserva realizada.\n"
+                 + "Este correo se generó automáticamente. Por favor no responda.\n"
                  + "\n"
                  + "Inmobiliaria FRSF - Santa Fe, Santa Fe Argentina");
 
