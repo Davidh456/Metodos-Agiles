@@ -492,6 +492,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Publicar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonPublicarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BotonModificar">
           <Properties>
@@ -555,12 +558,12 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="45" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="50" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -570,17 +573,17 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="75" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="75" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -595,7 +598,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="37" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>
@@ -605,7 +608,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="40" resizable="true">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="85" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

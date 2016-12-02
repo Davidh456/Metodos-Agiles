@@ -406,6 +406,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         });
 
         BotonPublicar.setText("Publicar");
+        BotonPublicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonPublicarActionPerformed(evt);
+            }
+        });
 
         BotonModificar.setText("Modificar");
         BotonModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -502,17 +507,17 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         ScrollResultados.setViewportView(TablaResultados);
         if (TablaResultados.getColumnModel().getColumnCount() > 0) {
             TablaResultados.getColumnModel().getColumn(0).setPreferredWidth(10);
-            TablaResultados.getColumnModel().getColumn(1).setPreferredWidth(45);
-            TablaResultados.getColumnModel().getColumn(2).setPreferredWidth(50);
+            TablaResultados.getColumnModel().getColumn(1).setPreferredWidth(85);
+            TablaResultados.getColumnModel().getColumn(2).setPreferredWidth(60);
             TablaResultados.getColumnModel().getColumn(3).setPreferredWidth(30);
-            TablaResultados.getColumnModel().getColumn(4).setPreferredWidth(60);
-            TablaResultados.getColumnModel().getColumn(5).setPreferredWidth(60);
-            TablaResultados.getColumnModel().getColumn(6).setPreferredWidth(60);
+            TablaResultados.getColumnModel().getColumn(4).setPreferredWidth(75);
+            TablaResultados.getColumnModel().getColumn(5).setPreferredWidth(75);
+            TablaResultados.getColumnModel().getColumn(6).setPreferredWidth(85);
             TablaResultados.getColumnModel().getColumn(7).setPreferredWidth(65);
             TablaResultados.getColumnModel().getColumn(8).setPreferredWidth(45);
-            TablaResultados.getColumnModel().getColumn(9).setPreferredWidth(40);
+            TablaResultados.getColumnModel().getColumn(9).setPreferredWidth(37);
             TablaResultados.getColumnModel().getColumn(10).setPreferredWidth(80);
-            TablaResultados.getColumnModel().getColumn(11).setPreferredWidth(40);
+            TablaResultados.getColumnModel().getColumn(11).setPreferredWidth(85);
         }
 
         btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -582,7 +587,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_PrecioHastaActionPerformed
     int entro=0;    
     private void TablaResultadosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_TablaResultadosPropertyChange
-        
         int seleccionados=0;
         for (int i = 0; i < TablaResultados.getRowCount(); i++) {
 					if((boolean)TablaResultados.getValueAt(i, 0)){
@@ -595,8 +599,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                 {  DeshabilitarBotonesInicio();}
         if (seleccionados>1){
             DeshabilitarBotones();}
-        
-            
     }//GEN-LAST:event_TablaResultadosPropertyChange
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -642,7 +644,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                         c.getTipoInmueble(),
                         c.getProvinciaNombre(),
                         c.getLocalidadNombre(), 
-                        c.getCalle(), 
+                        String.valueOf(c.getCalle()) + " " + String.valueOf(c.getNumero()), 
                         c.getDormitorio(), Garage, 
                         Patio,
                         c.getSupInmueble(),
@@ -660,31 +662,32 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         boolean tieneReserva;
-        Inmueble inmSeleccionado;
-        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmueble inmSeleccionado=null;
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
         LogicaReserva operador = new LogicaReserva();
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
-        if(!tieneReserva){
-            inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        if(!tieneReserva)
             Inmobiliaria.getInstance().EliminarInmueble(inmSeleccionado);
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "El Inmueble se encuentra reservado por lo que no se puede eliminar.","Error",JOptionPane.ERROR_MESSAGE);
-        }
+        else
+            JOptionPane.showMessageDialog(null, "El Inmueble se encuentra reservado por lo que no se puede eliminar.","Error",JOptionPane.ERROR_MESSAGE);     
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        Inmueble inmSeleccionado;
-        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmueble inmSeleccionado=null;
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
         Inmobiliaria.getInstance().ModificarInmueble(inmSeleccionado);
-        
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonReservaActionPerformed
-       
+        Inmueble inmSeleccionado=null;
         boolean tieneReserva;
-        Inmueble inmSeleccionado;
-        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
         LogicaReserva operador = new LogicaReserva();
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
@@ -697,15 +700,19 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     private void BotonDetallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDetallesActionPerformed
 
-        Inmueble inmSeleccionado;
-        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmueble inmSeleccionado=null;
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
         Inmobiliaria.getInstance().DetallesInmueble(inmSeleccionado);
     }//GEN-LAST:event_BotonDetallesActionPerformed
 
     private void BotonVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVenderActionPerformed
         boolean tieneReserva;
-        Inmueble inmSeleccionado;
-        inmSeleccionado=resultado.get(TablaResultados.getSelectedRow());
+        Inmueble inmSeleccionado=null;
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
         LogicaReserva operador = new LogicaReserva();
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
@@ -718,7 +725,6 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
     private void BotonCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCatalogoActionPerformed
         List<Inmueble> inmueblesSeleccionados = new ArrayList<Inmueble>();
-        //for(int i: TablaResultados.getSelectedRows())
         JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
         for(int i=0; i<TablaResultados.getRowCount(); i++)
             if ((boolean)tabla.getValueAt(i,0))
@@ -732,6 +738,10 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_BotonCatalogoActionPerformed
 
+    private void BotonPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPublicarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonPublicarActionPerformed
+
     private void HabilitarBotones(){
         BotonDetalles.setEnabled(true);
         BotonEliminar.setEnabled(true);
@@ -739,6 +749,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonReserva.setEnabled(true);
         BotonVender.setEnabled(true);
         BotonPublicar.setEnabled(true);
+        BotonCatalogo.setEnabled(true);
     }
     private void DeshabilitarBotones(){
         BotonDetalles.setEnabled(false);
@@ -746,6 +757,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonModificar.setEnabled(false);
         BotonReserva.setEnabled(false);
         BotonVender.setEnabled(false);
+        BotonCatalogo.setEnabled(true);
     }
     private void DeshabilitarBotonesInicio(){
         BotonDetalles.setEnabled(false);
@@ -754,6 +766,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonReserva.setEnabled(false);
         BotonVender.setEnabled(false);
         BotonPublicar.setEnabled(false);
+        BotonCatalogo.setEnabled(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
