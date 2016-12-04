@@ -446,7 +446,7 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
-        Inmobiliaria.getInstance().consultaVendedor();
+        Inmobiliaria.getInstance().ConsultaVendedor();
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
@@ -633,7 +633,7 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
                         if (resp == 0) {
                             Inmobiliaria.getInstance().altaVendedor();
                         } else {
-                            Inmobiliaria.getInstance().consultaVendedor();
+                            Inmobiliaria.getInstance().ConsultaVendedor();
                         }
                     }
                 }
@@ -684,7 +684,7 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
                         ABMVendedor.getInstance().modificarVendedor(vend);
                         JOptionPane.showMessageDialog(null, "El Vendedor ha sido modificado correctamente.",
                                 "¡Éxito!", JOptionPane.INFORMATION_MESSAGE);
-                        Inmobiliaria.getInstance().consultaVendedor();
+                        Inmobiliaria.getInstance().ConsultaVendedor();
                     }
 
                 }

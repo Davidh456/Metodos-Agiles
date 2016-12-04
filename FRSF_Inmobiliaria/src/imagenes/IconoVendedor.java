@@ -19,7 +19,7 @@ public class IconoVendedor implements Icon {
 
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
-        Image imagen = new ImageIcon(getClass().getResource("/imagenes/vendedor.png")).getImage();
+        Image imagen = new ImageIcon(getClass().getResource("/imagenes/seller.png")).getImage();
         g.drawImage(imagen, x, y, c);
     }
 

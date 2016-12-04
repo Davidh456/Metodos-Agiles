@@ -120,6 +120,19 @@ public class Inmobiliaria extends JFrame{
 			}
         });
     }
+     public void IniciarSesionAdministrador(){
+        contentPane.removeAll();
+        contentPane.add(fondo);
+        AdminLogin login = new AdminLogin();
+        login.setBounds((contentPane.getWidth()/2)-(login.getWidth()/2), 
+							(contentPane.getHeight()/2)-(login.getHeight()/2), 
+							login.getWidth(), 
+							login.getHeight());
+        contentPane.add(login);
+        login.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
     public void IniciarSesion(){
         contentPane.removeAll();
         contentPane.add(fondo);
@@ -435,7 +448,7 @@ public class Inmobiliaria extends JFrame{
         contentPane.revalidate();
     }
 
-    void consultaVendedor() {
+    void ConsultaVendedor() {
         contentPane.removeAll();
         contentPane.add(fondo);
         ConsultaVendedor pantallaVendedores = new ConsultaVendedor();

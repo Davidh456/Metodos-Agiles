@@ -24,6 +24,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnPropietario = new javax.swing.JButton();
         btnAltaInmueble = new javax.swing.JButton();
         btnGestionarInmueble = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -110,6 +111,18 @@ public class MenuPrincipal extends javax.swing.JPanel {
             }
         });
         add(btnGestionarInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 150, 120));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing out.png"))); // NOI18N
+        jButton1.setText("Cerrar sesión");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing out selected.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
@@ -128,11 +141,16 @@ public class MenuPrincipal extends javax.swing.JPanel {
        Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnGestionarInmuebleActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Inmobiliaria.getInstance().IniciarSesion();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAltaInmueble;
     private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnGestionarInmueble;
     private javax.swing.JButton btnPropietario;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

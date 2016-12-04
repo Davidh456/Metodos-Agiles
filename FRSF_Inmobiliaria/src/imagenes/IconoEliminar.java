@@ -19,7 +19,7 @@ public class IconoEliminar implements Icon {
 
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y) {
-        Image imagen = new ImageIcon(getClass().getResource("/imagenes/IconoDelete.png")).getImage();
+        Image imagen = new ImageIcon(getClass().getResource("/imagenes/trash.png")).getImage();
         g.drawImage(imagen, x, y, c);
     }
 

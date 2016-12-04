@@ -29,7 +29,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
      */
     public ConsultaVendedor() {
         initComponents();
-        setSize(630, 400);
+        setSize(608, 451);
         setVisible(true);
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
@@ -143,11 +143,11 @@ public class ConsultaVendedor extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSalir)
-                        .addGap(68, 68, 68)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
-                        .addGap(68, 68, 68)
+                        .addGap(30, 30, 30)
                         .addComponent(btnModificar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
                         .addComponent(btnEliminar)))
                 .addContainerGap())
         );
@@ -174,9 +174,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        //Dsps cuando esté la pantalla del loguin hay que mandarlo allá
-        Inmobiliaria.getInstance().MenuPrincipal();
-        // TODO add your handling code here:
+        Inmobiliaria.getInstance().IniciarSesion();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -194,7 +192,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
                 ABMVendedor.getInstance().bajaVendedor(seleccionado);//Si aceptó eliminar, lo elimina
                 JOptionPane.showMessageDialog(null, "El vendedor se ha eliminado con éxito.",
                         "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);
-                Inmobiliaria.getInstance().consultaVendedor();
+                Inmobiliaria.getInstance().ConsultaVendedor();
             }else{
                 JOptionPane.showMessageDialog(null, "El vendedor no ha sido eliminado.", 
                         "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);}}

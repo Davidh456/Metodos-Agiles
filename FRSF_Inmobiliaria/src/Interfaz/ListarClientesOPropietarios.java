@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 public class ListarClientesOPropietarios extends javax.swing.JPanel {
@@ -45,7 +47,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     }
 
     ListarClientesOPropietarios(String propietario_para_el_Inmueble, ABMInmuebleInterfaz aThis) {
-       initComponents();
+        initComponents();
         setSize(1000,425);
         setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory
                 .createLineBorder(new java.awt.Color(153, 153, 153)), "Buscar "+propietario_para_el_Inmueble));
@@ -124,6 +126,11 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tbLista.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                tbListaFocusGained(evt);
+            }
+        });
         spLista.setViewportView(tbLista);
 
         btnVolver.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -148,6 +155,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar.setBorder(null);
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setEnabled(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.setIconTextGap(0);
         btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete selected.png"))); // NOI18N
@@ -180,6 +188,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnModificar.setBorder(null);
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
+        btnModificar.setEnabled(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnModificar.setIconTextGap(0);
         btnModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify selected.png"))); // NOI18N
@@ -192,14 +201,14 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spLista, javax.swing.GroupLayout.DEFAULT_SIZE, 650, Short.MAX_VALUE)
+                    .addComponent(spLista, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(18, 292, Short.MAX_VALUE)
                         .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(40, 40, 40)
                         .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
+                        .addGap(40, 40, 40)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -231,6 +240,18 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void tbListaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tbListaFocusGained
+        tbLista.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if(tbLista.getSelectedRow()>-1){
+                    btnEliminar.setEnabled(true);
+                    btnModificar.setEnabled(true);
+                }
+            }
+        });
+    }//GEN-LAST:event_tbListaFocusGained
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
@@ -242,6 +263,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void setearTablaClientes() {
+        
         listaClientes = new ABMCliente().listarClientes();
          for(Cliente c: listaClientes){
              DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
@@ -272,6 +294,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
          }
     }
     private void setearTablaPropietarios(){
+        
         listaPropietarios = new ABMCliente().listarPropietarios();
         for(Cliente p: listaPropietarios){
             DefaultTableModel model = (DefaultTableModel) tbLista.getModel();
@@ -306,30 +329,20 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    ////
-                    ABMCliente operador = new ABMCliente();
-                    if(!operador.TieneTransacciones(listaClientes.get(tbLista.getSelectedRow()),null ,1))
-                       Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
-                    else
-                        JOptionPane.showMessageDialog(null, "No se puede eliminar un cliente que haya realizado una compra, reserva o que sea propietario de un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
-                    ////
+                ABMCliente operador = new ABMCliente();
+                if(!operador.TieneTransacciones(listaClientes.get(tbLista.getSelectedRow()),null ,1))
+                   Inmobiliaria.getInstance().BajaCliente(listaClientes.get(tbLista.getSelectedRow()));
+                else{
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar un cliente que haya realizado una compra, reserva o que sea propietario de un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
                 }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un cliente!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
-                    
+                   
             }
             
         });
         btnModificar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().ModificacionCliente(listaClientes.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un cliente!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
-                  
+                Inmobiliaria.getInstance().ModificacionCliente(listaClientes.get(tbLista.getSelectedRow()));
             }
             
         });
@@ -352,25 +365,17 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
                     ABMCliente operador = new ABMCliente();
                     if(!operador.TieneTransacciones(listaPropietarios.get(tbLista.getSelectedRow()), null,2))
                        Inmobiliaria.getInstance().BajaPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
                     else
                         JOptionPane.showMessageDialog(null, "No se puede eliminar un propietario al cual le pertenezca un inmueble.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
                 }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
-                }
         });
         btnModificar.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(tbLista.getSelectedRow()>-1){
-                    Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
-                }
-                else 
-                    JOptionPane.showMessageDialog(null, "Se debe seleccinar un Propietario!","¡Cuidado!",JOptionPane.ERROR_MESSAGE);     
+                   Inmobiliaria.getInstance().ModificacionPropietario(listaPropietarios.get(tbLista.getSelectedRow()));
                 }
             });
         btnAgregar.addActionListener(new ActionListener(){
