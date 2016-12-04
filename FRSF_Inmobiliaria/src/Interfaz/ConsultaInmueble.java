@@ -377,56 +377,111 @@ public class ConsultaInmueble extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Acciones"));
 
+        BotonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete2.png"))); // NOI18N
         BotonEliminar.setText("Eliminar");
+        BotonEliminar.setBorderPainted(false);
+        BotonEliminar.setContentAreaFilled(false);
+        BotonEliminar.setIconTextGap(18);
+        BotonEliminar.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete2 selected.png"))); // NOI18N
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarActionPerformed(evt);
             }
         });
 
+        BotonVender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sell.png"))); // NOI18N
         BotonVender.setText("Vender");
+        BotonVender.setBorderPainted(false);
+        BotonVender.setContentAreaFilled(false);
+        BotonVender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonVender.setIconTextGap(9);
+        BotonVender.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonVender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sell selected.png"))); // NOI18N
         BotonVender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonVenderActionPerformed(evt);
             }
         });
 
+        BotonDetalles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/details.png"))); // NOI18N
         BotonDetalles.setText("Detalles");
+        BotonDetalles.setBorderPainted(false);
+        BotonDetalles.setContentAreaFilled(false);
+        BotonDetalles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonDetalles.setIconTextGap(5);
+        BotonDetalles.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonDetalles.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/details selected.png"))); // NOI18N
         BotonDetalles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonDetallesActionPerformed(evt);
             }
         });
 
+        BotonReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/book.png"))); // NOI18N
         BotonReserva.setText("Reservar");
+        BotonReserva.setBorderPainted(false);
+        BotonReserva.setContentAreaFilled(false);
+        BotonReserva.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonReserva.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BotonReserva.setIconTextGap(6);
+        BotonReserva.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonReserva.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/book selected.png"))); // NOI18N
         BotonReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonReservaActionPerformed(evt);
             }
         });
 
+        BotonPublicar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload.png"))); // NOI18N
         BotonPublicar.setText("Publicar");
+        BotonPublicar.setBorderPainted(false);
+        BotonPublicar.setContentAreaFilled(false);
+        BotonPublicar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonPublicar.setIconTextGap(10);
+        BotonPublicar.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonPublicar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload selected.png"))); // NOI18N
         BotonPublicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonPublicarActionPerformed(evt);
             }
         });
 
+        BotonModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify2.png"))); // NOI18N
         BotonModificar.setText("Modificar");
+        BotonModificar.setBorderPainted(false);
+        BotonModificar.setContentAreaFilled(false);
+        BotonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BotonModificar.setIconTextGap(7);
+        BotonModificar.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify2 selected.png"))); // NOI18N
         BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarActionPerformed(evt);
             }
         });
 
+        BotonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit.png"))); // NOI18N
         BotonSalir.setText("Salir");
+        BotonSalir.setBorderPainted(false);
+        BotonSalir.setContentAreaFilled(false);
+        BotonSalir.setIconTextGap(20);
+        BotonSalir.setMargin(new java.awt.Insets(2, 5, 2, 19));
+        BotonSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit selected.png"))); // NOI18N
         BotonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonSalirActionPerformed(evt);
             }
         });
 
-        BotonCatalogo.setText("Generar Catálogo");
+        BotonCatalogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/catalogue.png"))); // NOI18N
+        BotonCatalogo.setText("<html>Generar<br>Catálogo</html>");
+        BotonCatalogo.setBorderPainted(false);
+        BotonCatalogo.setContentAreaFilled(false);
+        BotonCatalogo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        BotonCatalogo.setIconTextGap(15);
+        BotonCatalogo.setMargin(new java.awt.Insets(2, 5, 2, 5));
+        BotonCatalogo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/catalogue selected.png"))); // NOI18N
         BotonCatalogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonCatalogoActionPerformed(evt);
@@ -447,7 +502,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
                     .addComponent(BotonVender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonReserva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BotonDetalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BotonCatalogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BotonCatalogo))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -537,15 +592,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(ScrollResultados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -93,4 +93,12 @@ public class PersistenciaVendedor {
         sesion.delete(vend);
         tx.commit();
     }
+    
+    public boolean login(String vendedor, String contrasenia){
+        if(!sesion.isOpen()) Conexion.getInstance().openSession();
+        Criteria criteria = sesion.createCriteria(Vendedor.class, "vendedor");
+        criteria.add(Restrictions.eq("email", vendedor));
+        criteria.add(Restrictions.eq("contrasenia", contrasenia));
+        return !criteria.list().isEmpty();
+    }
 }

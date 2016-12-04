@@ -57,7 +57,7 @@ public class Inmobiliaria extends JFrame{
 					instancia = new Inmobiliaria();
                                         Conexion.getInstance();
                                         Inmobiliaria.getInstance().inicializarInmobiliaria();
-                                        Inmobiliaria.getInstance().MenuPrincipal();
+                                        Inmobiliaria.getInstance().IniciarSesion();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -119,6 +119,19 @@ public class Inmobiliaria extends JFrame{
 				
 			}
         });
+    }
+    public void IniciarSesion(){
+        contentPane.removeAll();
+        contentPane.add(fondo);
+        Login login = new Login();
+        login.setBounds((contentPane.getWidth()/2)-(login.getWidth()/2), 
+							(contentPane.getHeight()/2)-(login.getHeight()/2), 
+							login.getWidth(), 
+							login.getHeight());
+        contentPane.add(login);
+        login.setVisible(true);
+        contentPane.repaint();
+        contentPane.revalidate();
     }
     public void AltaPropietario(Cliente nuevoPropietario) {
         contentPane.removeAll();
