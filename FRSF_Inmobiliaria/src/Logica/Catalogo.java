@@ -56,7 +56,7 @@ public class Catalogo {
             reader.close();
         }
         document.close();
-        JOptionPane.showMessageDialog(null, "Catálogo generado y guardado correctamente con el nombre: Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf \n A continuación se abrirá el mismo.","Éxito",JOptionPane.INFORMATION_MESSAGE);  
+        JOptionPane.showMessageDialog(null, "Catálogo generado y guardado correctamente con el nombre: Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf","Éxito",JOptionPane.INFORMATION_MESSAGE);  
 
         try {
         File archivo = new File(nombreydir);

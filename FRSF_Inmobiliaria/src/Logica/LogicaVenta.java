@@ -14,7 +14,9 @@ import com.itextpdf.text.pdf.AcroFields;
 import com.itextpdf.text.pdf.PdfFormField;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
+import java.awt.Desktop;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -76,6 +78,12 @@ public class LogicaVenta {
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
+            
+        try {
+        File archivo = new File(nombreydir);
+        Desktop.getDesktop().open(archivo);
+        } catch (IOException ex) {
+        }
     }
 
     private HashMap crearHashMapReserva(Factura factura, Set keys) {

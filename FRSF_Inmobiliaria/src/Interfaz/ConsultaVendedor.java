@@ -197,7 +197,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El vendedor no ha sido eliminado.", 
                         "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);}}
         else
-            JOptionPane.showMessageDialog(null, "No se puede eliminar el vendedor porque que el mismo ya ha realizado ventas.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el vendedor porque el mismo ya ha realizado ventas.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 
