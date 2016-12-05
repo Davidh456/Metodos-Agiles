@@ -101,4 +101,5 @@ public class PersistenciaVendedor {
         criteria.add(Restrictions.eq("contrasenia", contrasenia));
         return !criteria.list().isEmpty();
     }
+    
 }

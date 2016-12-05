@@ -144,10 +144,10 @@ public class PersistenciaInmueble {
             criteria.add(Restrictions.eq("idpropietario.tipoDoc",tipoDoc-1));  
         }
         if(!correo.equals("")){
-          criteria.add(Restrictions.eqProperty("idpropietario.correo",correo));  
+          criteria.add(Restrictions.eq("idpropietario.correo",correo));  
         }
         if(!apellido.equals("")){
-            criteria.add(Restrictions.eqProperty("idpropietario.apellido",apellido));
+            criteria.add(Restrictions.eq("idpropietario.apellido",apellido));
         }
         resultado =criteria.list();
         session.close();

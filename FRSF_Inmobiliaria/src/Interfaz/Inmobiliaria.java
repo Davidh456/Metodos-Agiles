@@ -30,7 +30,7 @@ public class Inmobiliaria extends JFrame{
     
     private static Inmobiliaria instancia = null;
     private static ABMInmueble instanciaOperadorInmueble = null;
-    
+    private Vendedor vendedorLogeado;
     JPanel AltaClienteOPropietario;
     public static void main(String[] args) {
         
