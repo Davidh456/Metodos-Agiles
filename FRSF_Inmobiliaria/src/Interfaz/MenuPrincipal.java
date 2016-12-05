@@ -11,7 +11,7 @@ public class MenuPrincipal extends javax.swing.JPanel {
     
     public MenuPrincipal() {
         initComponents();
-        setSize(596, 348);
+        setSize(1100, 555);
         
     }
 
@@ -25,8 +25,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
         btnAltaInmueble = new javax.swing.JButton();
         btnGestionarInmueble = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnClientes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clienteM.png"))); // NOI18N
@@ -47,7 +45,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 btnClientesActionPerformed(evt);
             }
         });
-        add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 160, 120));
 
         btnPropietario.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnPropietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/propietarioM.png"))); // NOI18N
@@ -67,7 +64,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 btnPropietarioActionPerformed(evt);
             }
         });
-        add(btnPropietario, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 170, 120));
 
         btnAltaInmueble.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAltaInmueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/altaColorM.png"))); // NOI18N
@@ -88,7 +84,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 btnAltaInmuebleActionPerformed(evt);
             }
         });
-        add(btnAltaInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 120, 120));
 
         btnGestionarInmueble.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnGestionarInmueble.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consulta InmuebleM.png"))); // NOI18N
@@ -110,7 +105,6 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 btnGestionarInmuebleActionPerformed(evt);
             }
         });
-        add(btnGestionarInmueble, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 40, 150, 120));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing out.png"))); // NOI18N
         jButton1.setText("Cerrar sesión");
@@ -122,7 +116,41 @@ public class MenuPrincipal extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, 50));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(371, 371, 371)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnAltaInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnGestionarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(371, 371, 371))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnGestionarInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAltaInmueble, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(btnClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(140, 140, 140))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
