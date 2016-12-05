@@ -1,5 +1,6 @@
 package Interfaz;
 
+import Clases.Vendedor;
 import Logica.Validaciones;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -112,11 +113,15 @@ public class Login extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        Vendedor vendedor;
+        Logica.Login L=new Logica.Login();
         Validaciones validaciones = new Validaciones();
         validaciones.reiniciarCampos(new JTextField[]{tfCorreo,pfContrasenia},new JLabel[]{lblCorreo,lblContrasenia});
         if(tfCorreo.getText().length()>0 && pfContrasenia.getPassword().length>0){
-            if(new Logica.Login().login(tfCorreo.getText(),String.valueOf(pfContrasenia.getPassword()))){
+            if(L.login(tfCorreo.getText(),String.valueOf(pfContrasenia.getPassword()))){
                 Inmobiliaria.getInstance().MenuPrincipal();
+                vendedor=L.getVendedorLogeado(tfCorreo.getText(),String.valueOf(pfContrasenia.getPassword()));
+                Inmobiliaria.getInstance().setVendedorLogeado(vendedor);
             }
             else{
                 JOptionPane.showMessageDialog(null, "Los datos no son correctos","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);

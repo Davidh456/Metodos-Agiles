@@ -561,4 +561,12 @@ public class Inmobiliaria extends JFrame{
         contentPane.repaint();
         contentPane.revalidate();
     }
+
+    public void setVendedorLogeado(Vendedor vendedor) {
+        vendedorLogeado=vendedor;
+    }
+
+    Vendedor getVendedorLogueado() {
+        return vendedorLogeado;
+    }
 }
