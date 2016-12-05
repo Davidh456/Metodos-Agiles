@@ -139,6 +139,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnVolver.setBorder(null);
         btnVolver.setBorderPainted(false);
         btnVolver.setContentAreaFilled(false);
+        btnVolver.setFocusPainted(false);
         btnVolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnVolver.setIconTextGap(0);
         btnVolver.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back big selected.png"))); // NOI18N
@@ -156,6 +157,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
         btnEliminar.setEnabled(false);
+        btnEliminar.setFocusPainted(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.setIconTextGap(0);
         btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete selected.png"))); // NOI18N
@@ -172,6 +174,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnAgregar.setBorder(null);
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setFocusPainted(false);
         btnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregar.setIconTextGap(0);
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add selected.png"))); // NOI18N
@@ -189,6 +192,7 @@ public class ListarClientesOPropietarios extends javax.swing.JPanel {
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
         btnModificar.setEnabled(false);
+        btnModificar.setFocusPainted(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnModificar.setIconTextGap(0);
         btnModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify selected.png"))); // NOI18N

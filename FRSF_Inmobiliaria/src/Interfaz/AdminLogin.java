@@ -60,6 +60,7 @@ public class AdminLogin extends javax.swing.JPanel {
         btnLogin.setBorder(null);
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
+        btnLogin.setFocusPainted(false);
         btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing in selected.png"))); // NOI18N
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +73,7 @@ public class AdminLogin extends javax.swing.JPanel {
         btnVolver.setText("Volver");
         btnVolver.setBorderPainted(false);
         btnVolver.setContentAreaFilled(false);
+        btnVolver.setFocusPainted(false);
         btnVolver.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back selected.png"))); // NOI18N
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

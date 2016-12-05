@@ -33,6 +33,7 @@ public class Login extends javax.swing.JPanel {
         btnLogin.setBorder(null);
         btnLogin.setBorderPainted(false);
         btnLogin.setContentAreaFilled(false);
+        btnLogin.setFocusPainted(false);
         btnLogin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing in selected.png"))); // NOI18N
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -45,6 +46,7 @@ public class Login extends javax.swing.JPanel {
         btnAdmin.setText("Ingresar como administrador");
         btnAdmin.setBorder(null);
         btnAdmin.setContentAreaFilled(false);
+        btnAdmin.setFocusPainted(false);
         btnAdmin.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnAdmin.setInheritsPopupMenu(true);
         btnAdmin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/manager small selected.png"))); // NOI18N

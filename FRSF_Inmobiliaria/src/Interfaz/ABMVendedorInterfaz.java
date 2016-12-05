@@ -214,6 +214,7 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
         aceptar.setText("Aceptar");
         aceptar.setBorderPainted(false);
         aceptar.setContentAreaFilled(false);
+        aceptar.setFocusPainted(false);
         aceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         aceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2 selected.png"))); // NOI18N
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -226,6 +227,7 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
         cancelar.setText("Cancelar");
         cancelar.setBorderPainted(false);
         cancelar.setContentAreaFilled(false);
+        cancelar.setFocusPainted(false);
         cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -303,21 +305,20 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
                                             .addComponent(localidadLBL)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(localidadCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(nombreTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(apellidoTF, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(contenedorLayout.createSequentialGroup()
-                                                .addComponent(tipoDocCB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(13, 13, 13)
-                                                .addComponent(lblNumDocumento1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(numDocTF))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, contenedorLayout.createSequentialGroup()
-                                                .addComponent(domicilioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(12, 12, 12)
-                                                .addComponent(lblNumDomicilio)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(alturaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(nombreTF)
+                                        .addComponent(apellidoTF)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contenedorLayout.createSequentialGroup()
+                                            .addComponent(tipoDocCB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(13, 13, 13)
+                                            .addComponent(lblNumDocumento1)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(numDocTF))
+                                        .addGroup(contenedorLayout.createSequentialGroup()
+                                            .addComponent(domicilioTF, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(12, 12, 12)
+                                            .addComponent(lblNumDomicilio)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(alturaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(contenedorLayout.createSequentialGroup()
                                             .addComponent(telefonoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

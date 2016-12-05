@@ -352,6 +352,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         btnAceptar.setText("Aceptar");
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setFocusPainted(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept big2 selected.png"))); // NOI18N
         btnAceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -365,6 +366,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         jButton3.setText("Cancelar");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 big selected.png"))); // NOI18N
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
