@@ -44,6 +44,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
     JLabel[] labelFlotantes;
     public GenerarVentaInterfaz() {
         initComponents();
+        setSize(656, 511);
     }
 
     
@@ -51,7 +52,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
        inmuebleVendido=inmSeleccionado;
        initComponents(); 
        validarCargaCliente();
-       setSize(getPreferredSize());
+       setSize(656, 511);
        
        setLblCP(inmSeleccionado.getCp());
        setLblPiso(inmSeleccionado.getPiso());
@@ -357,23 +358,26 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2.png"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept big2.png"))); // NOI18N
         btnAceptar.setText("Aceptar");
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
-        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small2 selected.png"))); // NOI18N
+        btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept big2 selected.png"))); // NOI18N
+        btnAceptar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 big.png"))); // NOI18N
         jButton3.setText("Cancelar");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
-        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 big selected.png"))); // NOI18N
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -437,25 +441,26 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BSelecVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGap(0, 0, 0))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addGap(0, 0, 0))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10))))
+                        .addGap(90, 90, 90))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

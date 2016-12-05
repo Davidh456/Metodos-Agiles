@@ -5,7 +5,10 @@
  */
 package Interfaz;
 
+import Logica.Validaciones;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -29,8 +32,8 @@ public class AdminLogin extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblCorreo = new javax.swing.JLabel();
+        lblContrasenia = new javax.swing.JLabel();
         tfCorreo = new javax.swing.JTextField();
         pfContrasenia = new javax.swing.JPasswordField();
         btnLogin = new javax.swing.JButton();
@@ -46,11 +49,11 @@ public class AdminLogin extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/admin.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Nombre");
+        lblCorreo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblCorreo.setText("Nombre");
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Contraseña");
+        lblContrasenia.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblContrasenia.setText("Contraseña");
 
         btnLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/sing in.png"))); // NOI18N
         btnLogin.setText("Ingresar");
@@ -92,8 +95,8 @@ public class AdminLogin extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(lblCorreo, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblContrasenia, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(pfContrasenia, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
@@ -111,11 +114,11 @@ public class AdminLogin extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(tfCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                            .addComponent(lblCorreo))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(pfContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                            .addComponent(lblContrasenia))
                         .addGap(26, 26, 26)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(btnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
@@ -125,11 +128,21 @@ public class AdminLogin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        if(new Logica.Login().AdminLogin(tfCorreo.getText(),String.valueOf(pfContrasenia.getPassword()))){
-            Inmobiliaria.getInstance().ConsultaVendedor();
+        Validaciones validaciones = new Validaciones();
+        validaciones.reiniciarCampos(new JTextField[]{tfCorreo,pfContrasenia},new JLabel[]{lblCorreo,lblContrasenia});
+        if(tfCorreo.getText().length()>0 && pfContrasenia.getPassword().length>0){
+            if(new Logica.Login().AdminLogin(tfCorreo.getText(),String.valueOf(pfContrasenia.getPassword()))){
+                Inmobiliaria.getInstance().ConsultaVendedor();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Los datos no son correctos","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+                pfContrasenia.setText(null);
+            }
         }
         else{
-            JOptionPane.showMessageDialog(null, "Los datos no son correctos","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Faltan completar campos","¡CUIDADO!",JOptionPane.ERROR_MESSAGE);
+            pfContrasenia.setText(null);
+            validaciones.Pintar(new JTextField[]{tfCorreo,pfContrasenia}, new JLabel[]{lblCorreo,lblContrasenia});
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -144,8 +157,8 @@ public class AdminLogin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel lblContrasenia;
+    private javax.swing.JLabel lblCorreo;
     private javax.swing.JPasswordField pfContrasenia;
     private javax.swing.JTextField tfCorreo;
     // End of variables declaration//GEN-END:variables
