@@ -28,7 +28,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     
     public ABMClienteOPropietario() {
         initComponents();
-        setSize(450, 250);
+        setSize(450, 241);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         validaciones = new Validaciones();
@@ -38,7 +38,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
     public ABMClienteOPropietario(String tabla, String operacion, Cliente cliente){
         initComponents();
         setVisible(true);
-        setSize(450, 250);
+        setSize(450, 241);
         camposObligatorios = new JTextField[]{tfNombre, tfApellido,tfNumeroDocumento,tfDomicilio,tfAlturaCalle,tfTelefono,tfCorreo};
         lblCamposObligatorios = new JLabel[]{lblNombre, lblApellido,lblNumDocumento,lblDomicilio,lblNumDomicilio,lblTelefono,lblCorreo};
         this.cliente = cliente;
@@ -523,7 +523,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
                                         "¿Seguro que quiere eliminar al propietario "+cliente.getNombre()+"?", "Cerrar", JOptionPane.YES_NO_OPTION, 2, null, new String[]{"Si","No"}, null);
                 if (opcion == 0){
                     ABMCliente.noEsMasPropietario(cliente);
-                    JOptionPane.showMessageDialog(null, "El propietario "+cliente.getNombre()+" fue eliminado correctamente y reasignado como `Cliente´","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
+                    JOptionPane.showMessageDialog(null, "El propietario "+cliente.getNombre()+" fue eliminado correctamente","¡ÉXITO!",JOptionPane.DEFAULT_OPTION);
                     Inmobiliaria.getInstance().ListarPropietarios();
                 }
             }

@@ -10,15 +10,19 @@ import Clases.Inmueble;
 import Clases.Localidad;
 import Clases.Provincia;
 import Logica.ABMInmueble;
+import Logica.ActualizarPagina;
 import Logica.Catalogo;
 import Logica.LogicaCargaInterfaz;
 import Logica.LogicaReserva;
 import Logica.Validaciones;
 import com.itextpdf.text.DocumentException;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.Iterator;
@@ -33,6 +37,9 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 /**
  *
@@ -580,6 +587,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         btnBuscar.setText("Buscar");
         btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         btnBuscar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -793,7 +801,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCatalogoActionPerformed
 
     private void BotonPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPublicarActionPerformed
-        // TODO add your handling code here:
+       Inmueble inmSeleccionado=null;
+        for(int i=0; i<TablaResultados.getRowCount(); i++)
+            if ((boolean)tabla.getValueAt(i,0))
+                inmSeleccionado = resultado.get(i);
+        ActualizarPagina.actualizar(inmSeleccionado);
     }//GEN-LAST:event_BotonPublicarActionPerformed
 
     private void HabilitarBotones(){
