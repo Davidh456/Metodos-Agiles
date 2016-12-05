@@ -58,11 +58,11 @@ public class Catalogo {
         document.close();
         JOptionPane.showMessageDialog(null, "Catálogo generado y guardado correctamente con el nombre: Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf","Éxito",JOptionPane.INFORMATION_MESSAGE);  
 
-        //try {
-        //File archivo = new File(nombreydir);
-        //Desktop.getDesktop().open(archivo);
-        //} catch (IOException ex) {
-        //}
+        try {
+        File archivo = new File(nombreydir);
+        Desktop.getDesktop().open(archivo);
+        } catch (IOException ex) {
+        }
     }
     
     private ByteArrayOutputStream armarPagina(Inmueble inmueble,int c) throws IOException, DocumentException {

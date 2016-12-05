@@ -30,6 +30,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import Conexion.Hilo;
+import java.awt.Desktop;
+import java.io.File;
 
 
 
@@ -85,6 +87,11 @@ public class LogicaReserva {
             Hilo h1 = new Hilo("email", nombreydir, nuevaReserva.getCliente().getCorreo());
             h1.start();
             
+            try {
+            File archivo = new File(nombreydir);
+            Desktop.getDesktop().open(archivo);
+            } catch (IOException ex) {
+            }
             //EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 
