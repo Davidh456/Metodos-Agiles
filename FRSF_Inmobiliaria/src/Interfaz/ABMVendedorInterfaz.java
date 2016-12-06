@@ -528,7 +528,8 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
         validaciones.CaracteresMaximos(alturaTF, 5, "numerico");
         validaciones.CaracteresMaximos(telefonoTF, 30, "numerico");
         
-        validaciones.CaracteresMaximos(emailTF, 45, "alfanumerico");
+        validaciones.CaracteresMaximos(emailTF, 45, "correo");
+        
         validaciones.CaracteresMaximos(contrasenia, 20, "alfanumerico");
         validaciones.CaracteresMaximos(contrasenia2, 20, "alfanumerico");
     }
