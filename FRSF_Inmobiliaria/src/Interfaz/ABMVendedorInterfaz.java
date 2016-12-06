@@ -409,59 +409,45 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
             .addComponent(contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void cbDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDocumentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbDocumentoActionPerformed
-
     private void tfNumeroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNumeroDocumentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNumeroDocumentoActionPerformed
-
     private void cbProvinciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbProvinciaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbProvinciaActionPerformed
-
     private void cbLocalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLocalidadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbLocalidadActionPerformed
-
     private void tfTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfTelefonoActionPerformed
 
     }//GEN-LAST:event_tfTelefonoActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
 
     }//GEN-LAST:event_btnAceptarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
     }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void contrasenia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contrasenia2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_contrasenia2ActionPerformed
-
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aceptarActionPerformed
-
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         Inmobiliaria.getInstance().ConsultaVendedor();
     }//GEN-LAST:event_cancelarActionPerformed
-
     private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreTFActionPerformed
-
     private void provinciaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_provinciaCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_provinciaCBActionPerformed
-
     private void numDocTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numDocTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_numDocTFActionPerformed
-
     private void alturaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alturaTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_alturaTFActionPerformed
@@ -535,12 +521,16 @@ public class ABMVendedorInterfaz extends javax.swing.JPanel {
     }
 
     private void sintaxis() {
-        validaciones.CaracteresMaximos(nombreTF, 100, "alfabetico");
-        validaciones.CaracteresMaximos(apellidoTF, 100, "alfabetico");
-        validaciones.CaracteresMaximos(numDocTF, 8, "numerico");
+        validaciones.CaracteresMaximos(nombreTF, 30, "alfabetico");
+        validaciones.CaracteresMaximos(apellidoTF, 30, "alfabetico");
+        validaciones.CaracteresMaximos(numDocTF, 11, "numerico");
         validaciones.CaracteresMaximos(domicilioTF, 100, "alfanumerico");
         validaciones.CaracteresMaximos(alturaTF, 5, "numerico");
-        validaciones.CaracteresMaximos(telefonoTF, 50, "numerico");
+        validaciones.CaracteresMaximos(telefonoTF, 30, "numerico");
+        
+        validaciones.CaracteresMaximos(emailTF, 45, "alfanumerico");
+        validaciones.CaracteresMaximos(contrasenia, 20, "alfanumerico");
+        validaciones.CaracteresMaximos(contrasenia2, 20, "alfanumerico");
     }
 
     private boolean camposValidos() {
