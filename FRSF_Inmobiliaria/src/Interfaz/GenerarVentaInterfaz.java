@@ -481,7 +481,7 @@ public class GenerarVentaInterfaz extends javax.swing.JPanel {
                 Logger.getLogger(GenerarVentaInterfazSR.class.getName()).log(Level.SEVERE, null, ex);
             }
                 
-        JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
         Inmobiliaria.getInstance().ConsultaInmueble();   
     }//GEN-LAST:event_btnAceptarActionPerformed
 

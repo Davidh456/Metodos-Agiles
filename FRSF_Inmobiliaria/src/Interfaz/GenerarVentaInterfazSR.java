@@ -455,7 +455,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
             }
         operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
                 
-        JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
         Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
