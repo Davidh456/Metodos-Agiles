@@ -40,11 +40,11 @@ public class LogicaVenta {
     }
     
         private void GenerarDocumento(Factura factura) throws IOException, DocumentException {
-        String dirPath = "C:\\";
+        //String dirPath = "C:\\";
         String fileName = "Base factura.pdf";
         HashMap fieldsWithValues = new HashMap();
         ByteArrayOutputStream baosPDF = new ByteArrayOutputStream();
-        PdfReader reader = new PdfReader(dirPath + "\\" + fileName);
+        PdfReader reader = new PdfReader(fileName);
         PdfStamper stamper = new PdfStamper(reader, baosPDF);
         AcroFields form = stamper.getAcroFields();
         HashMap fields = (HashMap) form.getFields();
@@ -74,7 +74,7 @@ public class LogicaVenta {
             nombre = tiempo.get(Calendar.YEAR) + "_" + mes + "_" + tiempo.get(Calendar.DAY_OF_MONTH) + " ";
             nombre = nombre + tiempo.get(Calendar.HOUR_OF_DAY) + "_" + tiempo.get(Calendar.MINUTE)+ "_" + tiempo.get(Calendar.SECOND);
 
-            String nombreydir="C:\\Documento Factura -"+ nombre +"-.pdf";
+            String nombreydir="Documentos\\Documento Factura -"+ nombre +"-.pdf";
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();

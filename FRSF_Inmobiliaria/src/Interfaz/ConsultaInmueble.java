@@ -788,15 +788,18 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
             Inmobiliaria.getInstance().GenerarVentaSRes(inmSeleccionado);
+            //venta sin reserva
         }
         else{
             Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
+            //venta con reserva
         }
     }//GEN-LAST:event_BotonVenderActionPerformed
 
     private void BotonCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCatalogoActionPerformed
         List<Inmueble> inmueblesSeleccionados = new ArrayList<Inmueble>();
-        JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta "
+                + "elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
         for(int i=0; i<TablaResultados.getRowCount(); i++)
             if ((boolean)tabla.getValueAt(i,0))
                 inmueblesSeleccionados.add(resultado.get(i));

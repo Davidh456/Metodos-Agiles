@@ -445,7 +445,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         LogicaVenta operador = new LogicaVenta();
         
-        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a "
+                + "la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
         try {
             operador.GenerarVenta(inmuebleVendido,clienteReserva,vendedorSeleccionado);
             } catch (IOException ex) {
@@ -455,7 +456,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
             }
         operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
                 
-        JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente "
+                + "vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
         Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
