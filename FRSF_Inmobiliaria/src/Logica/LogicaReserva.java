@@ -30,6 +30,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import Conexion.Hilo;
+import java.awt.Desktop;
+import java.io.File;
 
 
 
@@ -47,11 +49,11 @@ public class LogicaReserva {
     }
 
     private void GenerarDocumento(Reserva nuevaReserva) throws IOException, DocumentException {
-        String dirPath = "C:\\";
+        //String dirPath = "C:\\";
         String fileName = "Base reserva.pdf";
         HashMap fieldsWithValues = new HashMap();
         ByteArrayOutputStream baosPDF = new ByteArrayOutputStream();
-        PdfReader reader = new PdfReader(dirPath + "\\" + fileName);
+        PdfReader reader = new PdfReader(fileName);
         PdfStamper stamper = new PdfStamper(reader, baosPDF);
         AcroFields form = stamper.getAcroFields();
         HashMap fields = (HashMap) form.getFields();
@@ -77,7 +79,7 @@ public class LogicaReserva {
             String nombre;
             DateFormat fecha = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
             nombre = fecha.format(nuevaReserva.getFechaHasta());
-            String nombreydir="C:\\Documento Reserva -"+ nombre +"-.pdf";
+            String nombreydir="Documentos\\Documento Reserva -"+ nombre +"-.pdf";
             OutputStream pdf = new FileOutputStream(nombreydir);
             baosPDF.writeTo(pdf);
             pdf.close();
@@ -85,6 +87,11 @@ public class LogicaReserva {
             Hilo h1 = new Hilo("email", nombreydir, nuevaReserva.getCliente().getCorreo());
             h1.start();
             
+            try {
+            File archivo = new File(nombreydir);
+            Desktop.getDesktop().open(archivo);
+            } catch (IOException ex) {
+            }
             //EnvioEmail(nombreydir, nuevaReserva.getCliente().getCorreo());
     }
 

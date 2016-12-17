@@ -36,7 +36,8 @@ import javax.swing.JOptionPane;
 
 public class Catalogo {
 
-    public void armarCatalogo(List<Inmueble> inmueblesSeleccionados) throws IOException, DocumentException {
+    public void armarCatalogo(List<Inmueble> inmueblesSeleccionados) 
+            throws IOException, DocumentException {
         int i=0;
         PdfReader reader;
         Document document = new Document();
@@ -45,7 +46,7 @@ public class Catalogo {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(fechaHoy);
         DateFormat fecha = new SimpleDateFormat("yyyy_MM_dd HH_mm_ss");
-        String nombreydir="C:\\Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf";
+        String nombreydir="Documentos\\Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf";
 
         PdfCopy copy = new PdfSmartCopy(document, new FileOutputStream(nombreydir));
         document.open();
@@ -56,7 +57,10 @@ public class Catalogo {
             reader.close();
         }
         document.close();
-        JOptionPane.showMessageDialog(null, "Catálogo generado y guardado correctamente con el nombre: Catalogo -"+ String.valueOf(fecha.format(calendar.getTime())) +"-.pdf \n A continuación se abrirá el mismo.","Éxito",JOptionPane.INFORMATION_MESSAGE);  
+        JOptionPane.showMessageDialog(null, "Catálogo generado y guardado "
+                + "correctamente con el nombre: Catalogo -"
+                + String.valueOf(fecha.format(calendar.getTime())) 
+                +"-.pdf","Éxito",JOptionPane.INFORMATION_MESSAGE);  
 
         try {
         File archivo = new File(nombreydir);
@@ -66,11 +70,11 @@ public class Catalogo {
     }
     
     private ByteArrayOutputStream armarPagina(Inmueble inmueble,int c) throws IOException, DocumentException {
-        String dirPath = "C:\\";
+        //String dirPath = "C:\\";
         String fileName = "Base catalogo.pdf";
         HashMap fieldsWithValues = new HashMap();
         ByteArrayOutputStream baosPDF = new ByteArrayOutputStream();
-        PdfReader reader = new PdfReader(dirPath + "\\" + fileName);
+        PdfReader reader = new PdfReader(fileName);
         PdfStamper stamper = new PdfStamper(reader, baosPDF);
         AcroFields form = stamper.getAcroFields();
         HashMap fields = (HashMap) form.getFields();
@@ -94,7 +98,7 @@ public class Catalogo {
             Foto foto = (new ABMInmueble()).obtenerPrimeraFoto(inmueble);
             Image img;
             if (foto==null)
-                img = Image.getInstance("c:\\noImagen.jpg");  //foto por defecto en caso de que no haya ninguna para el inmueble
+                img = Image.getInstance("noImagen.jpg");  //foto por defecto en caso de que no haya ninguna para el inmueble
             else
                 img = Image.getInstance(foto.getImagen());
 

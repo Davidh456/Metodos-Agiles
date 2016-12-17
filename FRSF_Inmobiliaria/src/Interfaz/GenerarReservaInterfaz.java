@@ -114,6 +114,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         BSelecCliente.setText("Seleccionar Cliente");
         BSelecCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BSelecCliente.setContentAreaFilled(false);
+        BSelecCliente.setFocusPainted(false);
         BSelecCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,6 +335,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         btnAceptar.setBorder(null);
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setFocusPainted(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept small selected.png"))); // NOI18N
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -348,6 +350,7 @@ public class GenerarReservaInterfaz extends javax.swing.JPanel {
         jButton3.setBorder(null);
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -27,7 +27,7 @@
             <column name="Bano" />
         </property>
         <property name="barrio" type="string">
-            <column name="Barrio" length="45" />
+            <column name="Barrio" length="40" />
         </property>
         <property name="cp" type="java.lang.Integer">
             <column name="CP" />
@@ -36,7 +36,7 @@
             <column name="Calle" length="45" />
         </property>
         <property name="depto" type="string">
-            <column name="Depto" length="45" />
+            <column name="Depto" length="4" />
         </property>
         <property name="dormitorio" type="java.lang.Integer">
             <column name="Dormitorio" />
@@ -66,7 +66,7 @@
             <column name="Numero" />
         </property>
         <property name="observaciones" type="string">
-            <column name="Observaciones" length="45" />
+            <column name="Observaciones" length="200" />
         </property>
         <property name="orientacion" type="java.lang.Integer">
             <column name="Orientacion" />
@@ -78,7 +78,7 @@
             <column name="Pavimento" />
         </property>
         <property name="piso" type="string">
-            <column name="Piso" length="45" />
+            <column name="Piso" length="3" />
         </property>
         <property name="precio" type="java.lang.Double">
             <column name="Precio" precision="12" scale="0" />

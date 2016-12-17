@@ -62,6 +62,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
        setLblLocalidad(inmSeleccionado.getLocalidadNombre());
        setLblTipoInmueble(inmSeleccionado.getTipoInmueble());
        lblImporte.setText(String.valueOf(inmSeleccionado.getPrecio()));
+       vendedorSeleccionado=Inmobiliaria.getInstance().getVendedorLogueado();
+       setVendedor();
     }
 
     /** This method is called from within the constructor to
@@ -107,7 +109,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         lblImporte = new javax.swing.JLabel();
         btnAceptar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        BSelecVendedor = new javax.swing.JToggleButton();
         jPanel7 = new javax.swing.JPanel();
         jLabe32 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
@@ -122,6 +123,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         BSelecCliente.setText("Seleccionar Cliente");
         BSelecCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BSelecCliente.setContentAreaFilled(false);
+        BSelecCliente.setFocusPainted(false);
         BSelecCliente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         BSelecCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +204,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel14)
                                 .addGap(18, 18, 18)
-                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+                                .addComponent(lblTipoInm, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
                                 .addContainerGap())
                             .addComponent(lblBarrio, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
@@ -319,6 +321,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         btnAceptar.setText("Aceptar");
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setFocusPainted(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAceptar.setIconTextGap(0);
         btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept big2 selected.png"))); // NOI18N
@@ -334,23 +337,13 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         jButton3.setText("Cancelar");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
+        jButton3.setFocusPainted(false);
         jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel2 big selected.png"))); // NOI18N
         jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        BSelecVendedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small.png"))); // NOI18N
-        BSelecVendedor.setText("Seleccionar Vendedor");
-        BSelecVendedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        BSelecVendedor.setContentAreaFilled(false);
-        BSelecVendedor.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
-        BSelecVendedor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BSelecVendedorActionPerformed(evt);
             }
         });
 
@@ -410,40 +403,27 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BSelecCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(BSelecCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(BSelecVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BSelecCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BSelecVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -465,7 +445,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         LogicaVenta operador = new LogicaVenta();
         
-        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere a "
+                + "la confirmación de la venta","Información",JOptionPane.INFORMATION_MESSAGE);
         try {
             operador.GenerarVenta(inmuebleVendido,clienteReserva,vendedorSeleccionado);
             } catch (IOException ex) {
@@ -475,7 +456,8 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
             }
         operador.cambiarEstadoInmuebleVendido(inmuebleVendido);
                 
-        JOptionPane.showMessageDialog(null, "El inmueble a sido correctamente vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "El inmueble ha sido correctamente "
+                + "vendido","Éxito",JOptionPane.INFORMATION_MESSAGE);
         Inmobiliaria.getInstance().ConsultaInmueble();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -486,11 +468,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     private void lblNombreVendedorPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreVendedorPropertyChange
         validarCargaCliente();
     }//GEN-LAST:event_lblNombreVendedorPropertyChange
-
-    private void BSelecVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BSelecVendedorActionPerformed
-        vendedorSeleccionado = (new ConsultaVendedor()).seleccionarVendedor();
-        setVendedor();
-    }//GEN-LAST:event_BSelecVendedorActionPerformed
 
     private void lblNombreClientePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblNombreClientePropertyChange
         // TODO add your handling code here:
@@ -587,7 +564,6 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BSelecCliente;
-    private javax.swing.JToggleButton BSelecVendedor;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabe28;
@@ -639,7 +615,7 @@ public class GenerarVentaInterfazSR extends javax.swing.JPanel {
     }
 
     private void validarCargaCliente() {
-     if(lblNombreVendedor.getText().equals("Ninguno")){
+     if(lblNombreCliente.getText().equals("Ninguno")){
             btnAceptar.setEnabled(false);
         }else
             btnAceptar.setEnabled(true);

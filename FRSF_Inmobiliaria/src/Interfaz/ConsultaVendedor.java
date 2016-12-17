@@ -85,6 +85,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnAgregar.setText("Agregar");
         btnAgregar.setBorderPainted(false);
         btnAgregar.setContentAreaFilled(false);
+        btnAgregar.setFocusPainted(false);
         btnAgregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add selected.png"))); // NOI18N
         btnAgregar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -98,6 +99,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnModificar.setText("Modificar");
         btnModificar.setBorderPainted(false);
         btnModificar.setContentAreaFilled(false);
+        btnModificar.setFocusPainted(false);
         btnModificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnModificar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modify selected.png"))); // NOI18N
         btnModificar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -111,6 +113,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnEliminar.setText("Eliminar");
         btnEliminar.setBorderPainted(false);
         btnEliminar.setContentAreaFilled(false);
+        btnEliminar.setFocusPainted(false);
         btnEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete selected.png"))); // NOI18N
         btnEliminar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -124,6 +127,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
         btnSalir.setText("Volver");
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setFocusPainted(false);
         btnSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/back big selected.png"))); // NOI18N
         btnSalir.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -143,7 +147,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSalir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                         .addComponent(btnAgregar)
                         .addGap(30, 30, 30)
                         .addComponent(btnModificar)
@@ -197,7 +201,7 @@ public class ConsultaVendedor extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El vendedor no ha sido eliminado.", 
                         "Eliminar Vendedor - ¡Atención!", JOptionPane.DEFAULT_OPTION, myIcon);}}
         else
-            JOptionPane.showMessageDialog(null, "No se puede eliminar el vendedor porque que el mismo ya ha realizado ventas.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No se puede eliminar el vendedor porque el mismo ya ha realizado ventas.","¡Cuidado!",JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_btnEliminarActionPerformed
 
 

@@ -136,6 +136,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setFocusPainted(false);
         btnCancelar.setIconTextGap(0);
         btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -151,6 +152,7 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         btnAceptar.setBorderPainted(false);
         btnAceptar.setContentAreaFilled(false);
         btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAceptar.setFocusPainted(false);
         btnAceptar.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnAceptar.setIconTextGap(0);
         btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/next selected.png"))); // NOI18N
@@ -579,14 +581,13 @@ public class ABMClienteOPropietario extends javax.swing.JPanel {
         cbProvincia.setEnabled(false);
     }
     private void sintaxis(){
-        validaciones.CaracteresMaximos(tfNombre, 100, "alfabetico");
-        validaciones.CaracteresMaximos(tfApellido, 100, "alfabetico");
-        validaciones.CaracteresMaximos(tfNumeroDocumento,8,"numerico");
-        validaciones.CaracteresMaximos(tfDomicilio, 100, "alfanumerico");
-        validaciones.CaracteresMaximos(tfAlturaCalle, 5, "numerico");
-        validaciones.CaracteresMaximos(tfTelefono, 50, "numerico");
-        validaciones.CaracteresMaximos(tfCorreo, 50, "correo");   
-
+        validaciones.CaracteresMaximos(tfNombre, 45, "alfabetico");
+        validaciones.CaracteresMaximos(tfApellido, 45, "alfabetico");
+        validaciones.CaracteresMaximos(tfNumeroDocumento,11,"numerico");
+        validaciones.CaracteresMaximos(tfDomicilio, 45, "alfanumerico");
+        validaciones.CaracteresMaximos(tfAlturaCalle, 11, "numerico");
+        validaciones.CaracteresMaximos(tfTelefono, 45, "numerico");
+        validaciones.CaracteresMaximos(tfCorreo, 45, "correo");   
     }
     private void cargarCB() {
        LogicaCargaInterfaz carga = new LogicaCargaInterfaz();

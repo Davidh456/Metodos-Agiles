@@ -68,6 +68,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnSiguiente.setBorder(null);
         btnSiguiente.setBorderPainted(false);
         btnSiguiente.setContentAreaFilled(false);
+        btnSiguiente.setFocusPainted(false);
         btnSiguiente.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnSiguiente.setIconTextGap(0);
         btnSiguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/next selected.png"))); // NOI18N
@@ -82,6 +83,7 @@ public class SeleccionarPropietario extends javax.swing.JPanel {
         btnCancelar.setBorder(null);
         btnCancelar.setBorderPainted(false);
         btnCancelar.setContentAreaFilled(false);
+        btnCancelar.setFocusPainted(false);
         btnCancelar.setIconTextGap(0);
         btnCancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel selected.png"))); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {

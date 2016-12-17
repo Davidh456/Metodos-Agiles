@@ -386,6 +386,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonEliminar.setText("Eliminar");
         BotonEliminar.setBorderPainted(false);
         BotonEliminar.setContentAreaFilled(false);
+        BotonEliminar.setFocusPainted(false);
         BotonEliminar.setIconTextGap(18);
         BotonEliminar.setMargin(new java.awt.Insets(2, 5, 2, 5));
         BotonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete2 selected.png"))); // NOI18N
@@ -399,6 +400,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonVender.setText("Vender");
         BotonVender.setBorderPainted(false);
         BotonVender.setContentAreaFilled(false);
+        BotonVender.setFocusPainted(false);
         BotonVender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonVender.setIconTextGap(9);
         BotonVender.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -413,6 +415,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonDetalles.setText("Detalles");
         BotonDetalles.setBorderPainted(false);
         BotonDetalles.setContentAreaFilled(false);
+        BotonDetalles.setFocusPainted(false);
         BotonDetalles.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonDetalles.setIconTextGap(5);
         BotonDetalles.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -427,6 +430,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonReserva.setText("Reservar");
         BotonReserva.setBorderPainted(false);
         BotonReserva.setContentAreaFilled(false);
+        BotonReserva.setFocusPainted(false);
         BotonReserva.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonReserva.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         BotonReserva.setIconTextGap(6);
@@ -442,6 +446,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonPublicar.setText("Publicar");
         BotonPublicar.setBorderPainted(false);
         BotonPublicar.setContentAreaFilled(false);
+        BotonPublicar.setFocusPainted(false);
         BotonPublicar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonPublicar.setIconTextGap(10);
         BotonPublicar.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -456,6 +461,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonModificar.setText("Modificar");
         BotonModificar.setBorderPainted(false);
         BotonModificar.setContentAreaFilled(false);
+        BotonModificar.setFocusPainted(false);
         BotonModificar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonModificar.setIconTextGap(7);
         BotonModificar.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -470,6 +476,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonSalir.setText("Salir");
         BotonSalir.setBorderPainted(false);
         BotonSalir.setContentAreaFilled(false);
+        BotonSalir.setFocusPainted(false);
         BotonSalir.setIconTextGap(20);
         BotonSalir.setMargin(new java.awt.Insets(2, 5, 2, 19));
         BotonSalir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exit selected.png"))); // NOI18N
@@ -483,6 +490,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         BotonCatalogo.setText("<html>Generar<br>Catálogo</html>");
         BotonCatalogo.setBorderPainted(false);
         BotonCatalogo.setContentAreaFilled(false);
+        BotonCatalogo.setFocusPainted(false);
         BotonCatalogo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         BotonCatalogo.setIconTextGap(15);
         BotonCatalogo.setMargin(new java.awt.Insets(2, 5, 2, 5));
@@ -585,6 +593,7 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         btnBuscar.setText("Buscar");
         btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscar.setContentAreaFilled(false);
+        btnBuscar.setFocusPainted(false);
         btnBuscar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         btnBuscar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search small selected.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -777,15 +786,18 @@ public class ConsultaInmueble extends javax.swing.JPanel {
         tieneReserva=operador.ExisteReserva(inmSeleccionado);
         if(!tieneReserva){
             Inmobiliaria.getInstance().GenerarVentaSRes(inmSeleccionado);
+            //venta sin reserva
         }
         else{
             Inmobiliaria.getInstance().GenerarVentaCRes(inmSeleccionado);
+            //venta con reserva
         }
     }//GEN-LAST:event_BotonVenderActionPerformed
 
     private void BotonCatalogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCatalogoActionPerformed
         List<Inmueble> inmueblesSeleccionados = new ArrayList<Inmueble>();
-        JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Después de este mensaje espere que se confirme la correcta "
+                + "elaboración del catálogo","Información",JOptionPane.INFORMATION_MESSAGE);
         for(int i=0; i<TablaResultados.getRowCount(); i++)
             if ((boolean)tabla.getValueAt(i,0))
                 inmueblesSeleccionados.add(resultado.get(i));

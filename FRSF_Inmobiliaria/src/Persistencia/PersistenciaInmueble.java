@@ -134,6 +134,12 @@ public class PersistenciaInmueble {
         
         // criterios para el propietario
         criteria.createAlias("inmueble.cliente", "idpropietario"); 
+        if(!correo.equals("")){
+          criteria.add(Restrictions.eq("idpropietario.correo",correo));  
+        }
+        if(!apellido.equals("")){
+            criteria.add(Restrictions.eq("idpropietario.apellido",apellido));
+        }
         if(!nombre.equals("")){
             criteria.add(Restrictions.eq("idpropietario.nombre",nombre)); 
         }
@@ -143,12 +149,7 @@ public class PersistenciaInmueble {
         if(tipoDoc!=0){
             criteria.add(Restrictions.eq("idpropietario.tipoDoc",tipoDoc-1));  
         }
-        if(!correo.equals("")){
-          criteria.add(Restrictions.eqProperty("idpropietario.correo",correo));  
-        }
-        if(!apellido.equals("")){
-            criteria.add(Restrictions.eqProperty("idpropietario.apellido",apellido));
-        }
+        
         resultado =criteria.list();
         session.close();
         return resultado;

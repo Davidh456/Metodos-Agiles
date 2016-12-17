@@ -146,7 +146,7 @@ public class Validaciones {
 	public void CaracteresMaximos(final JTextField tf, final int limite,final String tipo) { 
 		tf.addKeyListener(new KeyListener(){
 			public void keyTyped(KeyEvent e){
-				if (tf.getText().length()== limite){
+				if (tf.getText().length()>= limite){
 					e.consume();
 				}
 				char caracter = e.getKeyChar();
