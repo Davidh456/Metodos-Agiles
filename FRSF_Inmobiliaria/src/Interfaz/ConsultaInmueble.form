@@ -542,7 +542,7 @@
         <Component class="javax.swing.JButton" name="BotonPublicar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/upload.png"/>
+              <Image iconType="3" name="/imagenes/upload3.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Publicar"/>
             <Property name="borderPainted" type="boolean" value="false"/>
@@ -553,7 +553,7 @@
               <Insets value="[2, 5, 2, 5]"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/upload selected.png"/>
+              <Image iconType="3" name="/imagenes/upload2.png"/>
             </Property>
           </Properties>
           <Events>

@@ -37,9 +37,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
+
 
 /**
  *
@@ -440,14 +438,14 @@ public class ConsultaInmueble extends javax.swing.JPanel {
             }
         });
 
-        BotonPublicar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload.png"))); // NOI18N
+        BotonPublicar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload3.png"))); // NOI18N
         BotonPublicar.setText("Publicar");
         BotonPublicar.setBorderPainted(false);
         BotonPublicar.setContentAreaFilled(false);
         BotonPublicar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BotonPublicar.setIconTextGap(10);
         BotonPublicar.setMargin(new java.awt.Insets(2, 5, 2, 5));
-        BotonPublicar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload selected.png"))); // NOI18N
+        BotonPublicar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/upload2.png"))); // NOI18N
         BotonPublicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonPublicarActionPerformed(evt);
