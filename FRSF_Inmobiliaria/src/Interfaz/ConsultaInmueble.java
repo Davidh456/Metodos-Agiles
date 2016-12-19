@@ -811,11 +811,11 @@ public class ConsultaInmueble extends javax.swing.JPanel {
     }//GEN-LAST:event_BotonCatalogoActionPerformed
 
     private void BotonPublicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonPublicarActionPerformed
-       Inmueble inmSeleccionado=null;
+        ArrayList<Inmueble> listaInmuebles = new ArrayList<Inmueble>();
         for(int i=0; i<TablaResultados.getRowCount(); i++)
             if ((boolean)tabla.getValueAt(i,0))
-                inmSeleccionado = resultado.get(i);
-        ActualizarPagina.actualizar(inmSeleccionado);
+                listaInmuebles.add(resultado.get(i));
+        ActualizarPagina.actializarPaginas(listaInmuebles);
     }//GEN-LAST:event_BotonPublicarActionPerformed
 
     private void HabilitarBotones(){

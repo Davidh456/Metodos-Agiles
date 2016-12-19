@@ -1039,8 +1039,7 @@ public class ABMInmuebleInterfaz extends javax.swing.JPanel {
                         chooser.getSelectedFile().getName(), 
                         chooser.getSelectedFile(),
                         });
-        }
-    
+        }    
     }//GEN-LAST:event_BAdjFotosActionPerformed
 
     private void BCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BCancelarActionPerformed
